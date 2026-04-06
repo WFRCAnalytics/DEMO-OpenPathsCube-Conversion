@@ -1,0 +1,160 @@
+;assign alternative specific constants for each vehicle ownership segment
+
+    IF (VEH==1)                    ;0 veh households
+           
+        asc_motor    = asc_motor_all    + asc_motor_0veh
+        asc_nonmotor = asc_nonmotor_all + asc_nonmotor_0veh
+           
+        asc_walk     = asc_walk_all     + asc_walk_0veh
+        asc_bike     = asc_bike_all     + asc_bike_0veh
+         
+        asc_auto     = asc_auto_all     + asc_auto_0veh
+        asc_transit  = asc_transit_all  + asc_transit_0veh
+           
+        asc_alone    = asc_alone_all    + asc_alone_0veh
+        asc_shared   = asc_shared_all   + asc_shared_0veh
+        
+        asc_LCL      = asc_LCL_all      + asc_LCL_0veh
+        asc_EXP      = asc_EXP_all      + asc_EXP_0veh
+       ;asc_COR      = asc_COR_all      + asc_COR_0veh
+        asc_BRT      = asc_BRT_all      + asc_BRT_0veh
+        asc_LRT      = asc_LRT_all      + asc_LRT_0veh
+        asc_CRT      = asc_CRT_all      + asc_CRT_0veh
+                     
+        asc_sr2      = asc_sr2_all      + asc_sr2_0veh
+        asc_sr3      = asc_sr3_all      + asc_sr3_0veh
+                     
+        asc_hov      = asc_hov_all      + asc_hov_0veh
+        asc_toll     = asc_toll_all     + asc_toll_0veh
+        
+        asc_driveacc = asc_driveacc_all + asc_driveacc_0veh
+        asc_walkacc  = asc_walkacc_all  + asc_walkacc_0veh
+           
+        asc_wLCL     = asc_wLCL_all     + asc_wLCL_0veh
+        asc_dLCL     = asc_dLCL_all     + asc_dLCL_0veh
+           
+        asc_wEXP     = asc_wEXP_all     + asc_wEXP_0veh
+        asc_dEXP     = asc_dEXP_all     + asc_dEXP_0veh
+           
+       ;asc_wCOR     = asc_wCOR_all     + asc_wCOR_0veh
+       ;asc_dCOR     = asc_dCOR_all     + asc_dCOR_0veh
+
+        asc_wBRT     = asc_wBRT_all     + asc_wBRT_0veh
+        asc_dBRT     = asc_dBRT_all     + asc_dBRT_0veh
+
+        asc_wLRT     = asc_wLRT_all     + asc_wLRT_0veh
+        asc_dLRT     = asc_dLRT_all     + asc_dLRT_0veh
+           
+        asc_wCRT     = asc_wCRT_all     + asc_wCRT_0veh
+        asc_dCRT     = asc_dCRT_all     + asc_dCRT_0veh
+                
+       ; asc_EXP = asc_LCL_all + asc_LCL_0veh + asc_EXP_all
+       ; asc_wEXP = asc_wLCL_all + asc_wLCL_0veh
+       ; asc_dEXP = asc_dLCL_all + asc_dLCL_0veh
+        
+        
+    ELSEIF (VEH==2)                 ;1 veh households
+           
+        asc_motor    = asc_motor_all    + asc_motor_1veh
+        asc_nonmotor = asc_nonmotor_all + asc_nonmotor_1veh
+           
+        asc_walk     = asc_walk_all     + asc_walk_1veh
+        asc_bike     = asc_bike_all     + asc_bike_1veh
+         
+        asc_auto     = asc_auto_all     + asc_auto_1veh
+        asc_transit  = asc_transit_all  + asc_transit_1veh
+           
+        asc_alone    = asc_alone_all    + asc_alone_1veh
+        asc_shared   = asc_shared_all   + asc_shared_1veh
+        
+        asc_LCL      = asc_LCL_all      + asc_LCL_1veh
+        asc_EXP      = asc_EXP_all      + asc_EXP_1veh
+       ;asc_COR      = asc_COR_all      + asc_COR_1veh
+        asc_BRT      = asc_BRT_all      + asc_BRT_1veh
+        asc_LRT      = asc_LRT_all      + asc_LRT_1veh
+        asc_CRT      = asc_CRT_all      + asc_CRT_1veh
+                     
+        asc_sr2      = asc_sr2_all      + asc_sr2_1veh
+        asc_sr3      = asc_sr3_all      + asc_sr3_1veh
+                     
+        asc_hov      = asc_hov_all      + asc_hov_1veh
+        asc_toll     = asc_toll_all     + asc_toll_1veh
+        
+        asc_driveacc = asc_driveacc_all + asc_driveacc_1veh
+        asc_walkacc  = asc_walkacc_all  + asc_walkacc_1veh
+           
+        asc_wLCL     = asc_wLCL_all     + asc_wLCL_1veh
+        asc_dLCL     = asc_dLCL_all     + asc_dLCL_1veh
+           
+        asc_wEXP     = asc_wEXP_all     + asc_wEXP_1veh
+        asc_dEXP     = asc_dEXP_all     + asc_dEXP_1veh
+           
+       ;asc_wCOR     = asc_wCOR_all     + asc_wCOR_1veh
+       ;asc_dCOR     = asc_dCOR_all     + asc_dCOR_1veh
+
+        asc_wBRT   = asc_wBRT_all   + asc_wBRT_1veh
+        asc_dBRT   = asc_dBRT_all   + asc_dBRT_1veh
+
+        asc_wLRT     = asc_wLRT_all     + asc_wLRT_1veh
+        asc_dLRT     = asc_dLRT_all     + asc_dLRT_1veh
+           
+        asc_wCRT     = asc_wCRT_all     + asc_wCRT_1veh
+        asc_dCRT     = asc_dCRT_all     + asc_dCRT_1veh
+                
+        ; asc_EXP = asc_LCL_all + asc_LCL_1veh + asc_EXP_all
+        ; asc_wEXP = asc_wLCL_all + asc_wLCL_1veh
+        ; asc_dEXP = asc_dLCL_all + asc_dLCL_1veh
+           
+    ELSEIF (VEH==3)                ;2 veh households
+           
+        asc_motor    = asc_motor_all    + asc_motor_2veh
+        asc_nonmotor = asc_nonmotor_all + asc_nonmotor_2veh
+           
+        asc_walk     = asc_walk_all     + asc_walk_2veh
+        asc_bike     = asc_bike_all     + asc_bike_2veh
+         
+        asc_auto     = asc_auto_all     + asc_auto_2veh
+        asc_transit  = asc_transit_all  + asc_transit_2veh
+           
+        asc_alone    = asc_alone_all    + asc_alone_2veh
+        asc_shared   = asc_shared_all   + asc_shared_2veh
+        
+        asc_LCL      = asc_LCL_all      + asc_LCL_2veh
+        asc_EXP      = asc_EXP_all      + asc_EXP_2veh
+       ;asc_COR      = asc_COR_all      + asc_COR_2veh
+        asc_BRT      = asc_BRT_all      + asc_BRT_2veh
+        asc_LRT      = asc_LRT_all      + asc_LRT_2veh
+        asc_CRT      = asc_CRT_all      + asc_CRT_2veh
+                     
+        asc_sr2      = asc_sr2_all      + asc_sr2_2veh
+        asc_sr3      = asc_sr3_all      + asc_sr3_2veh
+                     
+        asc_hov      = asc_hov_all      + asc_hov_2veh
+        asc_toll     = asc_toll_all     + asc_toll_2veh
+        
+        asc_driveacc = asc_driveacc_all + asc_driveacc_2veh
+        asc_walkacc  = asc_walkacc_all  + asc_walkacc_2veh
+           
+        asc_wLCL     = asc_wLCL_all     + asc_wLCL_2veh
+        asc_dLCL     = asc_dLCL_all     + asc_dLCL_2veh
+           
+        asc_wEXP     = asc_wEXP_all     + asc_wEXP_2veh
+        asc_dEXP     = asc_dEXP_all     + asc_dEXP_2veh
+           
+       ;asc_wCOR     = asc_wCOR_all     + asc_wCOR_2veh
+       ;asc_dCOR     = asc_dCOR_all     + asc_dCOR_2veh
+
+        asc_wBRT     = asc_wBRT_all     + asc_wBRT_2veh
+        asc_dBRT     = asc_dBRT_all     + asc_dBRT_2veh
+                   
+        asc_wLRT     = asc_wLRT_all     + asc_wLRT_2veh
+        asc_dLRT     = asc_dLRT_all     + asc_dLRT_2veh
+           
+        asc_wCRT     = asc_wCRT_all     + asc_wCRT_2veh
+        asc_dCRT     = asc_dCRT_all     + asc_dCRT_2veh 
+                
+        ; asc_EXP = asc_LCL_all + asc_LCL_2veh + asc_EXP_all
+        ; asc_wEXP = asc_wLCL_all + asc_wLCL_2veh
+        ; asc_dEXP = asc_dLCL_all + asc_dLCL_2veh
+         
+    ENDIF     

@@ -1,0 +1,140 @@
+Page 1  (VOYAGER PILOT) Model Run
+Wasatch Front Regional Council
+----------------------------------
+PILOT (v.08/13/2019 [6.4.5 x64]) Thu Jul 02 13:36:26 2020
+
+Args: E:\Volume1\Projects\4 - UDOT\20003 - USTM v2.1a\03 - Model Dev\USTM_v2.1a - 2020-06-29\1_Inputs\3_Highway\_Network Processing Tools\Reset Link AB Field Widths\_Reset_LinkShape_AB_FieldWidths.s -SE:\Volume1\Projects\4 - UDOT\20003 - USTM v2.1a\03 - Model Dev\USTM_v2.1a - 2020-06-29\1_Inputs\3_Highway\_Network Processing Tools\Reset Link AB Field Widths -PTPPL -PH:58 -PW:80 -IModel Run
+Input:   E:...Reset Link AB Field Widths\_Reset_LinkShape_AB_FieldWidths.s
+
+LinkShapeDBF_Input  = 'USTM_Master_Link_orig.dbf'
+LinkShapeDBF_Output = 'USTM_Master_Link.dbf'
+RUN PGM=MATRIX,103
+RUN PGM=MATRIX,428
+SYS=((DEL "_temp_Link_AB.dbf", "_temp_Link_NoAB.dbf"))
+
+PILOT Stack Size = 298 bytes.
+................................................................................
+Page 2  (VOYAGER MATRIX) Model Run
+Wasatch Front Regional Council
+-----------------------------------
+MATRIX (v.08/13/2019 [6.4.5 x64])  Thu Jul 02 13:36:26 2020
+
+FILEI RECI = 'USTM_Master_Link_orig.dbf'
+
+
+FILEO RECO[1] = '_temp_Link_AB.dbf',
+    FIELDS=A,
+           B
+
+FILEO RECO[2] = '_temp_Link_NoAB.dbf',
+    FIELDS=RECI.ALLFIELDS,
+    EXCLUDERECI=A, B
+
+
+    ZONES = 8775
+
+    ; write data to defined output files
+    WRITE RECO=1-2
+
+
+MATRIX Stack Size = 310 bytes.
+................................................................................
+
+
+FILEI RECI=USTM_Master_Link_orig.dbf Opened: 89148 data records  57 Fields:
+A N15               B N15               X_MID N15.5         Y_MID N15.5        
+DISTANCE N8.5       ONEWAY N1           STREET C31          LINKID C11         
+TAZID N15           SEGID C20           SFAC N5.3           SFAC_FUT N5.3      
+CFAC N5.3           CFAC_FUT N5.3       LN_2015 N1          LN_2019 N1         
+LN_2024 N1          LN_2030 N1          LN_2040 N1          LN_2050 N1         
+LN_2030UF N1        LN_2040UF N1        LN_2050UF N1        FT_2015 N2         
+FT_2019 N2          FT_2024 N2          FT_2030 N2          FT_2040 N2         
+FT_2050 N2          FT_2030UF N2        FT_2040UF N2        FT_2050UF N2       
+PL_2015 N1          PL_2019 N1          PL_2024 N1          PL_2030 N1         
+PL_2040 N1          PL_2050 N1          PL_2030UF N1        PL_2040UF N1       
+PL_2050UF N1        TL_2015 N1          TL_2019 N1          TL_2024 N1         
+TL_2030 N1          TL_2040 N1          TL_2050 N1          TL_2030UF N1       
+TL_2040UF N1        TL_2050UF N1        TRKRST2015 N1       TRKRST2023 N1      
+SUBAREAID N1        SUBAREA_A N15       SUBAREA_B N15       SUB_TYPE_L N1      
+CONCT_SA N1        
+
+
+M(705): 89,148 RECI records processed,  0 with errors.
+
+Variable Values at end of Iteration 1 I loop:
+
+    RECI:            71086          7108...
+
+M(751): 89,148 records written to RECO[1]=_temp_Link_AB.dbf
+
+M(751): 89,148 records written to RECO[2]=_temp_Link_NoAB.dbf
+
+MATRIX   ReturnCode = 0  Elapsed Time = 00:00:02
+################################################################################
+Page 3  (VOYAGER MATRIX) Model Run
+Wasatch Front Regional Council
+-----------------------------------
+MATRIX (v.08/13/2019 [6.4.5 x64])  Thu Jul 02 13:36:28 2020
+
+FILEI DBI = '_temp_Link_AB.dbf',
+    AUTOARRAY=ALLFIELDS
+
+FILEI RECI = '_temp_Link_NoAB.dbf'
+
+
+FILEO RECO[1] = 'USTM_Master_Link.dbf',
+    FIELDS=A(20.0),
+           B(20.0),
+           RECI.ALLFIELDS
+
+    ZONES = 8775
+
+    ; write data to defined output files
+    RO.A = dba.1.A[RECI.RECNO]
+    RO.B = dba.1.B[RECI.RECNO]
+
+    WRITE RECO=1
+
+
+MATRIX Stack Size = 464 bytes.
+................................................................................
+
+
+FILEI RECI=_temp_Link_NoAB.dbf Opened: 89148 data records  55 Fields:
+X_MID N15.5         Y_MID N15.5         DISTANCE N8.5       ONEWAY N1          
+STREET C31          LINKID C11          TAZID N15           SEGID C20          
+SFAC N5.3           SFAC_FUT N5.3       CFAC N5.3           CFAC_FUT N5.3      
+LN_2015 N1          LN_2019 N1          LN_2024 N1          LN_2030 N1         
+LN_2040 N1          LN_2050 N1          LN_2030UF N1        LN_2040UF N1       
+LN_2050UF N1        FT_2015 N2          FT_2019 N2          FT_2024 N2         
+FT_2030 N2          FT_2040 N2          FT_2050 N2          FT_2030UF N2       
+FT_2040UF N2        FT_2050UF N2        PL_2015 N1          PL_2019 N1         
+PL_2024 N1          PL_2030 N1          PL_2040 N1          PL_2050 N1         
+PL_2030UF N1        PL_2040UF N1        PL_2050UF N1        TL_2015 N1         
+TL_2019 N1          TL_2024 N1          TL_2030 N1          TL_2040 N1         
+TL_2050 N1          TL_2030UF N1        TL_2040UF N1        TL_2050UF N1       
+TRKRST2015 N1       TRKRST2023 N1       SUBAREAID N1        SUBAREA_A N15      
+SUBAREA_B N15       SUB_TYPE_L N1       CONCT_SA N1        
+
+
+M(705): 89,148 RECI records processed,  0 with errors.
+
+Variable Values at end of Iteration 1 I loop:
+
+    RECI:     464111.84375  4501720.8307...
+
+M(751): 89,148 records written to RECO[1]=USTM_Master_Link.dbf
+
+MATRIX   ReturnCode = 0  Elapsed Time = 00:00:01
+################################################################################
+
+
+--------------------------------------------------------------------------------
+
+SYS "(DEL "_temp_Link_AB.dbf", "_temp_Link_NoAB.dbf")"
+
+SYS ReturnCode = 0
+
+--------------------------------------------------------------------------------
+
+VOYAGER  ReturnCode = 0  Elapsed Time = 00:00:03

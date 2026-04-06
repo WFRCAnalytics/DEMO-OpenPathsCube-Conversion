@@ -1,0 +1,2261 @@
+{
+    "outputFileName": "j-zone-ato.json",
+    "idCol": "TAZID",
+    "filters": [
+        {   "filterCode": "fAtoMode",
+            "filterDescription": "Travel Mode",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fAtoLossType",
+            "filterDescription": "Access To Opportunity Loss",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fAtoRelGeo",
+            "filterDescription": "ATO Relative Geography",
+            "filterLocation": "wide"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "aH",
+            "attributeDescription": "Households",
+            "roundingDecimals": 0,
+            "tdmCsvColumn": "HH"
+        },
+        {   "attributeCode": "aJ",
+            "attributeDescription": "Jobs",
+            "roundingDecimals": 0,
+            "tdmCsvColumn": "Job"
+        },
+        {   "attributeCode": "aJA",
+            "attributeDescription": "Access to Jobs",
+            "roundingDecimals": 0,
+            "wideFilterSettings": [
+                {   "tdmCsvColumn": "Job_byAuto",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoMode",
+                            "filterValue": "A"
+                        }
+                    ]
+                },
+                {   "tdmCsvColumn": "Job_byTran",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoMode",
+                            "filterValue": "T"
+                        }
+                    ]
+                },
+                {   "tdmCsvColumn": "Job_byBike",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoMode",
+                            "filterValue": "B"
+                        }
+                    ]
+                },
+                {   "tdmCsvColumn": "Job_byWalk",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoMode",
+                            "filterValue": "W"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aHA",
+            "attributeDescription": "Access to Households",
+            "roundingDecimals": 0,
+            "wideFilterSettings": [
+                {   "tdmCsvColumn": "HH_byAuto",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoMode",
+                            "filterValue": "A"
+                        }
+                    ]
+                },
+                {   "tdmCsvColumn": "HH_byTran",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoMode",
+                            "filterValue": "T"
+                        }
+                    ]
+                },
+                {   "tdmCsvColumn": "HH_byBike",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoMode",
+                            "filterValue": "B"
+                        }
+                    ]
+                },
+                {   "tdmCsvColumn": "HH_byWalk",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoMode",
+                            "filterValue": "W"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aJL",
+            "attributeDescription": "Loss in Access to Jobs",
+            "roundingDecimals": 0,
+            "wideFilterSettings": [
+                {   "tdmCsvColumn": "Loss_Job_Cong",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoLossType",
+                            "filterValue": "C"
+                        }
+                    ]
+                },
+                {   "tdmCsvColumn": "Loss_Job_Net",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoLossType",
+                            "filterValue": "N"
+                        }
+                    ]
+                },
+                {   "tdmCsvColumn": "Loss_Job_Abs",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoLossType",
+                            "filterValue": "S"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aHL",
+            "attributeDescription": "Loss in Access to Households",
+            "roundingDecimals": 0,
+            "wideFilterSettings": [
+                {   "tdmCsvColumn": "Loss_HH_Cong",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoLossType",
+                            "filterValue": "C"
+                        }
+                    ]
+                },
+                {   "tdmCsvColumn": "Loss_HH_Net",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoLossType",
+                            "filterValue": "N"
+                        }
+                    ]
+                },
+                {   "tdmCsvColumn": "Loss_HH_Abs",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fAtoLossType",
+                            "filterValue": "S"
+                        }
+                    ]
+                }
+            ]
+        },
+    {
+        "attributeCode": "aJAr",
+        "attributeDescription": "Relative Access to Jobs",
+        "roundingDecimals": 2,
+        "wideFilterSettings": [
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_MAG",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "MAG"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_MAG",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "MAG"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_MAG",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "MAG"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_MAG",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "MAG"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_WFRC",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WFRC"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_WFRC",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WFRC"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_WFRC",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WFRC"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_WFRC",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WFRC"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_BOX_ELDER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "BOX_ELDER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_BOX_ELDER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "BOX_ELDER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_BOX_ELDER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "BOX_ELDER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_BOX_ELDER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "BOX_ELDER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_DAVIS",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "DAVIS"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_DAVIS",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "DAVIS"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_DAVIS",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "DAVIS"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_DAVIS",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "DAVIS"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_SALT_LAKE",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "SALT_LAKE"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_SALT_LAKE",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "SALT_LAKE"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_SALT_LAKE",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "SALT_LAKE"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_SALT_LAKE",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "SALT_LAKE"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_UTAH",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "UTAH"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_UTAH",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "UTAH"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_UTAH",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "UTAH"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_UTAH",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "UTAH"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_WEBER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WEBER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_WEBER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WEBER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_WEBER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WEBER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_WEBER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WEBER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_Box_Elder_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Box_Elder_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_Box_Elder_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Box_Elder_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_Box_Elder_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Box_Elder_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_Box_Elder_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Box_Elder_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_Central_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Central_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_Central_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Central_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_Central_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Central_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_Central_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Central_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_North_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "North_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_North_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "North_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_North_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "North_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_North_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "North_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_Northern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_Northern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_Northern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_Northern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_Northern_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_Northern_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_Northern_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_Northern_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_Northern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_Northern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_Northern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_Northern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_South_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "South_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_South_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "South_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_South_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "South_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_South_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "South_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_Southeast_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southeast_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_Southeast_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southeast_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_Southeast_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southeast_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_Southeast_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southeast_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_Southern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_Southern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_Southern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_Southern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_Southern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_Southern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_Southern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_Southern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_Southwest_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southwest_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_Southwest_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southwest_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_Southwest_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southwest_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_Southwest_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southwest_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_West_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "West_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_West_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "West_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_West_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "West_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_West_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "West_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byAuto_rel_Region",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Region"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byTran_rel_Region",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Region"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byBike_rel_Region",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Region"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "Job_byWalk_rel_Region",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Region"
+            }
+            ]
+        }
+        ]
+    },
+    {
+        "attributeCode": "aHAr",
+        "attributeDescription": "Relative Access to Households",
+        "roundingDecimals": 2,
+        "wideFilterSettings": [
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_MAG",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "MAG"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_MAG",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "MAG"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_MAG",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "MAG"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_MAG",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "MAG"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_WFRC",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WFRC"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_WFRC",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WFRC"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_WFRC",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WFRC"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_WFRC",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WFRC"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_BOX_ELDER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "BOX_ELDER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_BOX_ELDER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "BOX_ELDER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_BOX_ELDER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "BOX_ELDER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_BOX_ELDER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "BOX_ELDER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_DAVIS",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "DAVIS"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_DAVIS",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "DAVIS"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_DAVIS",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "DAVIS"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_DAVIS",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "DAVIS"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_SALT_LAKE",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "SALT_LAKE"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_SALT_LAKE",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "SALT_LAKE"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_SALT_LAKE",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "SALT_LAKE"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_SALT_LAKE",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "SALT_LAKE"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_UTAH",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "UTAH"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_UTAH",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "UTAH"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_UTAH",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "UTAH"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_UTAH",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "UTAH"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_WEBER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WEBER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_WEBER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WEBER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_WEBER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WEBER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_WEBER",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "WEBER"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_Box_Elder_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Box_Elder_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_Box_Elder_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Box_Elder_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_Box_Elder_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Box_Elder_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_Box_Elder_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Box_Elder_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_Central_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Central_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_Central_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Central_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_Central_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Central_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_Central_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Central_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_North_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "North_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_North_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "North_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_North_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "North_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_North_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "North_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_Northern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_Northern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_Northern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_Northern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_Northern_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_Northern_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_Northern_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_Northern_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_Northern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_Northern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_Northern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_Northern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Northern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_South_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "South_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_South_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "South_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_South_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "South_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_South_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "South_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_Southeast_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southeast_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_Southeast_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southeast_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_Southeast_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southeast_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_Southeast_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southeast_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_Southern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_Southern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_Southern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_Southern_Davis_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Davis_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_Southern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_Southern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_Southern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_Southern_Weber_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southern_Weber_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_Southwest_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southwest_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_Southwest_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southwest_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_Southwest_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southwest_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_Southwest_Salt_Lake_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Southwest_Salt_Lake_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_West_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "West_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_West_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "West_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_West_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "West_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_West_Utah_County",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "West_Utah_County"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byAuto_rel_Region",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "A"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Region"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byTran_rel_Region",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "T"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Region"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byBike_rel_Region",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "B"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Region"
+            }
+            ]
+        },
+        {
+            "tdmCsvColumn": "HH_byWalk_rel_Region",
+            "filterSettings": [
+            {
+                "filterCode": "fAtoMode",
+                "filterValue": "W"
+            },
+            {
+                "filterCode": "fAtoRelGeo",
+                "filterValue": "Region"
+            }
+            ]
+        }
+        ]
+    }
+ ]
+}
+

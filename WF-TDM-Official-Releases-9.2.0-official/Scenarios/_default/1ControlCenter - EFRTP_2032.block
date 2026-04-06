@@ -1,0 +1,208 @@
+;****************************************************************************************
+;
+;                                  1ControlCenter.block
+;
+;****************************************************************************************
+
+;Scenario variables
+    ;General indification variables
+        ModelVersion          = 'WFv920'                                        ;model area + 'v' + 3 digit model version; no spaces
+        UserName              = 'user name'
+        UserCompany           = 'user agency'
+    
+    
+    ;Specific run setup variables
+        ScenarioGroup         = 'EFRTP'                                         ;(e.g. BY, RTP, NB28, NB32, NB42, Needs, NeedsMAG, Alt1, Alt2, etc.)
+        RunYear               = '2032'                                          ;use quotes
+        
+        RID                   = ModelVersion + '_' + ScenarioGroup + '_' + RunYear
+        ParentDir             = 'E:\GitHub\WF-TDM-Development\WF-TDM-v9.2.0\'
+        ScenarioDir           = 'Scenarios\EFRTP_2032\'
+        Description           = 'RTP_2032 with External Forces'
+    
+    
+    ;vizTool based scripts
+        Run_vizTool           = 1                                               ;run all csv-to-json conversion scripts and open vizTool upon completion
+    
+    
+    ;TAZ variables (_Inputs\1_TAZ)
+        TAZ_DBF               = 'WFv910_TAZ.dbf'
+          EcoEdPassZones      = 'ECOEDPASS'
+          FreeFareZones       = 'FREEFARE'
+          ;Other required fields: TAZID, ACRES, DEVACRES, CBD, PRKCSTPERM, PRKCSTTEMP, TERMTIME, 
+          ;                       CO_FIPS, CO_NAME, CITY_FIPS, CITY_NAME, 
+          ;                       DISTLRG, DLRG_NAME, DISTMED, DMED_NAME, DISTSML, DSML_NAME
+    
+    
+    ;Base-year percent age file, used in HH Disaggregation model (_Inputs\0_GlobalData\1_HHDisag_AutoOwn)
+        Lookup_BYAgePct       = 'Lookup - BYTAZAgePct - AllCo.csv'
+    
+    
+    ;Demographic variables (_Inputs\2_SEData)
+        DemographicYear       = 2032
+        BE_SEFile             = '1_BoxElder\SE_Box Elder_2032.csv'
+        WFRC_SEFile           = '2_WFRC\FiscallyConstrained\SE_2032.csv'
+        MAG_SEFile            = '3_MAG\SE_2032.csv'
+    
+    
+    ;Highway Network variables (_Inputs\3_Highway)
+        NetworkYear           = 2032
+        
+        MasterPrefix          = 'WFv920_MasterNet'                              ;do not include the .net
+        MasterLinkShp         = 'GIS\WFv920_MasterNet - Link.shp'               ;include the .shp
+        DefaultProjFile       = 'GIS\_Default_Projection.prj'                   ;projection file for link and node shapefiels (UTM NAD83)
+        
+          ;node fields
+          pnr_field           = 'PNR23_32'
+          CRT_Fare_Zone       = 'FARZN23_32'
+          AddNodeFields       = ';'                                             ;use semicolan if no fields are added
+          
+          ;Other required node fields: N, X, Y, TAZID, EXTERNAL, NODENAME
+          
+          ;link fields
+          ;  note: reliability lane coding (field value >0 initiates relibility lane calculation)
+          ;      1-9   # of managed lanes added to arterial for all time periods
+          ;     11-19  1st digit indicates period specific (reversible lane), 
+          ;            2nd digit is # of managed lanes added to arterial in peak direction
+          ;     21-29  1st digit indicates managed lane has some grade separation at intersections, 
+          ;            2nd digit is # of managed lanes added to arterial for all time periods
+          LNfield             = 'LN23_32'
+          FTfield             = 'FT23_32'
+          TranSpeedField      = 'TSPD23_32'
+          HOVmarker           = 'HOT23_32'
+          Rel_LN              = 'REL23_32'
+          TruckRestrict       = 'TRKRST2023'                                    ;values are TRKRST2015, TRKRST2023
+          SpdFactor           = 'SFAC_FUT'
+          CapFactor           = 'CFAC_Fut'
+          SEGIDField          = 'SEGID'
+          SEGIDExField        = 'SGX23_32'
+          AddLinkFields       = ';'                                             ;use semicolan if no fields are added
+          
+          ;Other required link fields: A, B, DISTANCE, STREET, ONEWAY, TAZID, LINKID, SEGID, DISTEXCEPT
+          
+          ; reliability lane toggle
+          ;     1  reversable lane is reduced for OB and added to IB; total number of lanes remain the same
+          ;     0  reversable lane is remains constant for OB and added to IB; total number of lanes increases 
+          Rel_LN_Toggle = 1
+    
+    
+    ;Toll Zone variables
+        ;polygone of HOT toll zones (_Inputs\3_Highway)
+        tollz_shp             = '_Toll Zone ID\TollZone.shp'
+        TollZoneID            = 'EL_Zone'
+        
+        ;maximum charge per HOT zone (in cents)
+        ;  note: HOT Toll values (in 2019 dollars)
+        ;              Min   Max
+        ;  2010-2018    25   100  (historic, prior to 2019)
+        ;  2019-2032    25   200  (base - phase 1)
+        ;  2033-2042    25   300  (phase 2)
+        ;  2043-2050    25   400  (phase 3)
+        HOT_Toll_Min          = 25
+        HOT_Toll_Max          = 200
+    
+    
+    ;Mode Choice variables (_Inputs\4_Transit)
+        Mlin                  = 'Lin_2032\'
+        
+        ;specify distance in miles for which specialized mode share report will be tabulated
+        trip_cutoff = 3
+    
+    
+    ;External Trip variables (_Inputs\5_External)
+        Ext_Vol_Count         = 'Ext_Vol_Control\external_year_vol.csv'
+        Ext_TripEndPattern    = '2032\WF_DY_PA_ExtTripEnds.csv'
+        Ext_TripTable         = '2032\WF_DY_PA_VehicleTrips.mtx'
+    
+    
+    ;Speed & Capacity
+        SpeedCapLookupFile    = 'Lookup_Speed_Capacity.csv'
+
+        ;Override free flow speed and/or capacity calculation. Put desired free flow speed or capacity into fields specified below on the master net
+        ; links, then set the toggle to 1.  Any non-zero value will override the default calc.
+        ;speed override
+        SpeedOverride         = 0                                               ;1 = run, 0 = do not run
+        SpeedOverrideField    = ' '                                             ;field on master network containing free flow speed
+        
+        ;capacity override
+        CapacityOverride      = 0                                               ;1 = run, 0 = do not run
+        CapacityOverrideField = ' '                                             ;field on master network containing capcity
+
+    ;Segment Shapefile
+        Segments_DBF          = 'WFv910_Segments.dbf'
+
+
+    ;Use select link.  Sums up to 2 volume sets based on the ID in the Select Link Group Field 
+        ;  SelLinkGrp_Field values are 20-29
+        ;  SELECTGROUP_EQx values are any combinations for the SelLinkGrp_Field vlues,e.g. SELECTGROUP=21 or SELECTGROUP=21-22,29
+        Use_SelLinkGrp        = 0
+        SelLinkGrp_Field      = 'SEL_LINK'
+        SELECTGROUP_EQ1       = 'SELECTGROUP=21'
+        SELECTGROUP_EQ2       = 'SELECTGROUP=22'
+    
+
+    ;Run test operational projects
+    ;  test the benefit of improving the operational functionality (turn lanes, signal timing, shoulders, safety)
+    ;  note: the 1-hr-1-lane capacity is mulitplied by the non-zero values in the OpProj_Field
+        Run_Op_Proj           = 1                                               ;1 = run, 0 = do not run
+        OpProj_Field          = 'OP23_32'
+
+
+
+;Final assignment controls
+    FromScenario              = 0                                               ;0 = begin with the loaded distribution network, 1 = begin with the unloaded scenario network
+    RunPM1hr                  = 0                                               ;1 = run 1-hr PM assignment, 0 = do not run 1-hr PM assignment
+
+
+
+;Clean-up controls
+    ;set to 1 to keep files in the 'Temp' folder, otherwise these files will be deleted at end of model run
+    KeepTempFiles             = 0
+    
+
+
+;CUBE CLUSTER parameters (use if Cube Cluster is available to reduce model run times)
+    ;set to 1 to enable Cube Cluster multi-threading
+    UseCubeCluster = 1
+        
+        CoresAvailable = 16                                                     ;if uncertain number of processors in machine, can set to %NUMBER_OF_PROCESSORS%
+        
+        if (UseCubeCluster=1)
+            DISTRIBUTE MULTISTEP=T INTRASTEP=T                                  ;turn on global parameters for Cluster
+            *(Cluster.EXE  ClusterNodeID 2-16 START EXIT)                       ;initiate Cluster command window to launch Voyager nodes (make sure ID & number of processors same as 'CoresAvailable' & 'DistribProcessID' variables)
+           ;*(Cluster.EXE  ClusterNodeID 2-16 STARTHIDE EXIT)                   ;initiate Cluster command window in Hide mode
+        else
+            DISTRIBUTE MULTISTEP=F INTRASTEP=F                                  ;turn off global parameters for Cluster
+        endif
+
+
+
+;Run REMM script set during model process
+    Get_data_for_REMM         = 0                                               ;1 = run, 0 = do not run
+    
+
+
+;Send email alert at end of model run
+    ;note - add your own email address in both 'TO' sections located at the end of the _HailMary.s script
+    SendEmailModelFinish      = 1
+    SendEmailModelCrash       = 1
+    
+
+
+;External Forces
+    ;Adjust HBW & NHBW Telecommuting Trips
+    Factor_Telecommute = 1                                                      ;factor is a multiplier on the employment-based telecommute rate
+                                                                                ;  >1 increase telecommute share
+                                                                                ;<1 decreases telecommute share)
+    
+    ;eCommerce
+    eCommerce = 1                                                               ;1 = Base (default, no change to SH Goods trip rates)
+                                                                                ;2 = Low (~10% higher SH Goods than base)
+                                                                                ;3 = Medium (~15% higher SH Goods than base)
+                                                                                ;4 = High (~20% higher SH Goods than base)                                        
+    
+    ;Increase link capcities due to Connected-Autonomous Vehicls (CAVs)
+    CAV_MPR = 15                                                                ;% market penetration (enter value between 0-100)
+    
+    
+;****************************************************************************************

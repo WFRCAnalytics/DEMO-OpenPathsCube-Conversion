@@ -1,0 +1,23 @@
+;FILE: HBW_REMM_arrays.block
+
+
+ARRAY veh0_low_walk_nmlog = @Usedzones@, veh0_low_drive_nmlog = @Usedzones@, veh0_low_none_nmlog = @Usedzones@
+ARRAY veh0_high_walk_nmlog = @Usedzones@, veh0_high_drive_nmlog = @Usedzones@, veh0_high_none_nmlog = @Usedzones@
+ARRAY veh1_low_walk_nmlog = @Usedzones@, veh1_low_drive_nmlog = @Usedzones@, veh1_low_none_nmlog = @Usedzones@
+ARRAY veh1_high_walk_nmlog = @Usedzones@, veh1_high_drive_nmlog = @Usedzones@, veh1_high_none_nmlog = @Usedzones@
+ARRAY veh2_low_walk_nmlog = @Usedzones@, veh2_low_drive_nmlog = @Usedzones@, veh2_low_none_nmlog = @Usedzones@
+ARRAY veh2_high_walk_nmlog = @Usedzones@, veh2_high_drive_nmlog = @Usedzones@, veh2_high_none_nmlog = @Usedzones@
+
+ARRAY veh0_low_walk_motlog = @Usedzones@, veh0_low_drive_motlog = @Usedzones@, veh0_low_none_motlog = @Usedzones@
+ARRAY veh0_high_walk_motlog = @Usedzones@, veh0_high_drive_motlog = @Usedzones@, veh0_high_none_motlog = @Usedzones@
+ARRAY veh1_low_walk_motlog = @Usedzones@, veh1_low_drive_motlog = @Usedzones@, veh1_low_none_motlog = @Usedzones@
+ARRAY veh1_high_walk_motlog = @Usedzones@, veh1_high_drive_motlog = @Usedzones@, veh1_high_none_motlog = @Usedzones@
+ARRAY veh2_low_walk_motlog = @Usedzones@, veh2_low_drive_motlog = @Usedzones@, veh2_low_none_motlog = @Usedzones@
+ARRAY veh2_high_walk_motlog = @Usedzones@, veh2_high_drive_motlog = @Usedzones@, veh2_high_none_motlog = @Usedzones@
+
+ARRAY veh0_low_walk_nmshare = @Usedzones@, veh0_low_drive_nmshare = @Usedzones@, veh0_low_none_nmshare = @Usedzones@
+ARRAY veh0_high_walk_nmshare = @Usedzones@, veh0_high_drive_nmshare = @Usedzones@, veh0_high_none_nmshare = @Usedzones@
+ARRAY veh1_low_walk_nmshare = @Usedzones@, veh1_low_drive_nmshare = @Usedzones@, veh1_low_none_nmshare = @Usedzones@
+ARRAY veh1_high_walk_nmshare = @Usedzones@, veh1_high_drive_nmshare = @Usedzones@, veh1_high_none_nmshare = @Usedzones@
+ARRAY veh2_low_walk_nmshare = @Usedzones@, veh2_low_drive_nmshare = @Usedzones@, veh2_low_none_nmshare = @Usedzones@
+ARRAY veh2_high_walk_nmshare = @Usedzones@, veh2_high_drive_nmshare = @Usedzones@, veh2_high_none_nmshare = @Usedzones@

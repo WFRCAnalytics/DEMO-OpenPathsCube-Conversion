@@ -1,0 +1,28 @@
+{
+    "outputFileName": "j-trip-shares.json",
+    "idCol": "SUBAREAID",
+    "format": "long",
+    "filters": [
+        {   "filterCode": "fTod2",
+            "filterDescription": "Time of Day",
+            "filterLocation": "long",
+            "tdmCsvColumn": "PERIOD"
+        },
+        {   "filterCode": "fShareMode",
+            "filterDescription": "Share Mode",
+            "filterLocation": "long",
+            "tdmCsvColumn": "MODE"
+        },
+        {   "filterCode": "fPurp5",
+            "filterDescription": "Trip Purpose",
+            "filterLocation": "long",
+            "tdmCsvColumn": "TRIPPURP"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "aSTrip",
+            "attributeDescription": "Trips",
+            "tdmCsvColumn": "TRIPS"
+        }
+    ]
+}

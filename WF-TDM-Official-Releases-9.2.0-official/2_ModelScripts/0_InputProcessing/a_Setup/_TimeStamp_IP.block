@@ -1,0 +1,19 @@
+
+;print timestamp
+RUN PGM=MATRIX
+    
+    ZONES = 1
+    
+    ;calculate runtime for model group
+    EndTime_IP = currenttime()
+    RunTime_IP = EndTime_IP - @BegTime_IP@
+    
+    PRINT FILE='@ParentDir@@ScenarioDir@_Log\_RunTime - @RID@.txt',
+        APPEND=T,
+        LIST='\n',
+             '\n    Beg Time:  ', formatdatetime(@BegTime_IP@, 40, 0, 'yyyy-mm-dd,  hh:nn:ss'),
+             '\n    End Time:  ', formatdatetime(EndTime_IP, 40, 0, 'yyyy-mm-dd,  hh:nn:ss'),
+             '\n    Run Time:  ', formatdatetime(RunTime_IP, 40, 0, 'hhh:nn:ss'),
+             '\n'
+    
+ENDRUN

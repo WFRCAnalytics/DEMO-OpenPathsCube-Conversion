@@ -1,0 +1,682 @@
+{
+    "outputFileName": "j-roadway-segments.json",
+    "idCol": "SegID",
+    "someAttsHaveDuplicateData" : true,
+    "filters": [
+        {   "filterCode": "fTod4pDy",
+            "filterDescription": "Time of Day",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fVehTypePcLiMdHv",
+            "filterDescription": "Vehicle Types",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fDirName4pAll",
+            "filterDescription": "Travel Direction Name",
+            "filterLocation": "long",
+            "tdmCsvColumn": "DIRECTION_NAME"
+        },
+        {   "filterCode": "fRoadSegFuncGroup",
+            "filterDescription": "Functional Group",
+            "filterLocation": "long",
+            "tdmCsvColumn": "FUNCGROUP"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "aLn",
+            "attributeDescription": "Number of Lanes",
+            "tdmCsvColumn": "LANES"
+        },
+        {   "attributeCode": "aCp",
+            "attributeDescription": "Capacity per Hour per Lane",
+            "tdmCsvColumn": "CAP1HL"
+        },
+        {   "attributeCode": "aFt",
+            "attributeDescription": "Functional Type",
+            "tdmCsvColumn": "FT"
+        },
+        {   "attributeCode": "aFS",
+            "attributeDescription": "Freeflow Speed",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "FF_Spd"
+        },
+        {   "attributeCode": "aAT",
+            "attributeDescription": "Area Type",
+            "tdmCsvColumn": "AREATYPE",
+            "removeDuplicateFilterData": ["fTod4pDy"]
+        },
+        {   "attributeCode": "aRS",
+            "attributeDescription": "Speed",
+            "roundingDecimals": 1,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "AM_Spd",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_Spd",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_Spd",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "EV_Spd",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "EV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "DY_Spd",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "DY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aCT",
+            "attributeDescription": "Total Capacity",
+            "roundingDecimals": 1,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "AM_CAP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_CAP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_CAP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "EV_CAP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "EV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "DY_CAP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "DY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aVl",
+            "attributeDescription": "Volume",
+            "roundingDecimals": 0,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "AM_Vol_PC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "PC"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_Vol_PC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "PC"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_Vol_PC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "PC"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "DY_Vol_PC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "DY"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "PC"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "DY_Vol_LT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "DY"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "LT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "DY_Vol_MD",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "DY"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "DY_Vol_HV",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "DY"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "HV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "AM_Vol_LT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "LT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "AM_Vol_MD",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "AM_Vol_HV",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "HV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_Vol_LT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "LT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_Vol_MD",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_Vol_HV",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "HV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_Vol_LT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "LT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_Vol_MD",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_Vol_HV",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "HV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "EV_Vol_LT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "EV"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "LT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "EV_Vol_MD",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "EV"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "EV_Vol_HV",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "EV"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "HV"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aXVc",
+            "attributeDescription": "Maximum Volume-to-Capacity Ratio",
+            "roundingDecimals": 2,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "AM_VC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_VC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_VC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MAX_VC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "DY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aTP",
+            "attributeDescription": "Truck Percent",
+            "roundingDecimals": 1,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "AM_MDPCT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_MDPCT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_MDPCT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "EV_MDPCT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "EV"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "DY_MDPCT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "DY"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "AM_HVPCT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "HV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_HVPCT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "HV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_HVPCT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "HV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "EV_HVPCT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "EV"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "HV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "DY_HVPCT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "DY"
+                        },
+                        {
+                            "filterCode": "fVehTypePcLiMdHv",
+                            "filterValue": "HV"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aFGs",
+            "attributeDescription": "Functional Group Share",
+            "roundingDecimals": 3,
+            "tdmCsvColumn": "FG_Share"
+        },
+        {
+            "attributeCode": "aDF",
+            "attributeDescription": "Directional Factor",
+            "roundingDecimals": 3,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "AM_DFAC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_DFAC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_DFAC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "EV_DFAC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "EV"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "DY_DFAC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "DY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "attributeCode": "aPF",
+            "attributeDescription": "Period Factor",
+            "roundingDecimals": 3,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "AM_PRDFAC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "AM"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MD_PRDFAC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "MD"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PM_PRDFAC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "PM"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "EV_PRDFAC",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fTod4pDy",
+                            "filterValue": "EV"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

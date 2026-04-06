@@ -1,0 +1,183 @@
+{
+    "outputFileName": "j-transit-stops.json",
+    "idCol": "STOPID",
+    "keyFile": {
+        "fileCode": "stopkey",
+        "keyCols": ["SegID","Direction"]
+    },
+    "groupCsv": [
+        {
+            "aggOperation": "sum",
+            "aggAtts": ["aBd","aAl"]
+        }
+    ],
+    "filters": [
+        {   "filterCode": "fTod2",
+            "filterDescription": "Time of Day",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Period"
+        },
+        {   "filterCode": "fModeAccess",
+            "filterDescription": "Access Mode",
+            "filterLocation": "long",
+            "tdmCsvColumn": "AccessMode"
+        },
+        {   "filterCode": "fDirNameNoAll",
+            "filterDescription": "Travel Direction Name",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Direction"
+        },
+        {   "filterCode": "fModeRoute",
+            "filterDescription": "Mode of Route",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Mode"
+        },
+        {   "filterCode": "fRouteName",
+            "filterDescription": "Route Name",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Name"
+        },
+        {   "filterCode": "fModeHier",
+            "filterDescription": "Hierarchical Mode",
+            "filterLocation": "wide"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "aBd",
+            "attributeDescription": "PA Boardings",
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "Board",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "ALL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Board_FromSkim_LCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Board_FromSkim_COR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Board_FromSkim_BRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Board_FromSkim_EXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Board_FromSkim_LRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Board_FromSkim_CRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aAl",
+            "attributeDescription": "PA Alightings",
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "Alight",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "ALL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Alight_FromSkim_LCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Alight_FromSkim_COR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Alight_FromSkim_BRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Alight_FromSkim_EXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Alight_FromSkim_LRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "Alight_FromSkim_CRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

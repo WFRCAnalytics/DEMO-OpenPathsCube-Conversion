@@ -1,0 +1,62 @@
+;Calibration target values - HBO Pk		
+		
+;relative within total trips		
+  ;nonmotorized shares 		
+  calib_share_nonmotor_0veh 	=	0.5208
+  calib_share_nonmotor_1veh 	=	0.1002
+  calib_share_nonmotor_2veh 	=	0.0834
+		
+		
+;relative within nonmotorized		
+  ;bike shares 		
+  calib_share_bike_all      	=	0.1459
+		
+		
+;relative within auto		
+  ;shared ride shares 		
+  calib_share_shared_0veh   	=	1.0000
+  calib_share_shared_1veh   	=	0.5734
+  calib_share_shared_2veh   	=	0.6902
+		
+		
+; relative within shared ride		
+  ;sr3 shares 		
+  calib_share_sr3_all       	=	0.5963
+		
+		
+;relative within motorized		
+  ;transit shares 		
+  calib_share_transit_0veh  	=	0.3929
+  calib_share_transit_1veh  	=	0.0142
+  calib_share_transit_2veh  	=	0.0035
+ 		
+		
+;relative within transit		
+  calib_share_COR_all      	=	0.0194
+  calib_share_BRT_all      	=	0.0641
+  calib_share_LRT_all      	=	0.4076
+  calib_share_EXP_all      	=	0.0014
+  calib_share_CRT_all      	=	0.1368
+  		
+		
+;relative within transit		
+  ;drive-to-transit shares 		
+  calib_share_driveacc_0veh 	=	0.0000
+  calib_share_driveacc_1veh 	=	0.2152
+  calib_share_driveacc_2veh 	=	0.3977
+		
+		
+;relative within walkacc		
+  calib_share_wCOR_all      	=	0.0241
+  calib_share_wBRT_all      	=	0.0790
+  calib_share_wLRT_all      	=	0.4166
+  calib_share_wEXP_all      	=	0.0014
+  calib_share_wCRT_all      	=	0.0491
+		
+		
+;relative within driveacc		
+  calib_share_dCOR_all      	=	0.0008
+  calib_share_dBRT_all      	=	0.0056
+  calib_share_dLRT_all      	=	0.3720
+  calib_share_dEXP_all      	=	0.0013
+  calib_share_dCRT_all      	=	0.4823

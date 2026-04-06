@@ -1,0 +1,984 @@
+
+ /* ****************************************************************************************************
+ BEGIN: CALCULATE UTILITIES/PROBABILITIES FOR ACCESS-TO-TRANSIT MODES (LOWEST TRANSIT NEST - WALK/DRIVE)
+ **************************************************************************************************** */
+
+    ;assign cost coefficients based on lo/hi income groups
+    if (INC=1)
+        cost_coef_@purp@     = cost_lowinc_coef_@purp@
+        parkcost_coef_@purp@ = parkcost_lowinc_coef_@purp@
+    else
+        cost_coef_@purp@     = cost_highinc_coef_@purp@
+        parkcost_coef_@purp@ = parkcost_highinc_coef_@purp@
+    endif
+
+
+    ;;create COR as a factor of rail
+    asc_COR     = asc_LRT  * @RAIL2COR_MULTIPLIER@     ;How much of the LRT constant should COR get
+    asc_wCOR    = asc_wLRT * @RAIL2COR_MULTIPLIER@
+    asc_dCOR    = asc_dLRT * @RAIL2COR_MULTIPLIER@
+
+    utCounty = 0
+    utCounty_CRT = 0
+    daCounty_CRT = 0
+    all_BRT = @ADJ_CONST_BRT@
+
+    if (j=@UtahRange@ ) utCounty     = @ADJ_CONST_UT@
+    if (i=@UtahRange@ ) utCounty_CRT = @ADJ_CONST_CRT_UT@
+    if (i=@DavisRange@) daCounty_CRT = @ADJ_CONST_CRT_DA@
+
+        /* ******* WALK/DRIVE TO LCL ******* */
+
+        ;if a LCL path exists & walk/drive access market segment
+         if (mw[104][j]>0 & ACCESS==1)
+          ;walk-to-lcl  utilities (add ASC's to base utility)
+          U_wLCL = (asc_wLCL + asc_LCL + asc_walkacc + asc_transit + asc_motor + utCounty*ivt_coef_@purp@ +
+                      ivt_coef_@purp@*mw[104][j] +
+                      initwait_coef_@purp@*mw[114][j] +
+                      walk_coef_1_@purp@*mw[154][j] +
+                      walk_coef_gt_1_@purp@*mw[184][j] +
+                      drive_coef_@purp@*mw[144][j] +
+                      xferwait_coef_@purp@*mw[164][j] +
+                      ;transfers_coef_walk_@purp@*mw[174][j] +
+                      /* Added */
+                      transfers_coef_walk_@purp@/2*mw[174][j] +  ; transfer penalty is half of others to help encourage local transfers
+                      transfers_coef_walk_@purp@*5/12 +          ; reduce initial boarding penalty for LCL (other modes are set to a coefficient calculated from 12 minutes in coefficients file, so this sets converts value to equivalent of 5 minutes)
+                      /* End Added */
+                      cost_coef_@purp@*mw[194][j] +
+                      CBD_dummy_@purp@*zi.1.CBD[j] +
+          MIN(0,1+trip_distance_walk_@purp@*(1/(mw[119][j]+.01))) +
+                      zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j])) / (nest_walkacc*nest_transit*nest_motor)
+
+          EU_wLCL = exp(U_wLCL)
+         else
+          U_wLCL  = -99
+          EU_wLCL = 0
+         endif
+
+         if (mw[204][j]>0 & VEH>1 & ACCESS<3)
+          ;drive-to-lcl  utilities (add ASC's to base utility)
+          U_dLCL = (asc_dLCL + asc_LCL + asc_driveacc + asc_transit + asc_motor + utCounty*ivt_coef_@purp@ +
+                      ivt_coef_@purp@*mw[204][j] +
+                      initwait_coef_@purp@*mw[214][j] +
+                      walk_coef_1_@purp@*mw[254][j] +
+                      walk_coef_gt_1_@purp@*mw[284][j] +
+                      drive_coef_@purp@*mw[244][j] +
+                      xferwait_coef_@purp@*mw[264][j] +
+                      transfers_coef_drive_@purp@*mw[274][j] +
+                      cost_coef_@purp@*(mw[294][j] + mw[224][j]*@AOC_Auto@) +
+                      CBD_dummy_@purp@*zi.1.CBD[j] +
+                      MIN(0,1+trip_distance_drive_@purp@*(1/(mw[219][j]+.01))) +
+                      zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                      drive_time_to_ivt_@purp@*(mw[244][j]/mw[204][j]) +
+                      drive_dist_ratio_@purp@*(mw[224][j]/mw[320][j])) / (nest_driveacc*nest_transit*nest_motor)
+
+          EU_dLCL = exp(U_dLCL)
+         else
+          U_dLCL  = -99
+          EU_dLCL = 0
+         endif
+
+
+        /* ******* WALK/DRIVE TO COR ******* */
+
+        ;if a COR path exists & walk/drive access
+         ;walk-to-COR  utilities
+         if (mw[105][j]>0 & ACCESS==1)
+          U_wCOR = (asc_wCOR + asc_COR + asc_walkacc + asc_transit + asc_motor + utCounty*ivt_coef_@purp@ +
+                        ivt_coef_@purp@*mw[105][j] +
+                        initwait_coef_@purp@*mw[115][j] +
+                        walk_coef_1_@purp@*mw[155][j] +
+                        walk_coef_gt_1_@purp@*mw[185][j] +
+                        drive_coef_@purp@*mw[145][j] +
+                        xferwait_coef_@purp@*mw[165][j] +
+                        transfers_coef_walk_@purp@*mw[175][j] +
+                        cost_coef_@purp@*mw[195][j] +
+                        CBD_dummy_@purp@*zi.1.CBD[j] +
+                        MIN(0,1+trip_distance_walk_@purp@*(1/(mw[120][j]+.01))) +
+                        zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                        .5*premium_walk_access*mi.20.WALK_COR[j]) / (nest_walkacc*nest_transit*nest_motor)
+
+          EU_wCOR = exp(U_wCOR)
+         else
+          U_wCOR  = -99
+          EU_wCOR = 0
+         endif
+
+         ;drive-to-COR  utilities
+         if (mw[205][j]>0 & VEH>1 & ACCESS<3)
+          U_dCOR = (asc_dCOR + asc_COR + asc_driveacc + asc_transit + asc_motor + utCounty*ivt_coef_@purp@ +
+                        ivt_coef_@purp@*mw[205][j] +
+                        initwait_coef_@purp@*mw[215][j] +
+                        walk_coef_1_@purp@*mw[255][j] +
+                        walk_coef_gt_1_@purp@*mw[285][j] +
+                        drive_coef_@purp@*mw[245][j] +
+                        xferwait_coef_@purp@*mw[265][j] +
+                        transfers_coef_drive_@purp@*mw[275][j] +
+                        cost_coef_@purp@*(mw[295][j] + mw[225][j]*@AOC_Auto@) +
+                        CBD_dummy_@purp@*zi.1.CBD[j] +
+                        MIN(0,1+trip_distance_drive_@purp@*(1/(mw[220][j]+.01))) +
+                        zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                        drive_time_to_ivt_@purp@*(mw[245][j]/mw[205][j]) +
+                        drive_dist_ratio_@purp@*(mw[225][j]/mw[320][j])) / (nest_driveacc*nest_transit*nest_motor)
+
+          EU_dCOR = exp(U_dCOR)
+         else
+          U_dCOR  = -99
+          EU_dCOR = 0
+         endif
+
+        /* ******* WALK/DRIVE TO BRT ******* */
+
+        ;if a BRT path exists & walk/drive access
+         ;walk-to-BRT  utilities
+         if (mw[410][j]>0 & ACCESS==1)
+          U_wBRT = (asc_wBRT + asc_BRT + asc_walkacc + asc_transit + asc_motor + (all_BRT+utCounty)*ivt_coef_@purp@ +
+                        ivt_coef_@purp@*mw[410][j] +
+                        initwait_coef_@purp@*mw[411][j] +
+                        walk_coef_1_@purp@*mw[415][j] +
+                        walk_coef_gt_1_@purp@*mw[416][j] +
+                        drive_coef_@purp@*mw[414][j] +
+                        xferwait_coef_@purp@*mw[417][j] +
+                        transfers_coef_walk_@purp@*mw[418][j] +
+                        cost_coef_@purp@*mw[419][j] +
+                        CBD_dummy_@purp@*zi.1.CBD[j] +
+                        MIN(0,1+trip_distance_walk_@purp@*(1/(mw[412][j]+.01))) +
+                        zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                        .5*premium_walk_access*mi.20.WALK_BRT[j]) / (nest_walkacc*nest_transit*nest_motor)
+
+          EU_wBRT = exp(U_wBRT)
+         else
+          U_wBRT  = -99
+          EU_wBRT = 0
+         endif
+
+
+         ;drive-to-BRT  utilities
+         if (mw[420][j]>0 & VEH>1 & ACCESS<3)
+          U_dBRT = (asc_dBRT + asc_BRT + asc_driveacc + asc_transit + asc_motor + (all_BRT+utCounty)*ivt_coef_@purp@ +
+                        ivt_coef_@purp@*mw[420][j] +
+                        initwait_coef_@purp@*mw[421][j] +
+                        walk_coef_1_@purp@*mw[425][j] +
+                        walk_coef_gt_1_@purp@*mw[426][j] +
+                        drive_coef_@purp@*mw[424][j] +
+                        xferwait_coef_@purp@*mw[427][j] +
+                        transfers_coef_drive_@purp@*mw[428][j] +
+                        cost_coef_@purp@*(mw[429][j] + mw[423][j]*@AOC_Auto@) +
+                        CBD_dummy_@purp@*zi.1.CBD[j] +
+                        MIN(0,1+trip_distance_drive_@purp@*(1/(mw[422][j]+.01))) +
+                        zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                        drive_time_to_ivt_@purp@*(mw[424][j]/mw[420][j]) +
+                        drive_dist_ratio_@purp@*(mw[423][j]/mw[320][j])) / (nest_driveacc*nest_transit*nest_motor)
+
+          EU_dBRT = exp(U_dBRT)
+         else
+          U_dBRT  = -99
+          EU_dBRT = 0
+         endif
+
+
+        /* ******* WALK/DRIVE TO EXP ******* */
+
+        ;if an EXP path exists & walk/drive access
+         ;walk-to-exp  utilities
+         if (mw[106][j]>0 & ACCESS==1)
+          U_wEXP = (asc_wEXP + asc_EXP + asc_walkacc + asc_transit + asc_motor + utCounty*ivt_coef_@purp@ +
+                        ivt_coef_@purp@*mw[106][j] +
+                        initwait_coef_@purp@*mw[116][j] +
+                        walk_coef_1_@purp@*mw[156][j] +
+                        walk_coef_gt_1_@purp@*mw[186][j] +
+                        drive_coef_@purp@*mw[146][j] +
+                        xferwait_coef_@purp@*mw[166][j] +
+                        transfers_coef_walk_@purp@*mw[176][j] +
+                        cost_coef_@purp@*mw[196][j] +
+                        CBD_dummy_@purp@*zi.1.CBD[j] +
+                        MIN(0,1+trip_distance_walk_@purp@*(1/(mw[121][j]+.01))) +
+                        zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                        (-1*EXP(1.11 - .0129*EXP(MIN(10,mw[136][j])))) +
+                        .5*premium_walk_access*mi.20.WALK_EXP[j]) / (nest_walkacc*nest_transit*nest_motor)
+
+          EU_wEXP = exp(U_wEXP)
+         else
+          U_wEXP  = -99
+          EU_wEXP = 0
+         endif
+
+
+         ;drive-to-exp  utilities
+         if (mw[206][j]>0 & VEH>1 & ACCESS<3)
+          U_dEXP = (asc_dEXP + asc_EXP + asc_driveacc + asc_transit + asc_motor + utCounty*ivt_coef_@purp@ +
+                        ivt_coef_@purp@*mw[206][j] +
+                        initwait_coef_@purp@*mw[216][j] +
+                        walk_coef_1_@purp@*mw[256][j] +
+                        walk_coef_gt_1_@purp@*mw[286][j] +
+                        drive_coef_@purp@*mw[246][j] +
+                        xferwait_coef_@purp@*mw[266][j] +
+                        transfers_coef_drive_@purp@*mw[276][j] +
+                        cost_coef_@purp@*(mw[296][j] + mw[226][j]*@AOC_Auto@) +
+                        CBD_dummy_@purp@*zi.1.CBD[j] +
+                        MIN(0,1+trip_distance_drive_@purp@*(1/(mw[221][j]+.01))) +
+                        zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                        drive_time_to_ivt_@purp@*(mw[246][j]/mw[206][j]) +
+                        drive_dist_ratio_@purp@*(mw[226][j]/mw[320][j]) +
+                        (-1*EXP(1.11 - .0129*EXP(MIN(10,mw[236][j]))))) / (nest_driveacc*nest_transit*nest_motor)
+
+          EU_dEXP = exp(U_dEXP)
+         else
+          U_dEXP  = -99
+          EU_dEXP = 0
+         endif
+
+
+
+        /* ******* WALK/DRIVE TO LIGHT RAIL ******* */
+
+        ;if a light rail path exists & walk/drive access segments
+         ;walk-to-lrt  utilities
+         if (mw[107][j]>0 & ACCESS==1)
+          U_wLRT = (asc_wLRT + asc_LRT + asc_walkacc + asc_transit + asc_motor + utCounty*ivt_coef_@purp@ +
+                    ivt_coef_@purp@*mw[107][j] +
+                    initwait_coef_@purp@*mw[117][j] +
+                    walk_coef_1_@purp@*mw[157][j] +
+                    walk_coef_gt_1_@purp@*mw[187][j] +
+                    drive_coef_@purp@*mw[147][j] +
+                    xferwait_coef_@purp@*mw[167][j] +
+                    transfers_coef_walk_@purp@*mw[177][j] +
+                    cost_coef_@purp@*mw[197][j] +
+                    CBD_dummy_@purp@*zi.1.CBD[j] +
+                    MIN(0,1+trip_distance_walk_@purp@*(1/(mw[122][j]+.01))) +
+                    bus_xfer_@purp@*mw[110][j] +
+                    zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                    premium_walk_access*mi.20.WALK_LRT[j]) / (nest_walkacc*nest_transit*nest_motor)
+
+          EU_wLRT = exp(U_wLRT)
+         else
+          U_wLRT  = -99
+          EU_wLRT = 0
+         endif
+
+         ;drive-to-lrt  utilities
+         if (mw[207][j]>0 & VEH>1 & ACCESS<3)
+          U_dLRT = (asc_dLRT + asc_LRT + asc_driveacc + asc_transit + asc_motor + utCounty*ivt_coef_@purp@ +
+                    ivt_coef_@purp@*mw[207][j] +
+                    initwait_coef_@purp@*mw[217][j] +
+                    walk_coef_1_@purp@*mw[257][j] +
+                    walk_coef_gt_1_@purp@*mw[287][j] +
+                    drive_coef_@purp@*mw[247][j] +
+                    xferwait_coef_@purp@*mw[267][j] +
+                    transfers_coef_drive_@purp@*mw[277][j] +
+                    cost_coef_@purp@*(mw[297][j] + mw[227][j]*@AOC_Auto@) +
+                    CBD_dummy_@purp@*zi.1.CBD[j] +
+                    MIN(0,1+trip_distance_drive_@purp@*(1/(mw[222][j]+.01))) +
+                    bus_xfer_@purp@*mw[210][j] +
+                    zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                    drive_time_to_ivt_@purp@*(mw[247][j]/mw[207][j]) +
+                    drive_dist_ratio_@purp@*(mw[227][j]/mw[320][j])) / (nest_driveacc*nest_transit*nest_motor)
+
+          EU_dLRT = exp(U_dLRT)
+         else
+          U_dLRT  = -99
+          EU_dLRT = 0
+         endif
+
+
+        /* ******* WALK/DRIVE TO COMMUTER RAIL ******* */
+
+        ;if a commuter rail path exists & walk/drive access segments
+         ;walk-to-crt  utilities
+         if (mw[108][j]>0 & ACCESS==1)
+          U_wCRT = (asc_wCRT + asc_CRT + asc_walkacc + asc_transit + asc_motor + utCounty_CRT*ivt_coef_@purp@ + utCounty*ivt_coef_@purp@ + daCounty_CRT*ivt_coef_@purp@ +
+                    ivt_coef_@purp@*mw[108][j] - .1*ivt_coef_@purp@*MI.8.T8[j]/100 +
+                    initwait_coef_@purp@*mw[118][j] +
+                    walk_coef_1_@purp@*mw[158][j] +
+                    walk_coef_gt_1_@purp@*mw[188][j] +
+                    drive_coef_@purp@*mw[148][j] +
+                    xferwait_coef_@purp@*mw[168][j] +
+                    transfers_coef_walk_@purp@*mw[178][j] +
+                    cost_coef_@purp@*mw[198][j] +
+                    CBD_dummy_@purp@*zi.1.CBD[j] +
+                    MIN(0,1+trip_distance_walk_@purp@*(1/(mw[123][j]+.01))) +
+                    bus_xfer_@purp@*mw[111][j] +
+                    zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                    (-1*EXP(1.11 - .0129*EXP(MIN(10,mw[138][j])))) +
+                    premium_walk_access*mi.20.WALK_CRT[j]) / (nest_walkacc*nest_transit*nest_motor)
+
+          EU_wCRT = exp(U_wCRT)
+         else
+          U_wCRT  = -99
+          EU_wCRT = 0
+         endif
+
+         ;drive-to-crt  utilities
+         if (mw[208][j]>0 & VEH>1 & ACCESS<3)
+          U_dCRT = (asc_dCRT + asc_CRT + asc_driveacc + asc_transit +  asc_motor + utCounty_CRT*ivt_coef_@purp@ + utCounty*ivt_coef_@purp@ + daCounty_CRT*ivt_coef_@purp@ +
+                    ivt_coef_@purp@*mw[208][j] - .1*ivt_coef_@purp@*MI.9.T8[j]/100 +
+                    initwait_coef_@purp@*mw[218][j] +
+                    walk_coef_1_@purp@*mw[258][j] +
+                    walk_coef_gt_1_@purp@*mw[288][j] +
+                    drive_coef_@purp@*mw[248][j] +
+                    xferwait_coef_@purp@*mw[268][j] +
+                    transfers_coef_drive_@purp@*mw[278][j] +
+                    cost_coef_@purp@*(mw[298][j] + mw[228][j]*@AOC_Auto@) +
+                    CBD_dummy_@purp@*zi.1.CBD[j] +
+                    MIN(0,1+trip_distance_drive_@purp@*(1/(mw[223][j]+.01))) +
+                    bus_xfer_@purp@*mw[211][j] +
+                    zonal_urbanization_@purp@*MIN(200,zi.1.URBANVAL[j]) +
+                    drive_time_to_ivt_@purp@*(mw[248][j]/mw[208][j]) +
+                    drive_dist_ratio_@purp@*(mw[228][j]/mw[320][j]) +
+                    (-1*EXP(1.11 - .0129*EXP(MIN(10,mw[238][j]))))) / (nest_driveacc*nest_transit*nest_motor)
+
+          EU_dCRT = exp(U_dCRT)
+         else
+          U_dCRT  = -99
+          EU_dCRT = 0
+         endif
+
+
+        if ((EU_wLCL + EU_wCOR + EU_wEXP + EU_wLRT + EU_wCRT + EU_wBRT) > 0)
+
+          ;compute relative probabilities within each access mode
+          prob_wLCL = EU_wLCL / (EU_wLCL + EU_wCOR + EU_wEXP + EU_wLRT + EU_wCRT + EU_wBRT)
+          prob_wCOR = EU_wCOR / (EU_wLCL + EU_wCOR + EU_wEXP + EU_wLRT + EU_wCRT + EU_wBRT)
+          prob_wEXP = EU_wEXP / (EU_wLCL + EU_wCOR + EU_wEXP + EU_wLRT + EU_wCRT + EU_wBRT)
+          prob_wLRT = EU_wLRT / (EU_wLCL + EU_wCOR + EU_wEXP + EU_wLRT + EU_wCRT + EU_wBRT)
+          prob_wCRT = EU_wCRT / (EU_wLCL + EU_wCOR + EU_wEXP + EU_wLRT + EU_wCRT + EU_wBRT)
+          prob_wBRT = EU_wBRT / (EU_wLCL + EU_wCOR + EU_wEXP + EU_wLRT + EU_wCRT + EU_wBRT)
+
+          ;compute access-to-crt logsums
+          logsum_walkacc = ln(EU_wLCL + EU_wCOR + EU_wEXP + EU_wLRT + EU_wCRT + EU_wBRT)
+
+        else
+
+          ;compute relative probabilities within each access mode
+          prob_wLCL = 0
+          prob_wCOR = 0
+          prob_wEXP = 0
+          prob_wLRT = 0
+          prob_wCRT = 0
+          prob_wBRT = 0
+
+          ;compute access-to-crt logsums
+          logsum_walkacc = -99
+
+        endif
+
+        if ((EU_dLCL + EU_dCOR + EU_dEXP + EU_dLRT + EU_dCRT + EU_dBRT) > 0)
+
+          ;compute relative probabilities within each access mode
+          prob_dLCL = EU_dLCL / (EU_dLCL + EU_dCOR + EU_dEXP + EU_dLRT + EU_dCRT + EU_dBRT)
+          prob_dCOR = EU_dCOR / (EU_dLCL + EU_dCOR + EU_dEXP + EU_dLRT + EU_dCRT + EU_dBRT)
+          prob_dEXP = EU_dEXP / (EU_dLCL + EU_dCOR + EU_dEXP + EU_dLRT + EU_dCRT + EU_dBRT)
+          prob_dLRT = EU_dLRT / (EU_dLCL + EU_dCOR + EU_dEXP + EU_dLRT + EU_dCRT + EU_dBRT)
+          prob_dCRT = EU_dCRT / (EU_dLCL + EU_dCOR + EU_dEXP + EU_dLRT + EU_dCRT + EU_dBRT)
+          prob_dBRT = EU_dBRT / (EU_dLCL + EU_dCOR + EU_dEXP + EU_dLRT + EU_dCRT + EU_dBRT)
+
+          ;compute access-to-crt logsums
+          logsum_driveacc = ln(EU_dLCL + EU_dCOR + EU_dEXP + EU_dLRT + EU_dCRT + EU_dBRT)
+
+        else
+
+          ;compute relative probabilities within each access mode
+          prob_dLCL = 0
+          prob_dCOR = 0
+          prob_dEXP = 0
+          prob_dLRT = 0
+          prob_dCRT = 0
+          prob_dBRT = 0
+
+          ;compute access-to-crt logsums
+          logsum_driveacc = -99
+
+        endif
+
+ /* **************************************************************************************
+ END: CALCULATE UTILITIES/PROBABILITIES FOR LOWEST TRANSIT NEST - LOCAL/COR/EXPRES/LRT/CRT within WALK/DRIVE
+ ************************************************************************************** */
+
+
+
+ /* **************************************************************************************
+ BEGIN: CALCULATE UTILITIES/PROBABILITIES FOR SECOND LOWEST TRANSIT NEST - WALK/DRIVE
+ ************************************************************************************** */
+
+        /* ******* Second Lowest Level Transit Nest - walk vs Drive Access ******* */
+
+        /* ******* WALK ACCESS ******* */
+        if (logsum_walkacc > -99)    ;if a LCL path exists
+
+          ;compute the utility of walk access
+          U_walkacc = (logsum_walkacc*nest_walkacc)
+
+          ;compute the exponentiated utility for walk access
+          EU_walkacc = exp(U_walkacc)
+
+        else   ;if no LCL path
+
+          ;compute the utility of walk access
+          U_walkacc = -99
+
+          ;compute the exponentiated utility for walk access
+          EU_walkacc = 0
+
+        endif
+
+
+        /* ******* DRIVE ACCESS ******* */
+        if (logsum_driveacc > -99)    ;if a LCL path exists
+
+          ;compute the utility of drive access
+          U_driveacc = (logsum_driveacc*nest_driveacc)
+
+          ;compute the exponentiated utility for drive access
+          EU_driveacc = exp(U_driveacc)
+
+        else   ;if no drive access path
+
+          ;compute the utility of drive access
+          U_driveacc = -99
+
+          ;compute the exponentiated utility for drive access
+          EU_driveacc = 0
+
+        endif
+
+
+
+
+        if ((EU_walkacc + EU_driveacc) > 0)    ;if a transit path exists
+
+          ;compute relative linehaul probabilities
+          ;walk access
+          prob_walkacc   = EU_walkacc / (EU_walkacc + EU_driveacc)
+
+          ;drive access
+          prob_driveacc = EU_driveacc / (EU_walkacc + EU_driveacc)
+
+
+          ;compute transit logsums for each
+          logsum_transit = ln(EU_walkacc + EU_driveacc)
+
+        else    ;if no transit path exists
+
+          ;walk access
+          prob_walkacc   = 0
+
+          ;drive access
+          prob_driveacc = 0
+
+
+          ;compute transit logsums for each
+          logsum_transit = -99
+
+        endif
+ /* **************************************************************************************
+ END: CALCULATE UTILITIES/PROBABILITIES FOR SECOND LOWEST TRANSIT NEST - WALK/DRIVE
+ ************************************************************************************** */
+
+
+
+ /* **************************************************************************************
+ BEGIN: CALCULATE UTILITIES/PROBABILITIES FOR SHARED RIDE MODES (LOWEST AUTO NEST - SR2/SR3+)
+ ************************************************************************************** */
+
+
+        /* ******* Lowest Level Auto Nest - Shared Ride 2, 3+ ******* */
+        if (mw[300][j]>0)    ;if auto path exists
+
+          ;shared ride 2 non-toll, non-hov utility
+          U_sr2nn = ( asc_sr2 + asc_shared + asc_auto + asc_motor +
+                      ivt_coef_@purp@       * mw[300][j]              +
+                      walk_coef_1_@purp@    * mw[311][j]              +
+                      walk_coef_gt_1_@purp@ * mw[312][j]              +
+                      cost_coef_@purp@      * mw[320][j] * @AOC_Auto@ +
+                      parkcost_coef_@purp@  * mw[313][j]                ) /
+                      (nest_shared2 * nest_shared * nest_auto * nest_motor)
+
+
+          ;shared ride 3+ non-toll, non-hov utility
+          U_sr3nn = (asc_sr3 + asc_shared + asc_auto + asc_motor +
+                   ivt_coef_@purp@*mw[300][j] +
+                   walk_coef_1_@purp@*mw[311][j] +
+                   walk_coef_gt_1_@purp@*mw[312][j] +
+                   cost_coef_@purp@*mw[320][j]*@AOC_Auto@ +
+                   parkcost_coef_@purp@*mw[313][j]) / (nest_shared3*nest_shared*nest_auto*nest_motor)
+
+
+          ;exponentiate shared ride utilities; set to zero if no IVT
+          ;shared ride 2
+          EU_sr2nn = exp(U_sr2nn)
+
+          ;shared ride 3
+          EU_sr3nn = exp(U_sr3nn)
+
+      else    ;if no auto path exists
+
+          ;shared ride 2  utilities (add ASC's to base utility)
+          U_sr2nn = -99
+
+          ;shared ride 3  utilities (add ASC's to base utility)
+          U_sr3nn = -99
+
+          ;exponentiate shared ride utilities; set to zero if no IVT
+          ;shared ride 2
+          EU_sr2nn = 0
+
+          ;shared ride 3
+          EU_sr3nn = 0
+
+       endif
+
+
+       /* *** Shared 2 HOV *** */
+
+       if (mw[341][j]>0.01)  ; if Shared-2 HOV path exists
+
+         ;disutility discourages short distance managed lane trips (under 2 miles on ML)
+         disutility = MIN(0, @hbw_hbo_disutility_constant@ + @hbw_hbo_disutility_slope@ * mw[361][j])
+
+         U_sr2nh = (asc_hov + asc_sr2 + asc_shared + asc_auto + asc_motor +
+                   ivt_coef_@purp@*mw[301][j] +  ;- .25*ivt_coef_@purp@*mw[341][j] +
+                   walk_coef_1_@purp@*mw[311][j] +
+                   walk_coef_gt_1_@purp@*mw[312][j] +
+                   cost_coef_@purp@*mw[321][j]*@AOC_Auto@ +
+                   parkcost_coef_@purp@*mw[313][j] +
+                   disutility) / (nest_shared2*nest_shared*nest_auto*nest_motor)
+
+         EU_sr2nh = exp(U_sr2nh)
+
+       else
+
+          U_sr2nh=-99
+          EU_sr2nh=0
+
+       endif
+
+       /* *** Shared 2 HOV-Toll *** */
+
+       if ((mw[344][j]+mw[354][j])>0.01)  ; if Shared-2 HOV-Toll path exists
+
+         ;disutility discourages short distance managed lane trips (under 2 miles on ML)
+         disutility = MIN(0, @hbw_hbo_disutility_constant@ + @hbw_hbo_disutility_slope@ * (mw[364][j]+mw[374][j]) )
+
+         if (@period@=1)
+           Cost_HOT  = @Cost_2HOT_Pk@
+           Cost_Toll = @Cost_Toll_Pk@
+         else
+           Cost_HOT  = @Cost_2HOT_Ok@
+           Cost_Toll = @Cost_Toll_Ok@
+         endif
+
+         ;toll cost a function of distance on toll facility
+         tollcost = mw[364][j]*Cost_HOT + mw[374][j]*Cost_Toll
+
+         U_sr2th = (asc_toll + asc_sr2 + asc_shared + asc_auto + asc_motor +
+                   ivt_coef_@purp@*mw[304][j] +  ;- .25*ivt_coef_@purp@*(mw[344][j]+mw[354][j]) +
+                   walk_coef_1_@purp@*mw[311][j] +
+                   walk_coef_gt_1_@purp@*mw[312][j] +
+                   cost_coef_@purp@*mw[324][j]*@AOC_Auto@ +
+                   cost_coef_@purp@*tollcost/2 +
+                   parkcost_coef_@purp@*mw[313][j] +
+                   disutility) / (nest_shared2*nest_shared*nest_auto*nest_motor)
+
+         EU_sr2th = exp(U_sr2th)
+       else
+
+          U_sr2th=-99
+          EU_sr2th=0
+
+       endif
+
+       /* *** Shared 3+ HOV *** */
+
+       if (mw[342][j]>0.01)  ; if Shared-3+ HOV path exists
+
+         ;disutility discourages short distance managed lane trips (under 2 miles on ML)
+         disutility = MIN(0, @hbw_hbo_disutility_constant@ + @hbw_hbo_disutility_slope@ * mw[362][j])
+
+         U_sr3nh = (asc_hov + asc_sr3 + asc_shared + asc_auto + asc_motor +
+                   ivt_coef_@purp@*mw[302][j] +  ;- .25*ivt_coef_@purp@*mw[342][j] +
+                   walk_coef_1_@purp@*mw[311][j] +
+                   walk_coef_gt_1_@purp@*mw[312][j] +
+                   cost_coef_@purp@*mw[322][j]*@AOC_Auto@ +
+                   parkcost_coef_@purp@*mw[313][j] +
+                   disutility) / (nest_shared3*nest_shared*nest_auto*nest_motor)
+
+         EU_sr3nh = exp(U_sr3nh)
+
+       else
+
+          U_sr3nh=-99
+          EU_sr3nh=0
+
+       endif
+
+       /* *** Shared 3+ HOV-Toll *** */
+
+       if ((mw[345][j]+mw[355][j])>0.01)  ; if Shared-3+ HOV-Toll path exists
+
+         ;disutility discourages short distance managed lane trips (under 2 miles on ML)
+         disutility = MIN(0, @hbw_hbo_disutility_constant@ + @hbw_hbo_disutility_slope@ * (mw[365][j]+mw[375][j]))
+
+         if (@period@=1)
+           Cost_HOT  = @Cost_3HOT_Pk@
+           Cost_Toll = @Cost_Toll_Pk@
+         else
+           Cost_HOT  = @Cost_3HOT_Ok@
+           Cost_Toll = @Cost_Toll_Ok@
+         endif
+
+         ;toll cost a function of distance on toll facility
+         tollcost = mw[365][j]*Cost_HOT + mw[375][j]*Cost_Toll
+
+         U_sr3th = (asc_toll + asc_sr3 + asc_shared + asc_auto + asc_motor +
+                   ivt_coef_@purp@*mw[305][j] +  ;- .25*ivt_coef_@purp@*(mw[345][j]+mw[355][j]) +
+                   walk_coef_1_@purp@*mw[311][j] +
+                   walk_coef_gt_1_@purp@*mw[312][j] +
+                   cost_coef_@purp@*mw[325][j]*@AOC_Auto@ +
+                   cost_coef_@purp@*tollcost/3 +
+                   parkcost_coef_@purp@*mw[313][j] +
+                   disutility) / (nest_shared3*nest_shared*nest_auto*nest_motor)
+
+         EU_sr3th = exp(U_sr3th)
+       else
+
+          U_sr3th=-99
+          EU_sr3th=0
+
+       endif
+
+    ;compute relative probabilities by shared ride mode
+
+    ;shared ride 2
+    sum_sr2 = EU_sr2nn + EU_sr2nh + EU_sr2th
+        prob_sr2nn = 0
+        prob_sr2nh = 0
+        prob_sr2th = 0
+        logsum_shared2 = -99
+        U_sr2 = -99
+        EU_sr2 = 0
+
+      if(sum_sr2>0)
+        prob_sr2nn = EU_sr2nn/sum_sr2
+        prob_sr2nh = EU_sr2nh/sum_sr2
+        prob_sr2th = 1-(prob_sr2nn+prob_sr2nh)
+        logsum_shared2 = ln(sum_sr2)
+      U_sr2 = logsum_shared2*nest_shared2
+        EU_sr2 = EXP(U_sr2)
+      endif
+
+      ;shared ride 3+
+    sum_sr3 = EU_sr3nn + EU_sr3nh + EU_sr3th
+        prob_sr3nn = 0
+        prob_sr3nh = 0
+        prob_sr3th = 0
+        logsum_shared3 = -99
+        U_sr3 = -99
+        EU_sr3 = 0
+
+      if(sum_sr3>0)
+        prob_sr3nn = EU_sr3nn/sum_sr3
+        prob_sr3nh = EU_sr3nh/sum_sr3
+        prob_sr3th = 1-(prob_sr3nn+prob_sr3nh)
+        logsum_shared3= ln(sum_sr3)
+        U_sr3 = logsum_shared3*nest_shared3
+        EU_sr3 = EXP(U_sr3)
+      endif
+
+    prob_sr2 = 0
+    prob_sr3 = 0
+
+      sum_shared = EU_sr2 + EU_sr3
+      logsum_shared = -99
+      U_shared = - 99
+      EU_shared = 0
+
+      if(sum_shared>0)
+        prob_sr2 = EU_sr2/(sum_shared)
+        prob_sr3 = 1 - (prob_sr2)
+        logsum_shared = ln(sum_shared)
+        U_shared = logsum_shared*nest_shared
+        EU_shared = exp(U_shared)
+      endif
+
+
+ /* **************************************************************************************
+ END: CALCULATE UTILITIES/PROBABILITIES FOR SHARED RIDE MODES (LOWEST AUTO NEST - SR2/SR3+)
+ ************************************************************************************** */
+
+
+ /* **************************************************************************************
+ BEGIN: CALCULATE UTILITIES/PROBABILITIES FOR AUTO MODES (SECOND LOWEST AUTO NEST - DA/Shared)
+ ************************************************************************************** */
+
+          U_alonen = -99
+          EU_alonen = 0
+          U_alonet = -99
+          EU_alonet = 0
+
+          if (VEH > 1)  ;no drive alone option if 0 veh HH
+
+              ; Drive-alone non-toll
+              if (mw[300][j]>0)    ;if an auto path exists
+
+              ;drive alone utilities
+              U_alonen = (asc_alone + asc_auto + asc_motor +
+                         ivt_coef_@purp@*mw[300][j] +
+                         walk_coef_1_@purp@*mw[311][j] +
+                         walk_coef_gt_1_@purp@*mw[312][j] +
+                         cost_coef_@purp@*mw[320][j]*@AOC_Auto@ +
+                         parkcost_coef_@purp@*mw[313][j]) / (nest_alone*nest_auto*nest_motor)
+
+              ;drive alone exponentiated utility
+              EU_alonen = exp(U_alonen)
+
+          endif
+
+          ;Drive-alone toll
+          if ((mw[343][j]+mw[353][j])>0)    ;if a drive-alone toll path exists
+
+              ;disutility discourages short distance managed lane trips (under 2 miles on ML)
+              disutility = MIN(0, @hbw_hbo_disutility_constant@ + @hbw_hbo_disutility_slope@ * (mw[363][j]+mw[373][j]) )
+
+              if (@period@=1)
+                Cost_HOT  = @Cost_HOT_Pk@
+                Cost_Toll = @Cost_Toll_Pk@
+              else
+                Cost_HOT  = @Cost_HOT_Ok@
+                Cost_Toll = @Cost_Toll_Ok@
+              endif
+
+              ;toll cost a function of distance on toll facility
+              tollcost = mw[363][j] * Cost_HOT  +  mw[373][j] * Cost_Toll
+
+              ;drive alone utilities
+              U_alonet = (asc_toll + asc_alone + asc_auto + asc_motor +
+                         ivt_coef_@purp@*mw[303][j] +  ;- .25*ivt_coef_@purp@*(mw[343][j]+mw[353][j]) +
+                         walk_coef_1_@purp@*mw[311][j] +
+                         walk_coef_gt_1_@purp@*mw[312][j] +
+                         cost_coef_@purp@*mw[323][j]*@AOC_Auto@ +
+                         cost_coef_@purp@*tollcost +
+                         parkcost_coef_@purp@*mw[313][j] +
+                         disutility) / (nest_alone*nest_auto*nest_motor)
+
+              ;drive alone exponentiated utility
+              EU_alonet = exp(U_alonet)
+
+          endif
+      endif
+
+       ; probability among drive-alone modes
+       prob_alonen = 0
+       prob_alonet = 0
+       logsum_alone = -99
+       U_alone = -99
+       EU_alone = 0
+
+       sum_alone = EU_alonen + EU_alonet
+
+       if(sum_alone > 0)
+          prob_alonen = EU_alonen/sum_alone
+          prob_alonet = 1 - prob_alonen
+          logsum_alone = ln(sum_alone)
+          U_alone = logsum_alone * nest_alone
+          EU_alone = exp(U_alone)
+       endif
+
+        /* Compute relative probabilities among auto modes */
+        sum_drive=EU_shared + EU_alone
+
+        if (sum_drive > 0)  ;if an auto path exists
+
+          ;shared ride
+          prob_shared = EU_shared /(EU_shared + EU_alone)
+
+          ;drive alone
+          prob_alone = 1 - prob_shared
+
+          ;compute auto logsums
+          logsum_auto = ln(EU_shared + EU_alone)
+
+        else  ;if no auto path
+
+          ;shared ride
+          prob_shared = 0
+
+          ;drive alone
+          prob_alone = 0
+
+          ;compute auto logsums
+          logsum_auto = -99
+
+        endif
+ /* **************************************************************************************
+ END: CALCULATE UTILITIES/PROBABILITIES FOR AUTO MODES (SECOND LOWEST AUTO NEST - DA/Shared)
+ ************************************************************************************** */
+
+
+ /* **************************************************************************************
+ BEGIN: CALCULATE UTILITIES/PROBABILITIES FOR MOTORIZED MODES (Auto/Transit)
+ ************************************************************************************** */
+
+         if ((EU_walkacc + EU_driveacc) > 0)  ;if transit path exists
+
+           ;compute the composite utility of transit and exponentiate
+           U_transit = (logsum_transit*nest_transit)
+           EU_transit = exp(U_transit)
+
+         else  ;if no transit path exists
+
+           ;transit exponentiated utilities
+           U_transit = -99
+           EU_transit = 0
+
+         endif
+
+         if ((EU_shared + EU_alone) > 0)  ;if an auto path exists
+
+           ;compute the composite utility of auto and exponentiate
+           U_auto = (logsum_auto*nest_auto)
+           EU_auto = exp(U_auto)
+
+         else  ;if no auto paths exists
+
+           ;auto exponentiated utilities
+           U_auto = -99
+           EU_auto = 0
+
+         endif
+
+         if ((EU_transit + EU_auto) > 0)  ;if a motorized path exists
+
+           ;compute relative shares and motorized logsum
+           prob_transit = EU_transit / (EU_transit + EU_auto)
+           prob_auto = 1 - prob_transit
+
+           logsum_motor = ln(EU_transit + EU_auto)
+
+         else  ;if no motorized path exists
+
+           ;compute relative motorized shares and motorized logsum
+           prob_transit = 0
+           prob_auto    = 0
+           logsum_motor = -99
+
+         endif
+
+ /* **************************************************************************************
+ END: CALCULATE UTILITIES/PROBABILITIES FOR MOTORIZED MODES (Auto/Transit)
+ ************************************************************************************** */
+
+
+ /* **************************************************************************************
+ BEGIN: CALCULATE UTILITIES/PROBABILITIES FOR NON-MOTORIZED MODES (Walk/Bike)
+ ************************************************************************************** */
+
+         if (mw[401][j] <= 3)  ;assume no walk trips over three miles in length
+
+           ;walk utilities
+           U_walk = (walk_coef_1_@purp@*mw[403][j] +
+                     walk_coef_gt_1_@purp@*mw[404][j] +
+                     asc_walk + asc_nonmotor) / (nest_nonmotor)
+
+           EU_walk = exp(U_walk)
+
+
+           ;bike utilities
+           U_bike = (bike_coef_@purp@*mw[405][j] +
+                     asc_bike + asc_nonmotor) / (nest_nonmotor)
+
+           EU_bike = exp(U_bike)
+
+           ;calculate relative shares
+           prob_walk = EU_walk / (EU_walk + EU_bike)
+           prob_bike = 1 - prob_walk
+
+           ;calculate non-motorized logsums
+           logsum_nonmotor = ln(EU_walk + EU_bike)
+
+         elseif (mw[401][j] > 3 & mw[401][j] <= 6)  ;assume no bike trips over 6 mi
+
+           U_walk = -99
+           EU_walk = 0
+
+           ;bike utilities
+           U_bike = (bike_coef_@purp@*mw[405][j] +
+                     asc_bike + asc_nonmotor) / (nest_nonmotor)
+
+           EU_bike = exp(U_bike)
+
+           prob_walk = 0
+           prob_bike = 1
+
+           logsum_nonmotor = ln(EU_bike)
+
+         else  ;if distance > 6 miles, assume no non-motorized trips
+
+           U_walk = -99
+           EU_walk = 0
+
+           U_bike = -99
+           EU_bike = 0
+
+           prob_walk = 0
+           prob_bike = 0
+
+           logsum_nonmotor = -99
+
+         endif
+
+ /* **************************************************************************************
+ END: CALCULATE UTILITIES/PROBABILITIES FOR NON-MOTORIZED MODES (Walk/Bike)
+ ************************************************************************************** */
+
+
+ /* **************************************************************************************
+ BEGIN: CALCULATE UTILITIES/PROBABILITIES FOR MOTOR/NON-MOTOR (person trip level)
+ ************************************************************************************** */
+
+          if (logsum_motor > -99 | logsum_nonmotor > -99)  ;if a travel path exists
+
+            if (logsum_nonmotor > -99)  ;if a non-motorized path exists
+
+              ;compute and exponentiate composite utilities for non-motorized trips
+              U_nonmotor = (logsum_nonmotor*nest_nonmotor)
+
+              EU_nonmotor = exp(U_nonmotor)
+
+            else  ;if no non-motorized path
+
+              U_nonmotor = -99
+              EU_nonmotor = 0
+
+            endif
+
+            if (logsum_motor > -99)  ;if a motorized path exists
+
+              ;compute and exponentiate composite utilities for motorized trips
+              U_motor = (logsum_motor*nest_motor)
+
+              EU_motor = exp(U_motor)
+
+            else  ;if no motorized path
+
+              U_motor = -99
+              EU_motor = 0
+
+            endif
+
+            ;compute motorized/non-motorized shares
+            prob_nonmotor = EU_nonmotor / (EU_nonmotor + EU_motor)
+            prob_motor = 1 - prob_nonmotor
+
+          else  ; if no path exists
+
+            ;compute and exponentiate composite utilities for non-motorized trips
+            prob_nonmotor = 0
+            prob_motor = 0
+
+          endif
+
+ /* **************************************************************************************
+ END: CALCULATE UTILITIES/PROBABILITIES FOR MOTOR/NON-MOTOR (person trip level)
+ ************************************************************************************** */
+
+ 

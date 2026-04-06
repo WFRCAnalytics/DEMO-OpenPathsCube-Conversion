@@ -1,0 +1,437 @@
+
+        
+        
+        
+        ;add select link group 1 --------------------------------------------------------------
+        SL_GRP_1__ = '__Select Link Group 1__'      ;field name separator
+        
+        ;AM
+        AM_WRK_GR1 = ROUND(li.1.V31_1 +       ;HBW_DA_NON
+                           li.1.V32_1 +       ;HBW_SR_NON
+                           li.1.V33_1 +       ;HBW_SR_HOV
+                           li.1.V34_1 +       ;HBW_DA_TOL
+                           li.1.V35_1  )      ;HBW_SR_TOL
+                           
+        AM_NWK_GR1 = ROUND(li.1.V36_1 +       ;HBO_DA_NON
+                           li.1.V37_1 +       ;HBO_SR_NON
+                           li.1.V38_1 +       ;HBO_SR_HOV
+                           li.1.V39_1 +       ;HBO_DA_TOL
+                           li.1.V40_1 +       ;HBO_SR_TOL
+                           li.1.V41_1 +       ;NHB_DA_NON
+                           li.1.V42_1 +       ;NHB_SR_NON
+                           li.1.V43_1 +       ;NHB_SR_HOV
+                           li.1.V44_1 +       ;NHB_DA_TOL
+                           li.1.V45_1 +       ;NHB_SR_TOL
+                           li.1.V46_1 +       ;HBC_DA_NON
+                           li.1.V47_1 +       ;HBC_SR_NON
+                           li.1.V48_1 +       ;HBC_SR_HOV
+                           li.1.V49_1 +       ;HBC_DA_TOL
+                           li.1.V50_1 +       ;HBC_SR_TOL
+                           li.1.V51_1 +       ;HBSch_Pr  
+                           li.1.V52_1  )      ;HBSch_Sc  
+        
+        AM_EXT_GR1 = ROUND(li.1.V53_1 +       ;IX
+                           li.1.V54_1 +       ;XI
+                           li.1.V55_1  )      ;XX
+        
+        AM_LT_GR1  = ROUND(li.1.V56_1)        ;SLT
+        
+        AM_MD_GR1  = ROUND(li.1.V57_1 +       ;SMD
+                           li.1.V59_1  )      ;LMD
+                          
+        AM_HV_GR1  = ROUND(li.1.V58_1 +       ;SHV
+                           li.1.V60_1  )      ;LHV
+        
+        AM_VOL_GR1 = ROUND(AM_WRK_GR1 +
+                           AM_NWK_GR1 +
+                           AM_EXT_GR1 +
+                           AM_LT_GR1  +
+                           AM_MD_GR1  +
+                           AM_HV_GR1   )
+        
+        ;MD
+        MD_WRK_GR1 = ROUND(li.2.V31_1 +       ;HBW_DA_NON
+                           li.2.V32_1 +       ;HBW_SR_NON
+                           li.2.V33_1 +       ;HBW_SR_HOV
+                           li.2.V34_1 +       ;HBW_DA_TOL
+                           li.2.V35_1  )      ;HBW_SR_TOL
+                           
+        MD_NWK_GR1 = ROUND(li.2.V36_1 +       ;HBO_DA_NON
+                           li.2.V37_1 +       ;HBO_SR_NON
+                           li.2.V38_1 +       ;HBO_SR_HOV
+                           li.2.V39_1 +       ;HBO_DA_TOL
+                           li.2.V40_1 +       ;HBO_SR_TOL
+                           li.2.V41_1 +       ;NHB_DA_NON
+                           li.2.V42_1 +       ;NHB_SR_NON
+                           li.2.V43_1 +       ;NHB_SR_HOV
+                           li.2.V44_1 +       ;NHB_DA_TOL
+                           li.2.V45_1 +       ;NHB_SR_TOL
+                           li.2.V46_1 +       ;HBC_DA_NON
+                           li.2.V47_1 +       ;HBC_SR_NON
+                           li.2.V48_1 +       ;HBC_SR_HOV
+                           li.2.V49_1 +       ;HBC_DA_TOL
+                           li.2.V50_1 +       ;HBC_SR_TOL
+                           li.2.V51_1 +       ;HBSch_Pr  
+                           li.2.V52_1  )      ;HBSch_Sc  
+        
+        MD_EXT_GR1 = ROUND(li.2.V53_1 +       ;IX
+                           li.2.V54_1 +       ;XI
+                           li.2.V55_1  )      ;XX
+        
+        MD_LT_GR1  = ROUND(li.2.V56_1)        ;SLT
+        
+        MD_MD_GR1  = ROUND(li.2.V57_1 +       ;SMD
+                           li.2.V59_1  )      ;LMD
+                          
+        MD_HV_GR1  = ROUND(li.2.V58_1 +       ;SHV
+                           li.2.V60_1  )      ;LHV
+        
+        MD_VOL_GR1 = ROUND(MD_WRK_GR1 +
+                           MD_NWK_GR1 +
+                           MD_EXT_GR1 +
+                           MD_LT_GR1  +
+                           MD_MD_GR1  +
+                           MD_HV_GR1   )
+        
+        ;PM
+        PM_WRK_GR1 = ROUND(li.3.V31_1 +       ;HBW_DA_NON
+                           li.3.V32_1 +       ;HBW_SR_NON
+                           li.3.V33_1 +       ;HBW_SR_HOV
+                           li.3.V34_1 +       ;HBW_DA_TOL
+                           li.3.V35_1  )      ;HBW_SR_TOL
+                           
+        PM_NWK_GR1 = ROUND(li.3.V36_1 +       ;HBO_DA_NON
+                           li.3.V37_1 +       ;HBO_SR_NON
+                           li.3.V38_1 +       ;HBO_SR_HOV
+                           li.3.V39_1 +       ;HBO_DA_TOL
+                           li.3.V40_1 +       ;HBO_SR_TOL
+                           li.3.V41_1 +       ;NHB_DA_NON
+                           li.3.V42_1 +       ;NHB_SR_NON
+                           li.3.V43_1 +       ;NHB_SR_HOV
+                           li.3.V44_1 +       ;NHB_DA_TOL
+                           li.3.V45_1 +       ;NHB_SR_TOL
+                           li.3.V46_1 +       ;HBC_DA_NON
+                           li.3.V47_1 +       ;HBC_SR_NON
+                           li.3.V48_1 +       ;HBC_SR_HOV
+                           li.3.V49_1 +       ;HBC_DA_TOL
+                           li.3.V50_1 +       ;HBC_SR_TOL
+                           li.3.V51_1 +       ;HBSch_Pr  
+                           li.3.V52_1  )      ;HBSch_Sc  
+        
+        PM_EXT_GR1 = ROUND(li.3.V53_1 +       ;IX
+                           li.3.V54_1 +       ;XI
+                           li.3.V55_1  )      ;XX
+        
+        PM_LT_GR1  = ROUND(li.3.V56_1)        ;SLT
+        
+        PM_MD_GR1  = ROUND(li.3.V57_1 +       ;SMD
+                           li.3.V59_1  )      ;LMD
+                          
+        PM_HV_GR1  = ROUND(li.3.V58_1 +       ;SHV
+                           li.3.V60_1  )      ;LHV
+        
+        PM_VOL_GR1 = ROUND(PM_WRK_GR1 +
+                           PM_NWK_GR1 +
+                           PM_EXT_GR1 +
+                           PM_LT_GR1  +
+                           PM_MD_GR1  +
+                           PM_HV_GR1   )
+        
+        ;EV
+        EV_WRK_GR1 = ROUND(li.4.V31_1 +       ;HBW_DA_NON
+                           li.4.V32_1 +       ;HBW_SR_NON
+                           li.4.V33_1 +       ;HBW_SR_HOV
+                           li.4.V34_1 +       ;HBW_DA_TOL
+                           li.4.V35_1  )      ;HBW_SR_TOL
+                           
+        EV_NWK_GR1 = ROUND(li.4.V36_1 +       ;HBO_DA_NON
+                           li.4.V37_1 +       ;HBO_SR_NON
+                           li.4.V38_1 +       ;HBO_SR_HOV
+                           li.4.V39_1 +       ;HBO_DA_TOL
+                           li.4.V40_1 +       ;HBO_SR_TOL
+                           li.4.V41_1 +       ;NHB_DA_NON
+                           li.4.V42_1 +       ;NHB_SR_NON
+                           li.4.V43_1 +       ;NHB_SR_HOV
+                           li.4.V44_1 +       ;NHB_DA_TOL
+                           li.4.V45_1 +       ;NHB_SR_TOL
+                           li.4.V46_1 +       ;HBC_DA_NON
+                           li.4.V47_1 +       ;HBC_SR_NON
+                           li.4.V48_1 +       ;HBC_SR_HOV
+                           li.4.V49_1 +       ;HBC_DA_TOL
+                           li.4.V50_1 +       ;HBC_SR_TOL
+                           li.4.V51_1 +       ;HBSch_Pr  
+                           li.4.V52_1  )      ;HBSch_Sc  
+        
+        EV_EXT_GR1 = ROUND(li.4.V53_1 +       ;IX
+                           li.4.V54_1 +       ;XI
+                           li.4.V55_1  )      ;XX
+        
+        EV_LT_GR1  = ROUND(li.4.V56_1)        ;SLT
+        
+        EV_MD_GR1  = ROUND(li.4.V57_1 +       ;SMD
+                           li.4.V59_1  )      ;LMD
+                          
+        EV_HV_GR1  = ROUND(li.4.V58_1 +       ;SHV
+                           li.4.V60_1  )      ;LHV
+        
+        EV_VOL_GR1 = ROUND(EV_WRK_GR1 +
+                           EV_NWK_GR1 +
+                           EV_EXT_GR1 +
+                           EV_LT_GR1  +
+                           EV_MD_GR1  +
+                           EV_HV_GR1   )
+        
+        ;DY
+        DY_WRK_GR1 = AM_WRK_GR1 +
+                     MD_WRK_GR1 +
+                     PM_WRK_GR1 +
+                     EV_WRK_GR1 
+                           
+        DY_NWK_GR1 = AM_NWK_GR1 +
+                     MD_NWK_GR1 +
+                     PM_NWK_GR1 +
+                     EV_NWK_GR1     
+        
+        DY_EXT_GR1 = AM_EXT_GR1 +
+                     MD_EXT_GR1 +
+                     PM_EXT_GR1 +
+                     EV_EXT_GR1 
+        
+        DY_LT_GR1  = AM_LT_GR1 +
+                     MD_LT_GR1 +
+                     PM_LT_GR1 +
+                     EV_LT_GR1      
+        
+        DY_MD_GR1  = AM_MD_GR1 +
+                     MD_MD_GR1 +
+                     PM_MD_GR1 +
+                     EV_MD_GR1 
+                          
+        DY_HV_GR1  = AM_HV_GR1 +
+                     MD_HV_GR1 +
+                     PM_HV_GR1 +
+                     EV_HV_GR1 
+        
+        DY_VOL_GR1 = AM_VOL_GR1 +
+                     MD_VOL_GR1 +
+                     PM_VOL_GR1 +
+                     EV_VOL_GR1 
+        
+        
+        
+        ;add select link group 2 --------------------------------------------------------------
+        SL_GRP_2__ = '__Select Link Group 2__'      ;field name separator
+        
+        ;AM
+        AM_WRK_GR2 = ROUND(li.1.V61_1 +       ;HBW_DA_NON
+                           li.1.V62_1 +       ;HBW_SR_NON
+                           li.1.V63_1 +       ;HBW_SR_HOV
+                           li.1.V64_1 +       ;HBW_DA_TOL
+                           li.1.V65_1  )      ;HBW_SR_TOL
+                           
+        AM_NWK_GR2 = ROUND(li.1.V66_1 +       ;HBO_DA_NON
+                           li.1.V67_1 +       ;HBO_SR_NON
+                           li.1.V68_1 +       ;HBO_SR_HOV
+                           li.1.V69_1 +       ;HBO_DA_TOL
+                           li.1.V70_1 +       ;HBO_SR_TOL
+                           li.1.V71_1 +       ;NHB_DA_NON
+                           li.1.V72_1 +       ;NHB_SR_NON
+                           li.1.V73_1 +       ;NHB_SR_HOV
+                           li.1.V74_1 +       ;NHB_DA_TOL
+                           li.1.V75_1 +       ;NHB_SR_TOL
+                           li.1.V76_1 +       ;HBC_DA_NON
+                           li.1.V77_1 +       ;HBC_SR_NON
+                           li.1.V78_1 +       ;HBC_SR_HOV
+                           li.1.V79_1 +       ;HBC_DA_TOL
+                           li.1.V80_1 +       ;HBC_SR_TOL
+                           li.1.V81_1 +       ;HBSch_Pr  
+                           li.1.V82_1  )      ;HBSch_Sc  
+        
+        AM_EXT_GR2 = ROUND(li.1.V83_1 +       ;IX
+                           li.1.V84_1 +       ;XI
+                           li.1.V85_1  )      ;XX
+        
+        AM_LT_GR2  = ROUND(li.1.V86_1)        ;SLT
+        
+        AM_MD_GR2  = ROUND(li.1.V87_1 +       ;SMD
+                           li.1.V89_1  )      ;LMD
+                          
+        AM_HV_GR2  = ROUND(li.1.V88_1 +       ;SHV
+                           li.1.V90_1  )      ;LHV
+        
+        AM_VOL_GR2 = ROUND(AM_WRK_GR2 +
+                           AM_NWK_GR2 +
+                           AM_EXT_GR2 +
+                           AM_LT_GR2  +
+                           AM_MD_GR2  +
+                           AM_HV_GR2   )
+        
+        ;MD
+        MD_WRK_GR2 = ROUND(li.2.V61_1 +       ;HBW_DA_NON
+                           li.2.V62_1 +       ;HBW_SR_NON
+                           li.2.V63_1 +       ;HBW_SR_HOV
+                           li.2.V64_1 +       ;HBW_DA_TOL
+                           li.2.V65_1  )      ;HBW_SR_TOL
+                                   
+        MD_NWK_GR2 = ROUND(li.2.V66_1 +       ;HBO_DA_NON
+                           li.2.V67_1 +       ;HBO_SR_NON
+                           li.2.V68_1 +       ;HBO_SR_HOV
+                           li.2.V69_1 +       ;HBO_DA_TOL
+                           li.2.V70_1 +       ;HBO_SR_TOL
+                           li.2.V71_1 +       ;NHB_DA_NON
+                           li.2.V72_1 +       ;NHB_SR_NON
+                           li.2.V73_1 +       ;NHB_SR_HOV
+                           li.2.V74_1 +       ;NHB_DA_TOL
+                           li.2.V75_1 +       ;NHB_SR_TOL
+                           li.2.V76_1 +       ;HBC_DA_NON
+                           li.2.V77_1 +       ;HBC_SR_NON
+                           li.2.V78_1 +       ;HBC_SR_HOV
+                           li.2.V79_1 +       ;HBC_DA_TOL
+                           li.2.V80_1 +       ;HBC_SR_TOL
+                           li.2.V81_1 +       ;HBSch_Pr  
+                           li.2.V82_1  )      ;HBSch_Sc  
+                                   
+        MD_EXT_GR2 = ROUND(li.2.V83_1 +       ;IX
+                           li.2.V84_1 +       ;XI
+                           li.2.V85_1  )      ;XX
+                                   
+        MD_LT_GR2  = ROUND(li.2.V86_1)        ;SLT
+                                   
+        MD_MD_GR2  = ROUND(li.2.V87_1 +       ;SMD
+                           li.2.V89_1  )      ;LMD
+                                   
+        MD_HV_GR2  = ROUND(li.2.V88_1 +       ;SHV
+                           li.2.V90_1  )      ;LHV
+        
+        MD_VOL_GR2 = ROUND(MD_WRK_GR2 +
+                           MD_NWK_GR2 +
+                           MD_EXT_GR2 +
+                           MD_LT_GR2  +
+                           MD_MD_GR2  +
+                           MD_HV_GR2   )
+        
+        ;PM
+        PM_WRK_GR2 = ROUND(li.3.V61_1 +       ;HBW_DA_NON
+                           li.3.V62_1 +       ;HBW_SR_NON
+                           li.3.V63_1 +       ;HBW_SR_HOV
+                           li.3.V64_1 +       ;HBW_DA_TOL
+                           li.3.V65_1  )      ;HBW_SR_TOL
+                                   
+        PM_NWK_GR2 = ROUND(li.3.V66_1 +       ;HBO_DA_NON
+                           li.3.V67_1 +       ;HBO_SR_NON
+                           li.3.V68_1 +       ;HBO_SR_HOV
+                           li.3.V69_1 +       ;HBO_DA_TOL
+                           li.3.V70_1 +       ;HBO_SR_TOL
+                           li.3.V71_1 +       ;NHB_DA_NON
+                           li.3.V72_1 +       ;NHB_SR_NON
+                           li.3.V73_1 +       ;NHB_SR_HOV
+                           li.3.V74_1 +       ;NHB_DA_TOL
+                           li.3.V75_1 +       ;NHB_SR_TOL
+                           li.3.V76_1 +       ;HBC_DA_NON
+                           li.3.V77_1 +       ;HBC_SR_NON
+                           li.3.V78_1 +       ;HBC_SR_HOV
+                           li.3.V79_1 +       ;HBC_DA_TOL
+                           li.3.V80_1 +       ;HBC_SR_TOL
+                           li.3.V81_1 +       ;HBSch_Pr  
+                           li.3.V82_1  )      ;HBSch_Sc  
+                                   
+        PM_EXT_GR2 = ROUND(li.3.V83_1 +       ;IX
+                           li.3.V84_1 +       ;XI
+                           li.3.V85_1  )      ;XX
+                                   
+        PM_LT_GR2  = ROUND(li.3.V86_1)        ;SLT
+                                   
+        PM_MD_GR2  = ROUND(li.3.V87_1 +       ;SMD
+                           li.3.V89_1  )      ;LMD
+                                   
+        PM_HV_GR2  = ROUND(li.3.V88_1 +       ;SHV
+                           li.3.V90_1  )      ;LHV
+        
+        PM_VOL_GR2 = ROUND(PM_WRK_GR2 +
+                           PM_NWK_GR2 +
+                           PM_EXT_GR2 +
+                           PM_LT_GR2  +
+                           PM_MD_GR2  +
+                           PM_HV_GR2   )
+        
+        ;EV
+        EV_WRK_GR2 = ROUND(li.4.V61_1 +       ;HBW_DA_NON
+                           li.4.V62_1 +       ;HBW_SR_NON
+                           li.4.V63_1 +       ;HBW_SR_HOV
+                           li.4.V64_1 +       ;HBW_DA_TOL
+                           li.4.V65_1  )      ;HBW_SR_TOL
+                                   
+        EV_NWK_GR2 = ROUND(li.4.V66_1 +       ;HBO_DA_NON
+                           li.4.V67_1 +       ;HBO_SR_NON
+                           li.4.V68_1 +       ;HBO_SR_HOV
+                           li.4.V69_1 +       ;HBO_DA_TOL
+                           li.4.V70_1 +       ;HBO_SR_TOL
+                           li.4.V71_1 +       ;NHB_DA_NON
+                           li.4.V72_1 +       ;NHB_SR_NON
+                           li.4.V73_1 +       ;NHB_SR_HOV
+                           li.4.V74_1 +       ;NHB_DA_TOL
+                           li.4.V75_1 +       ;NHB_SR_TOL
+                           li.4.V76_1 +       ;HBC_DA_NON
+                           li.4.V77_1 +       ;HBC_SR_NON
+                           li.4.V78_1 +       ;HBC_SR_HOV
+                           li.4.V79_1 +       ;HBC_DA_TOL
+                           li.4.V80_1 +       ;HBC_SR_TOL
+                           li.4.V81_1 +       ;HBSch_Pr  
+                           li.4.V82_1  )      ;HBSch_Sc  
+                                   
+        EV_EXT_GR2 = ROUND(li.4.V83_1 +       ;IX
+                           li.4.V84_1 +       ;XI
+                           li.4.V85_1  )      ;XX
+                                   
+        EV_LT_GR2  = ROUND(li.4.V86_1)        ;SLT
+                                   
+        EV_MD_GR2  = ROUND(li.4.V87_1 +       ;SMD
+                           li.4.V89_1  )      ;LMD
+                                   
+        EV_HV_GR2  = ROUND(li.4.V88_1 +       ;SHV
+                           li.4.V90_1  )      ;LHV
+        
+        EV_VOL_GR2 = ROUND(EV_WRK_GR2 +
+                           EV_NWK_GR2 +
+                           EV_EXT_GR2 +
+                           EV_LT_GR2  +
+                           EV_MD_GR2  +
+                           EV_HV_GR2   )
+        
+        ;DY
+        DY_WRK_GR2 = AM_WRK_GR2 +
+                     MD_WRK_GR2 +
+                     PM_WRK_GR2 +
+                     EV_WRK_GR2 
+                           
+        DY_NWK_GR2 = AM_NWK_GR2 +
+                     MD_NWK_GR2 +
+                     PM_NWK_GR2 +
+                     EV_NWK_GR2     
+        
+        DY_EXT_GR2 = AM_EXT_GR2 +
+                     MD_EXT_GR2 +
+                     PM_EXT_GR2 +
+                     EV_EXT_GR2 
+        
+        DY_LT_GR2  = AM_LT_GR2 +
+                     MD_LT_GR2 +
+                     PM_LT_GR2 +
+                     EV_LT_GR2      
+        
+        DY_MD_GR2  = AM_MD_GR2 +
+                     MD_MD_GR2 +
+                     PM_MD_GR2 +
+                     EV_MD_GR2 
+                          
+        DY_HV_GR2  = AM_HV_GR2 +
+                     MD_HV_GR2 +
+                     PM_HV_GR2 +
+                     EV_HV_GR2 
+        
+        DY_VOL_GR2 = AM_VOL_GR2 +
+                     MD_VOL_GR2 +
+                     PM_VOL_GR2 +
+                     EV_VOL_GR2 
+        
+        

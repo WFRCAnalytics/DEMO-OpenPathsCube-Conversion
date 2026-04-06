@@ -1,0 +1,227 @@
+;FILE: regional_shares_NHB.block 
+ 
+ 
+  ;total trips, by segment
+      trips_total_region     = trips_motor_region    + trips_nonmotor_region 
+     
+  ;motorized shares (absolute and relative)
+      share_motor            = trips_motor_region    / (trips_total_region + .1)
+     
+  ;nonmotorized shares (absolute and relative)
+      share_nonmotor         = trips_nonmotor_region / (trips_total_region + .1) 
+     
+     
+  ;walk shares (absolute)
+      share_walk             = trips_walk_region     / (trips_total_region + .1) 
+     
+  ;walk shares (relative)
+      rel_share_walk         = trips_walk_region     / (trips_nonmotor_region + .1)
+     
+  ;bike shares (absolute)
+      share_bike             = trips_bike_region     / (trips_total_region + .1) 
+     
+  ;bike shares (relative)
+      rel_share_bike         = trips_bike_region     / (trips_nonmotor_region + .1)
+      
+      
+  ;transit shares (absolute)
+      share_transit          = trips_transit_region  / (trips_total_region + .1) 
+     
+  ;transit shares (relative)
+      rel_share_transit      = trips_transit_region  / (trips_motor_region + .1)
+     
+  ;auto shares (absolute)
+      share_auto             = trips_auto_region     / (trips_total_region + .1) 
+     
+  ;auto shares (relative)
+      rel_share_auto         = trips_auto_region     / (trips_motor_region + .1)
+      
+      
+    ;  trips_alone_region = trips_alonen_region + trips_alonet_region
+      
+  ;drive alone shares (absolute)
+      share_alone           = trips_alone_region     / (trips_total_region + .1) 
+     
+  ;drive alone shares (relative)
+      rel_share_alone       = trips_alone_region     / (trips_auto_region + .1)
+          
+  ;drive alone non-toll shares (absolute)
+      share_alonen          = trips_alonen_region    / (trips_total_region + .1) 
+     
+  ;drive alone non-toll shares (relative)
+      rel_share_alonen      = trips_alonen_region    / (trips_alone_region + .1)
+    
+  ;1/05 jef drive alone toll shares (absolute)
+      share_alonet          = trips_alonet_region    / (trips_total_region + .1) 
+     
+  ;drive alone toll shares (relative)
+      rel_share_alonet      = trips_alonet_region    / (trips_alone_region + .1)
+  
+      
+  ;shared ride shares (absolute)
+      share_shared          = trips_shared_region    / (trips_total_region + .1) 
+     
+  ;shared ride shares (relative)
+      rel_share_shared      = trips_shared_region    / (trips_auto_region + .1)
+      
+     
+  ;sr2 shares (absolute)
+      share_sr2             = trips_sr2_region       / (trips_total_region + .1) 
+     
+  ;sr2 shares (relative)
+      rel_share_sr2         = trips_sr2_region       / (trips_shared_region + .1)
+      
+  ; 1/05 jef sr2 managed lane shares (absolute)
+      share_sr2nn           = trips_sr2nn_region     / (trips_total_region + .1) 
+      share_sr2nh           = trips_sr2nh_region     / (trips_total_region + .1) 
+      share_sr2th           = trips_sr2th_region     / (trips_total_region + .1) 
+     
+  ; 1/05 jef sr2 managed lane shares (relative)
+      rel_share_sr2nn       = trips_sr2nn_region     / (trips_sr2_region + .1)
+      rel_share_sr2nh       = trips_sr2nh_region     / (trips_sr2_region + .1)
+      rel_share_sr2th       = trips_sr2th_region     / (trips_sr2_region + .1)
+      
+    
+  ;sr3 shares (absolute)
+      share_sr3             = trips_sr3_region       / (trips_total_region + .1) 
+     
+  ;sr3 shares (relative)
+      rel_share_sr3         = trips_sr3_region       / (trips_shared_region + .1) 
+      
+  ; 1/05 jef sr3 managed lane shares (absolute)
+      share_sr3nn           = trips_sr3nn_region     / (trips_total_region + .1) 
+      share_sr3nh           = trips_sr3nh_region     / (trips_total_region + .1) 
+      share_sr3th           = trips_sr3th_region     / (trips_total_region + .1) 
+     
+  ; 1/05 jef sr3 managed lane shares (relative)
+      rel_share_sr3nn       = trips_sr3nn_region     / (trips_sr3_region + .1)
+      rel_share_sr3nh       = trips_sr3nh_region     / (trips_sr3_region + .1)
+      rel_share_sr3th       = trips_sr3th_region     / (trips_sr3_region + .1)
+      
+      
+  ;lcl shares (absolute)
+      share_LCL             = trips_LCL_region       / (trips_total_region + .1) 
+     
+  ;lcl shares (relative)
+      rel_share_LCL         = trips_LCL_region       / (trips_transit_region + .1) 
+      
+  ;cor shares (absolute)
+      share_COR             = trips_COR_region       / (trips_total_region + .1) 
+
+  ;brt shares (absolute)
+      share_BRT             = trips_BRT_region       / (trips_total_region + .1) 
+     
+  ;cor shares (relative)
+      rel_share_COR         = trips_COR_region       / (trips_transit_region + .1) 
+
+  ;brt shares (relative)
+      rel_share_BRT         = trips_BRT_region       / (trips_transit_region + .1) 
+            
+  ;exp shares (absolute)
+      share_EXP             = trips_EXP_region       / (trips_total_region + .1) 
+     
+  ;exp shares (relative)
+      rel_share_EXP         = trips_EXP_region       / (trips_transit_region + .1) 
+      
+  ;lrt shares (absolute)
+      share_LRT             = trips_LRT_region       / (trips_total_region + .1) 
+     
+  ;lrt shares (relative)
+      rel_share_LRT         = trips_LRT_region       / (trips_transit_region + .1) 
+     
+  ;crt shares (absolute)
+      share_CRT             = trips_CRT_region       / (trips_total_region + .1) 
+     
+  ;crt shares (relative)
+      rel_share_CRT         = trips_CRT_region       / (trips_transit_region + .1) 
+      
+      
+     
+  ;walk-to-transit (absolute)
+      share_walkacc         = trips_walkacc_region   / (trips_total_region + .1)
+
+  ;walk-to-transit (relative)
+      rel_share_walkacc     = trips_walkacc_region   / (trips_transit_region + .1)
+        
+  ;drive-to-transit (absolute)
+      share_driveacc        = trips_driveacc_region  / (trips_total_region + .1)
+      
+  ;drive-to-transit (relative)
+      rel_share_driveacc    = trips_driveacc_region  / (trips_transit_region + .1)  
+  
+  
+  
+  
+  ;walk-lcl shares (absolute)
+      share_wLCL            = trips_wLCL_region      / (trips_total_region + .1)
+     
+  ;walk-lcl shares (relative)
+      rel_share_wLCL        = trips_wLCL_region      / (trips_walkacc_region + .1) 
+      
+  ;drive-lcl shares (absolute)
+      share_dLCL            = trips_dLCL_region      / (trips_total_region + .1) 
+     
+  ;drive-lcl shares (relative)
+      rel_share_dLCL        = trips_dLCL_region      / (trips_driveacc_region + .1) 
+
+  ;walk-cor shares (absolute)
+      share_wCOR            = trips_wCOR_region      / (trips_total_region + .1)
+     
+  ;walk-cor shares (relative)
+      rel_share_wCOR        = trips_wCOR_region      / (trips_walkacc_region + .1) 
+      
+  ;drive-cor shares (absolute)
+      share_dCOR            = trips_dCOR_region      / (trips_total_region + .1) 
+     
+  ;drive-cor shares (relative)
+      rel_share_dCOR        = trips_dCOR_region      / (trips_driveacc_region + .1) 
+
+  ;walk-brt shares (absolute)
+      share_wBRT            = trips_wBRT_region      / (trips_total_region + .1)
+     
+  ;walk-brt shares (relative)
+      rel_share_wBRT        = trips_wBRT_region      / (trips_walkacc_region + .1) 
+      
+  ;drive-brt shares (absolute)
+      share_dBRT            = trips_dBRT_region      / (trips_total_region + .1) 
+     
+  ;drive-brt shares (relative)
+      rel_share_dBRT        = trips_dBRT_region      / (trips_driveacc_region + .1) 
+
+      
+  ;walk-exp shares (absolute)
+      share_wEXP            = trips_wEXP_region      / (trips_total_region + .1) 
+     
+  ;walk-exp shares (relative)
+      rel_share_wEXP        = trips_wEXP_region      / (trips_walkacc_region + .1) 
+      
+  ;drive-exp shares (absolute)
+      share_dEXP            = trips_dEXP_region      / (trips_total_region + .1) 
+     
+  ;drive-exp shares (relative)
+      rel_share_dEXP        = trips_dEXP_region      / (trips_driveacc_region + .1) 
+   
+  ;walk-lrt  shares (absolute)
+      share_wLRT            = trips_wLRT_region      / (trips_total_region + .1) 
+     
+  ;walk-lrt  shares (relative)
+      rel_share_wLRT        = trips_wLRT_region      / (trips_walkacc_region + .1) 
+      
+  ;drive-lrt  shares (absolute)
+      share_dLRT            = trips_dLRT_region      / (trips_total_region + .1) 
+     
+  ;drive-lrt  shares (relative)
+      rel_share_dLRT        = trips_dLRT_region      / (trips_driveacc_region + .1) 
+    
+  ;walk-crt  shares (absolute)
+      share_wCRT            = trips_wCRT_region      / (trips_total_region + .1) 
+     
+  ;walk-crt  shares (relative)
+      rel_share_wCRT        = trips_wCRT_region      / (trips_walkacc_region + .1) 
+      
+  ;drive-crt  shares (absolute)
+      share_dCRT            = trips_dCRT_region      / (trips_total_region + .1) 
+     
+  ;drive-crt  shares (relative)
+      rel_share_dCRT        = trips_dCRT_region      / (trips_driveacc_region + .1) 
+    

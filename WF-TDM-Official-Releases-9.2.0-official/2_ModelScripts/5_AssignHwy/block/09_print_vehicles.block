@@ -1,0 +1,594 @@
+;vehicle level
+
+     if (Metric='PMT')    vehMetric = 'VMT'
+     if (Metric='PHT')    vehMetric = 'VHT'
+     if (Metric='PHT_FF') vehMetric = 'VHT_FF'
+     if (Metric='VHD')    vehMetric = 'VHD'
+
+;-------HBW-Print-Statements---------------------------------------------------------------;
+        ;Print out P HBW
+        if (veh_P_HBW_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                  ,
+                 vehMetric          ,
+                 'HBW'              ,
+                 '@PeriodMetrics@'  ,
+                 'P'                ,
+                 veh_P_HBW_ALL      ,
+                 veh_P_HBW_DA       ,
+                 veh_P_HBW_SR       ,
+                 veh_P_HBW_DA_NON   ,
+                 veh_P_HBW_DA_TOL   ,
+                 veh_P_HBW_SR_NON   ,
+                 veh_P_HBW_SR_TOL   ,
+                 veh_P_HBW_SR_HOV   ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  
+        endif
+
+        ;Print out A HBW
+        if (veh_A_HBW_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                  ,
+                 vehMetric          ,
+                 'HBW'              ,
+                 '@PeriodMetrics@'  ,
+                 'A'                ,
+                 veh_A_HBW_ALL      ,
+                 veh_A_HBW_DA       ,
+                 veh_A_HBW_SR       ,
+                 veh_A_HBW_DA_NON   ,
+                 veh_A_HBW_DA_TOL   ,
+                 veh_A_HBW_SR_NON   ,
+                 veh_A_HBW_SR_TOL   ,
+                 veh_A_HBW_SR_HOV   ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  
+        endif
+
+;-------HBO-Print-Statements---------------------------------------------------------------;
+        ;Print out P HBO
+        if (veh_P_HBO_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                  ,
+                 vehMetric          ,
+                 'HBO'              ,
+                 '@PeriodMetrics@'  ,
+                 'P'                ,
+                 veh_P_HBO_ALL      ,
+                 veh_P_HBO_DA       ,
+                 veh_P_HBO_SR       ,
+                 veh_P_HBO_DA_NON   ,
+                 veh_P_HBO_DA_TOL   ,
+                 veh_P_HBO_SR_NON   ,
+                 veh_P_HBO_SR_TOL   ,
+                 veh_P_HBO_SR_HOV   ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  
+        endif
+
+        ;Print out A HBO
+        if (veh_A_HBO_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                  ,
+                 vehMetric          ,
+                 'HBO'              ,
+                 '@PeriodMetrics@'  ,
+                 'A'                ,
+                 veh_A_HBO_ALL      ,
+                 veh_A_HBO_DA       ,
+                 veh_A_HBO_SR       ,
+                 veh_A_HBO_DA_NON   ,
+                 veh_A_HBO_DA_TOL   ,
+                 veh_A_HBO_SR_NON   ,
+                 veh_A_HBO_SR_TOL   ,
+                 veh_A_HBO_SR_HOV   ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  
+        endif
+
+;-------NHB-Print-Statements---------------------------------------------------------------;
+        ;Print out P NHB
+        if (veh_P_NHB_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                  ,
+                 vehMetric          ,
+                 'NHB'              ,
+                 '@PeriodMetrics@'  ,
+                 'P'                ,
+                 veh_P_NHB_ALL      ,
+                 veh_P_NHB_DA       ,
+                 veh_P_NHB_SR       ,
+                 veh_P_NHB_DA_NON   ,
+                 veh_P_NHB_DA_TOL   ,
+                 veh_P_NHB_SR_NON   ,
+                 veh_P_NHB_SR_TOL   ,
+                 veh_P_NHB_SR_HOV   ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  
+        endif
+
+        ;Print out A NHB
+        if (veh_A_NHB_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                  ,
+                 vehMetric          ,
+                 'NHB'              ,
+                 '@PeriodMetrics@'  ,
+                 'A'                ,
+                 veh_A_NHB_ALL      ,
+                 veh_A_NHB_DA       ,
+                 veh_A_NHB_SR       ,
+                 veh_A_NHB_DA_NON   ,
+                 veh_A_NHB_DA_TOL   ,
+                 veh_A_NHB_SR_NON   ,
+                 veh_A_NHB_SR_TOL   ,
+                 veh_A_NHB_SR_HOV   ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  
+        endif
+
+;-------HBC-Print-Statements---------------------------------------------------------------;
+        ;Print out P HBC
+        if (veh_P_HBC_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                  ,
+                 vehMetric          ,
+                 'HBC'              ,
+                 '@PeriodMetrics@'  ,
+                 'P'                ,
+                 veh_P_HBC_ALL      ,
+                 veh_P_HBC_DA       ,
+                 veh_P_HBC_SR       ,
+                 veh_P_HBC_DA_NON   ,
+                 veh_P_HBC_DA_TOL   ,
+                 veh_P_HBC_SR_NON   ,
+                 veh_P_HBC_SR_TOL   ,
+                 veh_P_HBC_SR_HOV   ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  
+        endif
+
+        ;Print out A HBC
+        if (veh_A_HBC_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                  ,
+                 vehMetric          ,
+                 'HBC'              ,
+                 '@PeriodMetrics@'  ,
+                 'A'                ,
+                 veh_A_HBC_ALL      ,
+                 veh_A_HBC_DA       ,
+                 veh_A_HBC_SR       ,
+                 veh_A_HBC_DA_NON   ,
+                 veh_A_HBC_DA_TOL   ,
+                 veh_A_HBC_SR_NON   ,
+                 veh_A_HBC_SR_TOL   ,
+                 veh_A_HBC_SR_HOV   ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  ,
+                 0                  
+        endif
+
+;-------HBS-Print-Statements---------------------------------------------------------------;
+        ;Print out P HBS_Pr
+        if (veh_P_HBS_Pr_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                        ,
+                 vehMetric                ,
+                 'HBS_Pr'                 ,
+                 '@PeriodMetrics@'        ,
+                 'P'                      ,
+                 veh_P_HBS_Pr_ALL         ,
+                 veh_P_HBS_Pr_DA          ,
+                 veh_P_HBS_Pr_SR          ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 veh_P_HBS_DriveSelf_Pr   ,
+                 veh_P_HBS_DropOff_Pr     ,
+                 veh_P_SchoolBus_Pr       ,
+                 0                        ,
+                 0                        
+        endif
+
+        ;Print out A HBS_Pr
+        if (veh_A_HBS_Pr_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                        ,
+                 vehMetric                ,
+                 'HBS_Pr'                 ,
+                 '@PeriodMetrics@'        ,
+                 'A'                      ,
+                 veh_A_HBS_Pr_ALL         ,
+                 veh_A_HBS_Pr_DA          ,
+                 veh_A_HBS_Pr_SR          ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 veh_A_HBS_DriveSelf_Pr   ,
+                 veh_A_HBS_DropOff_Pr     ,
+                 veh_A_SchoolBus_Pr       ,
+                 0                        ,
+                 0                        
+        endif
+
+;-------HBS-Print-Statements---------------------------------------------------------------;
+        ;Print out P HBS_Sc
+        if (veh_P_HBS_Sc_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                        ,
+                 vehMetric                ,
+                 'HBS_Sc'                 ,
+                 '@PeriodMetrics@'        ,
+                 'P'                      ,
+                 veh_P_HBS_Sc_ALL         ,
+                 veh_P_HBS_Sc_DA          ,
+                 veh_P_HBS_Sc_SR          ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 veh_P_HBS_DriveSelf_Sc   ,
+                 veh_P_HBS_DropOff_Sc     ,
+                 veh_P_SchoolBus_Sc       ,
+                 0                        ,
+                 0                        
+        endif
+
+        ;Print out A HBS_Sc
+        if (veh_A_HBS_Sc_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                        ,
+                 vehMetric                ,
+                 'HBS_Sc'                 ,
+                 '@PeriodMetrics@'        ,
+                 'A'                      ,
+                 veh_A_HBS_Sc_ALL         ,
+                 veh_A_HBS_Sc_DA          ,
+                 veh_A_HBS_Sc_SR          ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 0                        ,
+                 veh_A_HBS_DriveSelf_Sc   ,
+                 veh_A_HBS_DropOff_Sc     ,
+                 veh_A_SchoolBus_Sc       ,
+                 0                        ,
+                 0                        
+        endif
+
+;-------LT-Print-Statements----------------------------------------------------------------;
+        ;Print out P LT
+        if (P_LT_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'LT'              ,
+                 '@PeriodMetrics@' ,
+                 'P'               ,
+                 P_LT_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 P_LT_TR           ,
+                 0                 
+        endif
+
+        ;Print out A LT
+        if (A_LT_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'LT'              ,
+                 '@PeriodMetrics@' ,
+                 'A'               ,
+                 A_LT_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 A_LT_TR           ,
+                 0                 
+        endif
+
+;-------MD-Print-Statements----------------------------------------------------------------;
+        ;Print out P MD
+        if (P_MD_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'MD'              ,
+                 '@PeriodMetrics@' ,
+                 'P'               ,
+                 P_MD_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 P_MD_TR           ,
+                 0                 
+        endif
+
+        ;Print out A MD
+        if (A_MD_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'MD'              ,
+                 '@PeriodMetrics@' ,
+                 'A'               ,
+                 A_MD_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 A_MD_TR           ,
+                 0                 
+        endif
+
+;-------HV-Print-Statements----------------------------------------------------------------;
+        ;Print out P HV
+        if (P_HV_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'HV'              ,
+                 '@PeriodMetrics@' ,
+                 'P'               ,
+                 P_HV_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 P_HV_TR           ,
+                 0                 
+        endif
+
+        ;Print out A HV
+        if (A_HV_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'HV'              ,
+                 '@PeriodMetrics@' ,
+                 'A'               ,
+                 A_HV_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 A_HV_TR           ,
+                 0                 
+        endif
+
+;-------IX-Print-Statements----------------------------------------------------------------;
+        ;Print out P IX
+        if (P_IX_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'IX'              ,
+                 '@PeriodMetrics@' ,
+                 'P'               ,
+                 P_IX_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 P_IX_EX           
+        endif
+
+        ;Print out A IX
+        if (A_IX_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'IX'              ,
+                 '@PeriodMetrics@' ,
+                 'A'               ,
+                 A_IX_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 A_IX_EX           
+        endif
+
+;-------XI-Print-Statements----------------------------------------------------------------;
+        ;Print out P XI
+        if (P_XI_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'XI'              ,
+                 '@PeriodMetrics@' ,
+                 'P'               ,
+                 P_XI_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 P_XI_EX           
+        endif
+
+        ;Print out A XI
+        if (A_XI_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'XI'              ,
+                 '@PeriodMetrics@' ,
+                 'A'               ,
+                 A_XI_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 A_XI_EX           
+        endif
+
+;-------XX-Print-Statements----------------------------------------------------------------;
+        ;Print out P XX
+        if (P_XX_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'XX'              ,
+                 '@PeriodMetrics@' ,
+                 'P'               ,
+                 P_XX_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 P_XX_EX           
+        endif
+
+        ;Print out A XX
+        if (A_XX_ALL>0)
+            PRINT FILE='@ParentDir@@ScenarioDir@Temp\5_AssignHwy\TAZ-Based Metrics - @Metric@-@PeriodLp1@.csv',
+            CSV=T,
+            LIST=i                 ,
+                 vehMetric         ,
+                 'XX'              ,
+                 '@PeriodMetrics@' ,
+                 'A'               ,
+                 A_XX_ALL          ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 0                 ,
+                 A_XX_EX           
+        endif

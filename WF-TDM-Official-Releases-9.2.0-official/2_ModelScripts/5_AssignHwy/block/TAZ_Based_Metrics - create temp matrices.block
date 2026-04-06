@@ -1,0 +1,187 @@
+            
+            
+            
+            ;identify demand matrices
+            FILEI MATI[01] = '@ParentDir@@ScenarioDir@5_AssignHwy\1_ODTables\pa_@PeriodHr@_managed.mtx'
+            FILEI MATI[02] = '@ParentDir@@ScenarioDir@5_AssignHwy\1_ODTables\ap_@PeriodHr@_managed.mtx'
+            
+            ;identify skims
+            FILEI MATI[11] = '@ParentDir@@ScenarioDir@5_AssignHwy\5_FinalNetSkims\Skm_@PeriodLp1@.mtx'
+            FILEI MATI[12] = '@ParentDir@@ScenarioDir@5_AssignHwy\5_FinalNetSkims\Skm_FF.mtx'
+            
+            ;specify output matrices
+            FILEO MATO[01] = '@ParentDir@@ScenarioDir@Temp\5_AssignHwy\PA_@PeriodLp1@_@Metric@.mtx', 
+                mo=101-134,
+                name=HBW_DA_NON, HBW_SR_NON, HBW_SR_HOV, HBW_DA_TOL, HBW_SR_TOL, 
+                     HBO_DA_NON, HBO_SR_NON, HBO_SR_HOV, HBO_DA_TOL, HBO_SR_TOL,
+                     NHB_DA_NON, NHB_SR_NON, NHB_SR_HOV, NHB_DA_TOL, NHB_SR_TOL,
+                     HBC_DA_NON, HBC_SR_NON, HBC_SR_HOV, HBC_DA_TOL, HBC_SR_TOL,
+                     HBS_DriveSelf_Pr, HBS_DriveSelf_Sc, 
+                     IX, XI, XX, 
+                     SH_LT, SH_MD, SH_HV, Ext_MD, Ext_HV,
+                     HBS_DropOff_Pr, HBS_DropOff_Sc, 
+                     SchoolBus_Pr, SchoolBus_Sc
+            
+            FILEO MATO[02] = '@ParentDir@@ScenarioDir@Temp\5_AssignHwy\AP_@PeriodLp1@_@Metric@.mtx', 
+                mo=151-184,
+                name=HBW_DA_NON, HBW_SR_NON, HBW_SR_HOV, HBW_DA_TOL, HBW_SR_TOL, 
+                     HBO_DA_NON, HBO_SR_NON, HBO_SR_HOV, HBO_DA_TOL, HBO_SR_TOL,
+                     NHB_DA_NON, NHB_SR_NON, NHB_SR_HOV, NHB_DA_TOL, NHB_SR_TOL,
+                     HBC_DA_NON, HBC_SR_NON, HBC_SR_HOV, HBC_DA_TOL, HBC_SR_TOL,
+                     HBS_DriveSelf_Pr, HBS_DriveSelf_Sc, 
+                     IX, XI, XX, 
+                     SH_LT, SH_MD, SH_HV, Ext_MD, Ext_HV,
+                     HBS_DropOff_Pr, HBS_DropOff_Sc, 
+                     SchoolBus_Pr, SchoolBus_Sc
+            
+            
+            ;Cluster: distribute intrastep processing
+            DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+            
+            
+            ;define matrix parameters
+            ZONES   = @UsedZones@
+            
+
+            ;convert to correct units (minutes to hours for total time)
+            unitConverter = 1
+            if ('@SkimMat@' = 'TotTime')  unitConverter = 1/60
+            
+            ;reassign 9999 skim values to 0 to prevent incorrect rowsums downstream
+            jloop
+                
+                mw[901][j] = mi.@SkimMatIdx@.GP_@SkimMat@   * unitConverter
+                if (mw[901][j]>=9999) mw[901][j] = 0
+                
+                mw[902][j] = mi.@SkimMatIdx@.GP_@SkimMat@.T * unitConverter
+                if (mw[902][j]>=9999) mw[902][j] = 0
+                
+                mw[903][j] = mi.@SkimMatIdx@.MG_@SkimMat@   * unitConverter
+                if (mw[903][j]>=9999) mw[903][j] = 0
+                
+                mw[904][j] = mi.@SkimMatIdx@.MD_@SkimMat@   * unitConverter
+                if (mw[904][j]>=9999) mw[904] = 0
+                
+                mw[905][j] = mi.@SkimMatIdx@.HV_@SkimMat@   * unitConverter
+                if (mw[905][j]>=9999) mw[905] = 0
+                
+            endjloop
+
+            
+            ;Assign demand input files to working matrices
+            ;PA --------------------------------------------------------------------------
+            ;HBW
+            mw[101] = mi.1.HBW_DA_NON       * mw[901]
+            mw[102] = mi.1.HBW_SR_NON       * mw[903]
+            mw[103] = mi.1.HBW_SR_HOV       * mw[903]
+            mw[104] = mi.1.HBW_DA_TOL       * mw[903]
+            mw[105] = mi.1.HBW_SR_TOL       * mw[903]
+            
+            ;HBO
+            mw[106] = mi.1.HBO_DA_NON       * mw[901]
+            mw[107] = mi.1.HBO_SR_NON       * mw[903]
+            mw[108] = mi.1.HBO_SR_HOV       * mw[903]
+            mw[109] = mi.1.HBO_DA_TOL       * mw[903]
+            mw[110] = mi.1.HBO_SR_TOL       * mw[903]
+            
+            ;NHB
+            mw[111] = mi.1.NHB_DA_NON       * mw[901]
+            mw[112] = mi.1.NHB_SR_NON       * mw[903]
+            mw[113] = mi.1.NHB_SR_HOV       * mw[903]
+            mw[114] = mi.1.NHB_DA_TOL       * mw[903]
+            mw[115] = mi.1.NHB_SR_TOL       * mw[903]
+            
+            ;HBC
+            mw[116] = mi.1.HBC_DA_NON       * mw[901]
+            mw[117] = mi.1.HBC_SR_NON       * mw[903]
+            mw[118] = mi.1.HBC_SR_HOV       * mw[903]
+            mw[119] = mi.1.HBC_DA_TOL       * mw[903]
+            mw[120] = mi.1.HBC_SR_TOL       * mw[903]
+            
+            ;HBSch, Ext, Truck
+            ;  note: HBS_DropOff creates for 2 trips, the 2nd accounts for the return trip home in the same period,
+            ;        i.e. same number of trips but inverted skim
+            mw[121] = mi.1.HBS_DriveSelf_Pr * mw[901]
+            mw[122] = mi.1.HBS_DriveSelf_Sc * mw[901]
+            mw[123] = mi.1.IX               * mw[901]
+            mw[124] = mi.1.XI               * mw[901]
+            mw[125] = mi.1.XX               * mw[901]
+            mw[126] = mi.1.SH_LT            * mw[901]
+            mw[127] = mi.1.SH_MD            * mw[904]
+            mw[128] = mi.1.SH_HV            * mw[905]
+            mw[129] = mi.1.Ext_MD           * mw[904]
+            mw[130] = mi.1.Ext_HV           * mw[905]
+            mw[131] = mi.1.HBS_DropOff_Pr   * mw[901]  +  mi.1.HBS_DropOff_Pr * mw[902]
+            mw[132] = mi.1.HBS_DropOff_Sc   * mw[901]  +  mi.1.HBS_DropOff_Sc * mw[902]
+            mw[133] = mi.1.SchoolBus_Pr     * mw[901]
+            mw[134] = mi.1.SchoolBus_Sc     * mw[901]
+            
+            
+            ;AP --------------------------------------------------------------------------
+            ;HBW
+            mw[151] = mi.2.HBW_DA_NON       * mw[901]
+            mw[152] = mi.2.HBW_SR_NON       * mw[903]
+            mw[153] = mi.2.HBW_SR_HOV       * mw[903]
+            mw[154] = mi.2.HBW_DA_TOL       * mw[903]
+            mw[155] = mi.2.HBW_SR_TOL       * mw[903]
+            
+            ;HBO
+            mw[156] = mi.2.HBO_DA_NON       * mw[901]
+            mw[157] = mi.2.HBO_SR_NON       * mw[903]
+            mw[158] = mi.2.HBO_SR_HOV       * mw[903]
+            mw[159] = mi.2.HBO_DA_TOL       * mw[903]
+            mw[160] = mi.2.HBO_SR_TOL       * mw[903]
+            
+            ;NHB
+            mw[161] = mi.2.NHB_DA_NON       * mw[901]
+            mw[162] = mi.2.NHB_SR_NON       * mw[903]
+            mw[163] = mi.2.NHB_SR_HOV       * mw[903]
+            mw[164] = mi.2.NHB_DA_TOL       * mw[903]
+            mw[165] = mi.2.NHB_SR_TOL       * mw[903]
+            
+            ;HBC
+            mw[166] = mi.2.HBC_DA_NON       * mw[901]
+            mw[167] = mi.2.HBC_SR_NON       * mw[903]
+            mw[168] = mi.2.HBC_SR_HOV       * mw[903]
+            mw[169] = mi.2.HBC_DA_TOL       * mw[903]
+            mw[170] = mi.2.HBC_SR_TOL       * mw[903]
+            
+            ;HBSch, Ext, Truck
+            ;  note: HBS_DropOff creates for 2 trips, the 2nd accounts for the return trip home in the same period,
+            ;        i.e. same number of trips but inverted skim
+            mw[171] = mi.2.HBS_DriveSelf_Pr * mw[901]
+            mw[172] = mi.2.HBS_DriveSelf_Sc * mw[901]
+            mw[173] = mi.2.IX               * mw[901]
+            mw[174] = mi.2.XI               * mw[901]
+            mw[175] = mi.2.XX               * mw[901]
+            mw[176] = mi.2.SH_LT            * mw[901]
+            mw[177] = mi.2.SH_MD            * mw[904]
+            mw[178] = mi.2.SH_HV            * mw[905]
+            mw[179] = mi.2.Ext_MD           * mw[904]
+            mw[180] = mi.2.Ext_HV           * mw[905]
+            mw[181] = mi.2.HBS_DropOff_Pr   * mw[901]  +  mi.2.HBS_DropOff_Pr   * mw[902]
+            mw[182] = mi.2.HBS_DropOff_Sc   * mw[901]  +  mi.2.HBS_DropOff_Sc   * mw[902]
+            mw[183] = mi.2.SchoolBus_Pr     * mw[901]
+            mw[184] = mi.2.SchoolBus_Sc     * mw[901]
+            
+            
+            ;print timestamp -------------------------------------------------------------------------------------------
+            if (i=ZONES)
+                
+                ;calculate time
+                tempEndTime = currenttime()
+                tempRunTime = tempEndTime - @tempStartTime@
+                
+                PRINT FILE='@ParentDir@@ScenarioDir@\_Log\_RunTime - @RID@ - TAZ-Based Metrics.csv',
+                    APPEND=T,
+                    CSV=T,
+                    LIST='matrices'     ,
+                         'temp'         ,
+                         '@Metric@'     ,
+                         '@PeriodLp1@'  ,
+                         @tempStartTime@,
+                         tempEndTime    ,
+                         tempRunTime    
+                
+            endif  ;(i=ZONES)
+            

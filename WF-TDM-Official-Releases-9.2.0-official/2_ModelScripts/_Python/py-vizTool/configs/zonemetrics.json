@@ -1,0 +1,155 @@
+{
+    "outputFileName": "j-zone-metrics.json",
+    "idCol": "TAZID",
+    "groupAndSum": true,
+    "filters": [
+        {   "filterCode": "fTod4",
+            "filterDescription": "Time of day",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Period"
+        },
+        {   "filterCode": "fPurp12",
+            "filterDescription": "Trip Purpose",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Purpose"
+        },
+        {   "filterCode": "fPA",
+            "filterDescription": "Production/Attraction",
+            "filterLocation": "long",
+            "tdmCsvColumn": "PA"
+        },
+        {   "filterCode": "fModeRoad",
+            "filterDescription": "Modes for Roadway Volumes",
+            "filterLocation": "wide"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "aPMT",
+            "attributeDescription": "Person Miles Traveled",
+            "roundingDecimals": 2
+        },
+        {   "attributeCode": "aPHT",
+            "attributeDescription": "Person Hours Traveled",
+            "roundingDecimals": 2
+        },
+        {   "attributeCode": "aPHT_FF",
+            "attributeDescription": "Person Hours Traveled Freeflow",
+            "roundingDecimals": 2
+        },
+        {   "attributeCode": "aPHD",
+            "attributeDescription": "Person Hours of Delay",
+            "roundingDecimals": 2
+        },
+        {   "attributeCode": "aVMT",
+            "attributeDescription": "Vehicle Miles Traveled",
+            "roundingDecimals": 2
+        },
+        {   "attributeCode": "aVHT",
+            "attributeDescription": "Vehicle Hours Traveled",
+            "roundingDecimals": 2
+        },
+        {   "attributeCode": "aVHT_FF",
+            "attributeDescription": "Vehicle Hours Traveled Freeflow",
+            "roundingDecimals": 2
+        },
+        {   "attributeCode": "aVHD",
+            "attributeDescription": "Vehicle Hours of Delay",
+            "roundingDecimals": 2
+        }
+    ],
+    "tdmCsvSingleColumnForAtts": {
+        "tdmCsvColumn": "Metric",
+        "wideFilterSettings": [
+            {
+                "tdmCsvColumn": "DA_NON",
+                "filterSettings": [
+                    {
+                        "filterCode": "fModeRoad",
+                        "filterValue": "DAn"
+                    }
+                ]
+            },
+            {
+                "tdmCsvColumn": "DA_TOL",
+                "filterSettings": [
+                    {
+                        "filterCode": "fModeRoad",
+                        "filterValue": "DAt"
+                    }
+                ]
+            },
+            {
+                "tdmCsvColumn": "SR_NON",
+                "filterSettings": [
+                    {
+                        "filterCode": "fModeRoad",
+                        "filterValue": "SRn"
+                    }
+                ]
+            },
+            {
+                "tdmCsvColumn": "SR_TOL",
+                "filterSettings": [
+                    {
+                        "filterCode": "fModeRoad",
+                        "filterValue": "SRt"
+                    }
+                ]
+            },
+            {
+                "tdmCsvColumn": "SR_HOV",
+                "filterSettings": [
+                    {
+                        "filterCode": "fModeRoad",
+                        "filterValue": "SRh"
+                    }
+                ]
+            },
+            {
+                "tdmCsvColumn": "DriveSelf",
+                "filterSettings": [
+                    {
+                        "filterCode": "fModeRoad",
+                        "filterValue": "Ss"
+                    }
+                ]
+            },
+            {
+                "tdmCsvColumn": "DropOff",
+                "filterSettings": [
+                    {
+                        "filterCode": "fModeRoad",
+                        "filterValue": "Sd"
+                    }
+                ]
+            },
+            {
+                "tdmCsvColumn": "SchoolBus",
+                "filterSettings": [
+                    {
+                        "filterCode": "fModeRoad",
+                        "filterValue": "Sb"
+                    }
+                ]
+            },
+            {
+                "tdmCsvColumn": "Truck",
+                "filterSettings": [
+                    {
+                        "filterCode": "fModeRoad",
+                        "filterValue": "Truck"
+                    }
+                ]
+            },
+            {
+                "tdmCsvColumn": "External",
+                "filterSettings": [
+                    {
+                        "filterCode": "fModeRoad",
+                        "filterValue": "External"
+                    }
+                ]
+            }
+        ]
+    }
+}

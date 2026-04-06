@@ -1,0 +1,481 @@
+;calculate asc adjustments
+        ;adjust non-motorized by veh own (reference=motorized)
+        compare_share_nonmotor_0veh = ln(calib_share_nonmotor_0veh / share_nonmotor_0veh)
+        compare_share_nonmotor_1veh = ln(calib_share_nonmotor_1veh / share_nonmotor_1veh)
+        compare_share_nonmotor_2veh = ln(calib_share_nonmotor_2veh / share_nonmotor_2veh)
+        
+        
+        ;adjust transit by veh own (reference=auto)
+        compare_share_transit_0veh = ln(calib_share_transit_0veh / rel_share_transit_0veh)
+        compare_share_transit_1veh = ln(calib_share_transit_1veh / rel_share_transit_1veh)
+        compare_share_transit_2veh = ln(calib_share_transit_2veh / rel_share_transit_2veh)
+        
+        
+        ;adjust shared-ride by veh own (reference=drive alone)
+        compare_share_shared_0veh = ln(calib_share_shared_0veh / rel_share_shared_0veh)
+        compare_share_shared_1veh = ln(calib_share_shared_1veh / rel_share_shared_1veh)
+        compare_share_shared_2veh = ln(calib_share_shared_2veh / rel_share_shared_2veh)
+        
+        
+        ;adjust SR3 (reference=SR2)
+        compare_share_sr3_all = ln(calib_share_sr3_all / rel_share_sr3_all)    
+        
+        
+        ;adjust toll (reference=HOV)
+        ;compare_share_toll_all = ln(calib_share_toll_all / rel_share_toll_all)
+        
+        
+        ;adjust express, LRT, CRT (reference=local, COR constants are relative to LRT)
+        if (calib_share_EXP_all>0)
+            compare_share_EXP_all = ln(calib_share_EXP_all / rel_share_EXP_all)
+        else
+            compare_share_EXP_all = 0
+        endif
+        
+       ;compare_share_COR_all     = ln(calib_share_COR_all / rel_share_COR_all)
+        compare_share_BRT_all     = ln(calib_share_BRT_all / rel_share_BRT_all)
+        compare_share_LRT_all     = ln(calib_share_LRT_all / rel_share_LRT_all)
+        compare_share_CRT_all     = ln(calib_share_CRT_all / rel_share_CRT_all)
+        
+        
+        ;adust drive access by veh own (reference=walk access)
+        if (calib_share_driveacc_0veh>0)
+            compare_share_driveacc_0veh = ln(calib_share_driveacc_0veh / rel_share_driveacc_0veh)
+        else
+            compare_share_driveacc_0veh = 0
+        endif
+        
+        compare_share_driveacc_1veh = ln(calib_share_driveacc_1veh / rel_share_driveacc_1veh)
+        compare_share_driveacc_2veh = ln(calib_share_driveacc_2veh / rel_share_driveacc_2veh)
+        
+        
+        ;adjust walk to express, LRT & CRT (reference=local)
+        if (calib_share_wEXP_all>0)
+            compare_share_wEXP_all = ln(calib_share_wEXP_all / rel_share_wEXP_all)
+        else
+            compare_share_wEXP_all = 0
+        endif
+        
+       ;compare_share_wCOR_all     = ln(calib_share_wCOR_all / rel_share_wCOR_all)
+        compare_share_wBRT_all     = ln(calib_share_wBRT_all / rel_share_wBRT_all)
+        compare_share_wLRT_all     = ln(calib_share_wLRT_all / rel_share_wLRT_all)
+        compare_share_wCRT_all     = ln(calib_share_wCRT_all / rel_share_wCRT_all)
+        
+        
+        ;adjut drive to express, LRT & CRT (reference=local)
+        if (calib_share_dEXP_all>0)
+            compare_share_dEXP_all = ln(calib_share_dEXP_all / rel_share_dEXP_all)
+        else
+            compare_share_dEXP_all = 0
+        endif
+        
+       ;compare_share_dCOR_all     = ln(calib_share_dCOR_all / rel_share_dCOR_all)
+        compare_share_dBRT_all     = ln(calib_share_dBRT_all / rel_share_dBRT_all)
+        compare_share_dLRT_all     = ln(calib_share_dLRT_all / rel_share_dLRT_all)
+        compare_share_dCRT_all     = ln(calib_share_dCRT_all / rel_share_dCRT_all)
+        
+        
+        ;adjust bike (reference=walk)
+        compare_share_bike_all = ln(calib_share_bike_all / rel_share_bike_all)
+        
+        
+;update_constants
+        damp = 0.33
+        
+        asc_motor_0veh2 = asc_motor_0veh
+        asc_motor_1veh2 = asc_motor_1veh
+        asc_motor_2veh2 = asc_motor_2veh  
+        asc_motor_all2  = asc_motor_all 
+        
+        asc_nonmotor_0veh2 = asc_nonmotor_0veh + compare_share_nonmotor_0veh * damp 
+        asc_nonmotor_1veh2 = asc_nonmotor_1veh + compare_share_nonmotor_1veh * damp 
+        asc_nonmotor_2veh2 = asc_nonmotor_2veh + compare_share_nonmotor_2veh * damp  
+        asc_nonmotor_all2  = asc_nonmotor_all  
+        
+        
+        asc_auto_0veh2 = asc_auto_0veh 
+        asc_auto_1veh2 = asc_auto_1veh 
+        asc_auto_2veh2 = asc_auto_2veh
+        asc_auto_all2  = asc_auto_all  
+        
+        asc_transit_0veh2 = asc_transit_0veh + compare_share_transit_0veh * damp
+        asc_transit_1veh2 = asc_transit_1veh + compare_share_transit_1veh * damp 
+        asc_transit_2veh2 = asc_transit_2veh + compare_share_transit_2veh * damp
+        asc_transit_all2  = asc_transit_all  
+        
+        
+        asc_alone_0veh2 = asc_alone_0veh
+        asc_alone_1veh2 = asc_alone_1veh 
+        asc_alone_2veh2 = asc_alone_2veh  
+        asc_alone_all2  = asc_alone_all  
+        
+        asc_shared_0veh2 = asc_shared_0veh + compare_share_shared_0veh * damp 
+        asc_shared_1veh2 = asc_shared_1veh + compare_share_shared_1veh * damp 
+        asc_shared_2veh2 = asc_shared_2veh + compare_share_shared_2veh * damp
+        asc_shared_all2  = asc_shared_all
+        
+        
+        asc_sr2_0veh2 = asc_sr2_0veh
+        asc_sr2_1veh2 = asc_sr2_1veh
+        asc_sr2_2veh2 = asc_sr2_2veh
+        asc_sr2_all2  = asc_sr2_all     
+        
+        asc_sr3_0veh2 = asc_sr3_0veh
+        asc_sr3_1veh2 = asc_sr3_1veh
+        asc_sr3_2veh2 = asc_sr3_2veh
+        asc_sr3_all2  = asc_sr3_all + compare_share_sr3_all * damp  
+        
+        
+        asc_hov_0veh2 = asc_hov_0veh 
+        asc_hov_1veh2 = asc_hov_1veh 
+        asc_hov_2veh2 = asc_hov_2veh
+        asc_hov_all2  = asc_hov_all     
+        
+        asc_toll_0veh2 = asc_toll_0veh
+        asc_toll_1veh2 = asc_toll_1veh
+        asc_toll_2veh2 = asc_toll_2veh
+        asc_toll_all2  = asc_toll_all ;+ compare_share_toll_all * damp 
+        
+        
+        asc_LCL_0veh2 = asc_LCL_0veh
+        asc_LCL_1veh2 = asc_LCL_1veh
+        asc_LCL_2veh2 = asc_LCL_2veh
+        asc_LCL_all2  = asc_LCL_all     
+        
+        asc_EXP_0veh2 = asc_EXP_0veh 
+        asc_EXP_1veh2 = asc_EXP_1veh
+        asc_EXP_2veh2 = asc_EXP_2veh
+        asc_EXP_all2  = asc_EXP_all + compare_share_EXP_all * damp
+        
+       ;asc_COR_0veh2 = asc_COR_0veh 
+       ;asc_COR_1veh2 = asc_COR_1veh 
+       ;asc_COR_2veh2 = asc_COR_2veh
+       ;asc_COR_all2  = asc_COR_all + compare_share_COR_all * damp
+
+        asc_BRT_0veh2 = asc_BRT_0veh 
+        asc_BRT_1veh2 = asc_BRT_1veh 
+        asc_BRT_2veh2 = asc_BRT_2veh
+        asc_BRT_all2  = asc_BRT_all + compare_share_BRT_all * damp
+
+        asc_LRT_0veh2 = asc_LRT_0veh 
+        asc_LRT_1veh2 = asc_LRT_1veh 
+        asc_LRT_2veh2 = asc_LRT_2veh
+        asc_LRT_all2  = asc_LRT_all + compare_share_LRT_all * damp
+        
+        asc_CRT_0veh2 = asc_CRT_0veh 
+        asc_CRT_1veh2 = asc_CRT_1veh 
+        asc_CRT_2veh2 = asc_CRT_2veh
+        asc_CRT_all2  = asc_CRT_all + compare_share_CRT_all * damp
+        
+        
+        asc_walkacc_0veh2 = asc_walkacc_0veh
+        asc_walkacc_1veh2 = asc_walkacc_1veh
+        asc_walkacc_2veh2 = asc_walkacc_2veh
+        asc_walkacc_all2  = asc_walkacc_all
+        
+        asc_driveacc_0veh2 = asc_driveacc_0veh + compare_share_driveacc_0veh * damp
+        asc_driveacc_1veh2 = asc_driveacc_1veh + compare_share_driveacc_1veh * damp
+        asc_driveacc_2veh2 = asc_driveacc_2veh + compare_share_driveacc_2veh * damp
+        asc_driveacc_all2  = asc_driveacc_all
+        
+        
+        asc_wLCL_0veh2 = asc_wLCL_0veh 
+        asc_wLCL_1veh2 = asc_wLCL_1veh 
+        asc_wLCL_2veh2 = asc_wLCL_2veh
+        asc_wLCL_all2  = asc_wLCL_all    
+        
+        asc_wEXP_0veh2 = asc_wEXP_0veh 
+        asc_wEXP_1veh2 = asc_wEXP_1veh 
+        asc_wEXP_2veh2 = asc_wEXP_2veh
+        asc_wEXP_all2 = asc_wEXP_all + compare_share_wEXP_all * damp
+        
+       ;asc_wCOR_0veh2 = asc_wCOR_0veh 
+       ;asc_wCOR_1veh2 = asc_wCOR_1veh 
+       ;asc_wCOR_2veh2 = asc_wCOR_2veh   
+       ;asc_wCOR_all2  = asc_wCOR_all + compare_share_wCOR_all * damp  
+        
+        asc_wBRT_0veh2 = asc_wBRT_0veh 
+        asc_wBRT_1veh2 = asc_wBRT_1veh 
+        asc_wBRT_2veh2 = asc_wBRT_2veh   
+        asc_wBRT_all2  = asc_wBRT_all + compare_share_wBRT_all * damp  
+        
+        asc_wLRT_0veh2 = asc_wLRT_0veh 
+        asc_wLRT_1veh2 = asc_wLRT_1veh 
+        asc_wLRT_2veh2 = asc_wLRT_2veh   
+        asc_wLRT_all2  = asc_wLRT_all + compare_share_wLRT_all * damp  
+        
+        asc_wCRT_0veh2 = asc_wCRT_0veh 
+        asc_wCRT_1veh2 = asc_wCRT_1veh 
+        asc_wCRT_2veh2 = asc_wCRT_2veh   
+        asc_wCRT_all2  = asc_wCRT_all + compare_share_wCRT_all * damp  
+        
+        
+        asc_dLCL_0veh2 = asc_dLCL_0veh 
+        asc_dLCL_1veh2 = asc_dLCL_1veh
+        asc_dLCL_2veh2 = asc_dLCL_2veh 
+        asc_dLCL_all2  = asc_dLCL_all 
+        
+        asc_dEXP_0veh2 = asc_dEXP_0veh 
+        asc_dEXP_1veh2 = asc_dEXP_1veh
+        asc_dEXP_2veh2 = asc_dEXP_2veh 
+        asc_dEXP_all2  = asc_dEXP_all + compare_share_dEXP_all * damp
+        
+       ;asc_dCOR_0veh2 = asc_dCOR_0veh 
+       ;asc_dCOR_1veh2 = asc_dCOR_1veh
+       ;asc_dCOR_2veh2 = asc_dCOR_2veh 
+       ;asc_dCOR_all2  = asc_dCOR_all + compare_share_dCOR_all * damp  
+                
+        asc_dBRT_0veh2 = asc_dBRT_0veh 
+        asc_dBRT_1veh2 = asc_dBRT_1veh
+        asc_dBRT_2veh2 = asc_dBRT_2veh 
+        asc_dBRT_all2  = asc_dBRT_all + compare_share_dBRT_all * damp  
+        
+        asc_dLRT_0veh2 = asc_dLRT_0veh 
+        asc_dLRT_1veh2 = asc_dLRT_1veh
+        asc_dLRT_2veh2 = asc_dLRT_2veh 
+        asc_dLRT_all2  = asc_dLRT_all + compare_share_dLRT_all * damp  
+        
+        asc_dCRT_0veh2 = asc_dCRT_0veh 
+        asc_dCRT_1veh2 = asc_dCRT_1veh
+        asc_dCRT_2veh2 = asc_dCRT_2veh 
+        asc_dCRT_all2  = asc_dCRT_all + compare_share_dCRT_all * damp   
+        
+        
+        asc_walk_0veh2 = asc_walk_0veh 
+        asc_walk_1veh2 = asc_walk_1veh 
+        asc_walk_2veh2 = asc_walk_2veh  
+        asc_walk_all2  = asc_walk_all 
+        
+        asc_bike_0veh2 = asc_bike_0veh
+        asc_bike_1veh2 = asc_bike_1veh
+        asc_bike_2veh2 = asc_bike_2veh     
+        asc_bike_all2  = asc_bike_all + compare_share_bike_all * damp 
+        
+        
+;print updated constants
+        PRINT FILE='@ParentDir@2_ModelScripts\4_ModeChoice\coeffs\calib_const\@purp@_MC_constants_@prd@_@n@.txt', FORM=10.4, 
+        list= 'asc_motor_0veh     =   ',   asc_motor_0veh2, '\n',
+              'asc_motor_1veh     =   ',   asc_motor_1veh2, '\n',
+              'asc_motor_2veh     =   ',   asc_motor_2veh2, '\n',
+              'asc_motor_all      =   ',   asc_motor_all2, '\n', 
+              '\n',
+              'asc_nonmotor_0veh  =   ',   asc_nonmotor_0veh2, '\n',
+              'asc_nonmotor_1veh  =   ',   asc_nonmotor_1veh2, '\n', 
+              'asc_nonmotor_2veh  =   ',   asc_nonmotor_2veh2, '\n',
+              'asc_nonmotor_all   =   ',   asc_nonmotor_all2, '\n', 
+              '\n',
+              '\n',
+              'asc_auto_0veh      =   ',   asc_auto_0veh2, '\n', 
+              'asc_auto_1veh      =   ',   asc_auto_1veh2, '\n', 
+              'asc_auto_2veh      =   ',   asc_auto_2veh2, '\n',
+              'asc_auto_all       =   ',   asc_auto_all2, '\n', 
+              '\n',
+              'asc_transit_0veh   =   ',   asc_transit_0veh2, '\n',
+              'asc_transit_1veh   =   ',   asc_transit_1veh2, '\n', 
+              'asc_transit_2veh   =   ',   asc_transit_2veh2, '\n',
+              'asc_transit_all    =   ',   asc_transit_all2, '\n', 
+              '\n',
+              '\n',
+              'asc_alone_0veh     =   ',   asc_alone_0veh2, '\n',
+              'asc_alone_1veh     =   ',   asc_alone_1veh2, '\n', 
+              'asc_alone_2veh     =   ',   asc_alone_2veh2, '\n',
+              'asc_alone_all      =   ',   asc_alone_all2, '\n', 
+              '\n',
+              'asc_shared_0veh    =   ',   asc_shared_0veh2, '\n', 
+              'asc_shared_1veh    =   ',   asc_shared_1veh2, '\n', 
+              'asc_shared_2veh    =   ',   asc_shared_2veh2, '\n',
+              'asc_shared_all     =   ',   asc_shared_all2, '\n',
+              '\n',
+              '\n',
+              'asc_sr2_0veh       =   ',   asc_sr2_0veh2, '\n', 
+              'asc_sr2_1veh       =   ',   asc_sr2_1veh2, '\n', 
+              'asc_sr2_2veh       =   ',   asc_sr2_2veh2, '\n',
+              'asc_sr2_all        =   ',   asc_sr2_all2, '\n', 
+              '\n',
+              'asc_sr3_0veh       =   ',   asc_sr3_0veh2, '\n',
+              'asc_sr3_1veh       =   ',   asc_sr3_1veh2, '\n', 
+              'asc_sr3_2veh       =   ',   asc_sr3_2veh2, '\n',
+              'asc_sr3_all        =   ',   asc_sr3_all2, '\n', 
+              '\n'  
+        
+        PRINT FILE='@ParentDir@2_ModelScripts\4_ModeChoice\coeffs\calib_const\@purp@_MC_constants_@prd@_@n@.txt', FORM=10.4, 
+        list= 'asc_hov_0veh       =   ',   asc_hov_0veh2, '\n', 
+              'asc_hov_1veh       =   ',   asc_hov_1veh2, '\n', 
+              'asc_hov_2veh       =   ',   asc_hov_2veh2, '\n',
+              'asc_hov_all        =   ',   asc_hov_all2, '\n', 
+              '\n',
+              'asc_toll_0veh      =   ',   asc_toll_0veh2, '\n',
+              'asc_toll_1veh      =   ',   asc_toll_1veh2, '\n', 
+              'asc_toll_2veh      =   ',   asc_toll_2veh2, '\n',
+              'asc_toll_all       =   ',   asc_toll_all2, '\n', 
+              '\n',
+              '\n',
+              'asc_LCL_0veh       =   ',   asc_LCL_0veh2, '\n', 
+              'asc_LCL_1veh       =   ',   asc_LCL_1veh2, '\n', 
+              'asc_LCL_2veh       =   ',   asc_LCL_2veh2, '\n',
+              'asc_LCL_all        =   ',   asc_LCL_all2, '\n', 
+              '\n',
+              'asc_EXP_0veh       =   ',   asc_EXP_0veh2, '\n', 
+              'asc_EXP_1veh       =   ',   asc_EXP_1veh2, '\n', 
+              'asc_EXP_2veh       =   ',   asc_EXP_2veh2, '\n',
+              'asc_EXP_all        =   ',   asc_EXP_all2, '\n', 
+              '\n',
+             ;'asc_COR_0veh       =   ',   asc_COR_0veh2, '\n',
+             ;'asc_COR_1veh       =   ',   asc_COR_1veh2, '\n', 
+             ;'asc_COR_2veh       =   ',   asc_COR_2veh2, '\n',
+             ;'asc_COR_all        =   ',   asc_COR_all2, '\n',
+             ;'\n',
+              'asc_BRT_0veh       =   ',   asc_BRT_0veh2, '\n',
+              'asc_BRT_1veh       =   ',   asc_BRT_1veh2, '\n', 
+              'asc_BRT_2veh       =   ',   asc_BRT_2veh2, '\n',
+              'asc_BRT_all        =   ',   asc_BRT_all2, '\n',
+              '\n',
+              'asc_LRT_0veh       =   ',   asc_LRT_0veh2, '\n',
+              'asc_LRT_1veh       =   ',   asc_LRT_1veh2, '\n', 
+              'asc_LRT_2veh       =   ',   asc_LRT_2veh2, '\n',
+              'asc_LRT_all        =   ',   asc_LRT_all2, '\n',
+              '\n',
+              'asc_CRT_0veh       =   ',   asc_CRT_0veh2, '\n',
+              'asc_CRT_1veh       =   ',   asc_CRT_1veh2, '\n', 
+              'asc_CRT_2veh       =   ',   asc_CRT_2veh2, '\n',
+              'asc_CRT_all        =   ',   asc_CRT_all2, '\n',
+              '\n',
+              '\n',
+              'asc_walkacc_0veh   =   ',   asc_walkacc_0veh2, '\n', 
+              'asc_walkacc_1veh   =   ',   asc_walkacc_1veh2, '\n', 
+              'asc_walkacc_2veh   =   ',   asc_walkacc_2veh2, '\n',
+              'asc_walkacc_all    =   ',   asc_walkacc_all2, '\n',
+              '\n',
+              'asc_driveacc_0veh  =  ',   asc_driveacc_0veh2, '\n', 
+              'asc_driveacc_1veh  =  ',   asc_driveacc_1veh2, '\n', 
+              'asc_driveacc_2veh  =  ',   asc_driveacc_2veh2, '\n',
+              'asc_driveacc_all   =  ',   asc_driveacc_all2, '\n',
+              '\n'  
+        
+        PRINT FILE='@ParentDir@2_ModelScripts\4_ModeChoice\coeffs\calib_const\@purp@_MC_constants_@prd@_@n@.txt', FORM=10.4, 
+        list= 'asc_wLCL_0veh      =   ',   asc_wLCL_0veh2, '\n',
+              'asc_wLCL_1veh      =   ',   asc_wLCL_1veh2, '\n',
+              'asc_wLCL_2veh      =   ',   asc_wLCL_2veh2, '\n',
+              'asc_wLCL_all       =   ',   asc_wLCL_all2, '\n',
+              '\n', 
+              'asc_wEXP_0veh      =   ',   asc_wEXP_0veh2, '\n', 
+              'asc_wEXP_1veh      =   ',   asc_wEXP_1veh2, '\n',
+              'asc_wEXP_2veh      =   ',   asc_wEXP_2veh2, '\n',
+              'asc_wEXP_all       =   ',   asc_wEXP_all2, '\n',  
+              '\n',
+             ;'asc_wCOR_0veh      =   ',   asc_wCOR_0veh2, '\n', 
+             ;'asc_wCOR_1veh      =   ',   asc_wCOR_1veh2, '\n', 
+             ;'asc_wCOR_2veh      =   ',   asc_wCOR_2veh2, '\n', 
+             ;'asc_wCOR_all       =   ',   asc_wCOR_all2, '\n',  
+             ;'\n',
+              'asc_wBRT_0veh      =   ',   asc_wBRT_0veh2, '\n', 
+              'asc_wBRT_1veh      =   ',   asc_wBRT_1veh2, '\n', 
+              'asc_wBRT_2veh      =   ',   asc_wBRT_2veh2, '\n', 
+              'asc_wBRT_all       =   ',   asc_wBRT_all2, '\n',  
+              '\n',
+              'asc_wLRT_0veh      =   ',   asc_wLRT_0veh2, '\n', 
+              'asc_wLRT_1veh      =   ',   asc_wLRT_1veh2, '\n', 
+              'asc_wLRT_2veh      =   ',   asc_wLRT_2veh2, '\n', 
+              'asc_wLRT_all       =   ',   asc_wLRT_all2, '\n',  
+              '\n',
+              'asc_wCRT_0veh      =   ',   asc_wCRT_0veh2, '\n', 
+              'asc_wCRT_1veh      =   ',   asc_wCRT_1veh2, '\n', 
+              'asc_wCRT_2veh      =   ',   asc_wCRT_2veh2, '\n', 
+              'asc_wCRT_all       =   ',   asc_wCRT_all2, '\n',  
+              '\n',
+              '\n',
+              'asc_dLCL_0veh      =   ',   asc_dLCL_0veh2, '\n',
+              'asc_dLCL_1veh      =   ',   asc_dLCL_1veh2, '\n',
+              'asc_dLCL_2veh      =   ',   asc_dLCL_2veh2, '\n',
+              'asc_dLCL_all       =   ',   asc_dLCL_all2, '\n',
+              '\n',
+              'asc_dEXP_0veh      =   ',   asc_dEXP_0veh2, '\n',
+              'asc_dEXP_1veh      =   ',   asc_dEXP_1veh2, '\n', 
+              'asc_dEXP_2veh      =   ',   asc_dEXP_2veh2, '\n',
+              'asc_dEXP_all       =   ',   asc_dEXP_all2, '\n',     
+              '\n',
+             ;'asc_dCOR_0veh      =   ',   asc_dCOR_0veh2, '\n',
+             ;'asc_dCOR_1veh      =   ',   asc_dCOR_1veh2, '\n', 
+             ;'asc_dCOR_2veh      =   ',   asc_dCOR_2veh2, '\n',
+             ;'asc_dCOR_all       =   ',   asc_dCOR_all2, '\n',   
+             ;'\n',
+              'asc_dBRT_0veh      =   ',   asc_dBRT_0veh2, '\n',
+              'asc_dBRT_1veh      =   ',   asc_dBRT_1veh2, '\n', 
+              'asc_dBRT_2veh      =   ',   asc_dBRT_2veh2, '\n',
+              'asc_dBRT_all       =   ',   asc_dBRT_all2, '\n',   
+              '\n',
+              'asc_dLRT_0veh      =   ',   asc_dLRT_0veh2, '\n',
+              'asc_dLRT_1veh      =   ',   asc_dLRT_1veh2, '\n', 
+              'asc_dLRT_2veh      =   ',   asc_dLRT_2veh2, '\n',
+              'asc_dLRT_all       =   ',   asc_dLRT_all2, '\n',   
+              '\n',
+              'asc_dCRT_0veh      =   ',   asc_dCRT_0veh2, '\n',
+              'asc_dCRT_1veh      =   ',   asc_dCRT_1veh2, '\n', 
+              'asc_dCRT_2veh      =   ',   asc_dCRT_2veh2, '\n',
+              'asc_dCRT_all       =   ',   asc_dCRT_all2, '\n',  
+              '\n',
+              '\n',
+              'asc_walk_0veh      =   ',   asc_walk_0veh2, '\n', 
+              'asc_walk_1veh      =   ',   asc_walk_1veh2, '\n', 
+              'asc_walk_2veh      =   ',   asc_walk_2veh2, '\n',
+              'asc_walk_all       =   ',   asc_walk_all2, '\n',   
+              '\n',
+              'asc_bike_0veh      =   ',   asc_bike_0veh2, '\n', 
+              'asc_bike_1veh      =   ',   asc_bike_1veh2, '\n',
+              'asc_bike_2veh      =   ',   asc_bike_2veh2, '\n',
+              'asc_bike_all       =   ',   asc_bike_all2    
+
+
+
+;calculate number of ASCs that are calibrated +/- 1%
+        IF (compare_share_nonmotor_0veh < .01 & compare_share_nonmotor_0veh > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_nonmotor_1veh < .01 & compare_share_nonmotor_1veh > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_nonmotor_2veh < .01 & compare_share_nonmotor_2veh > -.01) _count_calib = _count_calib + 1  
+        
+        
+        IF (compare_share_transit_0veh < .001 & compare_share_transit_0veh > -.001) _count_calib = _count_calib + 1
+        IF (compare_share_transit_1veh < .001 & compare_share_transit_1veh > -.001) _count_calib = _count_calib + 1
+        IF (compare_share_transit_2veh < .001 & compare_share_transit_2veh > -.001) _count_calib = _count_calib + 1 
+  
+  
+        IF (compare_share_shared_0veh < .01 & compare_share_shared_0veh > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_shared_1veh < .01 & compare_share_shared_1veh > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_shared_2veh < .01 & compare_share_shared_2veh > -.01) _count_calib = _count_calib + 1  
+        
+        
+        IF (compare_share_sr3_all < .01 & compare_share_sr3_all > -.01) _count_calib = _count_calib + 1
+        
+        
+       ;IF (compare_share_toll_all < .01 & compare_share_toll_all > -.01) _count_calib = _count_calib + 1
+        
+        
+        IF (compare_share_EXP_all < .01 & compare_share_EXP_all > -.01) _count_calib = _count_calib + 1
+       ;IF (compare_share_COR_all < .01 & compare_share_COR_all > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_BRT_all < .01 & compare_share_BRT_all > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_LRT_all < .01 & compare_share_LRT_all > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_CRT_all < .01 & compare_share_CRT_all > -.01) _count_calib = _count_calib + 1  
+        
+        
+        IF (compare_share_driveacc_0veh < .01 & compare_share_driveacc_0veh > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_driveacc_1veh < .01 & compare_share_driveacc_1veh > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_driveacc_2veh < .01 & compare_share_driveacc_2veh > -.01) _count_calib = _count_calib + 1    
+        
+        
+        IF (compare_share_wEXP_all < .01 & compare_share_wEXP_all > -.01) _count_calib = _count_calib + 1  
+       ;IF (compare_share_wCOR_all < .01 & compare_share_wCOR_all > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_wBRT_all < .01 & compare_share_wBRT_all > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_wLRT_all < .01 & compare_share_wLRT_all > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_wCRT_all < .01 & compare_share_wCRT_all > -.01) _count_calib = _count_calib + 1  
+        
+        
+        IF (compare_share_dEXP_all < .01 & compare_share_dEXP_all > -.01) _count_calib = _count_calib + 1 
+       ;IF (compare_share_dCOR_all < .01 & compare_share_dCOR_all > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_dBRT_all < .01 & compare_share_dBRT_all > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_dLRT_all < .01 & compare_share_dLRT_all > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_dCRT_all < .01 & compare_share_dCRT_all > -.01) _count_calib = _count_calib + 1 
+        
+        
+        IF (compare_share_bike_all < .01 & compare_share_bike_all > -.01) _count_calib = _count_calib + 1 
+        
+        
+        LOG VAR = _count_calib    ;log variable

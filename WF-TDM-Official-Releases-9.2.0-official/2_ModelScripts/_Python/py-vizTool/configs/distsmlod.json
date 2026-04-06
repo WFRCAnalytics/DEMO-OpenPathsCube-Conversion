@@ -1,0 +1,1414 @@
+{
+    "outputFileName": "j-distsml-od.json",
+    "idCol": "DISTSML",
+    "filters": [
+        {   "filterCode": "fSmlDist2",
+            "filterDescription": "Small District",
+            "filterLocation": "long",
+            "tdmCsvColumn": "DISTSML2"
+        },
+        {   "filterCode": "fPA",
+            "filterDescription": "Production/Attraction",
+            "filterLocation": "long",
+            "tdmCsvColumn": "PA"
+        },
+        {   "filterCode": "fPurp5pAll",
+            "filterDescription": "Trip Purposes",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fModeRouteCode3",
+            "filterDescription": "Mode",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fModeAccessSingleLetter",
+            "filterDescription": "Access Mode",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fDriveMode",
+            "filterDescription": "Drive Mode",
+            "filterLocation": "wide"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "a0",
+            "attributeDescription": "All Trips",
+            "roundingDecimals": 1,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "ALL_MNM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_MNM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_MNM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_MNM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_MNM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aM",
+            "attributeDescription": "Motorized Trips",
+            "roundingDecimals": 1,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "ALL_M",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_M",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_M",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_M",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_M",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aNM",
+            "attributeDescription": "Non-Motorized Trips",
+            "roundingDecimals": 1,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "ALL_NM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_NM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_NM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_NM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_NM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aA",
+            "attributeDescription": "Auto Trips",
+            "roundingDecimals": 1,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "ALL_DA",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "DA"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_DA",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "DA"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_DA",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "DA"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_DA",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "DA"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_DA",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "DA"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_SR2",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "SR2"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_SR2",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "SR2"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_SR2",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "SR2"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_SR2",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "SR2"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_SR2",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "SR2"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_SR3p",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "SR3p"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_SR3p",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "SR3p"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_SR3p",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "SR3p"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_SR3p",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "SR3p"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_SR3p",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fDriveMode",
+                            "filterValue": "SR3p"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aT",
+            "attributeDescription": "Transit Trips",
+            "roundingDecimals": 1,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "ALL_dLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_dCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_dEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_dLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_dCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_dBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_wLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_wCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_wEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_wLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_wCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ALL_wBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "ALL"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_dLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_dCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_dEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_dLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_dCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_dBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_wLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_wCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_wEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_wLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_wCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBW_wBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBW"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_dLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_dCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_dEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_dLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_dCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_dBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_wLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_wCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_wEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_wLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_wCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBC_wBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBC"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_dLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_dCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_dEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_dLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_dCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_dBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_wLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_wCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_wEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_wLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_wCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBO_wBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "HBO"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_dLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_dCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_dEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_dLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_dCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_dBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_wLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_wCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_wEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_wLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_wCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "NHB_wBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fPurp5pAll",
+                            "filterValue": "NHB"
+                        },
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

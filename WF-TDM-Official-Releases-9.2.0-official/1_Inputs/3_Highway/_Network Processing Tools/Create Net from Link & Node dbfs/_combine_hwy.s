@@ -1,0 +1,9 @@
+RUN PGM=NETWORK
+FILEI LINKI[1] = 'USTM_Master - 2017-08-11 - Link.dbf'
+FILEI NODEI[1] = 'USTM_Master - 2017-08-11 - Node.dbf'
+
+FILEO NETO = 'USTM_Master - 2017-08-11a.net'
+
+ZONES = 9999
+
+ENDRUN

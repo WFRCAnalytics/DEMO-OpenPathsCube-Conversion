@@ -1,0 +1,94 @@
+;person level
+;---HBW-Totals-----------------------------------------------------------------------------;
+    P_HBW_DA  = P_HBW_DA_NON +
+                P_HBW_DA_TOL
+    P_HBW_SR  = P_HBW_SR_NON +
+                P_HBW_SR_TOL +
+                P_HBW_SR_HOV
+    P_HBW_ALL = P_HBW_DA     +
+                P_HBW_SR
+    
+    A_HBW_DA  = A_HBW_DA_NON +
+                A_HBW_DA_TOL
+    A_HBW_SR  = A_HBW_SR_NON +
+                A_HBW_SR_TOL +
+                A_HBW_SR_HOV
+    A_HBW_ALL = A_HBW_DA     +
+                A_HBW_SR
+
+;---HBO-Totals-----------------------------------------------------------------------------;
+    P_HBO_DA  = P_HBO_DA_NON +
+                P_HBO_DA_TOL
+    P_HBO_SR  = P_HBO_SR_NON +
+                P_HBO_SR_TOL +
+                P_HBO_SR_HOV
+    P_HBO_ALL = P_HBO_DA     +
+                P_HBO_SR
+    
+    A_HBO_DA  = A_HBO_DA_NON +
+                A_HBO_DA_TOL
+    A_HBO_SR  = A_HBO_SR_NON +
+                A_HBO_SR_TOL +
+                A_HBO_SR_HOV
+    A_HBO_ALL = A_HBO_DA     +
+                A_HBO_SR
+
+;---NHB-Totals-----------------------------------------------------------------------------;
+    P_NHB_DA  = P_NHB_DA_NON +
+                P_NHB_DA_TOL
+    P_NHB_SR  = P_NHB_SR_NON +
+                P_NHB_SR_TOL +
+                P_NHB_SR_HOV
+    P_NHB_ALL = P_NHB_DA     +
+                P_NHB_SR
+    
+    A_NHB_DA  = A_NHB_DA_NON +
+                A_NHB_DA_TOL
+    A_NHB_SR  = A_NHB_SR_NON +
+                A_NHB_SR_TOL +
+                A_NHB_SR_HOV
+    A_NHB_ALL = A_NHB_DA     +
+                A_NHB_SR
+
+;---HBC-Totals-----------------------------------------------------------------------------;
+    P_HBC_DA  = P_HBC_DA_NON +
+                P_HBC_DA_TOL
+    P_HBC_SR  = P_HBC_SR_NON +
+                P_HBC_SR_TOL +
+                P_HBC_SR_HOV
+    P_HBC_ALL = P_HBC_DA     +
+                P_HBC_SR
+    
+    A_HBC_DA  = A_HBC_DA_NON +
+                A_HBC_DA_TOL
+    A_HBC_SR  = A_HBC_SR_NON +
+                A_HBC_SR_TOL +
+                A_HBC_SR_HOV
+    A_HBC_ALL = A_HBC_DA     +
+                A_HBC_SR
+
+;---HBS_Pr-Totals--------------------------------------------------------------------------;
+    P_HBS_Pr_DA     = P_HBS_DriveSelf_Pr
+    P_HBS_Pr_SR     = P_HBS_DropOff_Pr
+    P_HBS_Pr_ALL    = P_HBS_DriveSelf_Pr +
+                      P_HBS_DropOff_Pr   +
+                      P_SchoolBus_Pr
+
+    A_HBS_Pr_DA     = A_HBS_DriveSelf_Pr
+    A_HBS_Pr_SR     = A_HBS_DropOff_Pr
+    A_HBS_Pr_ALL    = A_HBS_DriveSelf_Pr +
+                      A_HBS_DropOff_Pr   +
+                      A_SchoolBus_Pr
+
+;---HBS_Sc-Totals--------------------------------------------------------------------------;
+    P_HBS_Sc_DA     = P_HBS_DriveSelf_Sc
+    P_HBS_Sc_SR     = P_HBS_DropOff_Sc
+    P_HBS_Sc_ALL    = P_HBS_DriveSelf_Sc +
+                      P_HBS_DropOff_Sc   +
+                      P_SchoolBus_Sc
+
+    A_HBS_Sc_DA     = A_HBS_DriveSelf_Sc
+    A_HBS_Sc_SR     = A_HBS_DropOff_Sc
+    A_HBS_Sc_ALL    = A_HBS_DriveSelf_Sc +
+                      A_HBS_DropOff_Sc   +
+                      A_SchoolBus_Sc

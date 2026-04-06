@@ -1,0 +1,151 @@
+ 
+PUBLIC TRANSPORT (v.08/13/2019 [6.4.5 x64])  Thu May 02 14:22:16 2024
+
+;scenario network with rail/bus links
+FILEI NETI    = 'results\3 - Needs_2042.net'
+
+;read in transit lines ;local bus lines
+READ FILE     = '..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\Readlines.block'
+
+M(044): Reading From: ..\..\..\1_INPUTS\4_TRANSIT\LIN_2042_NEEDS\READLINES.BLOCK.
+----------------------------------------------------------------------------------------------------
+ ;local bus lines
+ FILEI LINEI[1] = '..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\wfrc_og_lcl_2042UF.lin' ;wasatch front - weber and davis county local bus
+ FILEI LINEI[2] = '..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\wfrc_sl_lcl_2042UF.lin' ;wasatch front - salt lake county local bus
+ FILEI LINEI[3] = '..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\mag_lcl_2042UF.lin'    ;mountainland - utah county local bus
+
+ ;brt and core lines
+ FILEI LINEI[4] = '..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\wfrc_core_2042UF.lin'  ;wasatch front future core route projects
+ FILEI LINEI[5] = '..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\wfrc_brt_2042UF.lin'  ;wasatch front future brt projects
+ FILEI LINEI[6] = '..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\mag_brt_2042UF.lin'     ;mountainland future brt projects
+
+ ;express-bus lines
+ FILEI LINEI[7] = '..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\wfrc_sl_exp_2042UF.lin' ;wasatch front - salt lake, weber, and davis express bus
+
+ ;rail lines
+ FILEI LINEI[8] = '..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\rail_2042UF.lin'       ;wasatch front and mountainland combined commuter and light rail
+
+
+
+M(044): Reading From: E:\1 - TDM\3 - MODEL DEV\1 - WF\2 - SANDBOX\V9.0.1\WF-TDM-V9.0.1 - 2024-04-30 - PATCH 1\1_INPUTS\4_TRANSIT\_CHK TRANSIT COMPILE ON NET\_TRANSITROUTETESTER - 3 - NEEDS_2042.S.
+----------------------------------------------------------------------------------------------------
+
+
+;add hand coded walk & drive access links
+FILEI NTLEGI[1] = '..\..\..\1_Inputs\4_Transit\_General Hand-Coded Support Links\General_hand_coded_walk_links.NTL'
+FILEI NTLEGI[2] = '..\..\..\1_Inputs\4_Transit\_General Hand-Coded Support Links\General_hand_coded_drive_links.NTL'
+FILEI NTLEGI[3] = '..\..\..\\1_Inputs\4_Transit\Lin_2042_Needs\Scenario_hand_coded_walk_links.NTL'
+FILEI NTLEGI[4] = '..\..\..\\1_Inputs\4_Transit\Lin_2042_Needs\Scenario_hand_coded_drive_links.NTL'
+
+
+;read in system, fare & factors parameters
+FILEI SYSTEMI = '..\..\..\\1_Inputs\4_Transit\Lin_2042_Needs\PT_Parameter\GENERAL_System.PTS'
+FILEI FAREI   = '..\..\..\\1_Inputs\4_Transit\Lin_2042_Needs\PT_Parameter\GENERAL_Fare.FAR'
+FILEI FACTORI = '..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\PT_Parameter\FAC_WalkAllModes.FAC'
+
+
+;create PT Network
+;FILEO NETO   = 'results\PT_3 - Needs_2042.net'
+
+
+    ZONEMSG = 50
+
+Page 8  (VOYAGER PUBLIC TRANSPORT) Model Run
+Wasatch Front Regional Council
+---------------------------------------------
+    PARAMETERS TRANTIME = li.TRANTIME
+
+
+    PHASE=DATAPREP
+
+        ;add access links
+        GENERATE READNTLEGI=1        ;general hand coded walk links
+        GENERATE READNTLEGI=2        ;general hand coded drive links
+        GENERATE READNTLEGI=3        ;scenario-specific hand coded walk links
+        GENERATE READNTLEGI=4        ;scenario-specific hand coded drive links
+
+    ENDPHASE
+
+
+PUBLIC TRANSPORT Stack Size = 2094 bytes.
+................................................................................
+
+
+E:\1 - TDM\3 - Model Dev\1 - WF\2 - Sandbox\v9.0.1\WF-TDM-v9.0.1 - 2024-04-30 - patch 1\1_Inputs\4_Transit\_chk Transit Compile on Net\results\3 - Needs_2042.net
+NET:PGM=NETWORK (v.08/13/2019 [6.4.5 x64]) DATE=Thu May 02 14:22:16 2024  
+ID :Model Run
+PAR:Zones=9999 Nodes=95065 Links=49726 NodeRecs=21430             
+NVR:34 N X Y GEOGKEY=014 EXTERNAL HOTZN TAZID NODENAME=026 PNR_2015 PNR_2019
+PNR_2021 PNR_2023 PNR_2028 PNR23_32 PNR23_42 PNR23_50 PNR23_32UF PNR23_42UF
+PNR23_50UF FARZN_2015 FARZN_2019 FARZN_2021 FARZN_2023 FARZN_2028
+FARZN23_32 FARZN23_42 FARZN23_50 FARE23_32U FARE23_42U FARE23_50U MAG_NODE
+WFRC_NODE FLAG FLAG_TXT=005 
+LVR:7 A B DISTANCE LANES FT TRNSPD TRANTIME 
+
+
+File ..\..\..\\1_Inputs\4_Transit\Lin_2042_Needs\PT_Parameter\GENERAL_System.PTS opened
+
+
+File ..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\wfrc_og_lcl_2042UF.lin opened
+
+
+
+File ..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\wfrc_sl_lcl_2042UF.lin opened
+
+
+
+File ..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\mag_lcl_2042UF.lin opened
+
+
+
+File ..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\wfrc_core_2042UF.lin opened
+
+
+
+File ..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\wfrc_brt_2042UF.lin opened
+
+
+
+File ..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\mag_brt_2042UF.lin openedPage 9  (VOYAGER PUBLIC TRANSPORT) Model Run
+Wasatch Front Regional Council
+---------------------------------------------
+
+
+
+File ..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\wfrc_sl_exp_2042UF.lin opened
+
+
+
+File ..\..\..\1_Inputs\4_Transit\Lin_2042_Needs\rail_2042UF.lin opened
+
+W(657): 24 LINEs have CIRCULAR=F, but the same terminal node.
+Variables (Alternate Name) present in 148 Transit Lines:
+
+NAME  LONGNAME  COLOR  HEADWAY  HEADWAY[2]  MODE  ONEWAY  FARESYSTEM  
+
+
+
+File ..\..\..\1_Inputs\4_Transit\_General Hand-Coded Support Links\General_hand_coded_walk_links.NTL opened
+42 Records read, 0 had errors.
+
+
+File ..\..\..\1_Inputs\4_Transit\_General Hand-Coded Support Links\General_hand_coded_drive_links.NTL opened
+6 Records read, 0 had errors.
+
+
+File ..\..\..\\1_Inputs\4_Transit\Lin_2042_Needs\Scenario_hand_coded_walk_links.NTL opened
+6 Records read, 0 had errors.
+
+
+File ..\..\..\\1_Inputs\4_Transit\Lin_2042_Needs\Scenario_hand_coded_drive_links.NTL opened
+6 Records read, 0 had errors.
+
+M(625): 76 NonTransit Legs
+
+W(641): Following zones do not have both Access and Egress to transit.
+ 1-251 253-526 528-539 541-625 627 632 635-719 721-736 738-741 743-780
+ 782-964 966-980 982-1032 1034 1036-1050 1052-1272 1274-1860 1862-2602
+ 2604-2790 2792-2847 2849-9999
+
+PUBLIC TRANSPORT ReturnCode = 1  Elapsed Time = 00:00:00
+################################################################################

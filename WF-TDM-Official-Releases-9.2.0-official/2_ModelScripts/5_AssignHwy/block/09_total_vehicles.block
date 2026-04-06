@@ -1,0 +1,152 @@
+;vehicle level
+;---HBW-Totals-----------------------------------------------------------------------------;
+    veh_P_HBW_DA  = veh_P_HBW_DA_NON +
+                    veh_P_HBW_DA_TOL
+    veh_P_HBW_SR  = veh_P_HBW_SR_NON +
+                    veh_P_HBW_SR_TOL +
+                    veh_P_HBW_SR_HOV
+    veh_P_HBW_ALL = veh_P_HBW_DA     +
+                    veh_P_HBW_SR     
+    
+    veh_A_HBW_DA  = veh_A_HBW_DA_NON +
+                    veh_A_HBW_DA_TOL
+    veh_A_HBW_SR  = veh_A_HBW_SR_NON +
+                    veh_A_HBW_SR_TOL +
+                    veh_A_HBW_SR_HOV
+    veh_A_HBW_ALL = veh_A_HBW_DA     +
+                    veh_A_HBW_SR     
+
+;---HBO-Totals-----------------------------------------------------------------------------;
+    veh_P_HBO_DA  = veh_P_HBO_DA_NON +
+                    veh_P_HBO_DA_TOL
+    veh_P_HBO_SR  = veh_P_HBO_SR_NON +
+                    veh_P_HBO_SR_TOL +
+                    veh_P_HBO_SR_HOV
+    veh_P_HBO_ALL = veh_P_HBO_DA     +
+                    veh_P_HBO_SR     
+    
+    veh_A_HBO_DA  = veh_A_HBO_DA_NON +
+                    veh_A_HBO_DA_TOL
+    veh_A_HBO_SR  = veh_A_HBO_SR_NON +
+                    veh_A_HBO_SR_TOL +
+                    veh_A_HBO_SR_HOV
+    veh_A_HBO_ALL = veh_A_HBO_DA     +
+                    veh_A_HBO_SR     
+
+;---NHB-Totals-----------------------------------------------------------------------------;
+    veh_P_NHB_DA  = veh_P_NHB_DA_NON +
+                    veh_P_NHB_DA_TOL
+    veh_P_NHB_SR  = veh_P_NHB_SR_NON +
+                    veh_P_NHB_SR_TOL +
+                    veh_P_NHB_SR_HOV
+    veh_P_NHB_ALL = veh_P_NHB_DA     +
+                    veh_P_NHB_SR     
+    
+    veh_A_NHB_DA  = veh_A_NHB_DA_NON +
+                    veh_A_NHB_DA_TOL
+    veh_A_NHB_SR  = veh_A_NHB_SR_NON +
+                    veh_A_NHB_SR_TOL +
+                    veh_A_NHB_SR_HOV
+    veh_A_NHB_ALL = veh_A_NHB_DA     +
+                    veh_A_NHB_SR     
+
+;---HBC-Totals-----------------------------------------------------------------------------;
+    veh_P_HBC_DA  = veh_P_HBC_DA_NON +
+                    veh_P_HBC_DA_TOL
+    veh_P_HBC_SR  = veh_P_HBC_SR_NON +
+                    veh_P_HBC_SR_TOL +
+                    veh_P_HBC_SR_HOV
+    veh_P_HBC_ALL = veh_P_HBC_DA     +
+                    veh_P_HBC_SR     
+    
+    veh_A_HBC_DA  = veh_A_HBC_DA_NON +
+                    veh_A_HBC_DA_TOL
+    veh_A_HBC_SR  = veh_A_HBC_SR_NON +
+                    veh_A_HBC_SR_TOL +
+                    veh_A_HBC_SR_HOV
+    veh_A_HBC_ALL = veh_A_HBC_DA     +
+                    veh_A_HBC_SR     
+
+;---HBS_Pr-Totals--------------------------------------------------------------------------;
+    veh_P_HBS_Pr_DA  = veh_P_HBS_DriveSelf_Pr
+    veh_P_HBS_Pr_SR  = veh_P_HBS_DropOff_Pr
+    veh_P_HBS_Pr_ALL = veh_P_HBS_DriveSelf_Pr +
+                       veh_P_HBS_DropOff_Pr   +
+                       veh_P_SchoolBus_Pr
+
+    veh_A_HBS_Pr_DA  = veh_A_HBS_DriveSelf_Pr
+    veh_A_HBS_Pr_SR  = veh_A_HBS_DropOff_Pr
+    veh_A_HBS_Pr_ALL = veh_A_HBS_DriveSelf_Pr +
+                       veh_A_HBS_DropOff_Pr   +
+                       veh_A_SchoolBus_Pr
+
+;---HBS_Sc-Totals--------------------------------------------------------------------------;
+    veh_P_HBS_Sc_DA  = veh_P_HBS_DriveSelf_Sc
+    veh_P_HBS_Sc_SR  = veh_P_HBS_DropOff_Sc
+    veh_P_HBS_Sc_ALL = veh_P_HBS_DriveSelf_Sc +
+                       veh_P_HBS_DropOff_Sc   +
+                       veh_P_SchoolBus_Sc
+
+    veh_A_HBS_Sc_DA  = veh_A_HBS_DriveSelf_Sc
+    veh_A_HBS_Sc_SR  = veh_A_HBS_DropOff_Sc
+    veh_A_HBS_Sc_ALL = veh_A_HBS_DriveSelf_Sc +
+                       veh_A_HBS_DropOff_Sc   +
+                       veh_A_SchoolBus_Sc
+
+;---LT-Totals------------------------------------------------------------------------------;
+    P_LT_TR  = P_SH_LT
+    P_LT_SH  = 0
+    P_LT_ALL = P_LT_TR
+
+    A_LT_TR  = A_SH_LT
+    A_LT_SH  = 0
+    A_LT_ALL = A_LT_TR
+
+;---MD-Totals------------------------------------------------------------------------------;
+    P_MD_TR  = P_SH_MD + 
+               P_Ext_MD
+    P_MD_SH  = 0
+    P_MD_ALL = P_MD_TR
+
+    A_MD_TR  = A_SH_MD + 
+               A_Ext_MD
+    A_MD_SH  = 0
+    A_MD_ALL = A_MD_TR
+
+;---HV-Totals------------------------------------------------------------------------------;
+    P_HV_TR  = P_SH_HV + 
+               P_Ext_HV
+    P_HV_SH  = 0
+    P_HV_ALL = P_HV_TR
+
+    A_HV_TR  = A_SH_HV + 
+               A_Ext_HV
+    A_HV_SH  = 0
+    A_HV_ALL = A_HV_TR
+
+;---IX-Totals------------------------------------------------------------------------------;
+    P_IX_EX  = P_IX
+    P_IX_SH  = 0
+    P_IX_ALL = P_IX_EX
+
+    A_IX_EX  = A_IX
+    A_IX_SH  = 0
+    A_IX_ALL = A_IX_EX
+
+;---XI-Totals------------------------------------------------------------------------------;
+    P_XI_EX  = P_XI
+    P_XI_SH  = 0
+    P_XI_ALL = P_XI_EX
+
+    A_XI_EX  = A_XI
+    A_XI_SH  = 0
+    A_XI_ALL = A_XI_EX
+
+;---XX-Totals------------------------------------------------------------------------------;
+    P_XX_EX  = P_XX
+    P_XX_SH  = 0
+    P_XX_ALL = P_XX_EX
+
+    A_XX_EX  = A_XX
+    A_XX_SH  = 0
+    A_XX_ALL = A_XX_EX

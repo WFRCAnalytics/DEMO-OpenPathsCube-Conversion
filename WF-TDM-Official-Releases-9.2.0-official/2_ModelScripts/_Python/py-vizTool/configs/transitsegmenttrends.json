@@ -1,0 +1,192 @@
+{
+    "outputFileName": "j-transit-segment-trends.json",
+    "idCol": "SegID",
+    "someAttsHaveDuplicateData": true,
+    "groupCsv": [
+        {
+            "aggOperation": "sum",
+            "aggAtts": ["aTPMT","aTPHT","aTBM","aRM"]
+        }
+    ],
+    "filters": [
+        {   "filterCode": "fTod2",
+            "filterDescription": "Time of Day",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Period"
+        },
+        {   "filterCode": "fModeAccess",
+            "filterDescription": "Access Mode",
+            "filterLocation": "long",
+            "tdmCsvColumn": "AccessMode"
+        },
+        {   "filterCode": "fDirNameNoAll",
+            "filterDescription": "Travel Direction Name",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Direction"
+        },
+        {   "filterCode": "fModeRoute",
+            "filterDescription": "Mode of Route",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Mode"
+        },
+        {   "filterCode": "fRouteName",
+            "filterDescription": "Route Name",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Name"
+        },
+        {   "filterCode": "fModeHier",
+            "filterDescription": "Hierarchical Mode",
+            "filterLocation": "wide"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "aTBM",
+            "attributeDescription": "Train/Bus Miles",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "TrainBusMiles",
+            "removeDuplicateFilterData": ["fModeAccess","fModeHier"]
+        },
+        {   "attributeCode": "aRM",
+            "attributeDescription": "Route Miles",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "SegDistance",
+            "removeDuplicateFilterData": ["fTod2","fModeAccess","fModeHier"]
+        },
+        {   "attributeCode": "aTPMT",
+            "attributeDescription": "PMT",
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "PMT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "ALL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PMT_FromSkim_LCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PMT_FromSkim_COR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PMT_FromSkim_BRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PMT_FromSkim_EXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PMT_FromSkim_LRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PMT_FromSkim_CRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aTPHT",
+            "attributeDescription": "PHT",
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "PHT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "ALL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PHT_FromSkim_LCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PHT_FromSkim_COR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PHT_FromSkim_BRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PHT_FromSkim_EXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PHT_FromSkim_LRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "PHT_FromSkim_CRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

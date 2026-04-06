@@ -1,0 +1,569 @@
+;FILE: regional_shares_HB.block 
+ 
+ 
+  ;total trips, by segment
+      trips_total_region_0veh  = trips_motor_region_0veh + trips_nonmotor_region_0veh
+      trips_total_region_1veh  = trips_motor_region_1veh + trips_nonmotor_region_1veh
+      trips_total_region_2veh  = trips_motor_region_2veh + trips_nonmotor_region_2veh
+      trips_total_region       = trips_total_region_0veh + trips_total_region_1veh + trips_total_region_2veh
+     
+  ;motorized shares (absolute and relative)
+      share_motor_0veh = trips_motor_region_0veh / trips_total_region_0veh
+      share_motor_1veh = trips_motor_region_1veh / trips_total_region_1veh
+      share_motor_2veh = trips_motor_region_2veh / trips_total_region_2veh
+      
+      trips_motor_region = trips_motor_region_0veh + trips_motor_region_1veh + trips_motor_region_2veh
+      
+      share_motor_all      = trips_motor_region      / trips_total_region 
+     
+  ;nonmotorized shares (absolute and relative)
+      share_nonmotor_0veh = trips_nonmotor_region_0veh / trips_total_region_0veh
+      share_nonmotor_1veh = trips_nonmotor_region_1veh / trips_total_region_1veh
+      share_nonmotor_2veh = trips_nonmotor_region_2veh / trips_total_region_2veh
+      
+      trips_nonmotor_region = trips_nonmotor_region_0veh + trips_nonmotor_region_1veh + trips_nonmotor_region_2veh
+      
+      share_nonmotor_all      = trips_nonmotor_region      / trips_total_region 
+     
+     
+  ;walk shares (absolute)
+      share_walk_0veh = trips_walk_region_0veh / trips_total_region_0veh
+      share_walk_1veh = trips_walk_region_1veh / trips_total_region_1veh
+      share_walk_2veh = trips_walk_region_2veh / trips_total_region_2veh
+      
+      trips_walk_region = trips_walk_region_0veh + trips_walk_region_1veh + trips_walk_region_2veh
+      
+      share_walk_all      = trips_walk_region      / trips_total_region 
+     
+  ;walk shares (relative)
+      rel_share_walk_0veh = trips_walk_region_0veh / trips_nonmotor_region_0veh
+      rel_share_walk_1veh = trips_walk_region_1veh / trips_nonmotor_region_1veh
+      rel_share_walk_2veh = trips_walk_region_2veh / trips_nonmotor_region_2veh
+      rel_share_walk_all  = trips_walk_region      / trips_nonmotor_region
+     
+  ;bike shares (absolute)
+      share_bike_0veh = trips_bike_region_0veh / trips_total_region_0veh
+      share_bike_1veh = trips_bike_region_1veh / trips_total_region_1veh
+      share_bike_2veh = trips_bike_region_2veh / trips_total_region_2veh
+      
+      trips_bike_region = trips_bike_region_0veh + trips_bike_region_1veh + trips_bike_region_2veh
+      
+      share_bike_all      = trips_bike_region      / trips_total_region 
+     
+  ;bike shares (relative)
+      rel_share_bike_0veh = trips_bike_region_0veh / trips_nonmotor_region_0veh
+      rel_share_bike_1veh = trips_bike_region_1veh / trips_nonmotor_region_1veh
+      rel_share_bike_2veh = trips_bike_region_2veh / trips_nonmotor_region_2veh
+      rel_share_bike_all  = trips_bike_region      / trips_nonmotor_region
+      
+      
+  ;transit shares (absolute)
+      share_transit_0veh = trips_transit_region_0veh / trips_total_region_0veh
+      share_transit_1veh = trips_transit_region_1veh / trips_total_region_1veh
+      share_transit_2veh = trips_transit_region_2veh / trips_total_region_2veh
+      
+      trips_transit_region = trips_transit_region_0veh + trips_transit_region_1veh + trips_transit_region_2veh
+      
+      share_transit_all    = trips_transit_region      / trips_total_region 
+     
+  ;transit shares (relative)
+      rel_share_transit_0veh = trips_transit_region_0veh / trips_motor_region_0veh
+      rel_share_transit_1veh = trips_transit_region_1veh / trips_motor_region_1veh
+      rel_share_transit_2veh = trips_transit_region_2veh / trips_motor_region_2veh
+      rel_share_transit_all  = trips_transit_region      / trips_motor_region     
+     
+  ;auto shares (absolute)
+      share_auto_0veh = trips_auto_region_0veh / trips_total_region_0veh
+      share_auto_1veh = trips_auto_region_1veh / trips_total_region_1veh
+      share_auto_2veh = trips_auto_region_2veh / trips_total_region_2veh
+      
+      trips_auto_region = trips_auto_region_0veh + trips_auto_region_1veh + trips_auto_region_2veh
+      
+      share_auto_all    = trips_auto_region      / trips_total_region 
+     
+  ;auto shares (relative)
+      rel_share_auto_0veh = trips_auto_region_0veh / trips_motor_region_0veh
+      rel_share_auto_1veh = trips_auto_region_1veh / trips_motor_region_1veh
+      rel_share_auto_2veh = trips_auto_region_2veh / trips_motor_region_2veh
+      rel_share_auto_all  = trips_auto_region      / trips_motor_region
+      
+    
+  ;drive alone shares (absolute)
+      share_alone_0veh = trips_alone_region_0veh / trips_total_region_0veh
+      share_alone_1veh = trips_alone_region_1veh / trips_total_region_1veh
+      share_alone_2veh = trips_alone_region_2veh / trips_total_region_2veh
+      
+      trips_alone_region = trips_alone_region_0veh + trips_alone_region_1veh + trips_alone_region_2veh
+      
+      share_alone_all    = trips_alone_region      / trips_total_region 
+     
+  ;drive alone shares (relative)
+      rel_share_alone_0veh = trips_alone_region_0veh / trips_auto_region_0veh
+      rel_share_alone_1veh = trips_alone_region_1veh / trips_auto_region_1veh
+      rel_share_alone_2veh = trips_alone_region_2veh / trips_auto_region_2veh
+      rel_share_alone_all  = trips_alone_region      / trips_auto_region    
+    
+  ;1/05 jef drive alone non-toll shares (absolute)
+      share_alonen_0veh = trips_alonen_region_0veh / trips_total_region_0veh
+      share_alonen_1veh = trips_alonen_region_1veh / trips_total_region_1veh
+      share_alonen_2veh = trips_alonen_region_2veh / trips_total_region_2veh
+      
+      trips_alonen_region = trips_alonen_region_0veh + trips_alonen_region_1veh + trips_alonen_region_2veh
+      
+      share_alonen_all    = trips_alonen_region      / trips_total_region        
+
+  ;1/05 jef drive alone toll shares (absolute)
+      share_alonet_0veh = trips_alonet_region_0veh / trips_total_region_0veh
+      share_alonet_1veh = trips_alonet_region_1veh / trips_total_region_1veh
+      share_alonet_2veh = trips_alonet_region_2veh / trips_total_region_2veh
+      
+      trips_alonet_region = trips_alonet_region_0veh + trips_alonet_region_1veh + trips_alonet_region_2veh
+      
+      share_alonet_all    = trips_alonet_region      / trips_total_region        
+
+  ; 1/05 jef drive alone non-toll shares (relative)
+      rel_share_alonen_0veh = trips_alonen_region_0veh / (trips_alone_region_0veh + .1)
+      rel_share_alonen_1veh = trips_alonen_region_1veh / trips_alone_region_1veh
+      rel_share_alonen_2veh = trips_alonen_region_2veh / trips_alone_region_2veh
+      rel_share_alonen_all  = trips_alonen_region      / trips_alone_region    
+      
+  ; 1/05 jef drive alone toll shares (relative)
+      rel_share_alonet_0veh = trips_alonet_region_0veh / (trips_alone_region_0veh + .1)
+      rel_share_alonet_1veh = trips_alonet_region_1veh / trips_alone_region_1veh
+      rel_share_alonet_2veh = trips_alonet_region_2veh / trips_alone_region_2veh
+      rel_share_alonet_all  = trips_alonet_region      / trips_alone_region   
+      
+
+  ;shared ride shares (absolute)
+      share_shared_0veh = trips_shared_region_0veh / trips_total_region_0veh
+      share_shared_1veh = trips_shared_region_1veh / trips_total_region_1veh
+      share_shared_2veh = trips_shared_region_2veh / trips_total_region_2veh
+      
+      trips_shared_region = trips_shared_region_0veh + trips_shared_region_1veh + trips_shared_region_2veh
+      
+      share_shared_all    = trips_shared_region      / trips_total_region 
+     
+  ;shared ride shares (relative)
+      rel_share_shared_0veh = trips_shared_region_0veh / trips_auto_region_0veh
+      rel_share_shared_1veh = trips_shared_region_1veh / trips_auto_region_1veh
+      rel_share_shared_2veh = trips_shared_region_2veh / trips_auto_region_2veh
+      rel_share_shared_all  = trips_shared_region      / trips_auto_region
+      
+     
+  ;sr2 shares (absolute)
+      share_sr2_0veh = trips_sr2_region_0veh / trips_total_region_0veh
+      share_sr2_1veh = trips_sr2_region_1veh / trips_total_region_1veh
+      share_sr2_2veh = trips_sr2_region_2veh / trips_total_region_2veh
+      
+      trips_sr2_region = trips_sr2_region_0veh + trips_sr2_region_1veh + trips_sr2_region_2veh
+      
+      share_sr2_all    = trips_sr2_region      / trips_total_region 
+ 
+  ; 1/05 jef more sr2
+      share_sr2nn_0veh   = trips_sr2nn_region_0veh / trips_total_region_0veh
+      share_sr2nn_1veh   = trips_sr2nn_region_1veh / trips_total_region_1veh
+      share_sr2nn_2veh   = trips_sr2nn_region_2veh / trips_total_region_2veh
+      trips_sr2nn_region = trips_sr2nn_region_0veh + trips_sr2nn_region_1veh + trips_sr2nn_region_2veh
+      share_sr2nn_all    = trips_sr2nn_region      / trips_total_region 
+
+      share_sr2nh_0veh =   trips_sr2nh_region_0veh / trips_total_region_0veh
+      share_sr2nh_1veh =   trips_sr2nh_region_1veh / trips_total_region_1veh
+      share_sr2nh_2veh =   trips_sr2nh_region_2veh / trips_total_region_2veh
+      trips_sr2nh_region = trips_sr2nh_region_0veh + trips_sr2nh_region_1veh + trips_sr2nh_region_2veh
+      share_sr2nh_all    = trips_sr2nh_region      / trips_total_region 
+
+      share_sr2th_0veh   = trips_sr2th_region_0veh / trips_total_region_0veh
+      share_sr2th_1veh   = trips_sr2th_region_1veh / trips_total_region_1veh
+      share_sr2th_2veh   = trips_sr2th_region_2veh / trips_total_region_2veh
+      trips_sr2th_region = trips_sr2th_region_0veh + trips_sr2th_region_1veh + trips_sr2th_region_2veh
+      share_sr2th_all    = trips_sr2th_region      / trips_total_region 
+     
+  ;sr2 shares (relative)
+      rel_share_sr2_0veh = trips_sr2_region_0veh / trips_shared_region_0veh
+      rel_share_sr2_1veh = trips_sr2_region_1veh / trips_shared_region_1veh
+      rel_share_sr2_2veh = trips_sr2_region_2veh / trips_shared_region_2veh
+      rel_share_sr2_all  = trips_sr2_region      / trips_shared_region 
+      
+  ; 1/05 more sr2 shares (relative)
+      rel_share_sr2nn_0veh = trips_sr2nn_region_0veh / trips_sr2_region_0veh
+      rel_share_sr2nn_1veh = trips_sr2nn_region_1veh / trips_sr2_region_1veh
+      rel_share_sr2nn_2veh = trips_sr2nn_region_2veh / trips_sr2_region_2veh
+      rel_share_sr2nn_all  = trips_sr2nn_region      / trips_sr2_region 
+      
+      rel_share_sr2nh_0veh = trips_sr2nh_region_0veh / trips_sr2_region_0veh
+      rel_share_sr2nh_1veh = trips_sr2nh_region_1veh / trips_sr2_region_1veh
+      rel_share_sr2nh_2veh = trips_sr2nh_region_2veh / trips_sr2_region_2veh
+      rel_share_sr2nh_all  = trips_sr2nh_region      / trips_sr2_region 
+
+      rel_share_sr2th_0veh = trips_sr2th_region_0veh / trips_sr2_region_0veh
+      rel_share_sr2th_1veh = trips_sr2th_region_1veh / trips_sr2_region_1veh
+      rel_share_sr2th_2veh = trips_sr2th_region_2veh / trips_sr2_region_2veh
+      rel_share_sr2th_all  = trips_sr2th_region      / trips_sr2_region     
+             
+  ;sr3 shares (absolute)
+      share_sr3_0veh = trips_sr3_region_0veh / trips_total_region_0veh
+      share_sr3_1veh = trips_sr3_region_1veh / trips_total_region_1veh
+      share_sr3_2veh = trips_sr3_region_2veh / trips_total_region_2veh
+      
+      trips_sr3_region = trips_sr3_region_0veh + trips_sr3_region_1veh + trips_sr3_region_2veh
+      
+      share_sr3_all    = trips_sr3_region      / trips_total_region 
+     
+  ; 1/05 jef more sr3
+      share_sr3nn_0veh   = trips_sr3nn_region_0veh / trips_total_region_0veh
+      share_sr3nn_1veh   = trips_sr3nn_region_1veh / trips_total_region_1veh
+      share_sr3nn_2veh   = trips_sr3nn_region_2veh / trips_total_region_2veh
+      trips_sr3nn_region = trips_sr3nn_region_0veh + trips_sr3nn_region_1veh + trips_sr3nn_region_2veh
+      share_sr3nn_all    = trips_sr3nn_region      / trips_total_region 
+
+      share_sr3nh_0veh =   trips_sr3nh_region_0veh / trips_total_region_0veh
+      share_sr3nh_1veh =   trips_sr3nh_region_1veh / trips_total_region_1veh
+      share_sr3nh_2veh =   trips_sr3nh_region_2veh / trips_total_region_2veh
+      trips_sr3nh_region = trips_sr3nh_region_0veh + trips_sr3nh_region_1veh + trips_sr3nh_region_2veh
+      share_sr3nh_all    = trips_sr3nh_region      / trips_total_region 
+
+      share_sr3th_0veh   = trips_sr3th_region_0veh / trips_total_region_0veh
+      share_sr3th_1veh   = trips_sr3th_region_1veh / trips_total_region_1veh
+      share_sr3th_2veh   = trips_sr3th_region_2veh / trips_total_region_2veh
+      trips_sr3th_region = trips_sr3th_region_0veh + trips_sr3th_region_1veh + trips_sr3th_region_2veh
+      share_sr3th_all    = trips_sr3th_region      / trips_total_region 
+     
+  ;sr3 shares (relative)
+      rel_share_sr3_0veh = trips_sr3_region_0veh / trips_shared_region_0veh
+      rel_share_sr3_1veh = trips_sr3_region_1veh / trips_shared_region_1veh
+      rel_share_sr3_2veh = trips_sr3_region_2veh / trips_shared_region_2veh
+      rel_share_sr3_all  = trips_sr3_region      / trips_shared_region 
+      
+  ; 1/05 more sr3 shares (relative)
+      rel_share_sr3nn_0veh = trips_sr3nn_region_0veh / trips_sr3_region_0veh
+      rel_share_sr3nn_1veh = trips_sr3nn_region_1veh / trips_sr3_region_1veh
+      rel_share_sr3nn_2veh = trips_sr3nn_region_2veh / trips_sr3_region_2veh
+      rel_share_sr3nn_all  = trips_sr3nn_region      / trips_sr3_region 
+      
+      rel_share_sr3nh_0veh = trips_sr3nh_region_0veh / trips_sr3_region_0veh
+      rel_share_sr3nh_1veh = trips_sr3nh_region_1veh / trips_sr3_region_1veh
+      rel_share_sr3nh_2veh = trips_sr3nh_region_2veh / trips_sr3_region_2veh
+      rel_share_sr3nh_all  = trips_sr3nh_region      / trips_sr3_region 
+
+      rel_share_sr3th_0veh = trips_sr3th_region_0veh / trips_sr3_region_0veh
+      rel_share_sr3th_1veh = trips_sr3th_region_1veh / trips_sr3_region_1veh
+      rel_share_sr3th_2veh = trips_sr3th_region_2veh / trips_sr3_region_2veh
+      rel_share_sr3th_all  = trips_sr3th_region      / trips_sr3_region     
+             
+      
+      
+      
+  ;lcl shares (absolute)
+      share_LCL_0veh = trips_LCL_region_0veh / trips_total_region_0veh
+      share_LCL_1veh = trips_LCL_region_1veh / trips_total_region_1veh
+      share_LCL_2veh = trips_LCL_region_2veh / trips_total_region_2veh
+      
+      trips_LCL_region = trips_LCL_region_0veh + trips_LCL_region_1veh + trips_LCL_region_2veh
+      
+      share_LCL_all    = trips_LCL_region      / trips_total_region    
+
+  ;cor shares (absolute)
+      share_COR_0veh = trips_COR_region_0veh / trips_total_region_0veh
+      share_COR_1veh = trips_COR_region_1veh / trips_total_region_1veh
+      share_COR_2veh = trips_COR_region_2veh / trips_total_region_2veh
+      
+      trips_COR_region = trips_COR_region_0veh + trips_COR_region_1veh + trips_COR_region_2veh
+      
+      share_COR_all    = trips_COR_region      / trips_total_region    
+            
+  ;brt shares (absolute)
+      share_BRT_0veh = trips_BRT_region_0veh / trips_total_region_0veh
+      share_BRT_1veh = trips_BRT_region_1veh / trips_total_region_1veh
+      share_BRT_2veh = trips_BRT_region_2veh / trips_total_region_2veh
+      
+      trips_BRT_region = trips_BRT_region_0veh + trips_BRT_region_1veh + trips_BRT_region_2veh
+      
+      share_BRT_all    = trips_BRT_region      / trips_total_region  
+
+  ;exp shares (absolute)
+      share_EXP_0veh = trips_EXP_region_0veh / trips_total_region_0veh
+      share_EXP_1veh = trips_EXP_region_1veh / trips_total_region_1veh
+      share_EXP_2veh = trips_EXP_region_2veh / trips_total_region_2veh
+      
+      trips_EXP_region = trips_EXP_region_0veh + trips_EXP_region_1veh + trips_EXP_region_2veh
+      
+      share_EXP_all    = trips_EXP_region      / trips_total_region 
+         
+  ;lrt shares (absolute)
+      share_LRT_0veh = trips_LRT_region_0veh / trips_total_region_0veh
+      share_LRT_1veh = trips_LRT_region_1veh / trips_total_region_1veh
+      share_LRT_2veh = trips_LRT_region_2veh / trips_total_region_2veh
+      
+      trips_LRT_region = trips_LRT_region_0veh + trips_LRT_region_1veh + trips_LRT_region_2veh
+      
+      share_LRT_all    = trips_LRT_region      / trips_total_region 
+         
+  ;crt shares (absolute)
+      share_CRT_0veh = trips_CRT_region_0veh / trips_total_region_0veh
+      share_CRT_1veh = trips_CRT_region_1veh / trips_total_region_1veh
+      share_CRT_2veh = trips_CRT_region_2veh / trips_total_region_2veh
+      
+      trips_CRT_region = trips_CRT_region_0veh + trips_CRT_region_1veh + trips_CRT_region_2veh
+      
+      share_CRT_all    = trips_CRT_region      / trips_total_region
+      
+      
+      
+
+  ;lcl shares (relative)
+      rel_share_LCL_0veh = trips_LCL_region_0veh / (trips_transit_region_0veh + .1)
+      rel_share_LCL_1veh = trips_LCL_region_1veh / (trips_transit_region_1veh + .1)
+      rel_share_LCL_2veh = trips_LCL_region_2veh / (trips_transit_region_2veh + .1)
+      rel_share_LCL_all  = trips_LCL_region      / (trips_transit_region + .1) 
+
+  ;cor shares (relative)
+      rel_share_COR_0veh = trips_COR_region_0veh / (trips_transit_region_0veh + .1)
+      rel_share_COR_1veh = trips_COR_region_1veh / (trips_transit_region_1veh + .1)
+      rel_share_COR_2veh = trips_COR_region_2veh / (trips_transit_region_2veh + .1)
+      rel_share_COR_all  = trips_COR_region      / (trips_transit_region + .1) 
+
+  ;brt shares (relative)
+      rel_share_BRT_0veh = trips_BRT_region_0veh / (trips_transit_region_0veh + .1)
+      rel_share_BRT_1veh = trips_BRT_region_1veh / (trips_transit_region_1veh + .1)
+      rel_share_BRT_2veh = trips_BRT_region_2veh / (trips_transit_region_2veh + .1)
+      rel_share_BRT_all  = trips_BRT_region      / (trips_transit_region + .1) 
+      
+  ;exp shares (relative)
+      rel_share_EXP_0veh = trips_EXP_region_0veh / (trips_transit_region_0veh + .1)
+      rel_share_EXP_1veh = trips_EXP_region_1veh / (trips_transit_region_1veh + .1)
+      rel_share_EXP_2veh = trips_EXP_region_2veh / (trips_transit_region_2veh + .1)
+      rel_share_EXP_all  = trips_EXP_region      / (trips_transit_region + .1) 
+ 
+  ;lrt shares (relative)
+      rel_share_LRT_0veh = trips_LRT_region_0veh / (trips_transit_region_0veh + .1)
+      rel_share_LRT_1veh = trips_LRT_region_1veh / (trips_transit_region_1veh + .1)
+      rel_share_LRT_2veh = trips_LRT_region_2veh / (trips_transit_region_2veh + .1)
+      rel_share_LRT_all  = trips_LRT_region      / (trips_transit_region + .1) 
+             
+  ;crt shares (relative)
+      rel_share_CRT_0veh = trips_CRT_region_0veh / (trips_transit_region_0veh + .1)
+      rel_share_CRT_1veh = trips_CRT_region_1veh / (trips_transit_region_1veh + .1)
+      rel_share_CRT_2veh = trips_CRT_region_2veh / (trips_transit_region_2veh + .1)
+      rel_share_CRT_all  = trips_CRT_region      / (trips_transit_region + .1) 
+  
+  
+  
+  
+  ;walk-to-transit shares (absolute)
+      share_walkacc_0veh = trips_walkacc_region_0veh / trips_total_region_0veh
+      share_walkacc_1veh = trips_walkacc_region_1veh / trips_total_region_1veh
+      share_walkacc_2veh = trips_walkacc_region_2veh / trips_total_region_2veh
+      
+      trips_walkacc_region = trips_walkacc_region_0veh + trips_walkacc_region_1veh + trips_walkacc_region_2veh
+      
+      share_walkacc_all    = trips_walkacc_region      / trips_total_region    
+  
+  ;walk-to-transit shares (relative)
+      rel_share_walkacc_0veh = trips_walkacc_region_0veh / (trips_transit_region_0veh + .1)  
+      rel_share_walkacc_1veh = trips_walkacc_region_1veh / (trips_transit_region_1veh + .1)
+      rel_share_walkacc_2veh = trips_walkacc_region_2veh / (trips_transit_region_2veh + .1)
+      rel_share_walkacc_all  = trips_walkacc_region      / (trips_transit_region + .1)
+
+  ;drive-to-transit shares (absolute)
+      share_driveacc_0veh = trips_driveacc_region_0veh / trips_total_region_0veh
+      share_driveacc_1veh = trips_driveacc_region_1veh / trips_total_region_1veh
+      share_driveacc_2veh = trips_driveacc_region_2veh / trips_total_region_2veh
+      
+      trips_driveacc_region = trips_driveacc_region_0veh + trips_driveacc_region_1veh + trips_driveacc_region_2veh
+      
+      share_driveacc_all    = trips_driveacc_region      / trips_total_region    
+  
+  ;drive-to-transit shares (relative)
+      rel_share_driveacc_0veh = trips_driveacc_region_0veh / (trips_transit_region_0veh + .1)  
+      rel_share_driveacc_1veh = trips_driveacc_region_1veh / (trips_transit_region_1veh + .1)
+      rel_share_driveacc_2veh = trips_driveacc_region_2veh / (trips_transit_region_2veh + .1)
+      rel_share_driveacc_all  = trips_driveacc_region      / (trips_transit_region + .1)  
+ 
+ 
+ 
+     
+     
+  ;walk-lcl shares (absolute)
+      share_wLCL_0veh = trips_wLCL_region_0veh / trips_total_region_0veh
+      share_wLCL_1veh = trips_wLCL_region_1veh / trips_total_region_1veh
+      share_wLCL_2veh = trips_wLCL_region_2veh / trips_total_region_2veh
+      
+      trips_wLCL_region = trips_wLCL_region_0veh + trips_wLCL_region_1veh + trips_wLCL_region_2veh
+      
+      share_wLCL_all    = trips_wLCL_region      / trips_total_region 
+
+  ;drive-lcl shares (absolute)
+      share_dLCL_0veh = trips_dLCL_region_0veh / trips_total_region_0veh
+      share_dLCL_1veh = trips_dLCL_region_1veh / trips_total_region_1veh
+      share_dLCL_2veh = trips_dLCL_region_2veh / trips_total_region_2veh
+      
+      trips_dLCL_region = trips_dLCL_region_0veh + trips_dLCL_region_1veh + trips_dLCL_region_2veh
+      
+      share_dLCL_all    = trips_dLCL_region      / trips_total_region 
+
+  ;walk-cor shares (absolute)
+      share_wCOR_0veh = trips_wCOR_region_0veh / trips_total_region_0veh
+      share_wCOR_1veh = trips_wCOR_region_1veh / trips_total_region_1veh
+      share_wCOR_2veh = trips_wCOR_region_2veh / trips_total_region_2veh
+      
+      trips_wCOR_region = trips_wCOR_region_0veh + trips_wCOR_region_1veh + trips_wCOR_region_2veh
+      
+      share_wCOR_all    = trips_wCOR_region      / trips_total_region 
+
+  ;drive-cor shares (absolute)
+      share_dCOR_0veh = trips_dCOR_region_0veh / trips_total_region_0veh
+      share_dCOR_1veh = trips_dCOR_region_1veh / trips_total_region_1veh
+      share_dCOR_2veh = trips_dCOR_region_2veh / trips_total_region_2veh
+      
+      trips_dCOR_region = trips_dCOR_region_0veh + trips_dCOR_region_1veh + trips_dCOR_region_2veh
+      
+      share_dCOR_all    = trips_dCOR_region      / trips_total_region 
+
+  ;walk-brt shares (absolute)
+      share_wBRT_0veh = trips_wBRT_region_0veh / trips_total_region_0veh
+      share_wBRT_1veh = trips_wBRT_region_1veh / trips_total_region_1veh
+      share_wBRT_2veh = trips_wBRT_region_2veh / trips_total_region_2veh
+      
+      trips_wBRT_region = trips_wBRT_region_0veh + trips_wBRT_region_1veh + trips_wBRT_region_2veh
+      
+      share_wBRT_all    = trips_wBRT_region      / trips_total_region 
+
+  ;drive-brt shares (absolute)
+      share_dBRT_0veh = trips_dBRT_region_0veh / trips_total_region_0veh
+      share_dBRT_1veh = trips_dBRT_region_1veh / trips_total_region_1veh
+      share_dBRT_2veh = trips_dBRT_region_2veh / trips_total_region_2veh
+      
+      trips_dBRT_region = trips_dBRT_region_0veh + trips_dBRT_region_1veh + trips_dBRT_region_2veh
+      
+      share_dBRT_all    = trips_dBRT_region      / trips_total_region 
+      
+  ;walk-exp shares (absolute)
+      share_wEXP_0veh = trips_wEXP_region_0veh / trips_total_region_0veh
+      share_wEXP_1veh = trips_wEXP_region_1veh / trips_total_region_1veh
+      share_wEXP_2veh = trips_wEXP_region_2veh / trips_total_region_2veh
+      
+      trips_wEXP_region = trips_wEXP_region_0veh + trips_wEXP_region_1veh + trips_wEXP_region_2veh
+      
+      share_wEXP_all    = trips_wEXP_region      / trips_total_region 
+      
+  ;drive-exp shares (absolute)
+      share_dEXP_0veh = trips_dEXP_region_0veh / trips_total_region_0veh
+      share_dEXP_1veh = trips_dEXP_region_1veh / trips_total_region_1veh
+      share_dEXP_2veh = trips_dEXP_region_2veh / trips_total_region_2veh
+      
+      trips_dEXP_region = trips_dEXP_region_0veh + trips_dEXP_region_1veh + trips_dEXP_region_2veh
+      
+      share_dEXP_all    = trips_dEXP_region      / trips_total_region       
+
+  ;walk-lrt  shares (absolute)
+      share_wLRT_0veh = trips_wLRT_region_0veh / trips_total_region_0veh
+      share_wLRT_1veh = trips_wLRT_region_1veh / trips_total_region_1veh
+      share_wLRT_2veh = trips_wLRT_region_2veh / trips_total_region_2veh
+      
+      trips_wLRT_region = trips_wLRT_region_0veh + trips_wLRT_region_1veh + trips_wLRT_region_2veh
+      
+      share_wLRT_all    = trips_wLRT_region      / trips_total_region 
+         
+  ;drive-lrt  shares (absolute)
+      share_dLRT_0veh = trips_dLRT_region_0veh / trips_total_region_0veh
+      share_dLRT_1veh = trips_dLRT_region_1veh / trips_total_region_1veh
+      share_dLRT_2veh = trips_dLRT_region_2veh / trips_total_region_2veh
+      
+      trips_dLRT_region = trips_dLRT_region_0veh + trips_dLRT_region_1veh + trips_dLRT_region_2veh
+      
+      share_dLRT_all    = trips_dLRT_region      / trips_total_region 
+      
+  ;walk-crt  shares (absolute)
+      share_wCRT_0veh = trips_wCRT_region_0veh / trips_total_region_0veh
+      share_wCRT_1veh = trips_wCRT_region_1veh / trips_total_region_1veh
+      share_wCRT_2veh = trips_wCRT_region_2veh / trips_total_region_2veh
+      
+      trips_wCRT_region = trips_wCRT_region_0veh + trips_wCRT_region_1veh + trips_wCRT_region_2veh
+      
+      share_wCRT_all    = trips_wCRT_region      / trips_total_region 
+
+  ;drive-crt  shares (absolute)
+      share_dCRT_0veh = trips_dCRT_region_0veh / trips_total_region_0veh
+      share_dCRT_1veh = trips_dCRT_region_1veh / trips_total_region_1veh
+      share_dCRT_2veh = trips_dCRT_region_2veh / trips_total_region_2veh
+      
+      trips_dCRT_region = trips_dCRT_region_0veh + trips_dCRT_region_1veh + trips_dCRT_region_2veh
+      
+      share_dCRT_all    = trips_dCRT_region      / trips_total_region       
+      
+      
+      
+      
+                  
+           
+  ;walk-lcl shares (relative)
+      rel_share_wLCL_0veh = trips_wLCL_region_0veh / (trips_walkacc_region_0veh + .1)
+      rel_share_wLCL_1veh = trips_wLCL_region_1veh / (trips_walkacc_region_1veh + .1)
+      rel_share_wLCL_2veh = trips_wLCL_region_2veh / (trips_walkacc_region_2veh + .1)
+      rel_share_wLCL_all  = trips_wLCL_region      / (trips_walkacc_region + .1) 
+     
+  ;drive-lcl shares (relative)
+      rel_share_dLCL_0veh = trips_dLCL_region_0veh / (trips_driveacc_region_0veh + .1)
+      rel_share_dLCL_1veh = trips_dLCL_region_1veh / (trips_driveacc_region_1veh + .1)
+      rel_share_dLCL_2veh = trips_dLCL_region_2veh / (trips_driveacc_region_2veh + .1)
+      rel_share_dLCL_all  = trips_dLCL_region      / (trips_driveacc_region + .1) 
+           
+  ;walk-cor shares (relative)
+      rel_share_wCOR_0veh = trips_wCOR_region_0veh / (trips_walkacc_region_0veh + .1)
+      rel_share_wCOR_1veh = trips_wCOR_region_1veh / (trips_walkacc_region_1veh + .1)
+      rel_share_wCOR_2veh = trips_wCOR_region_2veh / (trips_walkacc_region_2veh + .1)
+      rel_share_wCOR_all  = trips_wCOR_region      / (trips_walkacc_region + .1) 
+     
+  ;drive-cor shares (relative)
+      rel_share_dCOR_0veh = trips_dCOR_region_0veh / (trips_driveacc_region_0veh + .1)
+      rel_share_dCOR_1veh = trips_dCOR_region_1veh / (trips_driveacc_region_1veh + .1)
+      rel_share_dCOR_2veh = trips_dCOR_region_2veh / (trips_driveacc_region_2veh + .1)
+      rel_share_dCOR_all  = trips_dCOR_region      / (trips_driveacc_region + .1) 
+
+  ;walk-brt shares (relative)
+      rel_share_wBRT_0veh = trips_wBRT_region_0veh / (trips_walkacc_region_0veh + .1)
+      rel_share_wBRT_1veh = trips_wBRT_region_1veh / (trips_walkacc_region_1veh + .1)
+      rel_share_wBRT_2veh = trips_wBRT_region_2veh / (trips_walkacc_region_2veh + .1)
+      rel_share_wBRT_all  = trips_wBRT_region      / (trips_walkacc_region + .1) 
+     
+  ;drive-brt shares (relative)
+      rel_share_dBRT_0veh = trips_dBRT_region_0veh / (trips_driveacc_region_0veh + .1)
+      rel_share_dBRT_1veh = trips_dBRT_region_1veh / (trips_driveacc_region_1veh + .1)
+      rel_share_dBRT_2veh = trips_dBRT_region_2veh / (trips_driveacc_region_2veh + .1)
+      rel_share_dBRT_all  = trips_dBRT_region      / (trips_driveacc_region + .1) 
+           
+  ;walk-exp shares (relative)
+      rel_share_wEXP_0veh = trips_wEXP_region_0veh / (trips_walkacc_region_0veh + .1)
+      rel_share_wEXP_1veh = trips_wEXP_region_1veh / (trips_walkacc_region_1veh + .1)
+      rel_share_wEXP_2veh = trips_wEXP_region_2veh / (trips_walkacc_region_2veh + .1)
+      rel_share_wEXP_all  = trips_wEXP_region      / (trips_walkacc_region + .1) 
+      
+  ;drive-exp shares (relative)
+      rel_share_dEXP_0veh = trips_dEXP_region_0veh / (trips_driveacc_region_0veh + .1)
+      rel_share_dEXP_1veh = trips_dEXP_region_1veh / (trips_driveacc_region_1veh + .1)
+      rel_share_dEXP_2veh = trips_dEXP_region_2veh / (trips_driveacc_region_2veh + .1)
+      rel_share_dEXP_all  = trips_dEXP_region      / (trips_driveacc_region + .1) 
+ 
+  ;walk-lrt  shares (relative)
+      rel_share_wLRT_0veh = trips_wLRT_region_0veh / (trips_walkacc_region_0veh + .1)
+      rel_share_wLRT_1veh = trips_wLRT_region_1veh / (trips_walkacc_region_1veh + .1)
+      rel_share_wLRT_2veh = trips_wLRT_region_2veh / (trips_walkacc_region_2veh + .1)
+      rel_share_wLRT_all  = trips_wLRT_region      / (trips_walkacc_region + .1) 
+           
+  ;drive-lrt  shares (relative)
+      rel_share_dLRT_0veh = trips_dLRT_region_0veh / (trips_driveacc_region_0veh + .1)
+      rel_share_dLRT_1veh = trips_dLRT_region_1veh / (trips_driveacc_region_1veh + .1)
+      rel_share_dLRT_2veh = trips_dLRT_region_2veh / (trips_driveacc_region_2veh + .1)
+      rel_share_dLRT_all  = trips_dLRT_region      / (trips_driveacc_region + .1) 
+    
+  ;walk-crt  shares (relative)
+      rel_share_wCRT_0veh = trips_wCRT_region_0veh / (trips_walkacc_region_0veh + .1)
+      rel_share_wCRT_1veh = trips_wCRT_region_1veh / (trips_walkacc_region_1veh + .1)
+      rel_share_wCRT_2veh = trips_wCRT_region_2veh / (trips_walkacc_region_2veh + .1)
+      rel_share_wCRT_all  = trips_wCRT_region      / (trips_walkacc_region + .1) 
+           
+  ;drive-crt  shares (relative)
+      rel_share_dCRT_0veh = trips_dCRT_region_0veh / (trips_driveacc_region_0veh + .1)
+      rel_share_dCRT_1veh = trips_dCRT_region_1veh / (trips_driveacc_region_1veh + .1)
+      rel_share_dCRT_2veh = trips_dCRT_region_2veh / (trips_driveacc_region_2veh + .1)
+      rel_share_dCRT_all  = trips_dCRT_region      / (trips_driveacc_region + .1) 

@@ -1,0 +1,68 @@
+        ;based on market segment (vehicles/income) - assign a trip table
+        ;multiply trip table for vehicles/income segment by % in access segment
+        ;multiply by 100 to minimize rounding error in output matrices
+          
+        ;based on income - assign a cost coefficient
+        IF (VEH==1)        ;0 auto households  
+          IF (INC==1) 
+            IF (ACCESS==1)   ;can walk-to-transit
+              MW[2] = mi.11.0veh_lowinc * 100
+            ELSEIF (ACCESS==2)   ;must drive-to-transit
+              MW[2] = mi.11.0veh_lowinc * 0 * 100
+            ELSEIF (ACCESS==3)   ;no access-to-transit
+              MW[2] = mi.11.0veh_lowinc * 0 * 100  
+            ENDIF
+            
+          ELSEIF (INC==2)
+            IF (ACCESS==1)   ;can walk-to-transit
+              MW[2] = mi.11.0veh_highinc * 100
+            ELSEIF (ACCESS==2)   ;must drive-to-transit
+              MW[2] = mi.11.0veh_highinc * 0 * 100
+            ELSEIF (ACCESS==3)   ;no access-to-transit
+              MW[2] = mi.11.0veh_highinc * 0 * 100  
+            ENDIF
+            
+          ENDIF
+                  
+        ELSEIF (VEH==2)    ;1 auto households   
+          IF (INC==1)
+            IF (ACCESS==1)   ;can walk-to-transit
+              MW[2] = mi.12.1veh_lowinc * mi.1.pctwalk * 100
+            ELSEIF (ACCESS==2)   ;must drive-to-transit
+              MW[2] = mi.12.1veh_lowinc * mi.1.pctdrive * 100
+            ELSEIF (ACCESS==3)   ;no access-to-transit
+              MW[2] = mi.12.1veh_lowinc * mi.1.pctnone * 100 
+            ENDIF
+            
+          ELSEIF (INC==2)
+            IF (ACCESS==1)   ;can walk-to-transit
+              MW[2] = mi.12.1veh_highinc * mi.1.pctwalk * 100
+            ELSEIF (ACCESS==2)   ;must drive-to-transit
+              MW[2] = mi.12.1veh_highinc * mi.1.pctdrive * 100
+            ELSEIF (ACCESS==3)   ;no access-to-transit
+              MW[2] = mi.12.1veh_highinc * mi.1.pctnone * 100  
+            ENDIF
+
+          ENDIF
+       
+        ELSEIF (VEH==3)    ;2 auto households
+          IF (INC==1)
+            IF (ACCESS==1)   ;can walk-to-transit
+              MW[2] = mi.13.2veh_lowinc * mi.1.pctwalk * 100
+            ELSEIF (ACCESS==2)   ;must drive-to-transit
+              MW[2] = mi.13.2veh_lowinc * mi.1.pctdrive * 100
+            ELSEIF (ACCESS==3)   ;no access-to-transit
+              MW[2] = mi.13.2veh_lowinc * mi.1.pctnone * 100  
+            ENDIF
+            
+          ELSEIF (INC==2)
+            IF (ACCESS==1)   ;can walk-to-transit
+              MW[2] = mi.13.2veh_highinc * mi.1.pctwalk * 100
+            ELSEIF (ACCESS==2)   ;must drive-to-transit
+              MW[2] = mi.13.2veh_highinc * mi.1.pctdrive * 100
+            ELSEIF (ACCESS==3)   ;no access-to-transit
+              MW[2] = mi.13.2veh_highinc * mi.1.pctnone * 100  
+            ENDIF
+            
+          ENDIF
+        ENDIF

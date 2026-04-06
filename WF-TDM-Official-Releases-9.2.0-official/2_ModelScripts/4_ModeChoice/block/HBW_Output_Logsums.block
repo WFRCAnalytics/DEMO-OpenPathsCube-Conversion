@@ -1,0 +1,172 @@
+;HBW_Output_Logsums.block
+
+IF (VEH==1 & INC==1 & ACCESS==1)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh0_low_walk_log[j]=-99
+  ELSE
+    veh0_low_walk_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+
+ELSEIF (VEH==1 & INC==1 & ACCESS==2)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh0_low_drive_log[j]=-99
+  ELSE
+    veh0_low_drive_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==1 & INC==1 & ACCESS==3)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh0_low_none_log[j]=-99
+  ELSE
+    veh0_low_none_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==1 & INC==2 & ACCESS==1)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh0_high_walk_log[j]=-99
+  ELSE
+    veh0_high_walk_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==1 & INC==2 & ACCESS==2)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh0_high_drive_log[j]=-99
+  ELSE
+    veh0_high_drive_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==1 & INC==2 & ACCESS==3)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh0_high_none_log[j]=-99
+  ELSE
+    veh0_high_none_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==2 & INC==1 & ACCESS==1)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh1_low_walk_log[j]=-99
+  ELSE
+    veh1_low_walk_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==2 & INC==1 & ACCESS==2)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh1_low_drive_log[j]=-99
+  ELSE
+    veh1_low_drive_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==2 & INC==1 & ACCESS==3)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh1_low_none_log[j]=-99
+  ELSE
+    veh1_low_none_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==2 & INC==2 & ACCESS==1)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh1_high_walk_log[j]=-99
+  ELSE
+    veh1_high_walk_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==2 & INC==2 & ACCESS==2)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh1_high_drive_log[j]=-99
+  ELSE
+    veh1_high_drive_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==2 & INC==2 & ACCESS==3)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh1_high_none_log[j]=-99
+  ELSE
+    veh1_high_none_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+
+ELSEIF (VEH==3 & INC==1 & ACCESS==1)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh2_low_walk_log[j]=-99
+  ELSE
+    veh2_low_walk_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==3 & INC==1 & ACCESS==2)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh2_low_drive_log[j]=-99
+  ELSE
+    veh2_low_drive_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==3 & INC==1 & ACCESS==3)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh2_low_none_log[j]=-99
+  ELSE
+    veh2_low_none_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==3 & INC==2 & ACCESS==1)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh2_high_walk_log[j]=-99
+  ELSE
+    veh2_high_walk_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==3 & INC==2 & ACCESS==2)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh2_high_drive_log[j]=-99
+  ELSE
+    veh2_high_drive_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ELSEIF (VEH==3 & INC==2 & ACCESS==3)
+  sum_EU = EU_motor + EU_nonmotor
+  IF (sum_EU=0)
+    veh2_high_none_log[j]=-99
+  ELSE
+    veh2_high_none_log[j] = ln(sum_EU + .000000001)
+  ENDIF
+  
+ENDIF  
+
+
+;model loops through access markets, then income segments
+
+ IF (VEH==1 & mi.1.pctwalk[j]>0) 
+  perc_walk  = 1
+  perc_drive = 0
+  perc_none  = 0
+ ELSE  
+  perc_walk  = mi.1.pctwalk[j] 
+  perc_drive = mi.1.pctdrive[j]
+  perc_none  = 1 - mi.1.pctwalk[j] - mi.1.pctdrive[j] 
+ ENDIF
+
+ 
+    IF (VEH==1)
+      MW[33][j] =(perc_walk*veh0_low_walk_log[j] + perc_drive*veh0_low_drive_log[j] + perc_none*veh0_low_none_log[j])
+      MW[34][j] =(perc_walk*veh0_high_walk_log[j] + perc_drive*veh0_high_drive_log[j] + perc_none*veh0_high_none_log[j])
+    ELSEIF (VEH==2)  
+      MW[35][j] =(perc_walk*veh1_low_walk_log[j] + perc_drive*veh1_low_drive_log[j] + perc_none*veh1_low_none_log[j])
+      MW[36][j] =(perc_walk*veh1_high_walk_log[j] + perc_drive*veh1_high_drive_log[j] + perc_none*veh1_high_none_log[j])
+    ELSEIF (VEH==3)
+      MW[37][j] =(perc_walk*veh2_low_walk_log[j] + perc_drive*veh2_low_drive_log[j] + perc_none*veh2_low_none_log[j])
+      MW[38][j] =(perc_walk*veh2_high_walk_log[j] + perc_drive*veh2_high_drive_log[j] + perc_none*veh2_high_none_log[j])
+    ENDIF

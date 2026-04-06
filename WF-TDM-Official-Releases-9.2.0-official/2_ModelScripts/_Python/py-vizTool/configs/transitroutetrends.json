@@ -1,0 +1,99 @@
+{
+    "outputFileName": "j-transit-route-trends.json",
+    "idCol": "Name",
+    "filters": [
+        {   "filterCode": "fTod2",
+            "filterDescription": "Time of Day",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Period"
+        },
+        {   "filterCode": "fModeAccessSingleLetter",
+            "filterDescription": "Access Mode",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fModeRoute",
+            "filterDescription": "Mode of Route",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Mode"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "aTBM",
+            "attributeDescription": "Train/Bus Miles",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "TrainBusMiles"
+        },
+        {   "attributeCode": "aRM",
+            "attributeDescription": "Route Miles",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Distance"
+        },
+        {   "attributeCode": "aHd",
+            "attributeDescription": "Headway (minutes)",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Headway"
+        },
+        {   "attributeCode": "aTS",
+            "attributeDescription": "Speed (mph)",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Speed"
+        },
+        {   "attributeCode": "aTT",
+            "attributeDescription": "Time (minutes)",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Time"
+        },
+        {
+            "attributeCode": "aFq",
+            "attributeDescription": "Frequency (buses/hour)",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Frequency"
+        },
+        {   "attributeCode": "aTB",
+            "attributeDescription": "Boardings",
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "DriveBoardings",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "WalkBoardings",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aTA",
+            "attributeDescription": "Alightings",
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "DriveAlightings",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "WalkAlightings",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+    ;local bus lines
+    FILEI LINEI[1] = '@ParentDir@1_Inputs\4_Transit\@Mlin@wfrc_og_lcl_2019.lin'      ;wasatch front - weber and davis county local bus
+    FILEI LINEI[2] = '@ParentDir@1_Inputs\4_Transit\@Mlin@wfrc_sl_lcl_2019.lin'      ;wasatch front - salt lake county local bus
+    FILEI LINEI[3] = '@ParentDir@1_Inputs\4_Transit\@Mlin@mag_lcl_2019.lin'          ;mountainland - utah county local bus	
+    
+    ;brt lines
+    FILEI LINEI[4] = '@ParentDir@1_Inputs\4_Transit\@Mlin@wfrc_sl_brt_2019.lin'      ;wasatch front future brt I and brt III projects
+    FILEI LINEI[5] = '@ParentDir@1_Inputs\4_Transit\@Mlin@mag_brt_2019.lin'          ;mountainland future brt I and brt III projects
+    
+    ;express-bus lines
+    FILEI LINEI[6] = '@ParentDir@1_Inputs\4_Transit\@Mlin@wfrc_sl_exp_2019.lin'      ;wasatch front - salt lake, weber, and davis express bus
+    FILEI LINEI[7] = '@ParentDir@1_Inputs\4_Transit\@Mlin@mag_exp_2019.lin'          ;mountainland - utah county express bus
+    
+    ;rail lines 
+    FILEI LINEI[8] = '@ParentDir@1_Inputs\4_Transit\@Mlin@rail_2019.lin'             ;wasatch front and mountainland combined commuter and light rail
+
+	

@@ -1,0 +1,204 @@
+;calculate asc adjustments
+        ;adjust non-motorized (reference=motorized)
+        compare_share_nonmotor = ln(calib_share_nonmotor / share_nonmotor)
+        
+        
+        ;adjust bike (reference=walk)
+        compare_share_bike = ln(calib_share_bike / rel_share_bike)
+        
+        
+        ;adjust transit (reference=auto)
+        compare_share_transit = ln(calib_share_transit / rel_share_transit)
+        
+        
+        ;adjust shared-ride (reference=drive alone)
+        compare_share_shared = ln(calib_share_shared / rel_share_shared)
+        
+        
+        ;adjust SR3 (reference=SR2)
+        compare_share_sr3 = ln(calib_share_sr3 / rel_share_sr3)
+        
+        
+        ;adjust toll (reference=HOV)
+        ;compare_share_toll = ln(calib_share_toll / rel_share_toll) 
+        
+        
+        ;adjust express, LRT, CRT (reference=local, COR constants are relative to LRT)
+        if (calib_share_EXP > 0)
+            compare_share_EXP = ln(calib_share_EXP / rel_share_EXP)
+        else
+            compare_share_EXP = 0
+        endif
+        
+       ;compare_share_COR = ln(calib_share_COR / rel_share_COR)
+        compare_share_BRT = ln(calib_share_BRT / rel_share_BRT)
+        compare_share_LRT = ln(calib_share_LRT / rel_share_LRT)
+        compare_share_CRT = ln(calib_share_CRT / rel_share_CRT)
+        
+        
+        ;adust drive access (reference=walk access)
+        compare_share_driveacc = ln(calib_share_driveacc / rel_share_driveacc)
+        
+        
+        ;adjust walk to express, LRT & CRT (reference=local)
+        if (calib_share_wEXP > 0)
+            compare_share_wEXP = ln(calib_share_wEXP / rel_share_wEXP)
+        else
+            compare_share_wEXP = 0
+        endif
+
+       ;compare_share_wCOR = ln(calib_share_wCOR / rel_share_wCOR)
+        compare_share_wBRT = ln(calib_share_wBRT / rel_share_wBRT)
+        compare_share_wLRT = ln(calib_share_wLRT / rel_share_wLRT)
+        compare_share_wCRT = ln(calib_share_wCRT / rel_share_wCRT)
+        
+        
+        ;adjut drive to express, LRT & CRT (reference=local)
+        if (calib_share_dEXP > 0)
+            compare_share_dEXP = ln(calib_share_dEXP / rel_share_dEXP)
+        else
+            compare_share_dEXP = 0
+        endif
+        
+       ;compare_share_dCOR = ln(calib_share_dCOR / rel_share_dCOR)
+        compare_share_dBRT = ln(calib_share_dBRT / rel_share_dBRT)
+        compare_share_dLRT = ln(calib_share_dLRT / rel_share_dLRT)
+        compare_share_dCRT = ln(calib_share_dCRT / rel_share_dCRT)
+        
+        
+        
+;update_constants
+        damp = 0.33
+        ;damp = 1.0
+        
+        asc_motor_2    = asc_motor  
+        asc_nonmotor_2 = asc_nonmotor + compare_share_nonmotor * damp    
+        
+        asc_auto_2    = asc_auto    
+        asc_transit_2 = asc_transit + compare_share_transit * damp 
+        
+        asc_alone_2  = asc_alone       
+        asc_shared_2 = asc_shared + compare_share_shared * damp  
+        
+        asc_sr2_2 = asc_sr2      
+        asc_sr3_2 = asc_sr3 + compare_share_sr3 * damp   
+        
+        asc_hov_2  = asc_hov
+        asc_toll_2 = asc_toll ;+ compare_share_toll * damp
+        
+        asc_LCL_2   = asc_LCL
+        asc_EXP_2   = asc_EXP + compare_share_EXP * damp
+       ;asc_COR_2   = asc_COR + compare_share_COR * damp
+        asc_BRT_2   = asc_BRT + compare_share_BRT * damp
+        asc_LRT_2   = asc_LRT + compare_share_LRT * damp
+        asc_CRT_2   = asc_CRT + compare_share_CRT * damp
+        
+        asc_walkacc_2  = asc_walkacc
+        asc_driveacc_2 = asc_driveacc + compare_share_driveacc * damp
+        
+        asc_wLCL_2   = asc_wLCL 
+        asc_wEXP_2 = asc_wEXP + compare_share_wEXP * damp
+       ;asc_wCOR_2 = asc_wCOR + compare_share_wCOR * damp
+        asc_wBRT_2 = asc_wBRT + compare_share_wBRT * damp
+        asc_wLRT_2 = asc_wLRT + compare_share_wLRT * damp
+        asc_wCRT_2 = asc_wCRT + compare_share_wCRT * damp
+        
+        asc_dLCL_2   = asc_dLCL   
+        asc_dEXP_2 = asc_dEXP + compare_share_dEXP * damp
+       ;asc_dCOR_2 = asc_dCOR + compare_share_dCOR * damp
+        asc_dBRT_2 = asc_dBRT + compare_share_dBRT * damp
+        asc_dLRT_2 = asc_dLRT + compare_share_dLRT * damp
+        asc_dCRT_2 = asc_dCRT + compare_share_dCRT * damp
+        
+        asc_walk_2 = asc_walk  
+        asc_bike_2 = asc_bike + compare_share_bike * damp     
+        
+        
+;print updated constants
+  PRINT FILE='@ParentDir@2_ModelScripts\4_ModeChoice\coeffs\calib_const\@purp@_MC_constants_@prd@_@n@.txt', FORM=10.4, 
+  list= 'asc_motor          =   ',   asc_motor_2, '\n',
+        'asc_nonmotor       =   ',   asc_nonmotor_2, '\n',
+        '\n',
+        'asc_auto           =   ',   asc_auto_2, '\n', 
+        'asc_transit        =   ',   asc_transit_2, '\n',
+        '\n',
+        'asc_alone          =   ',   asc_alone_2, '\n', 
+        'asc_shared         =   ',   asc_shared_2, '\n',
+        '\n',
+        'asc_hov            =   ',   asc_hov_2, '\n', 
+        'asc_toll           =   ',   asc_toll_2, '\n',  
+        '\n',
+        'asc_sr2            =   ',   asc_sr2_2, '\n', 
+        'asc_sr3            =   ',   asc_sr3_2, '\n',
+        '\n',
+        'asc_LCL            =   ',   asc_LCL_2, '\n', 
+        'asc_EXP            =   ',   asc_EXP_2, '\n', 
+       ;'asc_COR            =   ',   asc_COR_2, '\n',
+        'asc_BRT            =   ',   asc_BRT_2, '\n',
+        'asc_LRT            =   ',   asc_LRT_2, '\n',
+        'asc_CRT            =   ',   asc_CRT_2, '\n',
+        '\n',
+        'asc_walkacc        =   ',   asc_walkacc_2, '\n',    
+        'asc_driveacc       =   ',   asc_driveacc_2, '\n', 
+        '\n',
+        'asc_wLCL           =   ',   asc_wLCL_2, '\n',
+        'asc_wEXP           =   ',   asc_wEXP_2, '\n',
+       ;'asc_wCOR           =   ',   asc_wCOR_2, '\n',
+        'asc_wBRT           =   ',   asc_wBRT_2, '\n',
+        'asc_wLRT           =   ',   asc_wLRT_2, '\n', 
+        'asc_wCRT           =   ',   asc_wCRT_2, '\n',     
+        '\n',
+        'asc_dLCL           =   ',   asc_dLCL_2, '\n', 
+        'asc_dEXP           =   ',   asc_dEXP_2, '\n',  
+       ;'asc_dCOR           =   ',   asc_dCOR_2, '\n', 
+        'asc_dBRT           =   ',   asc_dBRT_2, '\n', 
+        'asc_dLRT           =   ',   asc_dLRT_2, '\n', 
+        'asc_dCRT           =   ',   asc_dCRT_2, '\n', 
+        '\n',
+        'asc_walk           =   ',   asc_walk_2, '\n',  
+        'asc_bike           =   ',   asc_bike_2    
+
+
+
+;calculate number of ASCs that are calibrated +/- 1%
+        IF (compare_share_nonmotor < .01 & compare_share_nonmotor > -.01) _count_calib = _count_calib + 1
+        
+        
+        IF (compare_share_transit < .01 & compare_share_transit > -.01) _count_calib = _count_calib + 1
+        
+        
+        IF (compare_share_shared < .01 & compare_share_shared > -.01) _count_calib = _count_calib + 1
+  
+  
+        IF (compare_share_sr3 < .01 & compare_share_sr3 > -.01) _count_calib = _count_calib + 1
+        
+        
+        IF (compare_share_EXP < .01 & compare_share_EXP > -.01) _count_calib = _count_calib + 1
+       ;IF (compare_share_COR < .01 & compare_share_COR > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_BRT < .01 & compare_share_BRT > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_LRT < .01 & compare_share_LRT > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_CRT < .01 & compare_share_CRT > -.01) _count_calib = _count_calib + 1
+        
+        
+        IF (compare_share_driveacc < .01 & compare_share_driveacc > -.01) _count_calib = _count_calib + 1
+
+        
+        IF (compare_share_wEXP < .01 & compare_share_wEXP > -.01) _count_calib = _count_calib + 1
+       ;IF (compare_share_wCOR < .01 & compare_share_wCOR > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_wBRT < .01 & compare_share_wBRT > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_wLRT < .01 & compare_share_wLRT > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_wCRT < .01 & compare_share_wCRT > -.01) _count_calib = _count_calib + 1
+        
+        
+        IF (compare_share_dEXP < .01 & compare_share_dEXP > -.01) _count_calib = _count_calib + 1
+       ;IF (compare_share_dCOR < .01 & compare_share_dCOR > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_dBRT < .01 & compare_share_dBRT > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_dLRT < .01 & compare_share_dLRT > -.01) _count_calib = _count_calib + 1
+        IF (compare_share_dCRT < .01 & compare_share_dCRT > -.01) _count_calib = _count_calib + 1
+
+
+        IF (compare_share_bike < .01 & compare_share_bike > -.01) _count_calib = _count_calib + 1
+        
+        
+        LOG VAR = _count_calib    ;log variable
+  

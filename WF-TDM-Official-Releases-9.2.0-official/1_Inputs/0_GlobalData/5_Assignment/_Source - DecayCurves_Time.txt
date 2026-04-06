@@ -1,0 +1,5 @@
+Note
+
+The source to 'ATO_TimeDecayCurves.csv' can be found in the observed trip length frequency workbook
+used to create the target values for the distribution friction factor calibration.
+

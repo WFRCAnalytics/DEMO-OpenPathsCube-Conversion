@@ -1,0 +1,867 @@
+[TPPLUS]
+PROJECT=NETWORK
+VprBasePath=E:\GITHUB\WF-TDM-V1000\1_INPUTS\3_HIGHWAY\
+
+[HWYLAYER]
+FileName=E:\Github\WF-TDM-v1000\1_Inputs\3_Highway\WFv920_MasterNet.net
+Visible=1
+ActiveNodeColorGroup=0
+ActiveLinkColorGroup=7
+NodeColorGroup1=FLG_NEWNET
+NodeColorPaletteIndex1=0
+NodeColor1_1=0,0,20,
+NodeColor1_2=12632256,0,10,FLG_NEWNET = 0    ;Centroids Common in Both
+NodeColor1_3=12632256,2,10,FLG_NEWNET = 1    ;Externals Common in Both
+NodeColor1_4=12632256,4,10,FLG_NEWNET = 2    ;Transit Nodes Common in Both
+NodeColor1_5=12632256,8,10,FLG_NEWNET = 3    ;Highway Nodes Common in Both
+NodeColor1_6=255,0,10,FLG_NEWNET = 10    ;v832 Centroids
+NodeColor1_7=255,2,10,FLG_NEWNET = 11    ;v832 External Nodes
+NodeColor1_8=255,4,10,FLG_NEWNET = 12    ;v832 Transit Nodes
+NodeColor1_9=255,8,10,FLG_NEWNET = 13    ;v832 Highway Nodes
+NodeColor1_10=65280,0,10,FLG_NEWNET = 20    ;v9 Centroids
+NodeColor1_11=65280,2,10,FLG_NEWNET = 21    ;v9 External Nodes
+NodeColor1_12=65280,4,10,FLG_NEWNET = 22    ;v9 Transit Nodes
+NodeColorGroup2=TAZ Centroids
+NodeColorPaletteIndex2=0
+NodeColor2_1=15066597,0,1,
+NodeColor2_2=12632256,0,4,FLG_NEWNET = 0    ;Centroids Common in Both
+NodeColor2_3=128,0,5,FLG_NEWNET = 10    ;v832 Centroids
+NodeColorGroup3=External Nodes
+NodeColorPaletteIndex3=0
+NodeColor3_1=15066597,0,3,
+NodeColor3_2=12632256,2,10,FLG_NEWNET = 1    ; External Nodes Common to Both
+NodeColorGroup4=Transit Nodes
+NodeColorPaletteIndex4=0
+NodeColor4_1=15066597,0,1,
+NodeColor4_2=12632256,4,10,FLG_NEWNET = 2    ;Transit Nodes common in both
+NodeColor4_3=255,4,10,FLG_NEWNET = 12    ;v9 Transit Nodes
+NodeColorGroup5=Highway Nodes
+NodeColorPaletteIndex5=0
+NodeColor5_1=15066597,0,1,
+NodeColor5_2=12632256,8,10,FLG_NEWNET = 3    ;Highway Nodes common in both
+NodeColor5_3=255,8,10,FLG_NEWNET = 13    ;v9 Highway Nodes
+NodeColorGroup6=
+NodeColorPaletteIndex6=0
+NodeColorGroup7=
+NodeColorPaletteIndex7=0
+NodeColorGroup10=
+NodeColorPaletteIndex10=0
+LinkColorGroup1=FLG_NEWNET
+LinkColorPaletteIndex1=0
+LinkDrawOffset1=2
+LinkColor1_1=0,0,20,
+LinkColor1_2=12632256,7,3,FLG_NEWNET = 0-1    ;Centroid Connector Common in Both
+LinkColor1_3=12632256,6,1,FLG_NEWNET = 2    ;Transit Links Common in Both
+LinkColor1_4=12632256,0,3,FLG_NEWNET = 3    ;Highway Links Common in Both
+LinkColor1_5=255,7,3,FLG_NEWNET = 10-11    ;v832 Centroid Connector
+LinkColor1_6=255,6,1,FLG_NEWNET = 12    ;v832 Transit Links
+LinkColor1_7=255,0,3,FLG_NEWNET = 13    ;v832 Highway Links
+LinkColor1_8=65280,7,3,FLG_NEWNET = 20-21   ;v9 Centroid Connector
+LinkColor1_9=65280,6,1,FLG_NEWNET = 22    ;v9 Transit Links
+LinkColor1_10=65280,0,3,FLG_NEWNET = 23    ;v9 Highway Links
+LinkColorGroup2=Phase 3 - 2050 UF
+LinkColorPaletteIndex2=0
+LinkDrawOffset2=0
+LinkColor2_1=33023,2,1,FT23_50UF = 1
+LinkColor2_2=65280,0,2,LN23_50UF = 1
+LinkColor2_3=16744448,0,3,LN23_50UF = 2
+LinkColor2_4=10485760,0,3,LN23_50UF = 3
+LinkColorGroup3=Phase 3 - 2050
+LinkColorPaletteIndex3=0
+LinkDrawOffset3=0
+LinkColorGroup4=Phase 2 - 2042 UF
+LinkColorPaletteIndex4=0
+LinkDrawOffset4=0
+LinkColor4_1=33023,2,1,FT23_42UF = 1
+LinkColor4_2=65280,0,2,LN23_42UF = 1
+LinkColor4_3=16744448,0,3,LN23_42UF = 2
+LinkColor4_4=10485760,0,3,LN23_42UF = 3
+LinkColorGroup10=2019 Lanes
+LinkColorPaletteIndex10=0
+LinkDrawOffset10=0
+LinkColor10_1=33023,2,1,FT_2019 = 1
+FileName2=
+DistScale=0.000624833872294204
+DistScaleOption=3
+SearchLimit=5
+TransitWidth=2
+TransitGap=3
+TransitMaxDraw=10
+PathTraceWidth=5
+PromptUnDo=0
+ClearLinkText=0
+ClearNodeText=0
+LeftHandDrive=0
+NoVprWarning=0
+AnimationStart=1
+AnimationStop=5
+AnimationSpeed=10
+AnimationIncr=1
+AnimationDay=-1
+AnimationRepeat=0
+AnimationDisplayTime=0
+AnimationStartTime=12/30/1899 8:00:00 AM
+AniDotSize=3
+AniDotStyle=0
+AniDotSizeStyle=0
+AniDotLength=12
+AniDotWidth=5
+AniDotSpacing=16
+AniSelectAnd=1
+AniColorAnd=1
+AniSelOrigins=
+AniSelDest=
+AniSelNodes=
+AniSelLinks=
+AniSelStarts=
+AniSelEnds=
+AniColorOrigins=
+AniColorDest=
+AniColorNodes=
+AniColorLinks=
+AniColorStarts=
+AniColorEnds=
+AniSelectedColor=255
+AniOtherColor=16711680
+AniVSetFromColor=255
+AniVSetToColor=16711680
+AniColorByVolSet=0
+AniVSetNumColor=0
+AniSpeedFromColor=255
+AniSpeedToColor=65280
+AniColorBySpeed=0
+AniSpeedNumColor=7
+AniSpeedColor1=255
+AniSpeedRange1=10
+AniSpeedColor2=8388736
+AniSpeedRange2=20
+AniSpeedColor3=8421504
+AniSpeedRange3=30
+AniSpeedColor4=16711680
+AniSpeedRange4=40
+AniSpeedColor5=8421376
+AniSpeedRange5=50
+AniSpeedColor6=32768
+AniSpeedRange6=60
+AniSpeedColor7=65280
+AniSpeedRange7=70
+DefaultCentroidColor=8421504,0,0
+DefaultNodeColor=16711680,0,0
+DefaultCentroidLinkColor=8421504,0,1
+DefaultLinkColor=16711680,0,1
+BaseX=0
+BaseY=0
+ScaleX=1
+ScaleY=1
+LayerMinScale=0
+LayerMaxScale=0
+LinkPostMinScale=0
+LinkPostMaxScale=0
+NodePostMinScale=0
+NodePostMaxScale=0
+BoundingBox=396012.7,4406820.008,503919.8825,4606407.163
+ExternalDBF=
+ExternalLinkage=
+NodeOrderListIndex=1
+NodeOrderListName1=
+NodeOrderListValue1=
+NodeOrderListName2=
+NodeOrderListValue2=
+NodeOrderListName3=
+NodeOrderListValue3=
+NodeOrderListName4=
+NodeOrderListValue4=
+NodeOrderListName5=
+NodeOrderListValue5=
+NodeOrderListName6=
+NodeOrderListValue6=
+NodeOrderListName7=
+NodeOrderListValue7=
+NodeOrderListName8=
+NodeOrderListValue8=
+NodeOrderListName9=
+NodeOrderListValue9=
+NodeOrderListName10=
+NodeOrderListValue10=
+NodeOrderListName11=
+NodeOrderListValue11=
+NodeOrderListName12=
+NodeOrderListValue12=
+NodeOrderListName13=
+NodeOrderListValue13=
+NodeOrderListName14=
+NodeOrderListValue14=
+NodeOrderListName15=
+NodeOrderListValue15=
+NodeOrderListName16=
+NodeOrderListValue16=
+NodePopUpDisplayOrder=0
+LinkOrderListIndex=2
+LinkOrderListName1=2023-2050 RTP
+LinkOrderListValue1=A_V9,B_V9,FLG_NEWNET,STREET,SEGID,LN_2019,LN_2021,LN_2023,LN_2024,LN_2028,LN23_32,LN23_42,LN23_50,LN23_32UF,LN23_42UF,LN23_50UF,FT_2019,FT_2021,FT_2023,FT_2024,FT_2028,FT23_32,FT23_42,FT23_50,FT23_32UF,FT23_42UF,FT23_50UF,OP23_32,OP23_42,OP23_50,OP23_32UF,OP23_42UF,OP23_50UF,GIS23_32,GIS23_42,GIS23_50
+LinkOrderListName2=Commuter Rail Speeds
+LinkOrderListValue2=STREET,DIRECTION,TSPD_2023,TRNSPD_FF1,TRNSPD_FF2,TRNSPD_FF3,TRNSPD_FF4,TRNSPD_FF5,TRNSPD_FF6
+LinkOrderListName3=A1 No CD Roads
+LinkOrderListValue3=LN_2023,LN23_50,FT_2023,FT23_50,LN50_A1NCD,TSD50A1NT,FT50_A1NCD,LN50_FR
+LinkOrderListName4=
+LinkOrderListValue4=
+LinkOrderListName5=
+LinkOrderListValue5=
+LinkOrderListName6=
+LinkOrderListValue6=
+LinkOrderListName7=
+LinkOrderListValue7=
+LinkOrderListName8=
+LinkOrderListValue8=
+LinkOrderListName9=
+LinkOrderListValue9=
+LinkOrderListName10=
+LinkOrderListValue10=
+LinkOrderListName11=
+LinkOrderListValue11=
+LinkOrderListName12=
+LinkOrderListValue12=
+LinkOrderListName13=
+LinkOrderListValue13=
+LinkOrderListName14=
+LinkOrderListValue14=
+LinkOrderListName15=
+LinkOrderListValue15=
+LinkOrderListName16=
+LinkOrderListValue16=
+LinkPopUpDisplayOrder=0
+ActiveSelectGroup=0
+SelectGroup1=
+Select1=
+ActiveNodePostGroup=1
+NodePostGroup1=TAZ Centroid
+NodePost1_1=N,-1,0
+NodePostSelectStr1=N<15000 && N>9999
+ActiveNodeCalcGroup=0
+NodeCalcGroup1=FLG_NEWNET
+NodeCalc1_1=FLG_NEWNET=FLG_NEWNET - 100
+NodeCalcApply1=1
+NodeCalcCondition1=
+ActiveLinkCalcGroup=0
+LinkCalcGroup1=Operations
+LinkCalc1_1=OP23_32=0
+LinkCalcApply1=1
+LinkCalcCondition1=GIS23_50=99
+LinkCalcGroup2=Capacity
+LinkCalc2_1=LN23_42=LN23_32
+LinkCalcApply2=1
+LinkCalcCondition2=GIS23_50=126
+NodeCalcGroup2=msc
+NodeCalc2_1=N_V9=N
+NodeCalcApply2=1
+NodeCalcCondition2=(N>=10000 & N<900000) & N_V9<>N
+NodeColorGroup8=
+NodeColorPaletteIndex8=0
+NodeColorGroup11=
+NodeColorPaletteIndex11=0
+LinkColorGroup11=--gray links--
+LinkColorPaletteIndex11=0
+LinkDrawOffset11=0
+LinkColorGroup12=WFRC Links
+LinkColorPaletteIndex12=0
+LinkDrawOffset12=0
+ActiveNodeTabGroup=0
+NodeTabGroup1=
+NodeTabType1=0
+NodeTab2Type1=0
+NodeTab3Type1=0
+NodeTabCellVar1=
+NodeTabRowVar1=
+NodeTabColVar1=
+NodeTabCell2Var1=
+NodeTabRow2Var1=
+NodeTabCell3Var1=
+NodeTabRowFrom1=0
+NodeTabRowTo1=0
+NodeTabRowIncr1=0
+NodeTabColFrom1=0
+NodeTabColTo1=0
+NodeTabColIncr1=0
+NodeTabRow2From1=0
+NodeTabRow2To1=0
+NodeTabRow2Incr1=0
+NodeTabApply1=1
+NodeTab2Apply1=1
+NodeTab3Apply1=1
+NodeTabCondition1=
+NodeTab2Condition1=
+NodeTab3Condition1=
+NodeTabData1=NODE-MasterNet_combinded_2022-05-03.net (C:\_Coordination\2 - Models\1 - WF\2 - Sandbox\v9.0Beta\1 - Input Dev\3_Highway\2 - Create Draft v9 Net)
+NodeTab2Data1=NODE-MasterNet_combinded_2022-05-03.net (C:\_Coordination\2 - Models\1 - WF\2 - Sandbox\v9.0Beta\1 - Input Dev\3_Highway\2 - Create Draft v9 Net)
+NodeTab3Data1=NODE-MasterNet_combinded_2022-05-03.net (C:\_Coordination\2 - Models\1 - WF\2 - Sandbox\v9.0Beta\1 - Input Dev\3_Highway\2 - Create Draft v9 Net)
+LinkColor2_5=4227327,0,4,LN23_50UF = 4
+LinkColor4_5=4227327,0,4,LN23_42UF = 4
+LinkColorGroup5=Phase 2 - 2042
+LinkColorPaletteIndex5=0
+LinkDrawOffset5=0
+NodeColor1_13=65280,8,10,FLG_NEWNET = 23   ;v9 Highway Nodes
+NodeColor2_4=32768,0,5,FLG_NEWNET = 20    ;v9 Centroids
+NodeColor3_3=255,2,10,FLG_NEWNET = 11    ;v832 External Nodes
+NodeColor3_4=65280,2,10,FLG_NEWNET = 21    ;v9 External Nodes
+NodeColor4_4=32768,4,10,FLG_NEWNET = 22    ;v832 Transit Nodes
+NodeColor5_4=65280,8,10,FLG_NEWNET = 23    ;v832 Highway Nodes
+NodePostGroup2=Externals
+NodePost2_1=N,-1,0
+NodePost2_2=N_V9,-1,0
+NodePostSelectStr2=
+ActiveLinkPostGroup=4
+LinkPostGroup1=FLG_NEWNET
+LinkPostSelectStr1=
+LinkPostGroup2=DISTEXCEPT
+LinkPost2_1=DISTEXCEPT,-1,-2
+LinkPostSelectStr2=DISTEXCEPT<>0
+LinkColor12_1=0,0,20,
+LinkColorGroup9=2023 Lanes
+LinkColorPaletteIndex9=0
+LinkDrawOffset9=0
+LinkColor9_1=33023,2,1,FT_2023 = 1
+LinkColorGroup13=MAG Links
+LinkColorPaletteIndex13=0
+LinkDrawOffset13=0
+NodeColorGroup12=
+NodeColorPaletteIndex12=0
+LinkColor10_2=65280,0,2,LN_2019 = 1
+LinkColor10_3=16744448,0,3,LN_2019 = 2
+LinkColor2_6=255,0,4,LN23_50UF = 5
+LinkColor2_7=128,0,5,LN23_50UF = 6
+LinkColor2_8=12632256,2,1,LN23_50UF = 0
+LinkColor2_9=8388736,6,1,FT23_50UF > 49
+LinkColorGroup16=Transit Links
+LinkColorPaletteIndex16=0
+LinkDrawOffset16=0
+LinkColor16_1=15066597,2,1,FLG_NEWNET=0-1,10-11,20-21    ;Centroid Connectors
+LinkColor16_2=15066597,0,1,FLG_NEWNET=3,13,23    ;Highway Links
+LinkColor16_3=12632256,6,3,FLG_NEWNET = 2    ;Transit Links Common in Both
+LinkColor16_4=255,6,3,FLG_NEWNET = 12    ;v832 Transit Links
+LinkColor16_5=65280,6,3,FLG_NEWNET = 22    ;v9 Transit Links
+LinkColorGroup15=Open for checks
+LinkColorPaletteIndex15=0
+LinkDrawOffset15=0
+LinkColor3_1=33023,2,1,FT23_50 = 1
+LinkColor3_2=65280,0,2,LN23_50 = 1
+LinkColor3_3=16744448,0,3,LN23_50 = 2
+LinkColor3_4=10485760,0,3,LN23_50 = 3
+LinkColor3_5=4227327,0,4,LN23_50 = 4
+LinkColor3_6=255,0,4,LN23_50 = 5
+LinkColor3_7=128,0,5,LN23_50 = 6
+LinkColor3_8=12632256,0,1,LN23_50 = 0
+LinkColor3_9=8388736,6,1,FT23_50 > 49
+LinkColor4_6=255,0,4,LN23_42UF = 5
+LinkColor4_7=128,0,5,LN23_42UF = 6
+LinkColor4_8=12632256,0,1,LN23_42UF = 0
+LinkColor4_9=8388736,6,1,FT23_42UF > 49
+LinkColor5_1=33023,2,1,FT23_42 = 1
+LinkColor5_2=65280,0,2,LN23_42 = 1
+LinkColor5_3=16744448,0,3,LN23_42 = 2
+LinkColor5_4=10485760,0,3,LN23_42 = 3
+LinkColor5_5=4227327,0,4,LN23_42 = 4
+LinkColor5_6=255,0,4,LN23_42 = 5
+LinkColor5_7=128,0,5,LN23_42 = 6
+LinkColor5_8=12632256,0,1,LN23_42 = 0
+LinkColor5_9=8388736,6,1,FT23_42 > 49
+LinkColorGroup6=Phase 1 - 2032 UF
+LinkColorPaletteIndex6=0
+LinkDrawOffset6=0
+LinkColor6_1=33023,2,1,FT23_32UF = 1
+LinkColor6_2=65280,0,2,LN23_32UF = 1
+LinkColor6_3=16744448,0,3,LN23_32UF = 2
+LinkColor6_4=10485760,0,3,LN23_32UF = 3
+LinkColor6_5=4227327,0,4,LN23_32UF = 4
+LinkColor6_6=255,0,4,LN23_32UF = 5
+LinkColor6_7=128,0,5,LN23_32UF = 6
+LinkColor6_8=12632256,0,1,LN23_32UF = 0
+LinkColor6_9=8388736,6,1,FT23_32UF > 49
+LinkColorGroup7=Phase 1 - 2032
+LinkColorPaletteIndex7=0
+LinkDrawOffset7=0
+LinkColor7_1=255,0,1,
+LinkColor7_2=33023,2,1,FT23_32 = 1
+LinkColor7_3=65280,0,2,LN23_32 = 1
+LinkColor7_4=16744448,0,3,LN23_32 = 2
+LinkColor7_5=10485760,0,3,LN23_32 = 3
+LinkColor7_6=4227327,0,4,LN23_32 = 4
+LinkColor7_7=255,0,4,LN23_32 = 5
+LinkColor7_8=128,0,5,LN23_32 = 6
+LinkColor7_9=12632256,0,1,LN23_32 = 0
+LinkColorGroup8=TIP - 2028
+LinkColorPaletteIndex8=0
+LinkDrawOffset8=0
+LinkColor8_1=33023,2,1,FT_2028 = 1
+LinkColor8_2=65280,0,2,LN_2028 = 1
+LinkColor8_3=16744448,0,3,LN_2028 = 2
+LinkColor8_4=10485760,0,3,LN_2028 = 3
+LinkColor8_5=4227327,0,4,LN_2028 = 4
+LinkColor8_6=255,0,4,LN_2028 = 5
+LinkColor8_7=128,0,5,LN_2028 = 6
+LinkColor8_8=12632256,0,1,LN_2028 = 0
+LinkColor8_9=8388736,6,1,FT_2028 > 49
+LinkColor9_2=65280,0,2,LN_2023 = 1
+LinkColor9_3=16744448,0,3,LN_2023 = 2
+LinkColor9_4=10485760,0,3,LN_2023 = 3
+LinkColor9_5=4227327,0,4,LN_2023 = 4
+LinkColor9_6=255,0,4,LN_2023 = 5
+LinkColor9_7=128,0,5,LN_2023 = 6
+LinkColor9_8=12632256,0,1,LN_2023 = 0
+LinkColor9_9=8388736,6,1,FT_2023 > 49
+LinkColor10_4=10485760,0,3,LN_2019 = 3
+LinkColor10_5=4227327,0,4,LN_2019 = 4
+LinkColor10_6=255,0,4,LN_2019 = 5
+LinkColor10_7=128,0,5,LN_2019 = 6
+LinkColor10_8=12632256,0,1,LN_2019 = 0
+LinkColor10_9=8388736,6,1,FT_2019 > 49
+LinkPostGroup3=GIS ID
+LinkPost3_1=GIS23_50,-1,0
+LinkPostSelectStr3=GIS23_50>0
+LinkColor13_1=0,0,20,
+LinkCalc1_2=OP23_42=0
+LinkCalc1_3=OP23_50=1
+LinkCalc1_4=OP23_32UF=1
+LinkCalc1_5=OP23_42UF=1
+LinkCalc1_6=OP23_50UF=1
+LinkCalc1_7=GIS23_32=0
+LinkCalc2_2=LN23_50=LN23_50UF
+LinkCalc2_3=LN23_42UF=LN23_50UF
+LinkCalc2_4=GIS23_32=0
+LinkCalc2_5=GIS23_42=0
+LinkCalc2_6=GIS23_50=126
+LinkCalc1_8=GIS23_42=0
+LinkCalc1_9=GIS23_50=99
+LinkCalcGroup3=GISID
+LinkCalc3_1=GIS23_32=0
+LinkCalcApply3=2
+LinkCalcCondition3=
+LinkColorGroup14=Managed Motorways
+LinkColorPaletteIndex14=0
+LinkDrawOffset14=0
+LinkColor14_1=255,0,3,FT23_32=20-29
+LinkCalcGroup4=HOT
+LinkCalc4_1=LN23_32=1
+LinkCalc4_2=LN23_42=1
+LinkCalc4_3=LN23_50=1
+LinkCalc4_4=LN23_32UF=1
+LinkCalcApply4=1
+LinkCalcCondition4=GIS23_50=206
+LinkCalc3_2=GIS23_42=0
+LinkCalc3_3=GIS23_50=717
+LinkCalcGroup5=FT
+LinkCalc5_1=FT23_42UF=3
+LinkCalc5_2=FT23_50=3
+LinkCalcApply5=1
+LinkCalcCondition5=GIS23_50=199
+LinkCalc4_5=LN23_42UF=1
+LinkCalc4_6=LN23_50UF=1
+LinkPostGroup4=Segments
+LinkPost4_1=SEGID,-1,0
+LinkPostSelectStr4=
+NodeCalcGroup3=2023=2024
+NodeCalc3_1=PNR_2023=PNR_2024
+NodeCalc3_2=FARZN_2023=FARZN_2024
+NodeCalcApply3=1
+NodeCalcCondition3=
+LinkCalcGroup6=2023=2024
+LinkCalc6_1=LN_2023=LN_2024
+LinkCalc6_2=FT_2023=FT_2024
+LinkCalc6_3=TSPD_2023=TSPD_2024
+LinkCalc6_4=HOT_2023=HOT_2024
+LinkCalc6_5=REL_2023=REL_2024
+LinkCalc6_6=OP_2023=OP_2024
+LinkCalcApply6=1
+LinkCalcCondition6=
+LinkCalcGroup7=Managed Motorways
+LinkCalc7_1=FT23_42=FT23_50
+LinkCalcApply7=3
+LinkCalcCondition7=FT23_50UF=20-29 || GIS23_50=332
+NodeColor6_1=255,0,30,PNR23_50=80
+LinkCalcGroup8=LN23_50UF
+LinkCalc8_1=LN23_50UF=0
+LinkCalcApply8=1
+LinkCalcCondition8=
+NodePostGroup3=
+NodePost3_1=N,-1,0
+NodePostSelectStr3=
+NodeCalcGroup4=
+NodeCalc4_1=FARZN23_32=FARZN_2028
+NodeCalc4_2=FARZN23_42=FARZN_2028
+NodeCalc4_3=FARZN23_50=FARZN_2028
+NodeCalc4_4=FARE23_32U=FARZN_2028
+NodeCalc4_5=FARE23_42U=FARZN_2028
+NodeCalc4_6=FARE23_50U=FARZN_2028
+NodeCalcApply4=1
+NodeCalcCondition4=N=9999-20000
+LinkCalc5_3=FT23_50UF=3
+LinkColor13_2=15987699,0,1,MAG_LINK=0
+LinkColor13_3=255,0,5,MAG_LINK=1
+LinkCalcGroup11=Transit Speed
+LinkCalc11_1=TSPD23_32=TRNSPD_FF1
+LinkCalc11_2=TSPD23_32U=TRNSPD_FF1
+LinkCalcApply11=1
+LinkCalcCondition11=FT_2028=80
+NodeColor7_1=16711680,0,3,
+NodeColor7_2=33023,4,6,N < 3400
+LinkPostGroup5=
+LinkPost5_1=HOT50_FRPM,-1,0
+LinkPostSelectStr5=FT50_A1NCD > 20
+LinkColor12_2=15987699,0,1,MAG_LINK=1
+LinkColor12_3=255,0,5,MAG_LINK=0
+NodeColorGroup13=WFRC Node Range
+NodeColorPaletteIndex13=0
+NodeColor13_1=12632256,0,2,
+NodeColor13_2=255,3,5,N=1-1781  |  N_V9=1-2216
+NodeColorGroup14=MAG Node Range
+NodeColorPaletteIndex14=0
+NodeColor14_1=12632256,0,2,
+NodeColor14_2=255,3,5,N=1789-2873  |  N_V9=2217-3546
+NodeColor13_3=255,5,10,N=136-140, 421-423, 1782-1788  |  N_V9=3601-3615
+NodeColor13_4=255,0,7,N=10000-49999, 90000-94999
+NodeColor14_3=255,5,10,N=2874-2881  |  N_V9=3616-3629
+NodeColor14_4=255,0,7,N=50000-89999, 95000-99999
+NodeColorGroup15=Flag WFRC Area
+NodeColorPaletteIndex15=0
+NodeColor15_1=0,0,20,
+NodeColor15_2=12632256,0,1,MAG_NODE=1
+NodeColor15_3=255,0,7,MAG_NODE=0
+NodeColorGroup16=Flag MAG Area
+NodeColorPaletteIndex16=0
+NodeColor16_1=0,0,20,
+NodeColor16_2=12632256,0,1,MAG_NODE=0
+NodeColor16_3=255,0,7,MAG_NODE=1
+LinkCalcGroup9=Lanes
+LinkCalc9_1=LN_2015=0
+LinkCalc9_2=LN_2019=0
+LinkCalc9_3=LN_2021=0
+LinkCalc9_4=LN_2023=0
+LinkCalc9_5=LN_2028=0
+LinkCalc9_6=LN23_32=0
+LinkCalcApply9=1
+LinkCalcCondition9=FLAG_CO>0
+LinkCalc4_7=LN23_50UFM=1
+LinkCalc4_8=GIS23_32=0
+LinkCalc4_9=GIS23_42=0
+LinkCalc4_10=GIS23_50=0
+LinkCalc9_7=LN23_42=0
+LinkCalcGroup10=
+LinkCalc10_1=HOT23_32=HOT_2019
+LinkCalc10_2=HOT23_42=HOT_2019
+LinkCalc10_3=HOT23_50=HOT_2019
+LinkCalc10_4=HOT23_32UF=HOT_2019
+LinkCalc10_5=HOT23_42UF=HOT_2019
+LinkCalcApply10=1
+LinkCalcCondition10=GIS23_50=113 && STREET = 'I-15'
+LinkCalc10_6=HOT23_50UF=22045
+LinkCalc11_3=TSPD23_42=TRNSPD_FF1
+LinkCalc11_4=TSPD23_42U=TRNSPD_FF3
+LinkCalc11_5=TSPD23_50=TRNSPD_FF3
+LinkCalc11_6=TSPD23_50U=TRNSPD_FF3
+LinkCalcGroup13=
+LinkCalc13_1=HOT_2015=0
+LinkCalc13_2=HOT_2019=0
+LinkCalc13_3=HOT_2021=0
+LinkCalc13_4=HOT_2023=0
+LinkCalcApply13=1
+LinkCalcCondition13=GIS23_50=357
+LinkCalcGroup14=
+LinkCalc14_1=LN23_32=3
+LinkCalcApply14=1
+LinkCalcCondition14=GIS23_50=323
+LinkCalcGroup15=
+LinkCalc15_1=FT50_A1NCD=FT23_50
+LinkCalcApply15=1
+LinkCalcCondition15=
+LinkCalcGroup12=Transit Speeds Provo to Payson
+LinkCalc12_1=TSPD23_32=TRNSPD_FF2
+LinkCalcApply12=2
+LinkCalcCondition12=
+LinkColor7_10=8388736,6,1,FT23_32 > 49
+LinkCalc12_2=TSPD23_32U=TRNSPD_FF2
+LinkColor11_1=255,0,7,GIS23_50>0
+LinkCalc9_8=LN23_50=0
+LinkCalc9_9=LN23_32UF=0
+LinkCalc9_10=LN23_42UF=0
+LinkCalc9_11=LN23_50UF=0
+LinkCalc9_12=LN23_50UFM=0
+LinkCalc14_2=LN23_42=3
+LinkCalc14_3=LN23_50=3
+LinkCalc14_4=LN23_32UF=3
+LinkCalc14_5=LN23_42UF=3
+LinkCalc14_6=LN23_50UF=3
+LinkCalc14_7=LN23_50UFM=3
+LinkCalc14_8=OP23_32=0
+LinkCalc14_9=OP23_42=0
+LinkCalc14_10=OP23_50=0
+LinkCalc14_11=OP23_32UF=0
+LinkCalc14_12=OP23_42UF=0
+LinkCalc14_13=OP23_50UF=0
+LinkCalc13_5=HOT_2028=0
+LinkCalc13_6=HOT23_32=0
+LinkCalc13_7=HOT23_42=0
+LinkCalc13_8=HOT23_50=0
+LinkCalc13_9=HOT23_32UF=0
+LinkCalc13_10=HOT23_42UF=0
+LinkCalc13_11=HOT23_50UF=0
+
+[PLOT]
+ActiveSetUp=1
+Set1=Set1
+Set1ScalePrtLineWidth=0
+Set1DrawAlwaysOnTop=0
+Set1PrintBackColor=0
+Set1FixedScale=0
+Set1LMargin=0
+Set1RMargin=0
+Set1TMargin=0
+Set1BMargin=0
+Set1Header1=
+Set1Footer1=
+Set1Header2=
+Set1Footer2=
+Set1Header3=
+Set1Footer3=
+Set1Header4=
+Set1Footer4=
+Set1HeaderFont=Tahoma,0,8
+Set1FooterFont=Tahoma,0,8
+Set1HeaderAlignment=Left
+Set1FooterAlignment=Left
+
+[LEGEND]
+LegendDisplay=0
+Set1Legend1UnitType=0
+Set1Legend1Anchor=0,0
+Set1Legend1Loc=0,0
+Set1Legend1Size=0,0
+Set1Legend1FullHeight=0
+Set1Legend1NumItems=1
+Set1Legend2UnitType=0
+Set1Legend2Anchor=2,0
+Set1Legend2Loc=0,0
+Set1Legend2Size=0,0
+Set1Legend2FullHeight=0
+Set1Legend2NumItems=1
+Set1Legend3UnitType=0
+Set1Legend3Anchor=0,2
+Set1Legend3Loc=0,0
+Set1Legend3Size=0,0
+Set1Legend3FullHeight=0
+Set1Legend3NumItems=1
+Set1Legend4UnitType=0
+Set1Legend4Anchor=2,2
+Set1Legend4Loc=0,0
+Set1Legend4Size=0,0
+Set1Legend4FullHeight=0
+Set1Legend4NumItems=1
+Set1Legend1Item1Font=Tahoma,0,8
+Set1Legend1Item1=0,0,0,0,0,0,
+Set1Legend2Item1Font=Tahoma,0,8
+Set1Legend2Item1=0,0,0,0,0,0,
+Set1Legend3Item1Font=Tahoma,0,8
+Set1Legend3Item1=0,0,0,0,0,0,
+Set1Legend4Item1Font=Tahoma,0,8
+Set1Legend4Item1=0,0,0,0,0,0,
+
+[SAVEVIEWS]
+RestoreLastView=0
+ViewLast=198905.920230612,687804.029669388,4403451,4606683.3
+View0=195785.173433387,698335.503861077,4401444.55942917,4610352.01385935,Wasatch Front
+View1=373890.313299501,451060.490888162,4575904.70404274,4607983.92950907,Box Elder County (BC)
+View5=360668.656487214,546775.20029897,4403531.74679992,4480895.23054775,Utah County
+View4=359476.547559127,486680.683565142,4477594.00582382,4530472.07720702,Salt Lake County
+View2=366811.606659607,443981.784248268,4550658.68093976,4582737.9064061,Weber County
+View3=354006.399343696,455674.542959476,4516314.69952728,4558577.59697944,Davis County
+
+[DYNASIM]
+DynaFieldIsSpeed=1
+DynaUnitInMiles=1
+DynaRTOR=1
+DynaFileName=
+DynaPathFileName=
+DynaLaneFieldName=
+DynaSpeedFieldName=
+DynaOffsetFieldName=
+DynaCenterOffset=1.75
+DynaLaneWidth=0.5
+DynaLaneSpacing=3.5
+DynaMaxSpeed=115
+DynaScale=1
+DynaTripScale=1
+DynaAddRadius=6.25
+DynaLayerNumber=1
+DXFFileName=
+DynaBusModes=1-999
+DynaArtBusModes=
+DynaTramModes=
+DynaTramTRModes=
+DynaHeadwayPeriod=1
+DynaPTStopMin=20
+DynaPTStopMax=30
+DynaPTStopMean=25
+DynaPTStopStdDev=4
+DynaPathSet=0
+DynaVolSet=1,2,0,0,0,0,0,0
+
+[BDYLAYER]
+Visible=0
+FileName=E:\GitHub\WF-TDM-v9x\1_Inputs\1_TAZ\WFv901_TAZ_20240412.shp
+FileName2=
+DefaultCentroidColor=8421504,0,0
+DefaultNodeColor=65280,0,0
+DefaultCentroidLinkColor=8421504,0,1
+DefaultLinkColor=65280,0,1
+BaseX=0
+BaseY=0
+ScaleX=1
+ScaleY=1
+LayerMinScale=0
+LayerMaxScale=0
+LinkPostMinScale=0
+LinkPostMaxScale=0
+NodePostMinScale=0
+NodePostMaxScale=0
+BoundingBox=374536.9999,4403451,512172.95,4606683.3
+ExternalDBF=
+ExternalLinkage=
+ActiveNodeColorGroup=1
+NodeColorGroup1=
+NodeColorPaletteIndex1=0
+ActiveLinkColorGroup=0
+LinkColorGroup1=
+LinkColorPaletteIndex1=0
+LinkDrawOffset1=0
+ActiveSelectGroup=0
+SelectGroup1=
+Select1=
+
+[PTSLAYER]
+Visible=0
+FileName=
+FileName2=
+DefaultCentroidColor=8421504,0,0
+DefaultNodeColor=255,0,0
+DefaultCentroidLinkColor=8421504,0,1
+DefaultLinkColor=255,0,1
+BaseX=0
+BaseY=0
+ScaleX=1
+ScaleY=1
+LayerMinScale=0
+LayerMaxScale=0
+LinkPostMinScale=0
+LinkPostMaxScale=0
+NodePostMinScale=0
+NodePostMaxScale=0
+BoundingBox=0,0,0,0
+ExternalDBF=
+ExternalLinkage=
+ActiveNodeColorGroup=0
+NodeColorGroup1=
+NodeColorPaletteIndex1=0
+ActiveLinkColorGroup=0
+LinkColorGroup1=
+LinkColorPaletteIndex1=0
+LinkDrawOffset1=0
+ActiveSelectGroup=0
+SelectGroup1=
+Select1=
+
+[TRNLAYER]
+Visible=0
+FileName="E:\Github\WF-TDM-v9x\1_Inputs\4_Transit\Lin_2023\mag_brt_2023.lin","E:\Github\WF-TDM-v9x\1_Inputs\4_Transit\Lin_2023\mag_exp_2023.lin","E:\Github\WF-TDM-v9x\1_Inputs\4_Transit\Lin_2023\mag_lcl_2023.lin","E:\Github\WF-TDM-v9x\1_Inputs\4_Transit\Lin_2023\rail_2023.lin","E:\Github\WF-TDM-v9x\1_Inputs\4_Transit\Lin_2023\wfrc_brt_2023.lin","E:\Github\WF-TDM-v9x\1_Inputs\4_Transit\Lin_2023\wfrc_og_lcl_2023.lin","E:\Github\WF-TDM-v9x\1_Inputs\4_Transit\Lin_2023\wfrc_sl_exp_2023.lin","E:\Github\WF-TDM-v9x\1_Inputs\4_Transit\Lin_2023\wfrc_sl_lcl_2023.lin"
+FileName2=
+TrnLineColorPalette1=16711680
+TrnLineColorPalette2=43520
+TrnLineColorPalette3=255
+TrnLineColorPalette4=16776960
+TrnLineColorPalette5=65280
+TrnLineColorPalette6=16711935
+TrnLineColorPalette7=16757760
+TrnLineColorPalette8=12648192
+TrnLineColorPalette9=12621567
+TrnLineColorPalette10=8827648
+TrnLineColorPalette11=12582912
+TrnLineColorPalette12=12615680
+TrnLineColorPalette13=11272364
+TrnLineColorPalette14=12632256
+TrnPostStop=1,0,0,12
+TrnPostNonStop=0,49407,0,7
+DefaultCentroidColor=8421504,0,0
+DefaultNodeColor=43520,0,0
+DefaultCentroidLinkColor=8421504,0,1
+DefaultLinkColor=43520,0,1
+BaseX=0
+BaseY=0
+ScaleX=1
+ScaleY=1
+LayerMinScale=0
+LayerMaxScale=0
+LinkPostMinScale=0
+LinkPostMaxScale=0
+NodePostMinScale=0
+NodePostMaxScale=0
+BoundingBox=396179.5658,4425332.492,448634.6563,4598068
+ExternalDBF=
+ExternalLinkage=
+ActiveNodeColorGroup=0
+NodeColorGroup1=
+NodeColorPaletteIndex1=0
+ActiveLinkColorGroup=0
+LinkColorGroup1=
+LinkColorPaletteIndex1=0
+LinkDrawOffset1=0
+ActiveSelectGroup=0
+SelectGroup1=
+Select1=
+
+[LINLAYER]
+Visible=0
+FileName=E:\Github\WF-TDM-v1000\1_Inputs\3_Highway\GIS\WFv920_MasterNet - Link.shp
+FileName2=
+DefaultCentroidColor=8421504,0,0
+DefaultNodeColor=16776960,0,0
+DefaultCentroidLinkColor=8421504,0,1
+DefaultLinkColor=16776960,0,1
+BaseX=0
+BaseY=0
+ScaleX=1
+ScaleY=1
+LayerMinScale=0
+LayerMaxScale=0
+LinkPostMinScale=0
+LinkPostMaxScale=0
+NodePostMinScale=0
+NodePostMaxScale=0
+BoundingBox=396012.7,4406820.008,503919.8825,4606407.163
+ExternalDBF=
+ExternalLinkage=
+ActiveNodeColorGroup=0
+NodeColorGroup1=
+NodeColorPaletteIndex1=0
+ActiveLinkColorGroup=0
+LinkColorGroup1=
+LinkColorPaletteIndex1=0
+LinkDrawOffset1=0
+ActiveSelectGroup=0
+SelectGroup1=
+Select1=
+TrueShape=1,0,1,-1,1,1
+
+[POLYGONS]
+Polygon0=3,I-15 - Salt Lake County
+Polygon0Line1=423281.584925155,4519196.40819491,422713.546049853,4519290.98562603,422079.301852398,4519196.40819491,421586.708336471,4518264.54058158,422950.131483866,4515050.75744843,422965.114155815,4514406.50255461,422687.934724751,4513282.8021584,422538.108005257,4512436.28119326,423362.154962474,4510600.90387946,423219.819578955,4507679.28284933,423526.964353918,4505798.95751968,423519.473017943,4503723.85745469,423556.929697816,4501483.94799825,423496.999010019,4499753.4493881,422987.588163739,4499056.75514245,423002.570835689,4497873.12405845,423069.992859461,4496547.15759092,423294.732938702,4494884.08100454,423571.912369766,4493228.49575413,423669.299737437,4490329.34873192
+Polygon0Line2=424208.675927615,4487684.90713286,424336.028639185,4486516.2587208,424343.51997516,4484875.65614234,424186.201919691,4482860.48676515,423541.947025867,4482088.87915975,422320.859261991,4479706.6343198,422427.120915621,4478305.14763539,422706.649161862,4478388.13258349,422762.848084498,4479804.02168747,423474.525002095,4480890.2654038,424051.357872146,4481512.0462897,424598.225398299,4482598.29000604,424763.034789743,4483160.14020414,424763.034789743,4484396.21063996,424845.439485464,4485377.57565265,424905.370173262,4486583.68074457,424485.855358679,4488696.23748944,424231.149935539,4489887.35990942,424066.340544096,4491677.78920737,424066.340544096,4493198.53041023
+Polygon0Line3=423669.299737437,4495453.42253862,423594.38637769,4496449.77022325,424171.219247742,4498689.67967969,424006.409856298,4499333.93457351,424006.409856298,4499738.46671615,424193.693255666,4501603.80937385,423998.918520324,4503603.99607909,424006.409856298,4505259.5813295,424051.357872146,4507297.22471462,423901.531152652,4509686.96089055,423834.10912888,4511350.03747693,423594.38637769,4511971.81836283,423287.241602727,4512998.13139136,423452.050994171,4515103.19680025,422530.616669283,4518152.17054196,423281.584925155,4519196.40819491
+Polygon1=2,North Weber Co
+Polygon1Line1=413711.217584054,4576728.24247821,413374.23186654,4576363.17461757,413711.217584054,4574678.24603,413655.053297802,4569202.22812038,413992.039015317,4567601.54596219,414469.435448463,4566815.24595465,414918.749738482,4564568.67450455,415171.489026619,4563361.14235013,415901.624747901,4562911.82806011,416407.103324173,4562153.6101957,416210.528322289,4561395.39233129,415424.228314755,4560496.76375125,415789.296175396,4559963.20303185,416519.431896678,4560861.83161189,417249.56761796,4561872.78876444,416884.499757319,4562996.07448949,416322.856894794,4564287.85307329,415536.55688726,4565411.13879834,415171.489026619,4567208.39595842,414974.914024735,4568472.0923991
+Polygon1Line2=414666.010450346,4571196.06028234,414666.010450346,4572993.31744242,414216.696160327,4575885.77818443,413711.217584054,4576728.24247821
+
+[LayerOrder]
+NumRecords=1
+ScreenColor=16777215
+FreewayOutlineColor=5263440
+NumDisplayDec=-1
+ScreenFont=Tahoma,16711680,12
+Order=HWYLAYER,TRNLAYER,LINLAYER,PTSLAYER,BDYLAYER,IMGLAYER,DRWLAYER
+

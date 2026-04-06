@@ -1,0 +1,17 @@
+# ------------------------------------------------------------------------------
+# Python input file variables and paths
+# ------------------------------------------------------------------------------
+
+# global parameters ------------------------------------------------------------
+ParentDir         = r"D:\GitHub\WF-TDM-v9x\\"
+ScenarioDir       = r"Scenarios\WF TDM v911-official\BY_2019\\"
+RID               = r"WFv911_BY_2019"
+
+ModelVersion      = "WFv911"
+ScenarioGroup     = "BY"
+RunYear           =  2019
+
+TAZ_DBF           = r"WFv910_TAZ.dbf"
+ATO_GEO_PATH      = r"D:\GitHub\WF-TDM-v9x\1_Inputs\0_GlobalData\7_ATO\ATONewSmallAreas.gdb"
+ATO_CSV           = r"D:\GitHub\WF-TDM-v9x\Scenarios\WF TDM v911-official\BY_2019\5_AssignHwy\4_Summaries\WFv911_BY_2019_Access_to_Opportunity.csv"
+

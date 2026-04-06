@@ -1,0 +1,223 @@
+{
+    "outputFileName": "j-zone-mode-trips.json",
+    "idCol": "TAZID",
+    "filters": [        
+        {   "filterCode": "fPurp5pAll",
+            "filterDescription": "Trip Purposes",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Purpose"
+        },
+        {   "filterCode": "fTod2pDy",
+            "filterDescription": "Time of Day",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Period"
+        },
+        {   "filterCode": "fPA",
+            "filterDescription": "Production/Attraction",
+            "filterLocation": "long",
+            "tdmCsvColumn": "PA"
+        },
+        {   "filterCode": "fModeRouteCode3",
+            "filterDescription": "Mode",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fModeAccessSingleLetter",
+            "filterDescription": "Access Mode",
+            "filterLocation": "wide"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "a0",
+            "attributeDescription": "All Trips",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "All"
+        },
+        {   "attributeCode": "aM",
+            "attributeDescription": "Motorized Trips",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Moto"
+        },
+        {   "attributeCode": "aA",
+            "attributeDescription": "Auto Trips",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Auto"
+        },
+        {   "attributeCode": "aT",
+            "attributeDescription": "Transit Trips",
+            "roundingDecimals": 1,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "dLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "dCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "dEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "dLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "dCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "dBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "D"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "wLCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "wCOR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "wEXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "wLRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "wCRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "wBRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeAccessSingleLetter",
+                            "filterValue": "W"
+                        },
+                        {
+                            "filterCode": "fModeRouteCode3",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aN",
+            "attributeDescription": "Non-Motorized Trips",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "NonM"
+        },
+        {   "attributeCode": "aW",
+            "attributeDescription": "Walk Trips",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Walk"
+        },
+        {   "attributeCode": "aB",
+            "attributeDescription": "Bike Trips",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Bike"
+        }
+    ]
+}

@@ -1,0 +1,410 @@
+[TPPLUS]
+PROJECT=NETWORK
+VprBasePath=E:\TDM\0 - MODELDEV\_SANDBOX\WF TDM V8.3.1 - 2020-05-08\SCENARIOS\NEED_2050\0_INPUTPROCESSING\
+
+[HWYLAYER]
+FileName=E:\TDM\0 - ModelDev\_sandbox\WF TDM v8.3.1 - 2020-05-08\Scenarios\Need_2050\0_InputProcessing\v831_SE50_Net50UF.net
+Visible=1
+ActiveLinkColorGroup=1
+LinkColorGroup1=LANES
+LinkColorPaletteIndex1=0
+LinkDrawOffset1=0
+LinkColor1_1=65535,7,5,LANES>=7
+LinkColor1_1=65535,7,5,LANES>=7
+LinkColor1_2=255,0,5,LANES=5
+LinkColor1_3=65280,0,5,LANES=4
+LinkColor1_4=16744448,0,5,LANES=3
+LinkColor1_5=4194368,0,3,LANES=2
+LinkColor1_6=12632256,0,2,LANES=1
+LinkColor1_7=8421631,2,1,FT=1
+LinkColorGroup2=FT
+LinkColorPaletteIndex2=0
+LinkDrawOffset2=0
+LinkColor2_1=255,0,4,FT=2    ;Principal Arterial
+LinkColor2_2=32768,0,3,FT=3    ;Minor Arterial
+LinkColor2_3=16711680,0,2,FT=4    ;Major Collector
+LinkColor2_4=16744703,0,2,FT=5    ;Minor Collector
+LinkColor2_5=12632256,2,1,FT=6-7    ;Local & Unpaved
+LinkColor2_6=8421631,5,4,FT=12-15    ;Expressway
+LinkColor2_7=32896,7,2,FT=20-21    ;MM - fwy-to-fwy loop ramp, & C-D road, flyover ramp
+LinkColor2_8=32896,7,5,FT=22-26    ;MM - General Lanes
+LinkColor2_9=32768,7,2,FT=28-29    ;MM - On-Off Ramps
+LinkColor2_10=255,7,2,FT=30-31    ;Fwy - fwy-to-fwy loop ramp, & C-D road, flyover ramp
+LinkColor2_11=255,7,5,FT=32-36    ;Fwy - General Lanes
+LinkColor2_12=4210816,7,2,FT=41-42    ;Fwy - On-Off Ramps
+LinkColor2_13=65280,7,4,FT=37-39    ;Managed Lanes
+LinkColor2_14=33023,5,4,FT=40    ;Tollway
+LinkColor2_15=8421631,2,1,FT=1    ;Centroid Connector
+LinkColorGroup3=FTCLASS
+LinkColorPaletteIndex3=0
+LinkDrawOffset3=0
+LinkColor3_1=16744703,0,10,;other
+LinkColor3_2=33023,0,1,FTCLASS='Centroid Connector'
+LinkColor3_3=12632256,0,2,FTCLASS='Local'
+LinkColor3_4=16711680,0,2,FTCLASS='Collector'
+LinkColor3_5=4227072,0,2,FTCLASS='Minor Arterial'
+LinkColor3_6=255,0,2,FTCLASS='Principal Arterial'
+LinkColor3_7=12615935,0,2,FTCLASS='Expressway'
+LinkColor3_8=255,7,2,FTCLASS='Freeway'
+LinkColor3_9=0,0,2,FTCLASS='Ramp'
+LinkColorGroup4=HOT_ZONEID - HOT_CHRGPT
+LinkColorPaletteIndex4=0
+LinkDrawOffset4=0
+LinkColor4_1=12632256,0,1,;other
+LinkColor4_2=33023,0,1,HOT_ZONEID>0
+LinkColor4_3=255,0,5,HOT_CHRGPT>0
+LinkColorGroup5=SEGID
+LinkColorPaletteIndex5=0
+LinkDrawOffset5=1
+LinkColor5_1=12632256,0,1,;other
+LinkColor5_2=255,0,1,SEGID>' '
+LinkColorGroup6=SFAC
+LinkColorPaletteIndex6=0
+LinkDrawOffset6=1
+LinkColor6_1=12632256,0,1,;other
+LinkColor6_2=255,0,5,SFAC>0  &  SFAC<1
+LinkColor6_3=65280,0,5,SFAC>1
+LinkColorGroup7=CFAC
+LinkColorPaletteIndex7=0
+LinkDrawOffset7=1
+LinkColor7_1=12632256,0,1,;other
+LinkColor7_2=255,0,5,CFAC>0  &  CFAC<1
+LinkColor7_3=65280,0,5,CFAC>1
+LinkColorGroup8=DISTEXCEPT
+LinkColorPaletteIndex8=0
+LinkDrawOffset8=1
+LinkColor8_1=12632256,0,1,;other
+LinkColor8_2=255,0,5,DISTEXCEPT<>0
+LinkColorGroup9=TRK_RSTRCT
+LinkColorPaletteIndex9=0
+LinkDrawOffset9=1
+LinkColor9_1=12632256,0,1,;other
+LinkColor9_2=255,0,5,TRK_RSTRCT>0
+LinkColorGroup10=REL_LN
+LinkColorPaletteIndex10=0
+LinkDrawOffset10=1
+LinkColor10_1=12632256,0,1,;other
+LinkColor10_2=255,0,5,REL_LN>0
+LinkColorGroup11=OP_PROJ
+LinkColorPaletteIndex11=0
+LinkDrawOffset11=1
+LinkColor11_1=12632256,0,1,;other
+LinkColor11_2=255,0,5,OP_PROJ>0
+LinkColorGroup12=SEL_LINK
+LinkColorPaletteIndex12=0
+LinkDrawOffset12=1
+LinkColor12_1=12632256,0,1,;other
+LinkColor12_2=255,0,5,SEL_LINK>0
+LinkColorGroup13=CBD
+LinkColorPaletteIndex13=0
+LinkDrawOffset13=1
+LinkColor13_1=12632256,0,1,;other
+LinkColor13_2=255,0,5,CBD>0
+LinkColorGroup14=CO_FIPS
+LinkColorPaletteIndex14=0
+LinkDrawOffset14=1
+LinkColor14_1=33023,0,7,;other
+LinkColor14_2=12615935,0,1,CO_FIPS=3    ;Box Elder
+LinkColor14_3=32768,0,1,CO_FIPS=57    ;Weber
+LinkColor14_4=65535,0,1,CO_FIPS=11    ;Davis
+LinkColor14_5=255,0,1,CO_FIPS=35    ;Salt Lake
+LinkColor14_6=16711680,0,1,CO_FIPS=49    ;Utah
+LinkColorGroup15=AREATYPE
+LinkColorPaletteIndex15=0
+LinkDrawOffset15=1
+LinkColor15_1=255,0,10,;Other
+LinkColor15_2=8454016,0,1,AREATYPE=1    ;Rural
+LinkColor15_3=32768,0,1,AREATYPE=2    ;Transition
+LinkColor15_4=16744448,0,1,AREATYPE=3    ;Suburban
+LinkColor15_5=33023,0,1,AREATYPE=4    ;Urban
+LinkColor15_6=128,0,1,AREATYPE=5    ;CBD
+LinkColorGroup16=EXTERNAL
+LinkColorPaletteIndex16=0
+LinkDrawOffset16=1
+LinkColor16_1=12632256,0,1,;other
+LinkColor16_2=255,0,5,EXTERNAL>0
+FileName2=
+DistScale=0.000633467006717584
+DistScaleOption=3
+SearchLimit=5
+TransitWidth=2
+TransitGap=3
+TransitMaxDraw=10
+PathTraceWidth=5
+PromptUnDo=0
+ClearLinkText=0
+ClearNodeText=0
+LeftHandDrive=0
+NoVprWarning=0
+AnimationStart=1
+AnimationStop=5
+AnimationSpeed=10
+AnimationIncr=1
+AnimationDay=-1
+AnimationRepeat=0
+AnimationDisplayTime=0
+AnimationStartTime=12/30/1899 8:00:00 AM
+AniDotSize=3
+AniDotStyle=0
+AniDotSizeStyle=0
+AniDotLength=12
+AniDotWidth=5
+AniDotSpacing=16
+AniSelectAnd=1
+AniColorAnd=1
+AniSelOrigins=
+AniSelDest=
+AniSelNodes=
+AniSelLinks=
+AniSelStarts=
+AniSelEnds=
+AniColorOrigins=
+AniColorDest=
+AniColorNodes=
+AniColorLinks=
+AniColorStarts=
+AniColorEnds=
+AniSelectedColor=255
+AniOtherColor=16711680
+AniVSetFromColor=255
+AniVSetToColor=16711680
+AniColorByVolSet=0
+AniVSetNumColor=0
+AniSpeedFromColor=255
+AniSpeedToColor=65280
+AniColorBySpeed=0
+AniSpeedNumColor=7
+AniSpeedColor1=255
+AniSpeedRange1=10
+AniSpeedColor2=8388736
+AniSpeedRange2=20
+AniSpeedColor3=8421504
+AniSpeedRange3=30
+AniSpeedColor4=16711680
+AniSpeedRange4=40
+AniSpeedColor5=8421376
+AniSpeedRange5=50
+AniSpeedColor6=32768
+AniSpeedRange6=60
+AniSpeedColor7=65280
+AniSpeedRange7=70
+DefaultCentroidColor=8421504,0,0
+DefaultNodeColor=16711680,0,0
+DefaultCentroidLinkColor=12632256,0,1
+DefaultLinkColor=12632256,0,1
+BaseX=0
+BaseY=0
+ScaleX=1
+ScaleY=1
+LayerMinScale=0
+LayerMaxScale=0
+LinkPostMinScale=0
+LinkPostMaxScale=0
+NodePostMinScale=0
+NodePostMaxScale=0
+BoundingBox=396136.079,4417077.10893,453739.0787,4606415.75279
+ExternalDBF=
+ExternalLinkage=
+NodeOrderListIndex=1
+NodeOrderListName1=
+NodeOrderListValue1=
+NodeOrderListName2=
+NodeOrderListValue2=
+NodeOrderListName3=
+NodeOrderListValue3=
+NodeOrderListName4=
+NodeOrderListValue4=
+NodeOrderListName5=
+NodeOrderListValue5=
+NodeOrderListName6=
+NodeOrderListValue6=
+NodeOrderListName7=
+NodeOrderListValue7=
+NodeOrderListName8=
+NodeOrderListValue8=
+NodeOrderListName9=
+NodeOrderListValue9=
+NodeOrderListName10=
+NodeOrderListValue10=
+NodeOrderListName11=
+NodeOrderListValue11=
+NodeOrderListName12=
+NodeOrderListValue12=
+NodeOrderListName13=
+NodeOrderListValue13=
+NodeOrderListName14=
+NodeOrderListValue14=
+NodeOrderListName15=
+NodeOrderListValue15=
+NodeOrderListName16=
+NodeOrderListValue16=
+NodePopUpDisplayOrder=0
+ActiveNodeColorGroup=0
+NodeColorGroup1=PNR
+NodeColorPaletteIndex1=0
+NodeColor1_1=255,0,6,PNR>0
+NodeColorGroup2=CRTFAREZN
+NodeColorPaletteIndex2=0
+NodeColor2_1=255,0,10,CRTFAREZN>0
+NodeColorGroup3=HOT_ZONEID
+NodeColorPaletteIndex3=0
+NodeColor3_1=255,0,5,HOT_ZONEID>0
+NodeColorGroup4=CBD
+NodeColorPaletteIndex4=0
+NodeColor4_1=255,0,2,CBD>0
+NodeColorGroup5=CO_FIPS
+NodeColorPaletteIndex5=0
+NodeColor5_1=33023,0,10,;other
+NodeColor5_2=12615935,0,2,CO_FIPS=3    ;Box Elder
+NodeColor5_3=32768,0,2,CO_FIPS=57    ;Weber
+NodeColor5_4=65535,0,2,CO_FIPS=11    ;Davis
+NodeColor5_5=255,0,2,CO_FIPS=35    ;Salt Lake
+NodeColor5_6=16711680,0,2,CO_FIPS=49    ;Utah
+NodeColorGroup6=EXTERNAL
+NodeColorPaletteIndex6=0
+NodeColor6_1=255,0,10,EXTERNAL>0
+LinkOrderListIndex=1
+LinkOrderListName1=
+LinkOrderListValue1=
+LinkOrderListName2=
+LinkOrderListValue2=
+LinkOrderListName3=
+LinkOrderListValue3=
+LinkOrderListName4=
+LinkOrderListValue4=
+LinkOrderListName5=
+LinkOrderListValue5=
+LinkOrderListName6=
+LinkOrderListValue6=
+LinkOrderListName7=
+LinkOrderListValue7=
+LinkOrderListName8=
+LinkOrderListValue8=
+LinkOrderListName9=
+LinkOrderListValue9=
+LinkOrderListName10=
+LinkOrderListValue10=
+LinkOrderListName11=
+LinkOrderListValue11=
+LinkOrderListName12=
+LinkOrderListValue12=
+LinkOrderListName13=
+LinkOrderListValue13=
+LinkOrderListName14=
+LinkOrderListValue14=
+LinkOrderListName15=
+LinkOrderListValue15=
+LinkOrderListName16=
+LinkOrderListValue16=
+LinkPopUpDisplayOrder=0
+ActiveSelectGroup=0
+SelectGroup1=
+Select1=
+
+[PLOT]
+ActiveSetUp=1
+Set1=Set1
+Set1ScalePrtLineWidth=0
+Set1DrawAlwaysOnTop=0
+Set1PrintBackColor=0
+Set1FixedScale=0
+Set1LMargin=0
+Set1RMargin=0
+Set1TMargin=0
+Set1BMargin=0
+Set1Header1=
+Set1Footer1=
+Set1Header2=
+Set1Footer2=
+Set1Header3=
+Set1Footer3=
+Set1Header4=
+Set1Footer4=
+Set1HeaderFont=Tahoma,0,8
+Set1FooterFont=Tahoma,0,8
+Set1HeaderAlignment=Left
+Set1FooterAlignment=Left
+
+[LEGEND]
+LegendDisplay=0
+Set1Legend1UnitType=0
+Set1Legend1Anchor=0,0
+Set1Legend1Loc=0,0
+Set1Legend1Size=0,0
+Set1Legend1FullHeight=0
+Set1Legend1NumItems=2
+Set1Legend2UnitType=0
+Set1Legend2Anchor=2,0
+Set1Legend2Loc=0,0
+Set1Legend2Size=0,0
+Set1Legend2FullHeight=0
+Set1Legend2NumItems=1
+Set1Legend3UnitType=0
+Set1Legend3Anchor=0,2
+Set1Legend3Loc=0,0
+Set1Legend3Size=0,0
+Set1Legend3FullHeight=0
+Set1Legend3NumItems=1
+Set1Legend4UnitType=0
+Set1Legend4Anchor=2,2
+Set1Legend4Loc=0,0
+Set1Legend4Size=0,0
+Set1Legend4FullHeight=0
+Set1Legend4NumItems=1
+Set1Legend1Item1AutoComment=0
+Set1Legend1Item2AutoComment=0
+Set1Legend1Item1Font=Arial,0,8
+Set1Legend1Item1=1,0,0,0,0,0,
+Set1Legend1Item1Auto=HWYLAYER-Link
+Set1Legend1Item2Font=Arial,0,8
+Set1Legend1Item2=1,0,0,0,0,0,
+Set1Legend1Item2Auto=HWYLAYER-Node
+Set1Legend2Item1Font=Tahoma,0,8
+Set1Legend2Item1=0,0,0,0,0,0,
+Set1Legend3Item1Font=Tahoma,0,8
+Set1Legend3Item1=0,0,0,0,0,0,
+Set1Legend4Item1Font=Tahoma,0,8
+Set1Legend4Item1=0,0,0,0,0,0,
+
+[SAVEVIEWS]
+RestoreLastView=0
+ViewLast=419335.07532221,438108.897402065,4509977.81858473,4520886.52419132
+
+[DYNASIM]
+DynaFieldIsSpeed=1
+DynaUnitInMiles=1
+DynaRTOR=1
+DynaFileName=
+DynaPathFileName=
+DynaLaneFieldName=
+DynaSpeedFieldName=
+DynaOffsetFieldName=
+DynaCenterOffset=1.75
+DynaLaneWidth=0.5
+DynaLaneSpacing=3.5
+DynaMaxSpeed=115
+DynaScale=1
+DynaTripScale=1
+DynaAddRadius=6.25
+DynaLayerNumber=1
+DXFFileName=
+DynaBusModes=1-999
+DynaArtBusModes=
+DynaTramModes=
+DynaTramTRModes=
+DynaHeadwayPeriod=1
+DynaPTStopMin=20
+DynaPTStopMax=30
+DynaPTStopMean=25
+DynaPTStopStdDev=4
+DynaPathSet=0
+DynaVolSet=1,2,0,0,0,0,0,0
+
+[LayerOrder]
+NumRecords=1
+ScreenColor=16777215
+FreewayOutlineColor=5263440
+NumDisplayDec=-1
+ScreenFont=Tahoma,0,8
+Order=HWYLAYER,TRNLAYER,PTSLAYER,LINLAYER,BDYLAYER,IMGLAYER,DRWLAYER
+

@@ -1,0 +1,5 @@
+#Python input file variables and paths
+
+Scripts_folder   = r"E:\TDMcalibration2017\calibrationtests\Round 4\2019-05-09 - experiment\2_ModelScripts\6_REMM"
+Scenarios_folder = r"E:\TDMcalibration2017\calibrationtests\Round 4\2019-05-09 - experiment\Scenarios\BY_2015\6_REMM"
+

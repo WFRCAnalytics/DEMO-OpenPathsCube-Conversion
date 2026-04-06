@@ -1,0 +1,20 @@
+
+;print timestamp
+RUN PGM=MATRIX
+    
+    ZONES = 1
+    
+    ;calculate runtime for model group
+    EndTime_TG = currenttime()
+    RunTime_TG = EndTime_TG - @BegTime_TG@
+    
+    PRINT FILE='@ParentDir@@ScenarioDir@_Log\_RunTime - @RID@.txt',
+        APPEND=T,
+        LIST='\n',
+             '\n    Beg Time:  ', formatdatetime(@BegTime_TG@, 40, 0, 'yyyy-mm-dd,  hh:nn:ss'),
+             '\n    End Time:  ', formatdatetime(EndTime_TG, 40, 0, 'yyyy-mm-dd,  hh:nn:ss'),
+             '\n    Run Time:  ', formatdatetime(RunTime_TG, 40, 0, 'hhh:nn:ss'),
+             '\n'
+    
+ENDRUN
+    

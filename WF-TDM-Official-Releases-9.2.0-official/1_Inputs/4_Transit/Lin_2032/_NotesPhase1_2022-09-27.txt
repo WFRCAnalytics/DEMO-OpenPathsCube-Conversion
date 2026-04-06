@@ -1,0 +1,60 @@
+LIN File Notes - Phase 1 - Suzie - September 27, 2022
+Lines turned off - reason
+rail_2032
+	Sline_Mill	- Unfunded
+
+wfrc_brt_2032
+	StGrid_2_BRT(9)	- funded in Phase 2
+
+wfrc_core_2032
+	ClearRoyWest(4)	- funded in Phase 3
+	MTTrolley(4)	- funded in Phase 3
+	BRTRdwd_South(4)- funded in Phase 3 
+	ShldSego_3(4)	- funded in Phase 3
+	BRT123RD_A(4)	- funded in Phase 3
+	BRT104th_2(4)	- funded in Phase 3
+	PlsntClear(5)	- funded in Phase 2
+	HinckleyUnion(5)- funded in Phase 3
+	BRTWash_R(5)	- funded in Phase 2
+	BRTNRedwd_T(4)	- funded in Phase 3
+	BRT_2700W_T(4)	- funded in Phase 3
+	StGrid_2(5)	- funded in Phase 2
+	BRT1300E_T(5)	- funded in Phase 2
+	1300So(4)	- funded in Phase 3
+	1700So(5)	- funded in Phase 2
+	LakePark(5)	- funded in Phase 2
+	3900S(5)	- funded in Phase 3
+	BRT62S_T1(5)	- funded in Phase 3
+	7800FtUn_3(5)	- funded in Phase 2
+	SoJoSandyC(5)	- funded in Phase 2
+	Clear(5)	- funded in Phase 2
+	Sline_Mill(5)	- funded in Phase 2
+
+wfrc_og_lcl_2032
+	O650 		- suspended in 2022 due to operator shortages
+
+wfrc_sl_exp_2032
+	S451X 		- redundant to RTP service
+
+wfrc_sl_lcl_2032
+	S2 		- redundant RTP service
+	S4		- redundant RTP service
+	S9	 	- redundant RTP service
+	S21 		- redundant RTP service
+	S33 		- redundant RTP service
+	S35		- redundant RTP service
+	S45 		- redundant RTP service
+	S47 		- redundant RTP service
+	S54 		- redundant RTP service
+	S72 		- redundant RTP service
+	S205 		- redundant RTP service
+	S209 		- redundant RTP service
+	S217 		- redundant RTP service
+	S218 		- redundant RTP service
+	S220 		- redundant RTP service
+	S227 		- redundant RTP service
+	S240 		- redundant RTP service
+	S551 		- redundant RTP service
+	SF94 		- redundant RTP service
+	SF556 		- redundant RTP service
+

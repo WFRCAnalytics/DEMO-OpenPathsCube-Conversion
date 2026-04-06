@@ -1,0 +1,8 @@
+{
+    "fileName": "scenarios.json",
+    "startNew": false,
+    "initialSelect": "",
+    "initialSelectCompare": "",
+    "includeInAllTrends": ["BY", "OY", "TIP"],
+    "defaultTrend": "RTP"
+}

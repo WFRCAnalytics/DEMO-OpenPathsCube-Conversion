@@ -1,0 +1,17 @@
+	;local bus lines
+	FILEI LINEI[1] = '@ParentDir@1_Inputs\4_Transit\@Mlin@wfrc_og_lcl_2042UF.lin'	;wasatch front - weber and davis county local bus               
+	FILEI LINEI[2] = '@ParentDir@1_Inputs\4_Transit\@Mlin@wfrc_sl_lcl_2042UF.lin'	;wasatch front - salt lake county local bus                     
+	FILEI LINEI[3] = '@ParentDir@1_Inputs\4_Transit\@Mlin@mag_lcl_2042UF.lin'		  ;mountainland - utah county local bus	                          
+	                                                                                                                                            
+	;brt and core lines                                                                                                                                  
+	FILEI LINEI[4] = '@ParentDir@1_Inputs\4_Transit\@Mlin@wfrc_core_2042UF.lin'		;wasatch front future core route projects
+	FILEI LINEI[5] = '@ParentDir@1_Inputs\4_Transit\@Mlin@wfrc_brt_2042UF.lin'		;wasatch front future brt projects               
+	FILEI LINEI[6] = '@ParentDir@1_Inputs\4_Transit\@Mlin@mag_brt_2042UF.lin'     ;mountainland future brt projects                                                             
+	                                                                                                                                            
+	;express-bus lines                                                                                                                          
+	FILEI LINEI[7] = '@ParentDir@1_Inputs\4_Transit\@Mlin@wfrc_sl_exp_2042UF.lin'	;wasatch front - salt lake, weber, and davis express bus                              
+	                                                                                                                                            
+	;rail lines                                                                                                                                 
+	FILEI LINEI[8] = '@ParentDir@1_Inputs\4_Transit\@Mlin@rail_2042UF.lin' 		    ;wasatch front and mountainland combined commuter and light rail
+
+	

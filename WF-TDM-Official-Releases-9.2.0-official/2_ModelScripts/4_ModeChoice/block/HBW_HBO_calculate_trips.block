@@ -1,0 +1,686 @@
+;FILE: calculate_trips.block
+
+
+/* ************************************************************************************** 
+ BEGIN: WORK WAY BACK THROUGH NESTS TO CALCULATE TRIPS BY MODE
+ ************************************************************************************** */ 
+     
+          ;compute Motorized, Non-motorized trips
+          
+          ;motorized trips
+           trips_motor = prob_motor * MW[2][j]
+          
+              IF (VEH==1)       ;0 veh hhs
+               MW[11][j] = MW[11][j] + trips_motor
+               trips_motor_region_0veh = trips_motor_region_0veh + trips_motor
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[41][j] = MW[41][j] + trips_motor 
+               trips_motor_region_1veh = trips_motor_region_1veh + trips_motor 
+                            
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[71][j] = MW[71][j] + trips_motor
+               trips_motor_region_2veh = trips_motor_region_2veh + trips_motor
+               
+              ENDIF
+              
+             
+          
+          ;non-motorized trips
+           trips_nonmotor = prob_nonmotor * MW[2][j]
+          
+              IF (VEH==1)       ;0 veh hhs
+               MW[12][j] = MW[12][j] + trips_nonmotor
+               trips_nonmotor_region_0veh = trips_nonmotor_region_0veh + trips_nonmotor
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[42][j] = MW[42][j] + trips_nonmotor
+               trips_nonmotor_region_1veh = trips_nonmotor_region_1veh + trips_nonmotor
+                              
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[72][j] = MW[72][j] + trips_nonmotor
+               trips_nonmotor_region_2veh = trips_nonmotor_region_2veh + trips_nonmotor
+               
+              ENDIF
+               
+
+
+          ;compute Walk/Bike trips
+          
+          ;walk trips
+           trips_walk = trips_nonmotor * prob_walk
+           
+              IF (VEH==1)       ;0 veh hhs
+               MW[13][j] = MW[13][j] + trips_walk
+               trips_walk_region_0veh = trips_walk_region_0veh + trips_walk
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[43][j] = MW[43][j] + trips_walk   
+               trips_walk_region_1veh = trips_walk_region_1veh + trips_walk
+                           
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[73][j] = MW[73][j] + trips_walk
+               trips_walk_region_2veh = trips_walk_region_2veh + trips_walk
+               
+              ENDIF
+          
+          
+           ;bike trips
+            trips_bike = trips_nonmotor * prob_bike
+            
+              IF (VEH==1)       ;0 veh hhs
+               MW[14][j] = MW[14][j] + trips_bike
+               trips_bike_region_0veh = trips_bike_region_0veh + trips_bike
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[44][j] = MW[44][j] + trips_bike 
+               trips_bike_region_1veh = trips_bike_region_1veh + trips_bike
+                             
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[74][j] = MW[74][j] + trips_bike
+               trips_bike_region_2veh = trips_bike_region_2veh + trips_bike
+               
+              ENDIF
+          
+          
+
+          ;compute Transit trips
+           trips_transit = trips_motor * prob_transit
+          
+          ;walk-local trips
+           trips_wLCL = trips_transit * prob_walkacc * prob_wLCL 
+
+              IF (VEH==1)       ;0 veh hhs
+               MW[25][j] = MW[25][j] + trips_wLCL
+               trips_wLCL_region_0veh = trips_wLCL_region_0veh + trips_wLCL
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[55][j] = MW[55][j] + trips_wLCL               
+               trips_wLCL_region_1veh = trips_wLCL_region_1veh + trips_wLCL
+               
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[85][j] = MW[85][j] + trips_wLCL
+               trips_wLCL_region_2veh = trips_wLCL_region_2veh + trips_wLCL
+               
+              ENDIF 
+
+
+           ;drive-local trips
+           trips_dLCL = trips_transit * prob_driveacc * prob_dLCL 
+          
+              IF (VEH==1)       ;0 veh hhs
+               MW[26][j] = MW[26][j] + trips_dLCL
+               trips_dLCL_region_0veh = trips_dLCL_region_0veh + trips_dLCL
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[56][j] = MW[56][j] + trips_dLCL     
+               trips_dLCL_region_1veh = trips_dLCL_region_1veh + trips_dLCL
+                         
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[86][j] = MW[86][j] + trips_dLCL
+               trips_dLCL_region_2veh = trips_dLCL_region_2veh + trips_dLCL
+               
+              ENDIF 
+               
+          
+          ;walk-cor trips
+           trips_wCOR = trips_transit * prob_walkacc * prob_wCOR 
+
+              IF (VEH==1)       ;0 veh hhs
+               MW[96][j] = MW[96][j] + trips_wCOR
+               trips_wCOR_region_0veh = trips_wCOR_region_0veh + trips_wCOR
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[98][j] = MW[98][j] + trips_wCOR               
+               trips_wCOR_region_1veh = trips_wCOR_region_1veh + trips_wCOR
+               
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[100][j] = MW[100][j] + trips_wCOR
+               trips_wCOR_region_2veh = trips_wCOR_region_2veh + trips_wCOR
+               
+              ENDIF 
+
+           ;drive-cor trips
+           trips_dCOR = trips_transit * prob_driveacc * prob_dCOR 
+          
+              IF (VEH==1)       ;0 veh hhs
+               MW[97][j] = MW[97] + trips_dCOR
+               trips_dCOR_region_0veh = trips_dCOR_region_0veh + trips_dCOR
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[99][j] = MW[99][j] + trips_dCOR     
+               trips_dCOR_region_1veh = trips_dCOR_region_1veh + trips_dCOR
+                         
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[101][j] = MW[101][j] + trips_dCOR
+               trips_dCOR_region_2veh = trips_dCOR_region_2veh + trips_dCOR
+               
+              ENDIF 
+          
+
+          ;walk-brt trips
+           trips_wBRT = trips_transit * prob_walkacc * prob_wBRT 
+
+              IF (VEH==1)       ;0 veh hhs
+               MW[112][j] = MW[112][j] + trips_wBRT
+               trips_wBRT_region_0veh = trips_wBRT_region_0veh + trips_wBRT
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[134][j] = MW[134][j] + trips_wBRT               
+               trips_wBRT_region_1veh = trips_wBRT_region_1veh + trips_wBRT
+               
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[139][j] = MW[139][j] + trips_wBRT
+               trips_wBRT_region_2veh = trips_wBRT_region_2veh + trips_wBRT
+               
+              ENDIF 
+
+           ;drive-brt trips
+           trips_dBRT = trips_transit * prob_driveacc * prob_dBRT 
+          
+              IF (VEH==1)       ;0 veh hhs
+               MW[113][j] = MW[113][j] + trips_dBRT
+               trips_dBRT_region_0veh = trips_dBRT_region_0veh + trips_dBRT
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[135][j] = MW[135][j] + trips_dBRT     
+               trips_dBRT_region_1veh = trips_dBRT_region_1veh + trips_dBRT
+                         
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[140][j] = MW[140][j] + trips_dBRT
+               trips_dBRT_region_2veh = trips_dBRT_region_2veh + trips_dBRT
+               
+              ENDIF 
+
+
+                        
+           ;walk-express trips
+            trips_wEXP = trips_transit * prob_walkacc * prob_wEXP
+          
+              IF (VEH==1)       ;0 veh hhs
+               MW[27][j] = MW[27][j] + trips_wEXP
+               trips_wEXP_region_0veh = trips_wEXP_region_0veh + trips_wEXP
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[57][j] = MW[57][j] + trips_wEXP   
+               trips_wEXP_region_1veh = trips_wEXP_region_1veh + trips_wEXP
+            
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[87][j] = MW[87][j] + trips_wEXP
+               trips_wEXP_region_2veh = trips_wEXP_region_2veh + trips_wEXP
+               
+              ENDIF 
+                         
+
+           ;drive-express trips
+            trips_dEXP = trips_transit * prob_driveacc * prob_dEXP 
+          
+              IF (VEH==1)       ;0 veh hhs
+               MW[28][j] = MW[28][j] + trips_dEXP
+               trips_dEXP_region_0veh = trips_dEXP_region_0veh + trips_dEXP
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[58][j] = MW[58][j] + trips_dEXP 
+               trips_dEXP_region_1veh = trips_dEXP_region_1veh + trips_dEXP
+                             
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[88][j] = MW[88][j] + trips_dEXP
+               trips_dEXP_region_2veh = trips_dEXP_region_2veh + trips_dEXP
+               
+              ENDIF 
+                         
+
+          ;walk-light rail trips
+           trips_wLRT = trips_transit * prob_walkacc * prob_wLRT 
+          
+              IF (VEH==1)       ;0 veh hhs
+               MW[29][j] = MW[29][j] + trips_wLRT
+               trips_wLRT_region_0veh = trips_wLRT_region_0veh + trips_wLRT
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[59][j] = MW[59][j] + trips_wLRT 
+               trips_wLRT_region_1veh = trips_wLRT_region_1veh + trips_wLRT
+                             
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[89][j] = MW[89][j] + trips_wLRT
+               trips_wLRT_region_2veh = trips_wLRT_region_2veh + trips_wLRT
+               
+              ENDIF 
+          
+
+          ;drive-light rail trips
+           trips_dLRT = trips_transit * prob_driveacc * prob_dLRT
+
+              IF (VEH==1)       ;0 veh hhs
+               MW[30][j] = MW[30][j] + trips_dLRT
+               trips_dLRT_region_0veh = trips_dLRT_region_0veh + trips_dLRT
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[60][j] = MW[60][j] + trips_dLRT    
+               trips_dLRT_region_1veh = trips_dLRT_region_1veh + trips_dLRT
+                          
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[90][j] = MW[90][j] + trips_dLRT
+               trips_dLRT_region_2veh = trips_dLRT_region_2veh + trips_dLRT
+               
+              ENDIF                            
+          
+          
+           ;walk-commuter rail trips
+            trips_wCRT = trips_transit * prob_walkacc * prob_wCRT
+          
+              IF (VEH==1)       ;0 veh hhs
+               MW[31][j] = MW[31][j] + trips_wCRT
+               trips_wCRT_region_0veh = trips_wCRT_region_0veh + trips_wCRT
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[61][j] = MW[61][j] + trips_wCRT     
+               trips_wCRT_region_1veh = trips_wCRT_region_1veh + trips_wCRT
+                         
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[91][j] = MW[91][j] + trips_wCRT
+               trips_wCRT_region_2veh = trips_wCRT_region_2veh + trips_wCRT
+               
+              ENDIF 
+
+             
+           ;drive-commuter rail trips
+            trips_dCRT = trips_transit * prob_driveacc * prob_dCRT
+
+              IF (VEH==1)       ;0 veh hhs
+               MW[32][j] = MW[32][j] + trips_dCRT
+               trips_dCRT_region_0veh = trips_dCRT_region_0veh + trips_dCRT
+               
+              ELSEIF (VEH==2)   ;1 veh hhs
+               MW[62][j] = MW[62][j] + trips_dCRT  
+               trips_dCRT_region_1veh = trips_dCRT_region_1veh + trips_dCRT
+                            
+              ELSEIF (VEH==3)   ;2 veh hhs
+               MW[92][j] = MW[92][j] + trips_dCRT
+               trips_dCRT_region_2veh = trips_dCRT_region_2veh + trips_dCRT
+               
+              ENDIF 
+                         
+             
+             
+/* ************************************************************************************** 
+ END: WORK WAY BACK THROUGH NESTS TO CALCULATE TRIPS BY MODE
+ ************************************************************************************** */ 
+IF (VEH==1)  
+  trips_transit = trips_wLCL   + trips_dLCL   + trips_wCOR + trips_dCOR +
+                  trips_wEXP + trips_dEXP + trips_wBRT + trips_dBRT + 
+                  trips_wLRT     + trips_dLRT     + trips_wCRT + trips_dCRT
+  MW[15][j] = MW[15][j] + trips_transit
+  trips_transit_region_0veh = trips_transit_region_0veh + trips_transit
+  
+  trips_auto = trips_motor - trips_transit
+  MW[16][j] = MW[16][j] + trips_auto
+  trips_auto_region_0veh = trips_auto_region_0veh + trips_auto
+
+  trips_alone = trips_auto * prob_alone
+  MW[17][j] = MW[17][j] + trips_alone
+  trips_alone_region_0veh = trips_alone_region_0veh + trips_alone
+  
+  trips_alonen = trips_alone * prob_alonen
+  trips_alonen_region_0veh = trips_alonen_region_0veh + trips_alonen  
+  MW[63][j] = MW[63][j] + trips_alonen
+
+  trips_alonet = trips_alone * prob_alonet
+  trips_alonet_region_0veh = trips_alonet_region_0veh + trips_alonet
+  MW[64][j] = MW[64][j] + trips_alonet
+  
+ IF (INC==1)
+   MW[130][j] = MW[130][j] + trips_alonet
+ ELSE
+   MW[132][j] = MW[132][j] + trips_alonet
+ ENDIF
+
+  trips_shared = trips_auto * prob_shared
+  MW[18][j] = MW[18][j] + trips_shared
+  trips_shared_region_0veh = trips_shared_region_0veh + trips_shared
+  
+  trips_sr2 = trips_shared * prob_sr2
+  MW[19][j] = MW[19][j] + trips_sr2
+  trips_sr2_region_0veh = trips_sr2_region_0veh + trips_sr2
+  
+  trips_sr2nn = trips_sr2 * prob_sr2nn
+  MW[65][j] = MW[65][j] + trips_sr2nn
+  trips_sr2nn_region_0veh = trips_sr2nn_region_0veh + trips_sr2nn
+  
+  trips_sr2nh = trips_sr2 * prob_sr2nh
+  MW[66][j] = MW[66][j] + trips_sr2nh
+  trips_sr2nh_region_0veh = trips_sr2nh_region_0veh + trips_sr2nh
+  
+  trips_sr2th = trips_sr2 * prob_sr2th
+  MW[67][j] = MW[67][j] + trips_sr2th
+  trips_sr2th_region_0veh = trips_sr2th_region_0veh + trips_sr2th
+
+ IF (INC==1)
+   MW[131][j] = MW[131][j] + trips_sr2th
+ ELSE
+   MW[133][j] = MW[133][j] + trips_sr2th
+ ENDIF
+
+  trips_sr3 = trips_shared * prob_sr3
+  MW[20][j] = MW[20][j] + trips_sr3
+  trips_sr3_region_0veh = trips_sr3_region_0veh + trips_sr3
+  
+  trips_sr3nn = trips_sr3 * prob_sr3nn
+  MW[68][j] = MW[68][j] + trips_sr3nn
+  trips_sr3nn_region_0veh = trips_sr3nn_region_0veh + trips_sr3nn
+  
+  trips_sr3nh = trips_sr3 * prob_sr3nh
+  MW[69][j] = MW[69][j] + trips_sr3nh
+  trips_sr3nh_region_0veh = trips_sr3nh_region_0veh + trips_sr3nh
+  
+  trips_sr3th = trips_sr3 * prob_sr3th
+  MW[70][j] = MW[70][j] + trips_sr3th
+  trips_sr3th_region_0veh = trips_sr3th_region_0veh + trips_sr3th
+
+ IF (INC==1)
+   MW[131][j] = MW[131][j] + trips_sr3th
+ ELSE
+   MW[133][j] = MW[133][j] + trips_sr3th
+ ENDIF
+
+  prob_auto = trips_auto / (trips_auto + trips_transit + .001)                                                    
+  prob_transit = trips_transit / (trips_auto + trips_transit + .001)
+  
+  trips_walkacc = trips_wLCL  + trips_wCOR + trips_wEXP + trips_wLRT + trips_wCRT + trips_wBRT
+  trips_walkacc_region_0veh = trips_walkacc_region_0veh + trips_walkacc
+  
+  trips_driveacc = trips_dLCL + trips_dCOR + trips_dEXP + trips_dLRT + trips_dCRT + trips_dBRT
+  trips_driveacc_region_0veh = trips_driveacc_region_0veh + trips_driveacc
+  
+  prob_walkacc = trips_walkacc / (trips_transit + .001)
+  prob_driveacc = trips_driveacc / (trips_transit + .001)
+  
+  trips_LCL = trips_wLCL + trips_dLCL 
+  MW[21][j] = MW[21][j] + trips_LCL
+  trips_LCL_region_0veh = trips_LCL_region_0veh + trips_LCL
+  
+  trips_COR  = trips_wCOR + trips_dCOR 
+  MW[93][j] = MW[93][j] + trips_COR
+  trips_COR_region_0veh = trips_COR_region_0veh + trips_COR
+
+  trips_BRT  = trips_wBRT + trips_dBRT 
+  MW[102][j] = MW[102][j] + trips_BRT
+  trips_BRT_region_0veh = trips_BRT_region_0veh + trips_BRT
+       
+  trips_EXP = trips_wEXP + trips_dEXP
+  MW[22][j] = MW[22][j] + trips_EXP
+  trips_EXP_region_0veh = trips_EXP_region_0veh + trips_EXP
+  
+  trips_LRT = trips_wLRT + trips_dLRT 
+  MW[23][j] = MW[23][j] + trips_LRT
+  trips_LRT_region_0veh = trips_LRT_region_0veh + trips_LRT
+  
+  trips_CRT = trips_wCRT + trips_dCRT 
+  MW[24][j] = MW[24][j] + trips_CRT
+  trips_CRT_region_0veh = trips_CRT_region_0veh + trips_CRT
+  
+  prob_LCL = trips_LCL / (trips_transit + .001)
+  prob_COR = trips_COR / (trips_transit + .001)
+  prob_EXP = trips_EXP / (trips_transit + .001)
+  prob_LRT = trips_LRT / (trips_transit + .001)
+  prob_CRT = trips_CRT / (trips_transit + .001)
+  prob_BRT = trips_BRT / (trips_transit + .001)
+                
+                 
+ELSEIF (VEH==2)  
+  trips_transit = trips_wLCL   + trips_dLCL   + trips_wCOR + trips_dCOR +
+                  trips_wEXP + trips_dEXP + trips_wBRT + trips_dBRT +
+                  trips_wLRT     + trips_dLRT     + trips_wCRT + trips_dCRT
+  MW[45][j] = MW[45][j] + trips_transit 
+  trips_transit_region_1veh = trips_transit_region_1veh + trips_transit
+  
+  trips_auto = trips_motor - trips_transit
+  MW[46][j] = MW[46][j] + trips_auto
+  trips_auto_region_1veh = trips_auto_region_1veh + trips_auto
+
+  trips_alone = trips_auto * prob_alone
+  MW[47][j] = MW[47][j] + trips_alone
+  trips_alone_region_1veh = trips_alone_region_1veh + trips_alone
+  
+  ; drive-alone non-toll
+  trips_alonen = trips_alone * prob_alonen
+  trips_alonen_region_1veh = trips_alonen_region_1veh + trips_alonen  
+  MW[63][j] = MW[63][j] + trips_alonen
+
+  ; drive-alone toll
+  trips_alonet = trips_alone * prob_alonet
+  trips_alonet_region_1veh = trips_alonet_region_1veh + trips_alonet
+  MW[64][j] = MW[64][j] + trips_alonet
+
+ IF (INC==1)
+   MW[130][j] = MW[130][j] + trips_alonet
+ ELSE
+   MW[132][j] = MW[132][j] + trips_alonet
+ ENDIF
+  
+  trips_shared = trips_auto * prob_shared
+  MW[48][j] = MW[48][j] + trips_shared
+  trips_shared_region_1veh = trips_shared_region_1veh + trips_shared
+  
+  trips_sr2 = trips_shared * prob_sr2
+  MW[49][j] = MW[49][j] + trips_sr2
+  trips_sr2_region_1veh = trips_sr2_region_1veh + trips_sr2
+  
+  ; shared-2 non-toll, non-hov
+  trips_sr2nn = trips_sr2 * prob_sr2nn
+  MW[65][j] = MW[65][j] + trips_sr2nn
+  trips_sr2nn_region_1veh = trips_sr2nn_region_1veh + trips_sr2nn
+  
+  ; shared-2 non-toll, hov
+  trips_sr2nh = trips_sr2 * prob_sr2nh
+  MW[66][j] = MW[66][j] + trips_sr2nh
+  trips_sr2nh_region_1veh = trips_sr2nh_region_1veh + trips_sr2nh
+  
+  ; shared-2 toll, hov
+  trips_sr2th = trips_sr2 * prob_sr2th
+  MW[67][j] = MW[67][j] + trips_sr2th
+  trips_sr2th_region_1veh = trips_sr2th_region_1veh + trips_sr2th
+
+ IF (INC==1)
+   MW[131][j] = MW[131][j] + trips_sr2th
+ ELSE
+   MW[133][j] = MW[133][j] + trips_sr2th
+ ENDIF
+
+  trips_sr3 = trips_shared * prob_sr3
+  MW[50][j] = MW[50][j] + trips_sr3
+  trips_sr3_region_1veh = trips_sr3_region_1veh + trips_sr3
+  
+  ; shared-3+ non-toll, non-hov
+  trips_sr3nn = trips_sr3 * prob_sr3nn
+  MW[68][j] = MW[68][j] + trips_sr3nn
+  trips_sr3nn_region_1veh = trips_sr3nn_region_1veh + trips_sr3nn
+  
+  ; shared-3+ non-toll, hov
+  trips_sr3nh = trips_sr3 * prob_sr3nh
+  MW[69][j] = MW[69][j] + trips_sr3nh
+  trips_sr3nh_region_1veh = trips_sr3nh_region_1veh + trips_sr3nh
+  
+  ; shared-3+ toll, hov
+  trips_sr3th = trips_sr3 * prob_sr3th
+  MW[70][j] = MW[70][j] + trips_sr3th
+  trips_sr3th_region_1veh = trips_sr3th_region_1veh + trips_sr3th
+
+ IF (INC==1)
+   MW[131][j] = MW[131][j] + trips_sr3th
+ ELSE
+   MW[133][j] = MW[133][j] + trips_sr3th
+ ENDIF
+
+  prob_auto = trips_auto / (trips_auto + trips_transit + .001)
+  prob_transit = trips_transit / (trips_auto + trips_transit + .001)
+
+  trips_walkacc = trips_wLCL  + trips_wCOR + trips_wEXP + trips_wLRT + trips_wCRT + trips_wBRT
+  trips_walkacc_region_1veh = trips_walkacc_region_1veh + trips_walkacc
+  
+  trips_driveacc = trips_dLCL + trips_dCOR + trips_dEXP + trips_dLRT + trips_dCRT + trips_dBRT
+  trips_driveacc_region_1veh = trips_driveacc_region_1veh + trips_driveacc
+    
+  prob_walkacc = trips_walkacc / (trips_transit + .001)
+  prob_driveacc = trips_driveacc / (trips_transit + .001)
+  
+  trips_LCL = trips_wLCL + trips_dLCL  
+  MW[51][j] = MW[51][j] + trips_LCL
+  trips_LCL_region_1veh = trips_LCL_region_1veh + trips_LCL
+  
+  trips_COR  = trips_wCOR + trips_dCOR 
+  MW[94][j] = MW[94][j] + trips_COR
+  trips_COR_region_1veh = trips_COR_region_1veh + trips_COR
+  
+  trips_BRT  = trips_wBRT + trips_dBRT 
+  MW[103][j] = MW[103][j] + trips_BRT
+  trips_BRT_region_1veh = trips_BRT_region_1veh + trips_BRT
+
+  trips_EXP = trips_wEXP + trips_dEXP
+  MW[52][j] = MW[52][j] + trips_EXP
+  trips_EXP_region_1veh = trips_EXP_region_1veh + trips_EXP
+  
+  trips_LRT = trips_wLRT + trips_dLRT 
+  MW[53][j] = MW[53][j] + trips_LRT
+  trips_LRT_region_1veh = trips_LRT_region_1veh + trips_LRT
+  
+  trips_CRT = trips_wCRT + trips_dCRT 
+  MW[54][j] = MW[54][j] + trips_CRT
+  trips_CRT_region_1veh = trips_CRT_region_1veh + trips_CRT
+  
+  prob_LCL = trips_LCL / (trips_transit + .001)
+  prob_COR = trips_COR / (trips_transit + .001)
+  prob_EXP = trips_EXP / (trips_transit + .001)
+  prob_LRT = trips_LRT / (trips_transit + .001)
+  prob_CRT = trips_CRT / (trips_transit + .001)
+  prob_BRT = trips_BRT / (trips_transit + .001)
+                               
+ELSEIF (VEH==3)                               
+  trips_transit = trips_wLCL   + trips_dLCL   + trips_wCOR + trips_dCOR +
+                  trips_wEXP + trips_dEXP + trips_wBRT + trips_dBRT +
+                  trips_wLRT     + trips_dLRT     + trips_wCRT + trips_dCRT
+  MW[75][j] = MW[75][j] + trips_transit
+  trips_transit_region_2veh = trips_transit_region_2veh + trips_transit
+  
+  trips_auto = trips_motor - trips_transit
+  MW[76][j] = MW[76][j] + trips_auto
+  trips_auto_region_2veh = trips_auto_region_2veh + trips_auto
+  
+  trips_alone = trips_auto * prob_alone
+  MW[77][j] = MW[77][j] + trips_alone
+  trips_alone_region_2veh = trips_alone_region_2veh + trips_alone
+  
+  ; drive-alone non-toll
+  trips_alonen = trips_alone * prob_alonen
+  trips_alonen_region_2veh = trips_alonen_region_2veh + trips_alonen  
+  MW[63][j] = MW[63][j] + trips_alonen
+
+  ; drive-alone toll
+  trips_alonet = trips_alone * prob_alonet
+  trips_alonet_region_2veh = trips_alonet_region_2veh + trips_alonet
+  MW[64][j] = MW[64][j] + trips_alonet
+
+ IF (INC==1)
+   MW[130][j] = MW[130][j] + trips_alonet
+ ELSE
+   MW[132][j] = MW[132][j] + trips_alonet
+ ENDIF
+  
+  trips_shared = trips_auto * prob_shared
+  MW[78][j] = MW[78][j] + trips_shared
+  trips_shared_region_2veh = trips_shared_region_2veh + trips_shared
+  
+  trips_sr2 = trips_shared * prob_sr2
+  MW[79][j] = MW[79][j] + trips_sr2
+  trips_sr2_region_2veh = trips_sr2_region_2veh + trips_sr2
+  
+  ; shared-2 non-toll, non-hov
+  trips_sr2nn = trips_sr2 * prob_sr2nn
+  MW[65][j] = MW[65][j] + trips_sr2nn
+  trips_sr2nn_region_2veh = trips_sr2nn_region_2veh + trips_sr2nn
+  
+  ; shared-2 non-toll, hov
+  trips_sr2nh = trips_sr2 * prob_sr2nh
+  MW[66][j] = MW[66][j] + trips_sr2nh
+  trips_sr2nh_region_2veh = trips_sr2nh_region_2veh + trips_sr2nh
+  
+  ; shared-2 toll, hov
+  trips_sr2th = trips_sr2 * prob_sr2th
+  MW[67][j] = MW[67][j] + trips_sr2th
+  trips_sr2th_region_2veh = trips_sr2th_region_2veh + trips_sr2th
+
+ IF (INC==1)
+   MW[131][j] = MW[131][j] + trips_sr2th
+ ELSE
+   MW[133][j] = MW[133][j] + trips_sr2th
+ ENDIF
+
+  trips_sr3 = trips_shared * prob_sr3
+  MW[80][j] = MW[80][j] + trips_sr3
+  trips_sr3_region_2veh = trips_sr3_region_2veh + trips_sr3
+  
+  ; shared-3+ non-toll, non-hov
+  trips_sr3nn = trips_sr3 * prob_sr3nn
+  MW[68][j] = MW[68][j] + trips_sr3nn
+  trips_sr3nn_region_2veh = trips_sr3nn_region_2veh + trips_sr3nn
+  
+  ; shared-3+ non-toll, hov
+  trips_sr3nh = trips_sr3 * prob_sr3nh
+  MW[69][j] = MW[69][j] + trips_sr3nh
+  trips_sr3nh_region_2veh = trips_sr3nh_region_2veh + trips_sr3nh
+  
+  ; shared-3+ toll, hov
+  trips_sr3th = trips_sr3 * prob_sr3th
+  MW[70][j] = MW[70][j] + trips_sr3th
+  trips_sr3th_region_2veh = trips_sr3th_region_2veh + trips_sr3th
+
+ IF (INC==1)
+   MW[131][j] = MW[131][j] + trips_sr3th
+ ELSE
+   MW[133][j] = MW[133][j] + trips_sr3th
+ ENDIF
+
+  prob_auto = trips_auto / (trips_auto + trips_transit + .001)
+  prob_transit = trips_transit / (trips_auto + trips_transit + .001)
+  
+  trips_walkacc = trips_wLCL  + trips_wCOR + trips_wEXP + trips_wLRT + trips_wCRT + trips_wBRT
+  trips_walkacc_region_2veh = trips_walkacc_region_2veh + trips_walkacc
+  
+  trips_driveacc = trips_dLCL + trips_dCOR + trips_dEXP + trips_dLRT + trips_dCRT + trips_dBRT
+  trips_driveacc_region_2veh = trips_driveacc_region_2veh + trips_driveacc
+  
+  prob_walkacc = trips_walkacc / (trips_transit + .001)
+  prob_driveacc = trips_driveacc / (trips_transit + .001)
+  
+  trips_LCL = trips_wLCL + trips_dLCL  
+  MW[81][j] = MW[81][j] + trips_LCL
+  trips_LCL_region_2veh = trips_LCL_region_2veh + trips_LCL
+  
+  trips_COR  = trips_wCOR + trips_dCOR 
+  MW[95][j] = MW[95][j] + trips_COR
+  trips_COR_region_2veh = trips_COR_region_2veh + trips_COR
+  
+  trips_BRT  = trips_wBRT + trips_dBRT 
+  MW[109][j] = MW[109][j] + trips_BRT
+  trips_BRT_region_2veh = trips_BRT_region_2veh + trips_BRT
+
+  trips_EXP = trips_wEXP + trips_dEXP
+  MW[82][j] = MW[82][j] + trips_EXP
+  trips_EXP_region_2veh = trips_EXP_region_2veh + trips_EXP
+  
+  trips_LRT = trips_wLRT + trips_dLRT 
+  MW[83][j] = MW[83][j] + trips_LRT
+  trips_LRT_region_2veh = trips_LRT_region_2veh + trips_LRT
+  
+  trips_CRT = trips_wCRT + trips_dCRT 
+  MW[84][j] = MW[84][j] + trips_CRT
+  trips_CRT_region_2veh = trips_CRT_region_2veh + trips_CRT
+  
+  prob_LCL = trips_LCL / (trips_transit + .001)
+  prob_COR = trips_COR / (trips_transit + .001)
+  prob_EXP = trips_EXP / (trips_transit + .001)
+  prob_LRT = trips_LRT / (trips_transit + .001)
+  prob_CRT = trips_CRT / (trips_transit + .001)
+  prob_BRT = trips_BRT / (trips_transit + .001)
+                       
+ENDIF  

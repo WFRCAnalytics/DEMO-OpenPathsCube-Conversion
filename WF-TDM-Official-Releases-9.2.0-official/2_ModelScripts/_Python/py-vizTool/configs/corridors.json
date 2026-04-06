@@ -1,0 +1,66 @@
+[
+    {
+        "corridorGroupId": "WFRCHIGHWAY",
+        "alias": "WFRC RTP 2023 Highway Projects",
+        "files": [
+            {
+                "filename": "WFRC_RTP_2023_Final_lines.shp",
+                "idField": "plan_id",
+                "labelExpression": "{plan_id}: {name}",
+                "filter": "mode=='Highway'",
+                "bufferDistMeters": 50
+            }
+        ]
+    },
+    {
+        "corridorGroupId": "WFRCTRANSIT",
+        "alias": "WFRC RTP 2023 Transit Projects",
+        "files": [
+            {
+                "filename": "WFRC_RTP_2023_Final_lines.shp",
+                "idField": "plan_id",
+                "labelExpression": "{plan_id}: {name}",
+                "filter": "mode=='Transit'",
+                "bufferDistMeters": 50
+            }
+        ]
+    },
+    {
+        "corridorGroupId": "MAGHIGHWAY",
+        "alias": "MAG RTP 2023 Highway Projects",
+        "files": [
+            {
+                "filename": "MAG_2023_RTP_Highway_Projects_(lines).shp",
+                "idField": "plan_id",
+                "labelExpression": "{plan_id}: {name}",
+                "filter": "",
+                "bufferDistMeters": 50
+            }
+        ]
+    },
+    {
+        "corridorGroupId": "MAGTRANSIT",
+        "alias": "MAG RTP 2023 Transit Projects",
+        "files": [
+            {
+                "filename": "MAG_2023_RTP_Transit_Projects_(lines).shp",
+                "idField": "plan_id",
+                "labelExpression": "{plan_id}: {name}",
+                "filter": "",
+                "bufferDistMeters": 50
+            }
+        ]
+    },
+    {
+        "corridorGroupId": "FREIGHT",
+        "alias": "Freight Corridors",
+        "files": [
+            {
+                "filename": "freight-corridors.geojson",
+                "idField": "freightId",
+                "labelExpression": "{frName}",
+                "bufferDistMeters": 50
+            }
+        ]
+    }
+]

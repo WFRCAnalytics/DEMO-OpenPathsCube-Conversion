@@ -1,0 +1,24 @@
+# ------------------------------------------------------------------------------
+# Python input file variables and paths
+# ------------------------------------------------------------------------------
+
+# global parameters ------------------------------------------------------------
+UsedZones       = 3629
+
+ParentDir       = r"D:\GitHub\WF-TDM-v9x\\"
+ScenarioDir     = r"Scenarios\WF TDM v910-Task2\Needs_2042\\"
+
+
+# input files ------------------------------------------------------------------
+TAZ_shp         = r"WFv900_TAZ.dbf"
+
+TollZoneID_shp  = r"_Toll Zone ID\TollZone.shp"
+TollZoneField   = r"EL_Zone"
+
+Master_Link_shp = r"Master_Link_tmp0.shp"
+Master_Node_shp = r"Master_Node_tmp0.shp"
+
+Transit_dbf     = r"TransitLinks_tmp0.dbf"
+
+Segment_dbf     = r"WFv910_Segments.dbf"
+

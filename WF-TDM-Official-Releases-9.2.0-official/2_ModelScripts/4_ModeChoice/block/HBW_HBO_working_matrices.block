@@ -1,0 +1,296 @@
+; working_matrices.block
+
+;walk-to-transit matrices
+  MW[104] = (MI.2.T456789)	  ;IVT - walk/LCL path
+  MW[105] = (MI.18.T456789)	  ;IVT - walk/COR path
+  MW[106] = (MI.4.T456789)     ;IVT - walk/EXP path
+  MW[107] = (MI.6.T456789)	  ;IVT - walk/light rail path 
+  MW[108] = (MI.8.T456789)	  ;IVT - walk/commuter rail path  
+
+jloop  
+ IF((MI.6.T4[j] + MI.6.T5[j] + MI.6.T6[j] + MI.6.T9[j]) > 0)
+  MW[110][j] = 1	  ;bus xfer - walk/light rail path
+ ENDIF
+
+ IF((MI.8.T4[j] + MI.8.T5[j] + MI.8.T6[j] + MI.8.T9[j]) > 0)
+  MW[111][j] = 1	  ;bus xfer - walk/commuter rail path
+ ENDIF
+endjloop
+
+  MW[114] = MI.2.INITWAIT  ;initial wait - walk/LCL
+  MW[115] = MI.18.INITWAIT  ;initial wait - walk/COR
+  MW[116] = MI.4.INITWAIT  ;initial wait - walk/EXP
+  MW[117] = MI.6.INITWAIT  ;initial wait - walk/light rail
+  MW[118] = MI.8.INITWAIT  ;initial wait - walk/commuter rail
+  
+  MW[119] = (MI.2.D456789)
+  MW[120] = (MI.18.D456789)
+  MW[121] = (MI.4.D456789)
+  MW[122] = (MI.6.D456789)
+  MW[123] = (MI.8.D456789)
+   
+  MW[124] = MI.2.DRIVEDIST
+  MW[125] = MI.18.DRIVEDIST
+  MW[126] = MI.4.DRIVEDIST
+  MW[127] = MI.6.DRIVEDIST
+  MW[128] = MI.8.DRIVEDIST
+
+  MW[136] = (MI.4.D6)          ;distance on EXP
+  MW[138] = (MI.8.D8)          ;distance on commuter rail - walk/commuter rail
+
+  MW[144] = (MI.2.DRIVETIME)   ;drive time - should be 0
+  MW[145] = (MI.18.DRIVETIME)   ;drive time - should be 0
+  MW[146] = (MI.4.DRIVETIME)   ;drive time - should be 0
+  MW[147] = (MI.6.DRIVETIME)   ;drive time - should be 0
+  MW[148] = (MI.8.DRIVETIME)   ;drive time - should be 0
+    
+  MW[154] = MIN((MI.2.WALKTIME),24)    ;walk OVT - walk/LCL
+  MW[155] = MIN((MI.18.WALKTIME),24)    ;walk OVT - walk/COR
+  MW[156] = MIN((MI.4.WALKTIME),24)    ;walk OVT - walk/EXP
+  MW[157] = MIN((MI.6.WALKTIME),24)    ;walk OVT - walk/light rail
+  MW[158] = MIN((MI.8.WALKTIME),24)    ;walk OVT - walk/commuter rail
+
+  MW[184] = MAX((MI.2.WALKTIME-24),0)    ;walk OVT - walk/LCL
+  MW[185] = MAX((MI.18.WALKTIME-24),0)    ;walk OVT - walk/COR
+  MW[186] = MAX((MI.4.WALKTIME-24),0)    ;walk OVT - walk/EXP
+  MW[187] = MAX((MI.6.WALKTIME-24),0)    ;walk OVT - walk/light rail
+  MW[188] = MAX((MI.8.WALKTIME-24),0)    ;walk OVT - walk/commuter rail
+    
+  MW[164] = (MI.2.XFERWAIT)    ;transfer wait - walk/LCL
+  MW[165] = (MI.18.XFERWAIT)    ;transfer wait - walk/COR
+  MW[166] = (MI.4.XFERWAIT)    ;transfer wait - walk/EXP
+  MW[167] = (MI.6.XFERWAIT)    ;transfer wait - walk/light rail
+  MW[168] = (MI.8.XFERWAIT)    ;transfer wait - walk/commuter rail
+ 
+ 
+  ;note: the transfers def'n was changed to exclude the first rail-to-rail xfer (if applicable)
+  ;      the transfers are penalized in mode choice model application
+  ;      however, it is assumed here that the initial rail-to-rail transfer is not onerous
+  ;      in practice, UTA does very well with the LRT-LRT transfer downtown
+  MW[174] = (MI.2.TRANSFERS)       ;number of transfers - walk/LCL
+  MW[175] = (MI.18.TRANSFERS)       ;number of transfers - walk/COR
+  MW[176] = (MI.4.TRANSFERS)       ;number of transfers - walk/EXP
+  MW[177] = (MI.6.TRANSFERS)       ;number of transfers - walk/light rail
+  MW[178] = (MI.8.TRANSFERS)       ;number of transfers - walk/commuter rail
+  
+  MW[194] = (MI.2.XFARE)       ;out-of-pocket cost (cents) - walk/LCL
+  MW[195] = (MI.18.XFARE)       ;out-of-pocket cost - walk/COR
+  MW[196] = (MI.4.XFARE)       ;out-of-pocket cost - walk/EXP
+  MW[197] = (MI.6.XFARE)       ;out-of-pocket cost - walk/light rail
+  MW[198] = (MI.8.XFARE)       ;out-of-pocket cost - walk/commuter rail
+
+;drive-to-transit matrices
+  MW[204] = (MI.3.T456789)	;transit IVT - drive/LCL path
+  MW[205] = (MI.19.T456789)   ;transit IVT - drive/COR path
+  MW[206] = (MI.5.T456789)   ;transit IVT - drive/EXP path
+  MW[207] = (MI.7.T456789)   ;transit IVT - drive/light rail path 
+  MW[208] = (MI.9.T456789)   ;transit IVT - drive/commuter rail path  
+
+jloop  
+ IF((MI.7.T4[j] + MI.7.T5[j] + MI.7.T6[j] + MI.7.T9[j]) > 0)
+  MW[210][j] = 1	  ;bus xfer - drive/light rail path
+ ENDIF
+
+ IF((MI.9.T4[j] + MI.9.T5[j] + MI.9.T6[j] + MI.9.T9[j]) > 0)
+  MW[211][j] = 1	  ;bus xfer - drive/commuter rail path
+ ENDIF
+endjloop
+
+  MW[214] = MI.3.INITWAIT  ;initial wait - drive/LCL
+  MW[215] = MI.19.INITWAIT  ;initial wait - drive/COR
+  MW[216] = MI.5.INITWAIT  ;initial wait - drive/EXP
+  MW[217] = MI.7.INITWAIT  ;initial wait - drive/light rail
+  MW[218] = MI.9.INITWAIT  ;initial wait - drive/commuter rail
+
+  MW[219] = (MI.3.D456789)
+  MW[220] = (MI.19.D456789)
+  MW[221] = (MI.5.D456789)
+  MW[222] = (MI.7.D456789)
+  MW[223] = (MI.9.D456789)
+  
+  MW[224] = MI.3.DRIVEDIST
+  MW[225] = MI.19.DRIVEDIST
+  MW[226] = MI.5.DRIVEDIST
+  MW[227] = MI.7.DRIVEDIST
+  MW[228] = MI.9.DRIVEDIST
+  
+  MW[236] = (MI.5.D6)          ;distance on EXP
+  MW[238] = (MI.9.D8)          ;distance on commuter rail - drive/commuter rail
+  
+  MW[244] = (MI.3.DRIVETIME)   ;drive access time - drive/LCL path
+  MW[245] = (MI.19.DRIVETIME)   ;drive access time - drive/COR path
+  MW[246] = (MI.5.DRIVETIME)   ;drive access time - drive/EXP path
+  MW[247] = (MI.7.DRIVETIME)   ;drive access time - drive/light rail path 
+  MW[248] = (MI.9.DRIVETIME)   ;drive access time - drive/commuter rail path  
+  
+  MW[254] = MIN((MI.3.WALKTIME),24)    ;walk OVT - drive/LCL     
+  MW[255] = MIN((MI.19.WALKTIME),24)   ;walk OVT - drive/COR           
+  MW[256] = MIN((MI.5.WALKTIME),24)    ;walk OVT - drive/EXP   
+  MW[257] = MIN((MI.7.WALKTIME),24)    ;walk OVT - drive/light rail    
+  MW[258] = MIN((MI.9.WALKTIME),24)    ;walk OVT - drive/commuter rail 
+                                                                       
+  MW[284] = MAX((MI.3.WALKTIME-24),0)   ;walk OVT - drive/LCL    
+  MW[285] = MAX((MI.19.WALKTIME-24),0)  ;walk OVT - drive/COR          
+  MW[286] = MAX((MI.5.WALKTIME-24),0)   ;walk OVT - drive/EXP  
+  MW[287] = MAX((MI.7.WALKTIME-24),0)   ;walk OVT - drive/light rail   
+  MW[288] = MAX((MI.9.WALKTIME-24),0)   ;walk OVT - drive/commuter rail
+  
+  MW[264] = (MI.3.XFERWAIT)    ;transfer wait - drive/LCL
+  MW[265] = (MI.19.XFERWAIT)    ;transfer wait - drive/COR
+  MW[266] = (MI.5.XFERWAIT)    ;transfer wait - drive/EXP
+  MW[267] = (MI.7.XFERWAIT)    ;transfer wait - drive/light rail
+  MW[268] = (MI.9.XFERWAIT)    ;transfer wait - drive/commuter rail
+
+  
+  ;note: the transfers def'n was changed to exclude the first rail-to-rail xfer (if applicable)
+  ;      the transfers are penalized in mode choice model application
+  ;      however, it is assumed here that the initial rail-to-rail transfer is not onerous
+  ;      in practice, UTA does very well with the LRT-LRT transfer downtown 
+  MW[274] = (MI.3.TRANSFERS)       ;number of transfers - drive/LCL
+  MW[275] = (MI.19.TRANSFERS)       ;number of transfers - drive/COR
+  MW[276] = (MI.5.TRANSFERS)       ;number of transfers - drive/EXP
+  MW[277] = (MI.7.TRANSFERS)       ;number of transfers - drive/light rail
+  MW[278] = (MI.9.TRANSFERS)       ;number of transfers - drive/commuter rail
+  
+  MW[294] = (MI.3.XFARE)       ;out-of-pocket cost - drive/LCL
+  MW[295] = (MI.19.XFARE)       ;out-of-pocket cost - drive/COR
+  MW[296] = (MI.5.XFARE)       ;out-of-pocket cost - drive/EXP
+  MW[297] = (MI.7.XFARE)       ;out-of-pocket cost - drive/light rail
+  MW[298] = (MI.9.XFARE)       ;out-of-pocket cost - walk/commuter rail
+  
+
+;auto matrices ---------------------------------------------------------------------------
+    ;ovt
+    mw[311] = MIN(mi.10.OVT, 24)     ;Out-of-vehicle time (minutes) - first 24 minutes
+    mw[312] = MAX(mi.10.OVT-24, 0)   ;possibly (off-peak OVT for HBO, NHB) - second 24 minutes
+    
+    ;parking cost
+    if (@purpose@=1)
+        mw[313] = mi.10.permpark / 2   ;1-way parking cost (cents) (for HBW, HBC)
+    elseif (@purpose@=2)
+        mw[313] = mi.10.temppark / 2   ;1-way parking cost (cents) (for HBO, NHB)
+    endif
+    
+    ;auto ivt
+    mw[300] = mi.10.ivt_GP
+    mw[301] = mi.10.ivt_HOV_S2
+    mw[302] = mi.10.ivt_HOV_S3
+    mw[303] = mi.10.ivt_Tol_DA
+    mw[304] = mi.10.ivt_Tol_S2
+    mw[305] = mi.10.ivt_Tol_S3
+    
+    ;auto distance
+    mw[320] = mi.10.dist_GP
+    mw[321] = mi.10.dist_HOV_S2
+    mw[322] = mi.10.dist_HOV_S3
+    mw[323] = mi.10.dist_Tol_DA
+    mw[324] = mi.10.dist_Tol_S2
+    mw[325] = mi.10.dist_Tol_S3
+    
+    ;trace just managed lane time
+    mw[341] = mi.10.TO_HOV_S2
+    mw[342] = mi.10.TO_HOV_S3
+    mw[343] = mi.10.TO_HOT_DA
+    mw[344] = mi.10.TO_HOT_S2
+    mw[345] = mi.10.TO_HOT_S3
+    mw[353] = mi.10.TO_Tol_DA
+    mw[354] = mi.10.TO_Tol_S2
+    mw[355] = mi.10.TO_Tol_S3
+    
+    ;trace just managed lane distance
+    mw[361] = mi.10.DO_HOV_S2
+    mw[362] = mi.10.DO_HOV_S3
+    mw[363] = mi.10.DO_HOT_DA
+    mw[364] = mi.10.DO_HOT_S2
+    mw[365] = mi.10.DO_HOT_S3
+    mw[373] = mi.10.DO_Tol_DA
+    mw[374] = mi.10.DO_Tol_S2
+    mw[375] = mi.10.DO_Tol_S3
+    
+    ;trace toll cost
+    mw[383] = mi.10.Fee_HOT_DA
+    mw[384] = mi.10.Fee_HOT_S2
+    mw[385] = mi.10.Fee_HOT_S3
+    mw[393] = mi.10.Fee_Tol_DA
+    mw[394] = mi.10.Fee_Tol_S2
+    mw[395] = mi.10.Fee_Tol_S3
+    
+; notes: 
+; 1) drive-alone non-toll skims don't change. 
+; 2) Out-of-pocket auto cost will be computed on-the-fly for these modes in the
+;    calculate_utilities block using 10 cents/mile. 
+; 3) Parking costs and terminal times are generic across all auto modes.
+/*
+  MW[301] = MI.10.ivt_GP         ;AM peak in-vehicle time (minutes) - auto modes (assumes drive-alone IVT equals shared ride IVT)
+  MW[321] = MI.10.dist_GP    ;trip length (miles)
+  
+; drive alone toll skims (no HOV allowed in path)
+  MW[342] = mi.10.ivtTOLL  ;Drive-alone toll total in-vehicle time
+  MW[343] = mi.10.distTOLL ;Drive-alone toll total in-vehicle distance
+  MW[344] = mi.10.HOTdist  ;Drive-alone HOT distance (HOT lane only)
+  MW[345] = mi.10.HOTtime  ;Drive-alone HOT time (HOT lane only)
+  MW[346] = mi.10.TOLLdist ;Drive-alone TOLL distance (Toll facility only)
+  MW[347] = mi.10.TOLLtime ;Drive-alone TOLL time (Toll facility only)
+  
+; Shared ride HOV skims (HOV lane eligible, non-toll)
+  MW[348][j] = mi.10.ivtHOV[j]  ;Shared-Ride 2 HOV, non-toll total in-vehicle time
+  MW[349][j] = mi.10.distHOV[j] ;Shared-Ride 2 HOV, non-toll total in-vehicle distance
+  MW[350][j] = mi.10.HOVdist[j] ;Shared-Ride 2 HOV-only distance (HOV Lane Only)
+  MW[351][j] = mi.10.HOVtime[j] ;Shared-Ride 2 HOV-only time (HOV Lane Only)
+
+; Shared ride toll skims (could use HOV as well)
+  MW[352] = mi.10.ivtHT     ;Shared-Ride 2 Toll, HOV total in-vehicle time
+  MW[353] = mi.10.distHT    ;Shared-Ride 2 Toll, HOV total in-vehicle distance
+  MW[354] = mi.10.HOVTdist  ;Shared-Ride 2 HOV-only distance (HOV lane only)
+  MW[355] = mi.10.HOVTtime  ;Shared-Ride 2 HOV-only time (HOV lane only)
+  MW[356] = mi.10.HHOTdist  ;Shared-Ride 2 HOT-only distance (HOT lane only)
+  MW[357] = mi.10.HHOTtime  ;Shared-Ride 2 HOT-only time (HOT lane only)
+  MW[358] = mi.10.HTOLLdist ;Shared-Ride 2 TOLL-only distance (toll facility only)
+  MW[359] = mi.10.HTOLLtime ;Shared-Ride 2 TOLL-only time (toll facility only)
+*/
+
+
+;non-motorized matrices
+  MW[401] = MI.10.XYDIST                ;X-Y distance between centroids
+  MW[402] = (MW[401]/@walkspeed@)*60    ;walk time
+  MW[403] = MIN(MW[402],24)         ;Out-of-vehicle time (minutes) - first 24 minutes
+  MW[404] = MAX((MW[402]-24),0)     ;Out-of-vehicle time (minutes) - second 24 minutes
+  
+  MW[405] = (MW[401]/@bikespeed@)*60    ;bike time
+
+
+;*************************************
+; BRT SKIM ATTRIBUTES
+;*************************************
+;walk-to-BRT matrices
+  MW[410] = (MI.14.T456789)	  			;IVT - walk/BRT path
+  MW[411] = MI.14.INITWAIT  			;initial wait - walk/BRT
+  MW[412] = (MI.14.D456789)	;in-vehicle distance
+  MW[413] = MI.14.DRIVEDIST				;drive access distance
+  MW[414] = (MI.14.DRIVETIME)   			;drive time - should be 0
+  MW[415] = MIN((MI.14.WALKTIME),24)    		;walk OVT - walk/BRT
+  MW[416] = MAX((MI.14.WALKTIME-24),0)    		;walk OVT - walk/BRT
+  MW[417] = (MI.14.XFERWAIT)    			;transfer wait - walk/BRT
+  MW[418] = (MI.14.TRANSFERS)       			;number of transfers - walk/BRT
+  MW[419] = (MI.14.XFARE)       			;out-of-pocket cost (cents) - walk/BRT
+
+;drive-to-BRT matrices
+  MW[420] = (MI.15.T456789)	  			;IVT - drive/BRT path
+  MW[421] = MI.15.INITWAIT  			;initial wait - drive/BRT
+  MW[422] = (MI.15.D456789)	;in-vehicle distance
+  MW[423] = MI.15.DRIVEDIST				;drive access distance
+  MW[424] = (MI.15.DRIVETIME)   			;drive time - should be 0
+  MW[425] = MIN((MI.15.WALKTIME),24)    		;walk OVT - drive/BRT
+  MW[426] = MAX((MI.15.WALKTIME-24),0)    		;walk OVT - drive/BRT
+  MW[427] = (MI.15.XFERWAIT)    			;transfer wait - drive/BRT
+  MW[428] = (MI.15.TRANSFERS)       			;number of transfers - drive/BRT
+  MW[429] = (MI.15.XFARE)       			;out-of-pocket cost (cents) - drive/BRT
+;*************************************
+;*************************************
+
+
+
+
+
+
+

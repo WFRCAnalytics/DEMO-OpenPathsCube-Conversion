@@ -1,0 +1,140 @@
+{
+    "outputFileName": "j-transit-segments.json",
+    "idCol": "SegID",
+    "someAttsHaveDuplicateData" : true,
+    "groupCsv": [
+        {
+            "aggOperation": "sum",
+            "aggAtts": ["aR"]
+        },
+        {
+            "aggOperation": "mean",
+            "aggAtts": ["aTS","aHd","aFq","aMxM"]
+        }
+    ],
+    "filters": [
+        {   "filterCode": "fTod2",
+            "filterDescription": "Time of Day",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Period"
+        },
+        {   "filterCode": "fModeAccess",
+            "filterDescription": "Access Mode",
+            "filterLocation": "long",
+            "tdmCsvColumn": "AccessMode"
+        },
+        {   "filterCode": "fDirNameNoAll",
+            "filterDescription": "Travel Direction Name",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Direction"
+        },
+        {   "filterCode": "fModeRoute",
+            "filterDescription": "Mode of Route",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Mode"
+        },
+        {   "filterCode": "fRouteName",
+            "filterDescription": "Route Name",
+            "filterLocation": "long",
+            "tdmCsvColumn": "Name"
+        },
+        {   "filterCode": "fModeHier",
+            "filterDescription": "Hierarchical Mode",
+            "filterLocation": "wide"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "aDM",
+            "attributeDescription": "Display Mode",
+            "tdmCsvColumn": "DisplayMode",
+            "removeDuplicateFilterData": ["fModeAccess","fDirNameNoAll","fModeHier"]
+        },
+        {   "attributeCode": "aR",
+            "attributeDescription": "Riders",
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "Riders",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "ALL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "FromSkim_LCL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "LCL"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "FromSkim_COR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "COR"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "FromSkim_BRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "BRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "FromSkim_EXP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "EXP"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "FromSkim_LRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "LRT"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "FromSkim_CRT",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fModeHier",
+                            "filterValue": "CRT"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aHd",
+            "attributeDescription": "Headway (minutes)",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Headway",
+            "removeDuplicateFilterData": ["fModeAccess","fDirNameNoAll","fModeHier"]
+        },
+        {   "attributeCode": "aTS",
+            "attributeDescription": "Speed (mph)",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Speed",
+            "removeDuplicateFilterData": ["fModeAccess","fModeHier"]
+        },
+        {
+            "attributeCode": "aFq",
+            "attributeDescription": "Frequency (buses/hour)",
+            "roundingDecimals": 1,
+            "tdmCsvColumn": "Frequency",
+            "removeDuplicateFilterData": ["fModeAccess","fDirNameNoAll","fModeHier"]
+        }
+    ]
+}

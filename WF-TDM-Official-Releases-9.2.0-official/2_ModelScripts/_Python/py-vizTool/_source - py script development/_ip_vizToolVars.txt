@@ -1,0 +1,17 @@
+# ------------------------------------------------------------------------------
+# Python input file variables and paths
+# ------------------------------------------------------------------------------
+
+# global parameters ------------------------------------------------------------
+ParentDir        = r"D:\GitHub\WF-TDM-v9x\\"
+ScenarioDir      = r"Scenarios\WF TDM v910-Task2\BY_2019\\"
+ModelVersion     = r"WFv910"
+ScenarioGroup    = r"Base"
+RunYear          = r"2019"
+
+
+# input files ------------------------------------------------------------------
+TAZ_DBF          = r"WFv900_TAZ.dbf"
+Segments_DBF     = r"WFv910_Segments.dbf"
+
+

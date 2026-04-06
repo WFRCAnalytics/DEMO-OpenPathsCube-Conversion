@@ -1,0 +1,276 @@
+;file: REMM.block
+
+;veh0_low_walk_nmshare: Non-motorized Share - 0 veh, low income, walk access 
+;veh0_low_drive_nmshare: Non-motorized Share - 0 veh, low income, drive access
+;veh0_low_none_nmshare: Non-motorized Share - 0 veh, low income, no access
+;veh0_high_walk_nmshare: Non-motorized Share - 0 veh, high income, walk access 
+;veh0_high_drive_nmshare: Non-motorized Share - 0 veh, high income, drive access
+;veh0_high_none_nmshare: Non-motorized Share - 0 veh, high income, no access
+;veh1_low_walk_nmshare: Non-motorized Share - 1 veh, low income, walk access 
+;veh1_low_drive_nmshare: Non-motorized Share - 1 veh, low income, drive access
+;veh1_low_none_nmshare: Non-motorized Share - 1 veh, low income, no access
+;veh1_high_walk_nmshare: Non-motorized Share - 1 veh, high income, walk access 
+;veh1_high_drive_nmshare: Non-motorized Share - 1 veh, high income, drive access
+;veh1_high_none_nmshare: Non-motorized Share - 1 veh, high income, no access
+;veh2_low_walk_nmshare: Non-motorized Share - 2 veh, low income, walk access 
+;veh2_low_drive_nmshare: Non-motorized Share - 2 veh, low income, drive access
+;veh2_low_none_nmshare: Non-motorized Share - 2 veh, low income, no access
+;veh2_high_walk_nmshare: Non-motorized Share - 2 veh, high income, walk access 
+;veh2_high_drive_nmshare: Non-motorized Share - 2 veh, high income, drive access
+;veh2_high_none_nmshare: Non-motorized Share - 2 veh, high income, no access
+
+;veh0_low_walk_nmlog: Non-motorized logsum - 0 veh, low income, walk access 
+;veh0_low_drive_nmlog: Non-motorized logsum - 0 veh, low income, drive access
+;veh0_low_none_nmlog: Non-motorized logsum - 0 veh, low income, no access
+;veh0_high_walk_nmlog: Non-motorized logsum - 0 veh, high income, walk access 
+;veh0_high_drive_nmlog: Non-motorized logsum - 0 veh, high income, drive access
+;veh0_high_none_nmlog: Non-motorized logsum - 0 veh, high income, no access
+;veh1_low_walk_nmlog: Non-motorized logsum - 1 veh, low income, walk access 
+;veh1_low_drive_nmlog: Non-motorized logsum - 1 veh, low income, drive access
+;veh1_low_none_nmlog: Non-motorized logsum - 1 veh, low income, no access
+;veh1_high_walk_nmlog: Non-motorized logsum - 1 veh, high income, walk access 
+;veh1_high_drive_nmlog: Non-motorized logsum - 1 veh, high income, drive access
+;veh1_high_none_nmlog: Non-motorized logsum - 1 veh, high income, no access
+;veh2_low_walk_nmlog: Non-motorized logsum - 2 veh, low income, walk access 
+;veh2_low_drive_nmlog: Non-motorized logsum - 2 veh, low income, drive access
+;veh2_low_none_nmlog: Non-motorized logsum - 2 veh, low income, no access
+;veh2_high_walk_nmlog: Non-motorized logsum - 2 veh, high income, walk access 
+;veh2_high_drive_nmlog: Non-motorized logsum - 2 veh, high income, drive access
+;veh2_high_none_nmlog: Non-motorized logsum - 2 veh, high income, no access
+
+;veh0_low_walk_motlog: motorized logsum - 0 veh, low income, walk access 
+;veh0_low_drive_motlog: motorized logsum - 0 veh, low income, drive access
+;veh0_low_none_motlog: motorized logsum - 0 veh, low income, no access
+;veh0_high_walk_motlog: motorized logsum - 0 veh, high income, walk access 
+;veh0_high_drive_motlog: motorized logsum - 0 veh, high income, drive access
+;veh0_high_none_motlog: motorized logsum - 0 veh, high income, no access
+;veh1_low_walk_motlog: motorized logsum - 1 veh, low income, walk access 
+;veh1_low_drive_motlog: motorized logsum - 1 veh, low income, drive access
+;veh1_low_none_motlog: motorized logsum - 1 veh, low income, no access
+;veh1_high_walk_motlog: motorized logsum - 1 veh, high income, walk access 
+;veh1_high_drive_motlog: motorized logsum - 1 veh, high income, drive access
+;veh1_high_none_motlog: motorized logsum - 1 veh, high income, no access
+;veh2_low_walk_motlog: motorized logsum - 2 veh, low income, walk access 
+;veh2_low_drive_motlog: motorized logsum - 2 veh, low income, drive access
+;veh2_low_none_motlog: motorized logsum - 2 veh, low income, no access
+;veh2_high_walk_motlog: motorized logsum - 2 veh, high income, walk access 
+;veh2_high_drive_motlog: motorized logsum - 2 veh, high income, drive access
+;veh2_high_none_motlog: motorized logsum - 2 veh, high income, no access
+
+
+IF (VEH==1 & INC==1 & ACCESS==1)
+
+  veh0_low_walk_nmshare[j] = prob_nonmotor
+  veh0_low_walk_nmlog[j] = logsum_nonmotor
+  veh0_low_walk_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==1 & INC==1 & ACCESS==2)
+
+  veh0_low_drive_nmshare[j] = prob_nonmotor
+  veh0_low_drive_nmlog[j] = logsum_nonmotor
+  veh0_low_drive_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==1 & INC==1 & ACCESS==3)
+
+  veh0_low_none_nmshare[j] = prob_nonmotor
+  veh0_low_none_nmlog[j] = logsum_nonmotor
+  veh0_low_none_motlog[j] = logsum_motor  
+  
+ELSEIF (VEH==1 & INC==2 & ACCESS==1)
+
+  veh0_high_walk_nmshare[j] = prob_nonmotor
+  veh0_high_walk_nmlog[j] = logsum_nonmotor
+  veh0_high_walk_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==1 & INC==2 & ACCESS==2)
+
+  veh0_high_drive_nmshare[j] = prob_nonmotor
+  veh0_high_drive_nmlog[j] = logsum_nonmotor
+  veh0_high_drive_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==1 & INC==2 & ACCESS==3)
+
+  veh0_high_none_nmshare[j] = prob_nonmotor
+  veh0_high_none_nmlog[j] = logsum_nonmotor
+  veh0_high_none_motlog[j] = logsum_motor 
+  
+ELSEIF (VEH==2 & INC==1 & ACCESS==1)
+
+  veh1_low_walk_nmshare[j] = prob_nonmotor
+  veh1_low_walk_nmlog[j] = logsum_nonmotor
+  veh1_low_walk_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==2 & INC==1 & ACCESS==2)
+
+  veh1_low_drive_nmshare[j] = prob_nonmotor
+  veh1_low_drive_nmlog[j] = logsum_nonmotor
+  veh1_low_drive_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==2 & INC==1 & ACCESS==3)
+
+  veh1_low_none_nmshare[j] = prob_nonmotor
+  veh1_low_none_nmlog[j] = logsum_nonmotor
+  veh1_low_none_motlog[j] = logsum_motor  
+  
+ELSEIF (VEH==2 & INC==2 & ACCESS==1)
+
+  veh1_high_walk_nmshare[j] = prob_nonmotor
+  veh1_high_walk_nmlog[j] = logsum_nonmotor
+  veh1_high_walk_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==2 & INC==2 & ACCESS==2)
+
+  veh1_high_drive_nmshare[j] = prob_nonmotor
+  veh1_high_drive_nmlog[j] = logsum_nonmotor
+  veh1_high_drive_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==2 & INC==2 & ACCESS==3)
+
+  veh1_high_none_nmshare[j] = prob_nonmotor
+  veh1_high_none_nmlog[j] = logsum_nonmotor
+  veh1_high_none_motlog[j] = logsum_motor 
+
+ELSEIF (VEH==3 & INC==1 & ACCESS==1)
+
+  veh2_low_walk_nmshare[j] = prob_nonmotor
+  veh2_low_walk_nmlog[j] = logsum_nonmotor
+  veh2_low_walk_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==3 & INC==1 & ACCESS==2)
+
+  veh2_low_drive_nmshare[j] = prob_nonmotor
+  veh2_low_drive_nmlog[j] = logsum_nonmotor
+  veh2_low_drive_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==3 & INC==1 & ACCESS==3)
+
+  veh2_low_none_nmshare[j] = prob_nonmotor
+  veh2_low_none_nmlog[j] = logsum_nonmotor
+  veh2_low_none_motlog[j] = logsum_motor  
+  
+ELSEIF (VEH==3 & INC==2 & ACCESS==1)
+
+  veh2_high_walk_nmshare[j] = prob_nonmotor
+  veh2_high_walk_nmlog[j] = logsum_nonmotor
+  veh2_high_walk_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==3 & INC==2 & ACCESS==2)
+
+  veh2_high_drive_nmshare[j] = prob_nonmotor
+  veh2_high_drive_nmlog[j] = logsum_nonmotor
+  veh2_high_drive_motlog[j] = logsum_motor
+  
+ ELSEIF (VEH==3 & INC==2 & ACCESS==3)
+
+  veh2_high_none_nmshare[j] = prob_nonmotor
+  veh2_high_none_nmlog[j] = logsum_nonmotor
+  veh2_high_none_motlog[j] = logsum_motor 
+  
+ENDIF  
+
+;print file='test.txt', list=i, ' ', j, ' ', VEH, ' ', INC, ' ', ACCESS, ' ' prob_nonmotor, ' ', logsum_nonmotor
+
+;model loops through access markets, then income segments
+;to calculate the logsums for REMM we multiply the 
+;  share of each market by the motorized logsum, added to
+;  the share of each market times the nonmotorized logsum
+;to do this, given the way the code is structured, we need 
+;  to calculate and print the logsums when the markets have been
+;  looped through and the logsums have been calculated for each market. 
+
+IF (INC==2)  
+ 
+ IF (VEH==1 & mi.1.pctwalk[j]>0) 
+  perc_walk  = mi.1.pctwalk[j] + mi.1.pctdrive[j]
+  perc_drive = 0
+  perc_none  = 1 - mi.1.pctwalk[j] - mi.1.pctdrive[j]
+ ELSE  
+  perc_walk  = mi.1.pctwalk[j] 
+  perc_drive = mi.1.pctdrive[j]
+  perc_none  = 1 - mi.1.pctwalk[j] - mi.1.pctdrive[j] 
+ ENDIF
+  
+  IF (VEH==1)
+    perc_low_inc = perc_low_inc_0
+  ELSEIF (VEH==2)
+    perc_low_inc = perc_low_inc_1
+  ELSEIF (VEH==3)
+    perc_low_inc = perc_low_inc_2
+  ENDIF
+      
+  perc_high_inc = 1 - perc_low_inc
+  
+
+;the logsum for REMM is weighted avg sum of the motorized and non-motorized logsums across market segments (or something like that)
+;essentially, the calculation is the sum of:
+;   % income segment (low/high) * % transit access segment (walk/drive/none) * logsum(motor/non-motor) * share(motor/non-motor)
+;   for each market segment combination
+;the logsums are printed/calculated for each vehicle ownership segment
+
+  
+    IF (VEH==1)
+    
+      low_inc_nonmotor = (perc_low_inc*perc_walk*veh0_low_walk_nmshare[j]*veh0_low_walk_nmlog[j]) +
+                         (perc_low_inc*perc_drive*veh0_low_drive_nmshare[j]*veh0_low_drive_nmlog[j]) + 
+                         (perc_low_inc*perc_none*veh0_low_none_nmshare[j]*veh0_low_none_nmlog[j])
+      
+      low_inc_motor    = (perc_low_inc*perc_walk*(1-veh0_low_walk_nmshare[j])*veh0_low_walk_motlog[j]) +
+                         (perc_low_inc*perc_drive*(1-veh0_low_drive_nmshare[j])*veh0_low_drive_motlog[j]) + 
+                         (perc_low_inc*perc_none*(1-veh0_low_none_nmshare[j])*veh0_low_none_motlog[j])
+      
+      high_inc_nonmotor = (perc_high_inc*perc_walk*veh0_high_walk_nmshare[j]*veh0_high_walk_nmlog[j]) +
+                          (perc_high_inc*perc_drive*veh0_high_drive_nmshare[j]*veh0_high_drive_nmlog[j]) + 
+                          (perc_high_inc*perc_none*veh0_high_none_nmshare[j]*veh0_high_none_nmlog[j])
+      
+      high_inc_motor    = (perc_high_inc*perc_walk*(1-veh0_high_walk_nmshare[j])*veh0_high_walk_motlog[j]) +
+                          (perc_high_inc*perc_drive*(1-veh0_high_drive_nmshare[j])*veh0_high_drive_motlog[j]) + 
+                          (perc_high_inc*perc_none*(1-veh0_high_none_nmshare[j])*veh0_high_none_motlog[j])                   
+      
+      MW[8][j] = low_inc_nonmotor + low_inc_motor + high_inc_nonmotor + high_inc_motor
+    
+    ELSEIF (VEH==2)
+      
+      low_inc_nonmotor = (perc_low_inc*perc_walk*veh1_low_walk_nmshare[j]*veh1_low_walk_nmlog[j]) +
+                         (perc_low_inc*perc_drive*veh1_low_drive_nmshare[j]*veh1_low_drive_nmlog[j]) + 
+                         (perc_low_inc*perc_none*veh1_low_none_nmshare[j]*veh1_low_none_nmlog[j])
+      
+      low_inc_motor    = (perc_low_inc*perc_walk*(1-veh1_low_walk_nmshare[j])*veh1_low_walk_motlog[j]) +
+                         (perc_low_inc*perc_drive*(1-veh1_low_drive_nmshare[j])*veh1_low_drive_motlog[j]) + 
+                         (perc_low_inc*perc_none*(1-veh1_low_none_nmshare[j])*veh1_low_none_motlog[j])
+      
+      high_inc_nonmotor = (perc_high_inc*perc_walk*veh1_high_walk_nmshare[j]*veh1_high_walk_nmlog[j]) +
+                          (perc_high_inc*perc_drive*veh1_high_drive_nmshare[j]*veh1_high_drive_nmlog[j]) + 
+                          (perc_high_inc*perc_none*veh1_high_none_nmshare[j]*veh1_high_none_nmlog[j])
+      
+      high_inc_motor    = (perc_high_inc*perc_walk*(1-veh1_high_walk_nmshare[j])*veh1_high_walk_motlog[j]) +
+                          (perc_high_inc*perc_drive*(1-veh1_high_drive_nmshare[j])*veh1_high_drive_motlog[j]) + 
+                          (perc_high_inc*perc_none*(1-veh1_high_none_nmshare[j])*veh1_high_none_motlog[j]) 
+                          
+      MW[9][j] = low_inc_nonmotor + low_inc_motor + high_inc_nonmotor + high_inc_motor
+    
+    ELSEIF (VEH==3)
+      
+      low_inc_nonmotor = (perc_low_inc*perc_walk*veh2_low_walk_nmshare[j]*veh2_low_walk_nmlog[j]) +
+                         (perc_low_inc*perc_drive*veh2_low_drive_nmshare[j]*veh2_low_drive_nmlog[j]) + 
+                         (perc_low_inc*perc_none*veh2_low_none_nmshare[j]*veh2_low_none_nmlog[j])
+      
+      low_inc_motor    = (perc_low_inc*perc_walk*(1-veh2_low_walk_nmshare[j])*veh2_low_walk_motlog[j]) +
+                         (perc_low_inc*perc_drive*(1-veh2_low_drive_nmshare[j])*veh2_low_drive_motlog[j]) + 
+                         (perc_low_inc*perc_none*(1-veh2_low_none_nmshare[j])*veh2_low_none_motlog[j])
+      
+      high_inc_nonmotor = (perc_high_inc*perc_walk*veh2_high_walk_nmshare[j]*veh2_high_walk_nmlog[j]) +
+                          (perc_high_inc*perc_drive*veh2_high_drive_nmshare[j]*veh2_high_drive_nmlog[j]) + 
+                          (perc_high_inc*perc_none*veh2_high_none_nmshare[j]*veh2_high_none_nmlog[j])
+      
+      high_inc_motor    = (perc_high_inc*perc_walk*(1-veh2_high_walk_nmshare[j])*veh2_high_walk_motlog[j]) +
+                          (perc_high_inc*perc_drive*(1-veh2_high_drive_nmshare[j])*veh2_high_drive_motlog[j]) + 
+                          (perc_high_inc*perc_none*(1-veh2_high_none_nmshare[j])*veh2_high_none_motlog[j]) 
+                          
+      MW[10][j]= low_inc_nonmotor + low_inc_motor + high_inc_nonmotor + high_inc_motor
+
+    ENDIF
+
+
+ENDIF  
+
+  

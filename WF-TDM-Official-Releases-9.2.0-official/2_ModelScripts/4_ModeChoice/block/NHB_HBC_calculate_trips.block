@@ -1,0 +1,270 @@
+;FILE: trips_NHB.block
+
+
+/* ************************************************************************************** 
+ BEGIN: WORK WAY BACK THROUGH NESTS TO CALCULATE TRIPS BY MODE
+ ************************************************************************************** */ 
+          
+          ;compute Motorized, Non-motorized trips
+          
+          ;motorized trips
+           trips_motor = prob_motor * MW[2][j]
+          
+               MW[11][j] = MW[11][j] + trips_motor
+          
+            ;add to regional totals (for output/calibration)
+             trips_motor_region = trips_motor_region + trips_motor
+          
+          ;non-motorized trips
+           trips_nonmotor = prob_nonmotor * MW[2][j]
+          
+               MW[12][j] = MW[12][j] + trips_nonmotor
+          
+            ;add to regional totals (for output/calibration)
+             trips_nonmotor_region = trips_nonmotor_region + trips_nonmotor
+
+
+          ;compute Walk/Bike trips
+          
+          ;walk trips
+           trips_walk = trips_nonmotor * prob_walk
+           
+               MW[13][j] = MW[13][j] + trips_walk
+          
+            ;add to regional totals (for output/calibration)
+             trips_walk_region = trips_walk_region + trips_walk
+          
+           ;bike trips
+            trips_bike = trips_nonmotor * prob_bike
+          
+                MW[14][j] = MW[14][j] + trips_bike
+                
+            ;add to regional totals (for output/calibration)
+             trips_bike_region = trips_bike_region + trips_bike
+          
+
+          ;compute Transit/Auto trips
+          
+          ;transit trips
+           trips_transit = trips_motor * prob_transit
+
+          
+          ;walk-local trips
+           trips_wLCL = trips_transit * prob_walkacc * prob_wLCL 
+
+               MW[25][j] = MW[25][j] + trips_wLCL
+               
+            ;add to regional totals (for output/calibration)
+             trips_wLCL_region = trips_wLCL_region + trips_wLCL
+             
+           ;drive-local trips
+           trips_dLCL = trips_transit * prob_driveacc * prob_dLCL
+          
+               MW[26][j] = MW[26][j] + trips_dLCL
+               
+            ;add to regional totals (for output/calibration)
+             trips_dLCL_region = trips_dLCL_region + trips_dLCL
+
+          
+          ;walk-cor trips
+           trips_wCOR = trips_transit * prob_walkacc * prob_wCOR 
+
+               MW[96][j] = MW[96][j] + trips_wCOR
+               
+            ;add to regional totals (for output/calibration)
+             trips_wCOR_region = trips_wCOR_region + trips_wCOR
+             
+           ;drive-cor trips
+           trips_dCOR = trips_transit * prob_driveacc * prob_dCOR
+          
+               MW[97][j] = MW[97][j] + trips_dCOR
+               
+            ;add to regional totals (for output/calibration)
+             trips_dCOR_region = trips_dCOR_region + trips_dCOR
+
+
+          ;walk-brt trips
+           trips_wBRT = trips_transit * prob_walkacc * prob_wBRT 
+
+               MW[112][j] = MW[112][j] + trips_wBRT
+               
+            ;add to regional totals (for output/calibration)
+             trips_wBRT_region = trips_wBRT_region + trips_wBRT
+             
+           ;drive-brt trips
+           trips_dBRT = trips_transit * prob_driveacc * prob_dBRT
+          
+               MW[113][j] = MW[113][j] + trips_dBRT
+               
+            ;add to regional totals (for output/calibration)
+             trips_dBRT_region = trips_dBRT_region + trips_dBRT                       
+          
+
+           ;walk-express trips
+            trips_wEXP = trips_transit * prob_walkacc * prob_wEXP 
+          
+               MW[27][j] = MW[27][j] + trips_wEXP
+                         
+            ;add to regional totals (for output/calibration)
+             trips_wEXP_region = trips_wEXP_region + trips_wEXP   
+             
+           ;drive-express trips
+            trips_dEXP = trips_transit * prob_driveacc * prob_dEXP
+          
+               MW[28][j] = MW[28][j] + trips_dEXP
+                         
+            ;add to regional totals (for output/calibration)
+             trips_dEXP_region = trips_dEXP_region + trips_dEXP   
+           
+             
+          ;walk-light rail trips
+           trips_wLRT = trips_transit * prob_walkacc * prob_wLRT
+          
+               MW[29][j] = MW[29][j] + trips_wLRT
+          
+            ;add to regional totals (for output/calibration)
+             trips_wLRT_region = trips_wLRT_region + trips_wLRT
+
+          ;drive-light rail trips
+           trips_dLRT = trips_transit * prob_driveacc * prob_dLRT
+
+               MW[30][j] = MW[30][j] + trips_dLRT
+                         
+            ;add to regional totals (for output/calibration)
+             trips_dLRT_region = trips_dLRT_region + trips_dLRT          
+          
+          
+           ;walk-commuter rail trips
+            trips_wCRT = trips_transit * prob_walkacc * prob_wCRT
+          
+               MW[31][j] = MW[31][j] + trips_wCRT
+                         
+            ;add to regional totals (for output/calibration)
+             trips_wCRT_region = trips_wCRT_region + trips_wCRT   
+             
+           ;drive-commuter rail trips
+            trips_dCRT = trips_transit * prob_driveacc * prob_dCRT
+
+               MW[32][j] = MW[32][j] + trips_dCRT
+                         
+            ;add to regional totals (for output/calibration)
+             trips_dCRT_region = trips_dCRT_region + trips_dCRT   
+             
+             
+/* ************************************************************************************** 
+ END: WORK WAY BACK THROUGH NESTS TO CALCULATE TRIPS BY MODE
+ ************************************************************************************** */ 
+  trips_transit = trips_wLCL   + trips_dLCL   + trips_wCOR + trips_dCOR +
+                  trips_wEXP + trips_dEXP + trips_wBRT + trips_dBRT +
+                  trips_wLRT     + trips_dLRT     + trips_wCRT + trips_dCRT
+  MW[15][j] = MW[15][j] + trips_transit
+  trips_transit_region = trips_transit_region + trips_transit
+  
+  trips_auto = trips_motor - trips_transit
+  MW[16][j] = MW[16][j] + trips_auto
+  trips_auto_region = trips_auto_region + trips_auto
+  
+  trips_alone = trips_auto * prob_alone
+  MW[17][j] = MW[17][j] + trips_alone
+  trips_alone_region = trips_alone_region + trips_alone
+          
+  ; drive-alone non-toll
+  trips_alonen = trips_alone * prob_alonen
+  trips_alonen_region = trips_alonen_region + trips_alonen  
+  MW[63][j] = MW[63][j] + trips_alonen
+
+  ; drive-alone toll
+  trips_alonet = trips_alone * prob_alonet
+  trips_alonet_region = trips_alonet_region + trips_alonet
+  MW[64][j] = MW[64][j] + trips_alonet
+
+  trips_shared = trips_auto * prob_shared
+  MW[18][j] = MW[18][j] + trips_shared
+  trips_shared_region = trips_shared_region + trips_shared
+  
+  trips_sr2 = trips_shared * prob_sr2
+  MW[19][j] = MW[19][j] + trips_sr2          
+  trips_sr2_region = trips_sr2_region + trips_sr2
+          
+  ; shared-2 non-toll, non-hov
+  trips_sr2nn = trips_sr2 * prob_sr2nn
+  MW[65][j] = MW[65][j] + trips_sr2nn
+  trips_sr2nn_region = trips_sr2nn_region + trips_sr2nn
+  
+  ; shared-2 non-toll, hov
+  trips_sr2nh = trips_sr2 * prob_sr2nh
+  MW[66][j] = MW[66][j] + trips_sr2nh
+  trips_sr2nh_region = trips_sr2nh_region + trips_sr2nh
+  
+  ; shared-2 toll, hov
+  trips_sr2th = trips_sr2 * prob_sr2th
+  MW[67][j] = MW[67][j] + trips_sr2th
+  trips_sr2th_region = trips_sr2th_region + trips_sr2th
+
+  trips_sr3 = trips_shared * prob_sr3
+  MW[20][j] = MW[20][j] + trips_sr3
+  trips_sr3_region = trips_sr3_region + trips_sr3
+  
+  ; shared-3+ non-toll, non-hov
+  trips_sr3nn = trips_sr3 * prob_sr3nn
+  MW[68][j] = MW[68][j] + trips_sr3nn
+  trips_sr3nn_region = trips_sr3nn_region + trips_sr3nn
+  
+  ; shared-3+ non-toll, hov
+  trips_sr3nh = trips_sr3 * prob_sr3nh
+  MW[69][j] = MW[69][j] + trips_sr3nh
+  trips_sr3nh_region = trips_sr3nh_region + trips_sr3nh
+  
+  ; shared-3+ toll, hov
+  trips_sr3th = trips_sr3 * prob_sr3th
+  MW[70][j] = MW[70][j] + trips_sr3th
+  trips_sr3th_region = trips_sr3th_region + trips_sr3th
+
+  prob_auto = trips_auto / (trips_auto + trips_transit + .001)
+  prob_transit = trips_transit / (trips_auto + trips_transit + .001)
+  
+  trips_walkacc = trips_wLCL + trips_wCOR + trips_wEXP + trips_wLRT + trips_wCRT + trips_wBRT
+  trips_walkacc_region = trips_walkacc_region + trips_walkacc
+          
+  trips_driveacc = trips_dLCL + trips_dCOR + trips_dEXP + trips_dLRT + trips_dCRT + trips_dBRT
+  trips_driveacc_region = trips_driveacc_region + trips_driveacc                           
+  
+  prob_walkacc = trips_walkacc / (trips_transit + .001)
+  prob_driveacc = trips_driveacc / (trips_transit + .001)
+  
+  trips_LCL = trips_wLCL + trips_dLCL  
+  MW[21][j] = MW[21][j] + trips_LCL
+  trips_LCL_region = trips_LCL_region + trips_LCL
+  
+  trips_COR  = trips_wCOR + trips_dCOR 
+  MW[93][j] = MW[93][j] + trips_COR
+  trips_COR_region = trips_COR_region + trips_COR
+
+  trips_BRT  = trips_wBRT + trips_dBRT 
+  MW[102][j] = MW[102][j] + trips_BRT
+  trips_BRT_region = trips_BRT_region + trips_BRT
+    
+  trips_EXP = trips_wEXP + trips_dEXP
+  MW[22][j] = MW[22][j] + trips_EXP
+  trips_EXP_region = trips_EXP_region + trips_EXP
+  
+  trips_LRT = trips_wLRT + trips_dLRT 
+  MW[23][j] = MW[23][j] + trips_LRT
+  trips_LRT_region = trips_LRT_region + trips_LRT
+  
+  trips_CRT = trips_wCRT + trips_dCRT 
+  MW[24][j] = MW[24][j] + trips_CRT
+  trips_CRT_region = trips_CRT_region + trips_CRT
+  
+  prob_LCL = trips_LCL / (trips_transit + .001)
+  prob_COR = trips_COR / (trips_transit + .001)
+  prob_EXP = trips_EXP / (trips_transit + .001)
+  prob_LRT = trips_LRT / (trips_transit + .001)
+  prob_CRT = trips_CRT / (trips_transit + .001)
+  prob_BRT = trips_BRT / (trips_transit + .001)
+  
+  IF (ACCESS==1)  ;can walk to transit
+    MW[471][j] = prob_motor * prob_transit                
+  ELSEIF (ACCESS==2)  ;must drive to transit
+    MW[472][j] = prob_motor * prob_transit
+  ENDIF

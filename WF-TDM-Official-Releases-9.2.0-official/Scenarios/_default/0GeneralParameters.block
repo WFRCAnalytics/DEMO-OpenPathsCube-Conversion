@@ -1,0 +1,484 @@
+;General Parameters ------------------------------------------------------------------------------------------
+
+;msc parameters
+    ;preclude insertion of page headers
+    GLOBAL PAGEHEIGHT=32767 
+    
+    ;default zonal processing message display rate
+    ZoneMsgRate = 50
+    
+    ;for node to node skimming
+    ;MAXSTRING=32000
+
+
+;zone parameters
+    ;used zones
+    UsedZones       = 3629                        ;highest value of any used zone or external
+    
+    BoxElderRange   = '1-153'
+    WeberRange      = '154-581'
+    DavisRange      = '582-905'
+    SLRange         = '906-2216'
+    UtahRange       = '2217-3546'
+    dummyzones      = '3547-3600'
+    externalzones   = '3601-3629'
+    NorthBC         = '3604,3605,3606'            ;used in 2_ModelScripts\4_ModeChoice\10_ConvertSomeXI2HBW.s
+    
+    ;highway nodes
+    HwyNodes        = '10000-99999'               ;note: highway node numbering schema
+                                                  ;  WFRC Transit Nodes  10,000-19,999
+                                                  ;  WFRC Highway Nodes  20,000-49,999, 90,000-94,999 (donut area)
+                                                  ;  MAG Transit Nodes   50,000-59,999
+                                                  ;  MAG Highway Nodes   60,000-89,999, 95,000-99,999 (donute area)
+    
+    
+    ;colleges/universities
+    colleges     = '437,521,693,959,979,1007,1029,1051,1085,1231,1263,1491,1525,1580,1776,1886,2031,2606,2809,2848,2882,2939,3336'
+    
+    ;WFRC area colleges
+    Ensign          = 1029                        ;95 N 300 W, Salt Lake City, UT 84101
+    Westmin         = 1263                        ;1840 S 1300 E, Salt Lake City, UT 84105
+    UOFU_Main       = 1051                        ;201 Presidents Cir, Salt Lake City, UT 84112
+    UOFU_Med        = 1007                        ;30 N 1900 E, Salt Lake City, UT 84132 
+    WSU_Main        =  437                        ;3848 Harrison Blvd, Ogden, UT 84403
+    WSU_Davis       =  693                        ;2750 University Park Blvd. layton, UT, 84041
+    WSU_West        =  521                        ;5627S 3500W, Roy, UT, 84067
+    SLCC_Main       = 1580                        ;4600 S Redwood Rd, Salt Lake City, UT 84123
+    SLCC_SC         = 1231                        ;1575 S State Street ,Salt Lake City, UT 84115 
+    SLCC_JD         = 1776                        ;3491 W 9000 S, West Jordan, UT  84088
+    SLCC_Mead       = 1491                        ;218 W 3900 S, Salt Lake City, UT 84107
+    SLCC_ML         = 1886                        ;9750 S 300 W, Sandy, UT  84070 (Miller campus as called Sandy campus)
+    SLCC_LB         = 1085                        ;231 E 400 S, Salt Lake City, UT  84111
+    SLCC_HL         = 1525                        ;3760 S Highland Drive, Salt Lake City, UT  84106 
+    SLCC_Airp       =  979                        ;551 2200 W, Salt Lake City, UT 84116
+    SLCC_West       =  959                        ;2150 W Dauntless Ave, Salt Lake City, UT 84116
+    SLCC_HM         = 2031                        ;14200 S 4000 W, Herriman, UT (FUTURE CAMPUS)
+    
+    ;MAG area colleges
+    BYU             = 2939                        ;1 N University Hill, Provo, UT 84602
+    UVU_Main        = 2848                        ;800 West University Parkway, Orem, UT 84058 
+    UVU_Geneva      = 2882                        ;951 S Geneva Rd, Orem, UT 84058
+    UVU_Lehi        = 2606                        ;2301 W. Ashton Blvd, Lehi, UT 84043 (Thanksgiving point)
+    UVU_Vine        = 2809                        ;Mill Rd, Vineyard UT  (FUTURE CAMPUS)
+    UVU_Payson      = 3336                        ;Future Nebo Belt Rd, Payson UT  (FUTURE CAMPUS)
+    
+    
+    ;zones with off-line trip table
+    Lagoon          =  781
+    Airport         =  965
+    PVU             =  2946
+    
+    ;special generator zones without off-line trip table (attractions processed only in Trip Gen)
+    TempleSquare    = 1035
+    SLC_Library     = 1147
+
+;socioeconomic parameters
+    HH_JOB_INTENSITY_FACTOR = 1.8                 ; HH+Job Intensity: (TOTHH * HH_JOB_INTENSITY_FACTOR) + TOTEMP
+                                                  ; Factor is roughly calculated by taking the base year TOTEMP and dividing by TOTHH
+
+;functional type link classes
+    Centroids       = '1'
+    P_Arts          = '2'
+    M_Arts          = '3'
+    Collectors      = '4-5'
+    Locals          = '6-7'
+    Expressways     = '12-15'
+    Freeways        = '30-36'
+    HOVs            = '37'
+    HOTs            = '38'
+    HOVAccess       = '39'
+    Tolls           = '40'
+    Ramps           = '41-42'
+    FT_Ramp         = '41'                        ;freeway on ramps
+    FT_Sys          = '30-31'                     ;freeway system-to-system ramps
+    FT_GP           = '32-36'                     ;freeway general purpose lanes
+    FT_Fwy          = '30-38'                     ;all freeway lanes
+    MF_FT_Ramp      = '28'                        ;managed freeway on ramps
+    MF_FT_Sys       = '20-21'                     ;managed freeway system-to-system ramps
+    MF_FT_GP        = '22-26'                     ;managed freeway general purpose lanes
+    
+    ;functional types that prevent walk access (barrier to walk), i.e. transit walk access link does not cross
+    BarrierToWalkFT = '12-42'
+    
+    
+;set values for IB_OB calculation
+    ;cordon between travel sheds
+    Og_Cor_Y        = 4557215                     ;Ogden - north of 5600 S, Roy
+    Pr_Cor_Y        = 4471210                     ;Provo - south of Main St, AF
+    ;SL - in between two cordon locations
+
+    ;center of travel shed
+    Og_X            = 418659                      ;Ogden (24th St / Washington Ave)
+    Og_Y            = 4563940
+    
+    SL_X            = 424555                      ;Salt Lake (W Temple / S Temple)
+    SL_Y            = 4513537
+    
+    Pr_X            = 443993                      ;Provo (University Pky / University Ave
+    Pr_Y            = 4456355
+
+
+;special trip table parameters
+    ;income break points (used in airport regression model)
+    ;  source: 2019 5-year ACS (in 2019 dollars)
+    Income_Lo       = 45000                       ;breakpoint between Inc1 & Inc2
+    Income_Md       = 75000                       ;breakpoint between Inc2 & Inc3
+    Income_Hi       = 125000                      ;breakpoint between Inc3 & Inc4
+    
+    ;distance break points (usded in college regression model)
+    Dist_Short      = 3
+    Dist_Medium     = 5
+    Dist_Long       = 20
+    
+    ;household density break point (usded in college regression model)
+    HHDen           = 4
+    
+
+;life cycle parameters
+    ;life cycle population percentages (convert pop in age group to pop in life cycle)
+    ;  source: 2012 HH Survey
+    BE_LC2_0to17    = 0.993
+    BE_LC2_18to64   = 0.664
+                           
+    WE_LC2_0to17    = 0.982
+    WE_LC2_18to64   = 0.606
+                           
+    DA_LC2_0to17    = 0.974
+    DA_LC2_18to64   = 0.711
+                           
+    SL_LC2_0to17    = 0.961
+    SL_LC2_18to64   = 0.525
+                           
+    UT_LC2_0to17    = 0.981
+    UT_LC2_18to64   = 0.659
+    
+    ;life cycle average household size (convert pop in life cycle to hh in life cycle)
+    ;  source: 2012 HH Survey
+    BE_HHSize_LC1   = 1.86
+    BE_HHSize_LC2   = 4.21
+    BE_HHSize_LC3   = 2.41
+                          
+    WE_HHSize_LC1   = 1.88
+    WE_HHSize_LC2   = 4.53
+    WE_HHSize_LC3   = 1.81
+                          
+    DA_HHSize_LC1   = 2.14
+    DA_HHSize_LC2   = 4.68
+    DA_HHSize_LC3   = 2.33
+                          
+    SL_HHSize_LC1   = 1.86
+    SL_HHSize_LC2   = 4.44
+    SL_HHSize_LC3   = 1.81
+                          
+    UT_HHSize_LC1   = 2.11
+    UT_HHSize_LC2   = 4.75
+    UT_HHSize_LC3   = 2.21
+
+
+;household disaggregation parameters
+    ;WF region median income (used in income disaggregation model)
+    ;  source: 2019 5-year ACS (in 2019 dollars)
+    Reg_Median_Inc  = 74946
+    
+    ;3+ car average veh ownership (used in auto ownership model)
+    ;  source: 2012 HH Survey
+    AveNum3PlusCars = 3.5                         ;average number of cars for those who have more than 3 cars
+    AveNum3PlusWrks = 3.26                        ;average number of workers for those households who have 3 or more workers
+
+
+;network processing parameters
+    OneWayBump_Spd = 1.05
+    OneWayBump_Cap = 1.20
+
+
+;distribution, mode choice & assignment parameters
+    ;assignment convergence criterial
+    RGAPCriteria_n1_2 = 0.01
+    RGAPCriteria_n3   = 0.001
+    RGAPCriteria_n4p  = 0.0001
+    
+    RGAPCriteria_FinAsgn = 0.0001
+
+    
+    ;intrazonal, walk & bike speed
+    IntrazonalSpeed = 20.0                        ;assume 20 mph
+    walkspeed       = 2.5                         ;miles per hour
+    bikespeed       = 10                          ;miles per hour
+    
+    ;transit fare discount factor - discounting from advertised fare to effective fare including transit passes, etc.
+    FARE_DISCOUNT = 0.54
+
+    ;truck passenger car equivalency factors
+    PCE_MD = 1.5
+    PCE_HV = 2.0
+    
+    
+    ;manage freeways
+    MinRampPen      = 0.25                        ;minutes
+    RampPenWeight   = 2.0                         ;convert from actual to perceived time in path cost function
+    
+    ;criteria used to reduce the maximum ramp penalty when ramp volumes are low
+    RampVolAdjMax    = 1000                       ;volume below which the maximum ramp penalty is reduced
+    RampVolAdjMin    = 250                        ;volume below which the maximum ramp penalty factor is applied
+    MaxRampPenAdjFac = 0.5                        ;maximum adjustment to the maximum ramp penalty due to low volumes
+    
+    
+    ;for transit path-builder
+    RAIL2COR_MULTIPLIER = 0.33                    ;set Core Route constant relative to LRT constant
+    ;RAIL2BRT_MULTIPLIER = 0.67
+    
+    
+    ;distribution HOV/HOT capacity to distribute over general purpose lanes
+    ;HOVmaxCarsPerHour = 1680                     ;LOS C = around 1680 pcphpl, LOS D = 2000, LOS E = 2400
+    
+    
+    ;K factors (calibration adjustment factor to reduce non-work trips)
+    ;between Salt Lake and Utah counties
+    SL_UT_KFAC_Wrk  = 1.00
+    SL_UT_KFAC_Oth  = 1.00
+    SL_UT_KFAC_Trk  = 1.00
+    SL_UT_KFAC_Ext  = 1.00
+    
+    ;between Salt Lake and Davis counties
+    SL_DA_KFAC_Wrk  = 1.00
+    SL_DA_KFAC_Oth  = 1.00
+    SL_DA_KFAC_Trk  = 1.00
+    SL_DA_KFAC_Ext  = 1.00
+    
+    ;between Box Elder and Weber counties
+    WE_BE_KFAC_Wrk  = 1.00
+    WE_BE_KFAC_Oth  = 1.00
+    WE_BE_KFAC_Trk  = 1.00
+    WE_BE_KFAC_Ext  = 1.00
+    
+    
+    ;auto occupancy
+    ;  source: 2012 HH Survey
+    ;  note: these represent average persons per vehicle for just the Wasatch Front model space
+    ;        external trips (Ext) are average for IX + XI, all other parameters are averages for II trips
+    VehOcc_HBW      = 1.10
+    VehOcc_HBShp    = 1.63
+    VehOcc_HBOth    = 1.68
+    VehOcc_HBSch    = 1.76
+    VehOcc_HBC      = 1.12
+    VehOcc_NHBW     = 1.21
+    VehOcc_NHBNW    = 1.76
+    VehOcc_Rec      = 1.68
+    VehOcc_HBO      = 1.67
+    VehOcc_NHB      = 1.54
+    
+    VehOcc_ExtWrk   = 1.16
+    VehOcc_ExtHBO   = 1.82
+    VehOcc_ExtNHB   = 1.73
+    VehOcc_ExtRec   = 1.73
+    
+    VehOcc_2p_HBW   = 2.41
+    VehOcc_2p_HBShp = 2.71
+    VehOcc_2p_HBOth = 2.77
+    VehOcc_2p_HBSch = 3.19
+    VehOcc_2p_HBC   = 2.22
+    VehOcc_2p_NHBW  = 2.49
+    VehOcc_2p_NHBNW = 2.74
+    VehOcc_2p_Rec   = 2.77
+    VehOcc_2p_HBO   = 2.76
+    VehOcc_2p_NHB   = 2.70
+    
+    VehOcc_3p_HBW   = 3.53
+    VehOcc_3p_HBShp = 3.49
+    VehOcc_3p_HBOth = 3.73
+    VehOcc_3p_HBSch = 3.88
+    VehOcc_3p_HBC   = 3.24
+    VehOcc_3p_NHBW  = 3.71
+    VehOcc_3p_NHBNW = 3.71
+    VehOcc_3p_Rec   = 3.73
+    VehOcc_3p_HBO   = 3.68
+    VehOcc_3p_NHB   = 3.71
+    
+    
+    ;Value of time (cent/min)
+    VOT_Auto_Wrk    = 22                          ;or $13.20/hr
+    VOT_Auto_Per    = 17                          ;or $10.20/hr
+    VOT_Auto_Ext    = 20                          ;or $11.70/hr
+    
+    VOT_LT          = 37                          ;or $22.20/hr
+    VOT_MD          = 50                          ;or $30.00/hr
+    VOT_HV          = 63                          ;or $37.80/hr
+    
+    VOT_Toll        = 63                          ;all vehicles on tollway - set same as VOT_HV
+    VOT_HOT_DA      = 63                          ;drive alone on HOT - set same as VOT_HV
+    
+    VOT_Auto_Wrk_Lo = 9                           ;or $ 5.40/hr
+    VOT_Auto_Wrk_Hi = 24                          ;or $14.40/hr
+    VOT_Auto_Per_Lo = 7                           ;or $ 4.20/hr
+    VOT_Auto_Per_Hi = 19                          ;or $11.40/hr
+    
+    
+    ;auto operating cost (cent/mile)
+    ;  note: updated based on 2019 fuel cost & economy and vehicle maintenance
+    AOC_Auto        = 21.7                        ;auto
+    AOC_LT          = 27.3                        ;light truck
+    AOC_MD          = 55.5                        ;medium truck
+    AOC_HV          = 74.3                        ;heavy truck
+    
+    
+    ;toll cost for using FT 40 toll-way links (cent/mile)
+    ;  note: reflects a toll of ~$5.00 for a 10.25 mi trip (avg work dist) or ~$3.00 for a 6.5 mi trip (avg dist)
+    ;        in 2019 dollars
+    Cost_Toll_Pk    = 48                          ;same toll cost for all users of tollway
+    Cost_Toll_Ok    = 48
+    
+    ;HOT lane cost for using FT 38 HOT links (cent/mile) - toll costs can be set differently for SOV, HOV2, HOV3+
+    ;  note: reflects a toll of ~$3.50 for a 10.25 mi trip (avg work dist) or ~$2.20 for a 6.5 mi trip (avg dist)
+    ;        in 2019 dollars
+    Cost_HOT_Pk     = 34                          ;Drive Alone
+    Cost_HOT_Ok     = 17
+    Cost_2HOT_Pk    =  0                          ;Shared Ride 2
+    Cost_2HOT_Ok    =  0
+    Cost_3HOT_Pk    =  0                          ;Shared Ride 3+
+    Cost_3HOT_Ok    =  0
+    
+    ;cost for using arterial reliability lane (cent/mile) - set same as HOT lane for now
+    Cost_REL_Pk     = 34                          ;Drive Alone
+    Cost_REL_Ok     = 17
+    Cost_2REL_Pk    =  0                          ;Shared Ride 2
+    Cost_2REL_Ok    =  0
+    Cost_3REL_Pk    =  0                          ;Shared Ride 3+
+    Cost_3REL_Ok    =  0
+    
+    ;flag to determine if HOT will be charged (1=charged, 0=not charged)
+    ;Drive Alone
+    Cost_HOT_AM     = 1
+    Cost_HOT_PM     = 1
+    Cost_HOT_Ok     = 1
+    
+    Cost_2HOT_AM    = 0
+    Cost_2HOT_PM    = 0
+    Cost_2HOT_Ok    = 0
+    
+    Cost_3HOT_AM    = 0
+    Cost_3HOT_PM    = 0
+    Cost_3HOT_Ok    = 0
+    
+    
+    ;HOV lane policy 2+ or 3+
+    HOV_Policy      = 2                           ;2=2+, 3=3+
+    
+    
+    ;% of peak 3 hour period trips occuring in peak 1 hour (used for 1 hour assignment)
+    AM_1hr_Fac      = 0.456
+    PM_1hr_Fac      = 0.357
+    
+    
+    ;school bus party size (students/bus)
+    Schoolbus_VO    = 70
+    
+    ;bus distance threshold (in miles)
+    SchoolbusDist_PR = 1.5
+    SchoolbusDist_SC = 2.0
+    
+    ;below school bus distance threshold trip shares (sum to 100%)
+    in_PR_Schoolbus = 0.00
+    in_PR_Drive     = 0.00
+    in_PR_DropOff   = 0.15
+    in_PR_Walk      = 0.67
+    in_PR_Bike      = 0.18
+    
+    in_SC_Schoolbus = 0.00
+    in_SC_Drive     = 0.05
+    in_SC_DropOff   = 0.15
+    in_SC_Walk      = 0.60
+    in_SC_Bike      = 0.20
+    
+    ;above school bus distance threshold trip shares (sum to 100%)
+    out_PR_Schoolbus = 0.85
+    out_PR_Drive     = 0.00
+    out_PR_DropOff   = 0.15
+    out_PR_Walk      = 0.00
+    out_PR_Bike      = 0.00
+    
+    out_SC_Schoolbus = 0.77
+    out_SC_Drive     = 0.08
+    out_SC_DropOff   = 0.15
+    out_SC_Walk      = 0.00
+    out_SC_Bike      = 0.00
+    
+
+;Semi-fixed mode-choice parameters
+    ;destination choice debug variables
+    debug   = 0     ;set to 1 if you want to debug or 0 if not
+    debug_p = 526   ;production zone to use in debugging
+    debug_a = 470   ;attraction zone to use in debugging
+    
+    ;Mode Choice constant calibration
+    calib              = 0    ;Calibration Flag - 1 if you want to calibrate, 0 if not
+    num_calib_HBW_HBO  = 23   ;number of constants being adjsuted that are within 1% of target (24 total)
+    num_calib_NHB_HBC  = 14   ;number of constants being adjsuted that are within 1% of target (15 total)
+    
+    ;Mode Choice adjustments - post calibration - RESET TO ZERO WHEN RECALIBRATING
+    ADJ_CONST_UT     =  0 ;  10 ;  10-minute IVT constant to decrease transit in UT County
+    ADJ_CONST_CRT_UT = -5 ; -15 ; -15-minute IVT constant to encourge CRT in UT County
+    ADJ_CONST_CRT_DA =  5 ;  15 ;  15-minute IVT constant to discourage CRT in Davis County
+    ADJ_CONST_BRT    =  0
+    
+    ;destination choice controls
+    dc_MAX_time   = 90       ; Maximum travel time you're concerned about including in trip length freq
+    dc_MAX_dist   = 50       ; Maximum travel distance you're concerned about including in trip length freq
+    dc_SHIFT_lgsm = 20       ; Mimimum mode choice logsum, used for shifting the distribution to fit into TP+ arrays
+    dc_MAX_lgsm   = 10       ; Maximum mode choice logsum you're concerned about including in trip length freq
+    
+    dc_bin_time = 1          ; size of time bins in minutes (i.e. 1 for 1 minute)
+    dc_bin_dist = 1          ; size of distance bins in miles (i.e. 1 for 1 mile)
+    dc_bin_lgsm = 0.25       ; size of logsum bins
+    
+    dc_coefficients = 'coefficients_cal8.block' ;modify filename if a new coefficients file is developed
+    
+    
+    ;managed lane disutility function parameters
+    ;  note: function based on distance in managed lane
+    ;        as distance increases, utility increases (due to slope)
+    ;        IVT coefficient for HB is around -0.02
+    ;        therefore 0.1 utils is equivalent to 5 minutes; 1 util to 50 minutes
+    ;        be careful when adjusting these values
+    hbw_hbo_disutility_constant = -1
+    hbw_hbo_disutility_slope    = 0.5
+    nhb_hbc_disutility_constant = -1
+    nhb_hbc_disutility_slope    = 0.5
+    
+    
+    
+;REMM - controls necessary for calculating travel model inputs from REMM output
+    logsums      = 'AccessLogsum.tab'
+    highwaytimes = 'HighwayTimes.tab'
+    
+    
+    
+;2005 HPMS Factors (AQ script): 
+    HPMSF_WE = 0.9961
+    HPMSA_WE = 1.0663
+    HPMSL_WE = 2.6451
+    
+    HPMSF_DA = 1.0188
+    HPMSA_DA = 0.9866
+    HPMSL_DA = 2.6818
+    
+    HPMSF_SL = 0.8993
+    HPMSA_SL = 0.9877
+    HPMSL_SL = 2.3944
+    
+    HPMSF_UT = 1.0118
+    HPMSA_UT = 0.9946
+    HPMSL_UT = 2.5758
+    
+    HPMSF_OC = 0.9988
+    HPMSA_OC = 0.9026
+    HPMSL_OC = 3.1308
+    
+    HPMSF_SC = 0.6661
+    HPMSA_SC = 0.9565
+    HPMSL_SC = 2.4667
+    
+    HPMSF_PC = 0.9159
+    HPMSA_PC = 0.9342
+    HPMSL_PC = 2.7151
+
+;end GeneralParameters.block ---------------------------------------------------------------------------------

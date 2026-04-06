@@ -1,0 +1,23 @@
+#Declare csv files will always have CRLF line endings on check-in and check-out. CUBE doesn't like LF encoding.
+*.csv   text eol=crlf
+*.CSV   text eol=crlf
+*.block text eol=crlf
+*.BLOCK text eol=crlf
+*.s     text eol=crlf
+*.S     text eol=crlf
+*.txt   text eol=crlf
+*.TXT   text eol=crlf
+*.lin   text eol=crlf
+*.LIN   text eol=crlf
+*.ntl   text eol=crlf
+*.NTL   text eol=crlf
+*.fac   text eol=crlf
+*.FAC   text eol=crlf
+*.pts   text eol=crlf
+*.PTS   text eol=crlf
+*.far   text eol=crlf
+*.FAR   text eol=crlf
+*.bak   text eol=crlf
+*.BAK   text eol=crlf
+*.vpr   text eol=crlf
+*.VPR   text eol=crlf

@@ -1,0 +1,7 @@
+
+ARRAY veh0_low_walk_log=@usedzones@, veh0_low_drive_log=@usedzones@, veh0_low_none_log=@usedzones@
+ARRAY veh0_high_walk_log=@usedzones@, veh0_high_drive_log=@usedzones@, veh0_high_none_log=@usedzones@
+ARRAY veh1_low_walk_log=@usedzones@, veh1_low_drive_log=@usedzones@, veh1_low_none_log=@usedzones@
+ARRAY veh1_high_walk_log=@usedzones@, veh1_high_drive_log=@usedzones@, veh1_high_none_log=@usedzones@
+ARRAY veh2_low_walk_log=@usedzones@, veh2_low_drive_log=@usedzones@, veh2_low_none_log=@usedzones@
+ARRAY veh2_high_walk_log=@usedzones@, veh2_high_drive_log=@usedzones@, veh2_high_none_log=@usedzones@

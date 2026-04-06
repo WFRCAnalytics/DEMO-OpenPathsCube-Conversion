@@ -1,0 +1,654 @@
+[TPPLUS]
+PROJECT=NETWORK
+VprBasePath=K:\TDM\0 - MODELDEV\1 - OFFICIAL RELEASE\V8.3.2\WF TDM V8.3.2 - 2021-11-10\2_MODELSCRIPTS\7_POSTPROCESSING\2_COMPARE2NETS\OUTPUT_ASSIGN\
+
+[HWYLAYER]
+FileName=K:\TDM\0 - ModelDev\1 - Official Release\v8.3.2\WF TDM v8.3.2 - 2021-11-10\2_ModelScripts\7_PostProcessing\2_Compare2Nets\Output_Assign\v832SE19Net1920211110_v832SE19Net1920211023.net
+Visible=1
+ActiveLinkColorGroup=1
+FileName2=
+DistScale=0.000632532873524103
+DistScaleOption=3
+SearchLimit=5
+TransitWidth=2
+TransitGap=3
+TransitMaxDraw=10
+PathTraceWidth=5
+PromptUnDo=0
+ClearLinkText=0
+ClearNodeText=0
+DefaultCentroidColor=8421504,0,1
+DefaultNodeColor=16711680,0,1
+DefaultCentroidLinkColor=15000804,0,1
+DefaultLinkColor=14803425,0,1
+BaseX=0
+BaseY=0
+ScaleX=1
+ScaleY=1
+BoundingBox=396136.079,4417077.10893,453739.0787,4606415.75279
+ExternalDBF=
+ExternalLinkage=
+ActiveNodeColorGroup=0
+LinkColorGroup1=Lane_1M2
+LinkDrawOffset1=0
+LinkColor1_1=0,0,2,LANE_1M2 = 1
+LinkColor1_2=65280,0,2,LANE_1M2 = 2
+LinkColor1_3=16711680,0,2,LANE_1M2 = 3
+LinkColor1_4=255,0,2,LANE_1M2 > 3
+LinkColor1_5=12632256,0,1,LANE_1M2 = 0
+LinkColor1_6=0,2,1,LANE_1M2 = -1
+LinkColor1_7=65280,2,1,LANE_1M2 = -2
+LinkColor1_8=16711680,2,1,LANE_1M2 = -3
+LinkColor1_9=255,2,1,LANE_1M2 < -3
+LinkColor1_10=255,0,0,LANES1 = 7 || LANES2 = 7
+LinkColorGroup2=FT_1M2 (FT Differences)
+LinkDrawOffset2=0
+LinkColorGroup3=DYV_1M2 (AWDT volume difference)
+LinkDrawOffset3=0
+LinkColor3_1=16776960,0,3,DYV_1M2 == 0 && FT1= 0
+LinkColor3_2=128,0,8,DYV_1M2 >= 10000
+LinkColor3_3=255,0,6,DYV_1M2 < 10000 && DYV_1M2 >= 3000
+LinkColor3_4=255,0,2,DYV_1M2 < 3000 && DYV_1M2 >= 1000
+LinkColor3_5=12632256,0,1,DYV_1M2 < 1000 && DYV_1M2 >= -1000
+LinkColor3_6=65280,0,2,DYV_1M2 < -1000 && DYV_1M2 >= -3000
+LinkColor3_7=65280,0,6,DYV_1M2 < -3000 && DYV_1M2 > -10000
+LinkColor3_8=32768,0,8,DYV_1M2 <= -10000
+LinkColor3_9=12632256,0,0,FT1 == 1,38
+LinkColorGroup4=PMV_1M2 (PM peak period volume difference)
+LinkDrawOffset4=1
+LinkColor4_1=16776960,0,3,PMV_1M2 == 0 && FT1 != 0
+LinkColor4_2=128,0,8,PMV_1M2 >= 5000
+LinkColor4_3=255,0,6,PMV_1M2 < 5000 && PMV_1M2 >= 1000
+LinkColor4_4=255,0,2,PMV_1M2 < 1000 && PMV_1M2 >= 200
+LinkColor4_5=12632256,0,1,PMV_1M2 < 200 && PMV_1M2 >= -200
+LinkColor4_6=65280,0,2,PMV_1M2 < -200 && PMV_1M2 >= -1000
+LinkColor4_7=65280,0,6,PMV_1M2 < -1000 && PMV_1M2 > -5000
+LinkColor4_8=32768,0,8,PMV_1M2 <= -5000
+LinkColor4_9=12632256,2,1,FT1 == 1
+LinkColorGroup5=PMV_PCT (percent change)
+LinkDrawOffset5=1
+LinkColorGroup6=AT_1M2 (AreaType Differences)
+LinkDrawOffset6=0
+LinkColorGroup8=DYTRK_1M2 (Truck Differences)
+LinkDrawOffset8=0
+LinkColorGroup9=DYV_PCT (Daily % Difference)
+LinkDrawOffset9=0
+LinkColorGroup10=DYCV_1M2
+LinkDrawOffset10=1
+LinkColorGroup11=
+LinkDrawOffset11=0
+LinkColorGroup12=
+LinkDrawOffset12=0
+LinkColorGroup13=PMSPD Diff > 10 mph
+LinkDrawOffset13=0
+LinkColor13_1=32768,0,8,PMSPD_1M2 > 2
+LinkColor13_2=65280,0,5,PMSPD_1M2 > .1 && PMSPD_1M2 <= 2
+LinkColor13_3=16711680,0,1,PMSPD_1M2 > -.1&& PMSPD_1M2 <= .1
+LinkColor13_4=255,0,5,PMSPD_1M2 > -2 && PMSPD_1M2 <= -.1
+LinkColor13_5=128,0,8,PMSPD_1M2 < -2
+LinkColor13_6=12632256,0,0,FT1 = 1 || LANES1 = 7 || LANES2 == 7
+LinkColorGroup14=
+LinkDrawOffset14=0
+LinkColorGroup15=PMVC_1M2 minor changes
+LinkDrawOffset15=1
+LinkColor15_1=16384,0,7,PMVC_1M2 > -10 && PMVC_1M2 <= -.10
+LinkColor15_2=32768,0,4,PMVC_1M2 > .10 && PMVC_1M2 <= -.05
+LinkColor15_3=65280,0,2,PMVC_1M2 > -.05 && PMVC_1M2 < 0
+LinkColor15_4=12632256,0,1,PMVC_1M2 = 0
+LinkColor15_5=255,0,2,PMVC_1M2 > 0 && PMVC_1M2 <= .05
+LinkColor15_6=4194432,0,4,PMVC_1M2 > .05 && PMVC_1M2 <= .10
+LinkColor15_7=64,0,7,PMVC_1M2 > .05 && PMVC_1M2 <= 10
+LinkColor15_8=255,0,0,LANES1 = 7 && LANES2 = 7
+LinkColorGroup16=PMVC_1M2 major changes
+LinkDrawOffset16=1
+LinkColor16_1=32768,7,7,PMVC_1M2 > -10 && PMVC_1M2 <= -.50
+LinkColor16_2=32768,0,4,PMVC_1M2 > -.50 && PMVC_1M2 <= -.20
+LinkColor16_3=65280,0,2,PMVC_1M2 > -.20 && PMVC_1M2 <= -.10
+LinkColor16_4=12632256,0,1,PMVC_1M2 > -.10 && PMVC_1M2 <= .10
+LinkColor16_5=255,0,2,PMVC_1M2 > .10 && PMVC_1M2 <= .20
+LinkColor16_6=255,0,4,PMVC_1M2 > .20 && PMVC_1M2 <= .50
+LinkColor16_7=255,7,7,PMVC_1M2 > .50 && PMVC_1M2 <= 10
+LinkColor16_8=255,0,0,LANES1 = 7 && LANES2 = 7
+ActiveSelectGroup=0
+SelectGroup1=
+Select1=
+NodeColorGroup1=Empdif
+NodeColor1_1=255,0,6,emp30_OVER_emp20 > 2
+NodeColor1_2=16711680,4,3,emp30_OVER_emp20 =1-2
+NodeColor1_3=65535,2,20,emp30_OVER_emp20 =.01-.99
+NodeColorGroup2=Popdif
+NodeColor2_1=255,0,10,POP30_MINUS_POP20>3000
+NodeColor2_2=65535,0,5,POP30_MINUS_POP20=1000-3000
+NodeColor2_3=65280,0,5,POP30_MINUS_POP20=1-999
+NodeColor2_4=0,0,10,POP30_MINUS_POP20<0
+NodeColorGroup3=Nodedif
+NodeColor3_1=255,0,10,nodedif!='NoChange'
+NodeColor3_2=65280,0,10,nodedif='Added'
+NodeColor3_3=65535,4,10,nodedif='Removed'
+NodeColorGroup4=Railstop
+NodeColor4_1=255,0,10,RAILSTOP=1
+NodeColor4_2=33023,2,10,RAILSTOP=2
+NodeColor4_3=12615935,4,10,RAILSTOP=3
+NodeColor4_4=65280,0,12,RAILSTOP=4
+NodeColor4_5=16744448,2,12,RAILSTOP=5
+NodeColor4_6=8388863,4,12,RAILSTOP=6
+NodeColor4_7=0,0,14,RAILSTOP=7
+NodeColorGroup5=RailNodes
+NodeColor5_1=255,0,12,RAILSTOP=1
+NodeColor5_2=33023,2,12,RAILSTOP=2
+NodeColor5_3=12615935,4,12,RAILSTOP=3
+NodeColor5_4=65280,0,12,RAILSTOP=4
+NodeColor5_5=16744448,2,12,RAILSTOP=5
+NodeColor5_6=8388863,4,12,RAILSTOP=6
+NodeColor5_7=0,0,14,RAILSTOP=7
+NodeColor5_8=255,0,7,RAILSTOP=11
+NodeColor5_9=4227327,2,7,RAILSTOP=12
+NodeColor5_10=16711935,4,7,RAILSTOP=13
+NodeColor5_11=65280,0,7,RAILSTOP=14
+NodeColor5_12=16711680,2,7,RAILSTOP=15
+NodeColor5_13=8388863,4,7,RAILSTOP=16
+NodeColor5_14=0,0,7,RAILSTOP=17
+NodeColorGroup6=PNR LOTS
+NodeColor6_1=0,0,15,PNRec=1
+NodeColor6_2=255,0,20,PNRec=3
+NodeColor6_3=65535,0,15,PNRec=2
+NodeColor6_4=16711680,0,15,PNRec=4
+NodeColor6_5=65535,4,15,PNRec=5
+NodeColor6_6=65280,4,15,PNRfut=5
+NodeColor6_7=255,2,15,PNRrail!=0
+LeftHandDrive=0
+NodeColorGroup8=
+NodeColorGroup7=
+LayerMinScale=0
+LayerMaxScale=0
+LinkPostMinScale=0
+LinkPostMaxScale=0
+NodePostMinScale=0
+NodePostMaxScale=0
+LinkColorGroup7=FFSPD_1M2 (Free Flow Speed Differences)
+LinkDrawOffset7=1
+ActiveLinkPostGroup=2
+LinkPostGroup1=PM VOL diff > 200
+LinkPost1_1=PMV1,-1,0
+LinkPost1_2=PMV2,-1,0
+LinkPost1_3=PMV_1M2,-1,0
+LinkPostSelectStr1=PMV_1M2 < -200 || PMV_1M2 > 200
+LinkPostGroup2=DY VOL diff > 1000
+LinkPost2_1=DYV1,-1,0
+LinkPost2_2=DYV2,-1,0
+LinkPost2_3=DYV_1M2,-1,0
+LinkPostSelectStr2=DYV_1M2 < -1000 || DYV_1M2 > 1000
+LinkPostGroup3=LANES
+LinkPost3_1=LANES1,-1,0
+LinkPost3_2=LANES2,-1,0
+LinkPost3_3=LANE_1M2,-1,0
+LinkPostSelectStr3=lanes1 = 2-6
+LinkPostGroup4=PMSPD Diff > 10 mph
+LinkPost4_1=PMSPD1,-1
+LinkPost4_2=PMSPD2,-1
+LinkPost4_3=PMSPD_1M2,-1
+LinkPostSelectStr4=(PMSPD_1M2 > 10 || PMSPD_1M2 < -10) && (FT<>1)
+LinkColorPaletteIndex3=0
+LinkPostGroup6=
+LinkPost6_1=AWDT01SF1W,-1,0
+LinkPost6_2=DYV1,-1,0
+LinkPost6_3=DYV2,-1,0
+LinkPostSelectStr6=ft = 31-35
+LinkColorPaletteIndex5=0
+LinkColor5_1=0,7,5,PMV_PCT < 200 && PMV_PCT >= 40
+LinkColor5_2=255,0,4,PMV_PCT < 40 && PMV_PCT >= 20
+LinkColor5_3=255,0,2,PMV_PCT < 20 && PMV_PCT >= 5
+LinkColorPaletteIndex6=0
+LinkColor6_1=255,0,5,AT_1M2<>0
+NoVprWarning=0
+NodeColorPaletteIndex1=0
+LinkColorPaletteIndex7=0
+LinkColor7_1=255,0,3,FFSPD_1M2 > 1
+LinkColor7_2=65280,0,3,FFSPD_1M2 < -1
+LinkPostGroup5=PMVC
+LinkPost5_1=PMVC1,-1,-2
+LinkPost5_2=PMVC2,-1,-2
+LinkPostSelectStr5=ft > 1 && pmvc1 >= pmvc1.r
+LinkColorPaletteIndex4=0
+LinkColorPaletteIndex16=0
+LinkPostGroup7=PMV1, PMV2
+LinkPost7_1=PMV1,-1,2
+LinkPost7_2=PMV2,-1,2
+LinkPostSelectStr7=FT1 > 1 && abs(PMV_1M2) > 200 && orient = 1,2
+LinkPostGroup8=PMV_PCT (percent change)
+LinkPost8_1=PMV_PCT,-1,0
+LinkPostSelectStr8=abs(PMV_PCT) > 5 && ft1= 11,31-35
+LinkColor5_4=12632256,0,1,PMV_PCT < 5 && PMV_PCT >= -5
+LinkColor5_5=65280,0,2,PMV_PCT < -5 && PMV_PCT >= -20
+LinkColor5_6=65280,0,4,PMV_PCT < -20 && PMV_PCT >= -40
+LinkColor5_7=32768,7,1,PMV_PCT < -40 && PMV_PCT >= -200
+LinkColor5_8=12632256,2,1,ft1 = 4-5
+LinkColor5_9=12632256,2,0,FT1 = 1
+LinkColorPaletteIndex1=0
+LinkColorPaletteIndex8=0
+AnimationStart=1
+AnimationStop=5
+AnimationSpeed=10
+AnimationIncr=1
+AnimationDay=-1
+AnimationRepeat=0
+AnimationDisplayTime=0
+AnimationStartTime=12/30/1899 8:00:00 AM
+AniDotSize=3
+AniDotStyle=0
+AniDotSizeStyle=0
+AniDotLength=12
+AniDotWidth=5
+AniDotSpacing=16
+AniSelectAnd=1
+AniColorAnd=1
+AniSelOrigins=
+AniSelDest=
+AniSelNodes=
+AniSelLinks=
+AniSelStarts=
+AniSelEnds=
+AniColorOrigins=
+AniColorDest=
+AniColorNodes=
+AniColorLinks=
+AniColorStarts=
+AniColorEnds=
+AniSelectedColor=255
+AniOtherColor=16711680
+LinkColorPaletteIndex13=0
+LinkColorPaletteIndex2=0
+LinkColor2_1=255,0,4,FT_1M2 <> 0
+AniVSetFromColor=255
+AniVSetToColor=16711680
+AniColorByVolSet=0
+AniVSetNumColor=0
+AniSpeedFromColor=255
+AniSpeedToColor=65280
+AniColorBySpeed=0
+AniSpeedNumColor=7
+AniSpeedColor1=255
+AniSpeedRange1=10
+AniSpeedColor2=8388736
+AniSpeedRange2=20
+AniSpeedColor3=8421504
+AniSpeedRange3=30
+AniSpeedColor4=16711680
+AniSpeedRange4=40
+AniSpeedColor5=8421376
+AniSpeedRange5=50
+AniSpeedColor6=32768
+AniSpeedRange6=60
+AniSpeedColor7=65280
+AniSpeedRange7=70
+NodeOrderListIndex=1
+NodeOrderListName1=
+NodeOrderListValue1=
+NodeOrderListName2=
+NodeOrderListValue2=
+NodeOrderListName3=
+NodeOrderListValue3=
+NodeOrderListName4=
+NodeOrderListValue4=
+NodeOrderListName5=
+NodeOrderListValue5=
+NodeOrderListName6=
+NodeOrderListValue6=
+NodeOrderListName7=
+NodeOrderListValue7=
+NodeOrderListName8=
+NodeOrderListValue8=
+NodeOrderListName9=
+NodeOrderListValue9=
+NodeOrderListName10=
+NodeOrderListValue10=
+NodeOrderListName11=
+NodeOrderListValue11=
+NodeOrderListName12=
+NodeOrderListValue12=
+NodeOrderListName13=
+NodeOrderListValue13=
+NodeOrderListName14=
+NodeOrderListValue14=
+NodeOrderListName15=
+NodeOrderListValue15=
+NodeOrderListName16=
+NodeOrderListValue16=
+NodePopUpDisplayOrder=0
+LinkOrderListIndex=1
+LinkOrderListName1=
+LinkOrderListValue1=
+LinkOrderListName2=
+LinkOrderListValue2=
+LinkOrderListName3=
+LinkOrderListValue3=
+LinkOrderListName4=
+LinkOrderListValue4=
+LinkOrderListName5=
+LinkOrderListValue5=
+LinkOrderListName6=
+LinkOrderListValue6=
+LinkOrderListName7=
+LinkOrderListValue7=
+LinkOrderListName8=
+LinkOrderListValue8=
+LinkOrderListName9=
+LinkOrderListValue9=
+LinkOrderListName10=
+LinkOrderListValue10=
+LinkOrderListName11=
+LinkOrderListValue11=
+LinkOrderListName12=
+LinkOrderListValue12=
+LinkOrderListName13=
+LinkOrderListValue13=
+LinkOrderListName14=
+LinkOrderListValue14=
+LinkOrderListName15=
+LinkOrderListValue15=
+LinkOrderListName16=
+LinkOrderListValue16=
+LinkPopUpDisplayOrder=0
+LinkColorPaletteIndex9=0
+LinkColorPaletteIndex10=0
+LinkColor8_1=16776960,0,3,DYTRK_1M2 == 0 && FT1= 0
+LinkColor8_2=128,0,8,DYTRK_1M2 >= 1000
+LinkColor8_3=255,0,6,DYTRK_1M2 < 1000 && DYTRK_1M2 >= 300
+LinkColor8_4=255,0,2,DYTRK_1M2 < 300 && DYTRK_1M2 >= 100
+LinkColor8_5=12632256,0,1,DYTRK_1M2 < 100 && DYTRK_1M2 >= -100
+LinkColor8_6=65280,0,2,DYTRK_1M2 < -100 && DYTRK_1M2 >= -300
+LinkColor8_7=65280,0,6,DYTRK_1M2 < -300 && DYTRK_1M2 > -1000
+LinkColor8_8=32768,0,8,DYTRK_1M2 <= -1000
+LinkColor8_9=12632256,0,0,FT1 == 1,38
+LinkColor9_1=4210816,0,5,DYV_PCT < 200 && DYV_PCT >= 20
+LinkColor9_2=255,0,4,DYV_PCT < 20 && DYV_PCT >= 10
+LinkColor9_3=12171775,0,2,DYV_PCT < 10 && DYV_PCT >= 5
+LinkColor9_4=15132390,0,1,DYV_PCT < 5 && DYV_PCT >= -5
+LinkColor9_5=12189625,0,2,DYV_PCT < -5 && DYV_PCT >= -10
+LinkColor9_6=65280,0,4,DYV_PCT < -10 && DYV_PCT >= -20
+LinkColor9_7=32768,0,1,DYV_PCT < -20 && DYV_PCT >= -200
+ActiveLinkBandGroup=1
+LinkBandGroup1=
+LinkBand1_1=DYV2,-1,20000
+LinkBand1Key1=1,1
+LinkBand1Key2=1,1
+LinkBand1Key3=1,1
+LinkBand1Key4=1,1
+LinkBandSelectStr1=
+LinkChartSizeStr1=
+LinkChartType1=0
+LinkBandMinScale1=0
+LinkBandMaxScale1=0
+LinkBandCenterColor1=15066597
+LinkBandQueueBarWidth1=-2
+LinkColor10_1=16776960,0,3,DYCV_1M2 == 0 && FT1= 0
+LinkColor10_2=128,0,8,DYCV_1M2 >= 1000
+LinkColor10_3=255,0,6,DYCV_1M2 < 1000 && DYCV_1M2 >= 300
+LinkColor10_4=255,0,2,DYCV_1M2 < 300 && DYCV_1M2 >= 100
+LinkColor10_5=12632256,0,1,DYCV_1M2 < 1000 && DYCV_1M2 >= -100
+LinkColor10_6=65280,0,2,DYCV_1M2 < -1000 && DYCV_1M2 >= -3000
+LinkColor10_7=65280,0,6,DYCV_1M2 < -300 && DYCV_1M2 > -1000
+LinkColor10_8=32768,0,8,DYCV_1M2 <= -1000
+LinkColor10_9=12632256,0,0,FT1 == 1,38
+
+[PLOT]
+ActiveSetUp=1
+Set1=Legends
+Set1FixedScale=0
+Set1LMargin=0
+Set1RMargin=0
+Set1TMargin=0
+Set1BMargin=0
+Set1Header1=
+Set1Footer1=[date][hwyfile]
+Set1Header2=
+Set1Footer2=
+Set1Header3=
+Set1Footer3=
+Set1Header4=
+Set1Footer4=
+Set1HeaderFont=Arial,0,8
+Set1FooterFont=Arial,0,8
+Set1HeaderAlignment=Left
+Set1FooterAlignment=Left
+Set1Legend1Font=Arial,0,8
+Set1Legend1Line1=
+Set1Legend1Line2=
+Set1Legend1Line3=
+Set1Legend1Line4=
+Set1Legend1Line5=
+Set1Legend1Line6=
+Set1Legend1Line7=
+Set1Legend1Line8=
+Set1Legend1Line9=
+Set1Legend1Line10=
+Set1Legend1Line11=
+Set1Legend1Line12=
+Set1Legend1Line13=
+Set1Legend1Line14=
+Set1Legend1Line15=
+Set1Legend1Line16=
+Set1Legend2Font=Arial,0,8
+Set1Legend2Line1=
+Set1Legend2Line2=
+Set1Legend2Line3=
+Set1Legend2Line4=
+Set1Legend2Line5=
+Set1Legend2Line6=
+Set1Legend2Line7=
+Set1Legend2Line8=
+Set1Legend2Line9=
+Set1Legend2Line10=
+Set1Legend2Line11=
+Set1Legend2Line12=
+Set1Legend2Line13=
+Set1Legend2Line14=
+Set1Legend2Line15=
+Set1Legend2Line16=
+Set1Legend3Font=Arial,0,8
+Set1Legend3Line1=8421631,6,10,PM_VOL_HOV2 < 0
+Set1Legend3Line2=16711680,6,1,PM_VOL_HOV2 >=0 && PM_VOL_HOV2 <=500
+Set1Legend3Line3=65280,6,10,PM_VOL_HOV2 >500 && PM_VOL_HOV2 <=1000
+Set1Legend3Line4=32768,6,10,PM_VOL_HOV2 >=1000 && PM_VOL_HOV2 <=2000
+Set1Legend3Line5=65535,6,10,PM_VOL_HOV2 >=2000 && PM_VOL_HOV2 <=3000
+Set1Legend3Line6=255,6,10,PM_VOL_HOV2 >=3000 && PM_VOL_HOV2 <=4000
+Set1Legend3Line7=8388736,6,10,PM_VOL_HOV2 >=4000 && PM_VOL_HOV2 <=5000
+Set1Legend3Line8=0,6,10,PM_VOL_HOV2 >=5000
+Set1Legend3Line9=
+Set1Legend3Line10=
+Set1Legend3Line11=
+Set1Legend3Line12=
+Set1Legend3Line13=
+Set1Legend3Line14=
+Set1Legend3Line15=
+Set1Legend3Line16=
+Set1Legend4Font=Arial,0,8
+Set1Legend4Line1=255,0,10,nodedif!='NoChange'
+Set1Legend4Line2=65280,0,10,nodedif='Added'
+Set1Legend4Line3=65535,4,10,nodedif='Removed'
+Set1Legend4Line4=
+Set1Legend4Line5=
+Set1Legend4Line6=
+Set1Legend4Line7=
+Set1Legend4Line8=
+Set1Legend4Line9=
+Set1Legend4Line10=
+Set1Legend4Line11=
+Set1Legend4Line12=
+Set1Legend4Line13=
+Set1Legend4Line14=
+Set1Legend4Line15=
+Set1Legend4Line16=
+Set1ScalePrtLineWidth=0
+Set1DrawAlwaysOnTop=0
+Set1PrintBackColor=0
+
+[SAVEVIEWS]
+View0=400999.734242039,428315.282646273,4547851.0528677,4584098.90085559,Weber Co
+View2=401778.466981638,430172.260717608,4517304.18063702,4554982.86472968,Davis Co
+View3=417179.008614094,431486.349524947,4519830.49623291,4538816.39799013,Davis S
+View4=405675.365497497,426048.342419503,4534061.8732258,4561096.89956323,Davis N
+View6=402570.848396313,435150.235825147,4476430.54518921,4519663.52977304,SL Co
+View7=405747.231179276,422601.448014424,4497908.87253152,4520274.4893866,SL NW
+View8=408236.250543117,425090.467378264,4480450.17956517,4502815.79642024,SL SW
+View9=421338.792177249,434602.444535595,4481463.56602044,4499064.48866474,SL SE
+ViewA=420359.408564291,433623.060922637,4497413.52771719,4515014.45036149,SL NE
+ViewB=422695.93804092,426193.736658626,4510175.23859457,4514816.83211891,SL DT
+ViewD=405322.338882445,454070.774961955,4417455.63227639,4482145.01264351,Utah Co
+ViewE=435950.128397049,447880.125412291,4449140.94407844,4464972.1004552,Provo-Orem
+ViewF=418769.704543004,425233.214882699,4474865.07557376,4483442.18106673,Point of Mtn.
+ViewH=422267.93736618,424260.354300316,4510830.92404554,4513474.86972396,I-15, 5th & 6th S
+ViewI=422473.904517599,424827.814819533,4506587.32321445,4509710.97211723,I-15, 21st S & I-80
+ViewJ=430225.917136416,433463.785315448,4505000.15511701,4509296.81985247,I-80 & Parley's
+RestoreLastView=0
+ViewLast=420302.205712022,433554.372069147,4472655.020269,4478287.51997193
+
+[LEGEND]
+Set1Legend1UnitType=0
+Set1Legend1Anchor=0,0
+Set1Legend1Loc=0,0
+Set1Legend1Size=0,0
+Set1Legend1FullHeight=0
+Set1Legend1NumItems=1
+Set1Legend2UnitType=0
+Set1Legend2Anchor=2,0
+Set1Legend2Loc=0,0
+Set1Legend2Size=0,0
+Set1Legend2FullHeight=0
+Set1Legend2NumItems=1
+Set1Legend3UnitType=0
+Set1Legend3Anchor=0,2
+Set1Legend3Loc=0,0
+Set1Legend3Size=0,0
+Set1Legend3FullHeight=0
+Set1Legend3NumItems=1
+Set1Legend4UnitType=0
+Set1Legend4Anchor=2,2
+Set1Legend4Loc=0,0
+Set1Legend4Size=0,0
+Set1Legend4FullHeight=0
+Set1Legend4NumItems=1
+LegendDisplay=1
+Set1Legend1Item1Font=Arial,0,8
+Set1Legend1Item1=0,0,0,0,0,0,
+Set1Legend2Item1Font=Arial,0,8
+Set1Legend2Item1=0,0,0,0,0,0,
+Set1Legend3Item1Font=Arial,0,8
+Set1Legend3Item1=0,0,0,0,0,0,
+Set1Legend3Item1Line1=8421631,100,10,PM_VOL_HOV2 < 0
+Set1Legend3Item1Line2=16711680,100,1,PM_VOL_HOV2 >=0 && PM_VOL_HOV2 <=500
+Set1Legend3Item1Line3=65280,100,10,PM_VOL_HOV2 >500 && PM_VOL_HOV2 <=1000
+Set1Legend3Item1Line4=32768,100,10,PM_VOL_HOV2 >=1000 && PM_VOL_HOV2 <=2000
+Set1Legend3Item1Line5=65535,100,10,PM_VOL_HOV2 >=2000 && PM_VOL_HOV2 <=3000
+Set1Legend3Item1Line6=255,100,10,PM_VOL_HOV2 >=3000 && PM_VOL_HOV2 <=4000
+Set1Legend3Item1Line7=8388736,100,10,PM_VOL_HOV2 >=4000 && PM_VOL_HOV2 <=5000
+Set1Legend3Item1Line8=0,100,10,PM_VOL_HOV2 >=5000
+Set1Legend4Item1Font=Arial,0,8
+Set1Legend4Item1=0,0,0,0,0,0,
+Set1Legend4Item1Line1=255,0,10,nodedif!='NoChange'
+Set1Legend4Item1Line2=65280,0,10,nodedif='Added'
+Set1Legend4Item1Line3=65535,4,10,nodedif='Removed'
+
+[BDYLAYER]
+Visible=0
+FileName=
+FileName2=
+DefaultCentroidColor=8421504,0,0
+DefaultNodeColor=65280,0,0
+DefaultCentroidLinkColor=8421504,0,1
+DefaultLinkColor=65280,0,1
+BaseX=0
+BaseY=0
+ScaleX=1
+ScaleY=1
+LayerMinScale=0
+LayerMaxScale=0
+LinkPostMinScale=0
+LinkPostMaxScale=0
+NodePostMinScale=0
+NodePostMaxScale=0
+BoundingBox=0,0,0,0
+ExternalDBF=
+ExternalLinkage=
+ActiveNodeColorGroup=0
+NodeColorGroup1=
+ActiveLinkColorGroup=0
+LinkColorGroup1=
+LinkDrawOffset1=0
+ActiveSelectGroup=0
+SelectGroup1=
+Select1=
+NodeColorPaletteIndex1=0
+LinkColorPaletteIndex1=0
+
+[IMGLAYER]
+Visible=0
+FileName=
+FileName2=
+DefaultCentroidColor=8421504,0,0
+DefaultNodeColor=16711935,0,0
+DefaultCentroidLinkColor=8421504,0,1
+DefaultLinkColor=16711935,0,1
+BaseX=408415.065778725
+BaseY=4482046.6316298
+ScaleX=2.48390456952657
+ScaleY=2.48390456952657
+LayerMinScale=0
+LayerMaxScale=0
+LinkPostMinScale=0
+LinkPostMaxScale=0
+NodePostMinScale=0
+NodePostMaxScale=0
+BoundingBox=0,0,7543,8620
+ExternalDBF=
+ExternalLinkage=
+ActiveNodeColorGroup=0
+NodeColorGroup1=
+ActiveLinkColorGroup=0
+LinkColorGroup1=
+LinkDrawOffset1=0
+ActiveSelectGroup=0
+SelectGroup1=
+Select1=
+NodeColorPaletteIndex1=0
+LinkColorPaletteIndex1=0
+
+[DYNASIM]
+DynaFieldIsSpeed=1
+DynaUnitInMiles=1
+DynaRTOR=1
+DynaFileName=
+DynaPathFileName=
+DynaLaneFieldName=
+DynaSpeedFieldName=
+DynaCenterOffset=5
+DynaLaneWidth=0.5
+DynaLaneSpacing=3.6
+DynaMaxSpeed=110
+DynaScale=1
+DynaTripScale=1
+DynaBackOffSize=25
+DynaLayerNumber=1
+DynaPathSet=0
+DynaVolSet=0,0,0,0,0,0,0,0
+DXFFileName=
+DynaBusModes=1-999
+DynaArtBusModes=
+DynaTramModes=
+DynaTramTRModes=
+DynaHeadwayPeriod=1
+DynaPTStopMin=20
+DynaPTStopMax=30
+DynaPTStopMean=25
+DynaPTStopStdDev=4
+DynaOffsetFieldName=
+DynaAddRadius=6.25
+
+[LayerOrder]
+NumRecords=1
+ScreenColor=16777215
+FreewayOutlineColor=5263440
+NumDisplayDec=-1
+ScreenFont=Arial,0,8
+Order=HWYLAYER,IMGLAYER,TRNLAYER,PTSLAYER,LINLAYER,BDYLAYER,DRWLAYER
+

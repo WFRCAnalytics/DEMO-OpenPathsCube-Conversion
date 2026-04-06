@@ -1,0 +1,281 @@
+{
+    "outputFileName": "j-zone-se.json",
+    "idCol": "TAZID",
+    "filters": [
+        {   "filterCode": "fVehNum",
+            "filterDescription": "Number of Vehicles",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fEmp3Cat",
+            "filterDescription": "Employment 3-Category",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fEmp12Cat",
+            "filterDescription": "Employment 12-Category",
+            "filterLocation": "wide"
+        },
+        {   "filterCode": "fSchType",
+            "filterDescription": "School Type",
+            "filterLocation": "wide"
+        }
+    ],
+    "attributes": [
+        {   "attributeCode": "aTH",
+            "attributeDescription": "Total Households",
+            "roundingDecimals": 0,
+            "tdmCsvColumn": "TOTHH"
+        },
+        {   "attributeCode": "aHP",
+            "attributeDescription": "Household Population",
+            "roundingDecimals": 0,
+            "tdmCsvColumn": "HHPOP"
+        },
+        {   "attributeCode": "aEt",
+            "attributeDescription": "Total Employment",
+            "roundingDecimals": 0,
+            "tdmCsvColumn": "TOTEMP"
+        },
+        {   "attributeCode": "aHJI",
+            "attributeDescription": "Household+Job Intensity",
+            "roundingDecimals": 0,
+            "tdmCsvColumn": "HHJOBINT"
+        },
+        {   "attributeCode": "aWk",
+            "attributeDescription": "Total Workers",
+            "roundingDecimals": 0,
+            "tdmCsvColumn": "TOTWRK"
+        },
+        {   "attributeCode": "aHV",
+            "attributeDescription": "Households by Vehicle Ownership",
+            "roundingDecimals": 0,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "HHV0",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fVehNum",
+                            "filterValue": "0"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HHV1",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fVehNum",
+                            "filterValue": "1"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HHV2",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fVehNum",
+                            "filterValue": "2"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HHV3",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fVehNum",
+                            "fValue": "3p"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aV",
+            "attributeDescription": "Total Vehicles",
+            "roundingDecimals": 0,
+            "tdmCsvColumn": "AUTOS"
+        },
+        {   "attributeCode": "aE3",
+            "attributeDescription": "Employment - 3 Categories",
+            "roundingDecimals": 0,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "RETEMP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp3Cat",
+                            "filterValue": "Ret"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "INDEMP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp3Cat",
+                            "filterValue": "Ind"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "OTHEMP",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp3Cat",
+                            "filterValue": "Oth"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aE12",
+            "attributeDescription": "Employment - 12 Categories",
+            "roundingDecimals": 0,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "RETL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Retl"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "FOOD",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Food"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MANU",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Manu"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "WSLE",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Wsle"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "OFFI",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Offi"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "GVED",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "GvEd"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HLTH",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Hlth"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "OTHR",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Othr"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "AGRI",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Agri"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "MING",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Ming"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "CONS",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Cons"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "HBJ",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fEmp12Cat",
+                            "filterValue": "Hbj"
+                        }
+                    ]
+                }
+            ]
+        },
+        {   "attributeCode": "aI",
+            "attributeDescription": "Average Income",
+            "roundingDecimals": 0,
+            "tdmCsvColumn": "AVGINCOME"
+        },
+        {   "attributeCode": "aSc",
+            "attributeDescription": "Employment - 3 Categories",
+            "roundingDecimals": 0,
+            "wideFilterSettings": [
+                {
+                    "tdmCsvColumn": "ENROL_ELEM",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fSchType",
+                            "filterValue": "Elem"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ENROL_MIDL",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fSchType",
+                            "filterValue": "Midl"
+                        }
+                    ]
+                },
+                {
+                    "tdmCsvColumn": "ENROL_HIGH",
+                    "filterSettings": [
+                        {
+                            "filterCode": "fSchType",
+                            "filterValue": "High"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

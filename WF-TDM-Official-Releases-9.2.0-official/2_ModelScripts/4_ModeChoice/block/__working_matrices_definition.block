@@ -1,0 +1,394 @@
+;index of working matrices
+;REFERENCE ONLY
+
+2  - person trips by auto ownership, income, transit access segment
+
+8  - 0 veh weighted logsum for REMM
+9  - 1 veh weighted logsum for REMM
+10 - 2 veh weighted logsum for REMM
+
+11 - motorized trips for 0 veh HHs
+12 - non-motorized trips for 0 veh HHs
+13 - walk trips for 0 veh HHs
+14 - bike trips for 0 veh HHs
+15 - transit trips for 0 veh HHs
+16 - auto trips for 0 veh HHs
+17 - drive alone trips for 0 veh HHs
+18 - total shared ride trips for 0 veh HHs
+19 - shared ride 2 trips for 0 veh HHS
+20 - shared ride 3+ trips for 0 veh HHs
+21 - lcl trips for 0 veh HHs
+22 - exp trips for 0 veh HHs
+23 - lrt trips for 0 veh HHs
+24 - crt trips for 0 veh HHs
+;*************************************
+93 - cor trips for 0 veh HHs
+;*************************************
+25 - walk-to-lcl trips for 0 veh HHs
+26 - drive-to-lcl trips for 0 veh HHs
+27 - walk-to-exp trips for 0 veh HHs
+28 - drive-to-exp trips for 0 veh HHs
+29 - walk-to-lrt trips for 0 veh HHs
+30 - drive-to-lrt trips for 0 veh HHs
+31 - walk-to-crt trips for 0 veh HHs
+32 - drive-to-crt trips for 0 veh HHs
+;*************************************
+96 - walk-to-cor trips for 0 veh HHs
+97 - drive-to-cor trips for 0 veh HHs
+;*************************************
+
+33 - 0 veh, low income weighted logsum for destination choice
+34 - 0 veh, high income weighted logsum for destination choice
+35 - 1 veh, low income weighted logsum for destination choice
+36 - 1 veh, high income weighted logsum for destination choice
+37 - 2 veh, low income weighted logsum for destination choice
+38 - 2 veh, high income weighted logsum for destination choice
+
+
+41 - motorized trips for 1 veh HHs
+42 - non-motorized trips for 1 veh HHs
+43 - walk trips for 1 veh HHs
+44 - bike trips for 1 veh HHs
+45 - transit trips for 1 veh HHs
+46 - auto trips for 1 veh HHs
+46 - auto trips for 1 veh HHs
+47 - drive alone trips for 1 veh HHs
+48 - total shared ride trips for 1 veh HHs
+49 - shared ride 2 trips for 1 veh HHS
+50 - shared ride 3+ trips for 1 veh HHs
+51 - lcl trips for 1 veh HHs
+52 - exp trips for 1 veh HHs
+53 - lrt trips for 1 veh HHs
+54 - crt trips for 1 veh HHs
+;*************************************
+94 - cor trips for 1 veh HHs
+;*************************************
+55 - walk-to-lcl trips for 1 veh HHs
+56 - drive-to-lcl trips for 1 veh HHs
+57 - walk-to-exp trips for 1 veh HHs
+58 - drive-to-exp trips for 1 veh HHs
+59 - walk-to-lrt trips for 1 veh HHs
+60 - drive-to-lrt trips for 1 veh HHs
+61 - walk-to-crt trips for 1 veh HHs
+62 - drive-to-crt trips for 1 veh HHs
+;*************************************
+98 - walk-to-cor trips for 1 veh HHs
+99 - drive-to-cor trips for 1 veh HHs
+;*************************************
+
+
+; Managed Lane trips (not saved by auto class)
+63 - drive-alone non-toll
+64 - drive-alone toll
+65 - shared 2 non-toll, non-hov
+66 - shared 2 non-toll, hov
+67 - shared 2 toll, hov
+68 - shared 3+ non-toll, non-hov
+69 - shared 3+ non-toll, hov
+70 - shared 3+ toll, hov
+
+
+71 - motorized trips for 2 veh HHs
+72 - non-motorized trips for 2 veh HHs
+73 - walk trips for 2 veh HHs
+74 - bike trips for 2 veh HHs
+75 - transit trips for 2 veh HHs
+76 - auto trips for 2 veh HHs
+76 - auto trips for 2 veh HHs
+77 - drive alone trips for 2 veh HHs
+78 - total shared ride trips for 2 veh HHs
+79 - shared ride 2 trips for 2 veh HHS
+80 - shared ride 3+ trips for 2 veh HHs
+81 - lcl trips for 2 veh HHs
+82 - exp trips for 2 veh HHs
+83 - lrt trips for 2 veh HHs
+84 - crt trips for 2 veh HHs
+;*************************************
+95 - cor trips for 2 veh HHs
+;*************************************
+85 - walk-to-lcl trips for 2 veh HHs
+86 - drive-to-lcl trips for 2 veh HHs
+87 - walk-to-exp trips for 2 veh HHs
+88 - drive-to-exp trips for 2 veh HHs
+89 - walk-to-lrt trips for 2 veh HHs
+90 - drive-to-lrt trips for 2 veh HHs
+91 - walk-to-crt trips for 2 veh HHs
+92 - drive-to-crt trips for 2 veh HHs
+;*************************************
+100 - walk-to-cor trips for 2 veh HHs
+101 - drive-to-cor trips for 2 veh HHs
+;*************************************
+
+;*************************************
+; cor wouldn't fit, so made a place for it here.
+93- cor trips for 0 veh HHs
+94- cor trips for 1 veh HHs
+95- cor trips for 2 veh HHs
+96 - walk-to-cor trips for 0 veh HHs
+97 - drive-to-cor trips for 0 veh HHs
+98 - walk-to-cor trips for 1 veh HHs
+99 - drive-to-cor trips for 1 veh HHs
+100 - walk-to-cor trips for 2 veh HHs
+101 - drive-to-cor trips for 2 veh HHs
+;*************************************
+
+
+;*************************************
+; brt wouldn't fit, so made a place for it.
+102- brt trips for 0 veh HHs
+103- brt trips for 1 veh HHs
+109- brt trips for 2 veh HHs
+112 - walk-to-brt trips for 0 veh HHs
+113 - drive-to-brt trips for 0 veh HHs
+134 - walk-to-brt trips for 1 veh HHs
+135 - drive-to-brt trips for 1 veh HHs
+139 - walk-to-brt trips for 2 veh HHs
+140 - drive-to-brt trips for 2 veh HHs
+;*************************************
+
+102- brt trips for 0 veh HHs
+103- brt trips for 1 veh HHs
+
+104 - IVT for walk-to-lcl
+105 - IVT for walk-to-cor
+106 - IVT for walk-to-exp
+107 - IVT for walk-to-lrt
+108 - IVT for walk-to-crt
+
+109- brt trips for 2 veh HHs
+
+110 - bus xfer for walk-to-lrt
+111 - bus xfer for walk-to-crt
+
+112 - walk-to-brt trips for 0 veh HHs
+113 - drive-to-brt trips for 0 veh HHs
+
+114 - initial wait time for walk-to-lcl
+115 - initial wait time for walk-to-cor
+116 - initial wait time for walk-to-exp
+117 - initial wait time for walk-to-lrt
+118 - initial wait time for walk-to-crt
+
+119 - in-vehicle distance for walk-to-lcl
+120 - in-vehicle distance for walk-to-cor
+121 - in-vehicle distance for walk-to-exp
+122 - in-vehicle distance for walk-to-LRT
+123 - in-vehicle distance for walk-to-CRT
+
+124 - drive access distance for walk-to-lcl
+125 - drive access distance for walk-to-cor
+126 - drive access distance for walk-to-exp
+127 - drive access distance for walk-to-lrt
+128 - drive access distance for walk-to-crt
+
+
+130 - drive alone toll trips for lowest income quartile
+131 - shared ride toll trips for lowest income quartile
+132 - drive alone toll trips for 3 highest income quartiles
+133 - shared ride toll trips for 3 highest income quartiles
+
+134 - walk-to-brt trips for 1 veh HHs
+135 - drive-to-brt trips for 1 veh HHs
+
+136 - distance on exp
+138 - distance on crt
+
+139 - walk-to-brt trips for 2 veh HHs
+140 - drive-to-brt trips for 2 veh HHs
+
+144 - drive access time for walk-to-lcl
+145 - drive access time for walk-to-cor
+146 - drive access time for walk-to-exp
+147 - drive access time for walk-to-lrt
+148 - drive access time for walk-to-crt
+
+154 - first 24 minutes of walk time for walk-to-lcl
+155 - first 24 minutes of walk time for walk-to-cor
+156 - first 24 minutes of walk time for walk-to-exp
+157 - first 24 minutes of walk time for walk-to-lrt
+158 - first 24 minutes of walk time for walk-to-crt
+
+164 - transfer wait time for walk-to-lcl
+165 - transfer wait time for walk-to-cor
+166 - transfer wait time for walk-to-exp
+167 - transfer wait time for walk-to-lrt
+168 - transfer wait time for walk-to-crt 
+
+174 - number of transfers for walk-to-lcl
+175 - number of transfers for walk-to-cor
+176 - number of transfers for walk-to-exp
+177 - number of transfers for walk-to-lrt
+178 - number of transfers for walk-to-crt
+
+184 - walk time over 24 minutes for walk-to-lcl
+185 - walk time over 24 minutes  for walk-to-cor
+186 - walk time over 24 minutes  for walk-to-exp
+187 - walk time over 24 minutes  for walk-to-lrt
+188 - walk time over 24 minutes  for walk-to-crt
+
+194 - transit fare for walk-to-lcl
+195 - transit fare for walk-to-cor
+196 - transit fare for walk-to-exp
+197 - transit fare for walk-to-lrt
+198 - transit fare for walk-to-crt
+
+
+204 - IVT for drive-to-lcl
+205 - IVT for drive-to-cor
+206 - IVT for drive-to-exp
+207 - IVT for drive-to-lrt
+208 - IVT for drive-to-crt
+
+210 - bus xfer for drive-to-lrt
+211 - bus xfer for drive-to-crt
+
+214 - initial wait time for drive-to-lcl
+215 - initial wait time for drive-to-cor
+216 - initial wait time for drive-to-exp
+217 - initial wait time for drive-to-lrt
+218 - initial wait time for drive-to-crt
+
+219 - in-vehicle distance for drive-to-lcl
+220 - in-vehicle distance for drive-to-cor
+221 - in-vehicle distance for drive-to-exp
+222 - in-vehicle distance for drive-to-LRT
+223 - in-vehicle distance for drive-to-CRT
+
+224 - drive access distance for drive-to-lcl
+225 - drive access distance for drive-to-cor
+226 - drive access distance for drive-to-exp
+227 - drive access distance for drive-to-lrt
+228 - drive access distance for drive-to-crt
+
+236 - distance on exp
+238 - distance on crt
+
+244 - drive access time for drive-to-lcl
+245 - drive access time for drive-to-cor
+246 - drive access time for drive-to-exp
+247 - drive access time for drive-to-lrt
+248 - drive access time for drive-to-crt
+
+254 - first 24 minutes of walk time for drive-to-lcl
+255 - first 24 minutes of walk time for drive-to-cor
+256 - first 24 minutes of walk time for drive-to-exp
+257 - first 24 minutes of walk time for drive-to-lrt
+258 - first 24 minutes of walk time for drive-to-crt
+
+264 - transfer wait time for drive-to-lcl
+265 - transfer wait time for drive-to-cor
+266 - transfer wait time for drive-to-exp
+267 - transfer wait time for drive-to-lrt
+268 - transfer wait time for drive-to-crt 
+
+274 - number of transfers for drive-to-lcl
+275 - number of transfers for drive-to-cor
+276 - number of transfers for drive-to-exp
+277 - number of transfers for drive-to-lrt
+278 - number of transfers for drive-to-crt
+
+284 - walk time over 24 minutes for drive-to-lcl
+285 - walk time over 24 minutes for drive-to-cor
+286 - walk time over 24 minutes for drive-to-exp
+287 - walk time over 24 minutes for drive-to-lrt
+288 - walk time over 24 minutes for drive-to-crt
+
+294 - transit fare for drive-to-lcl
+295 - transit fare for drive-to-cor
+296 - transit fare for drive-to-exp
+297 - transit fare for drive-to-lrt
+298 - transit fare for drive-to-crt
+
+
+;auto skim matrices
+311 - first 24 minutes of out-of-vehicle time for auto modes (generic)
+312 - over 24 minutes of out-of-vehicle time for auto modes (generic)
+313 - parking cost (generic)
+
+300 - ivt_GP     - auto IVT (drive-alone, non-toll)
+301 - ivt_HOV_S2 - Shared-Ride 2 HOV, non-toll path total in-vehicle time
+302 - ivt_HOV_S3 - Shared-Ride 3+ HOV, non-toll path total in-vehicle time
+303 - ivt_Tol_DA - Drive-alone toll path total in-vehicle time
+304 - ivt_Tol_S2 - Shared-Ride 2 toll path total in-vehicle time
+305 - ivt_Tol_S3 - Shared-Ride 3+ toll path total in-vehicle time
+
+320 - dist_GP     - auto skimmed trip distance (drive-alone, non-toll)
+321 - dist_HOV_S2 - Shared-Ride 2 HOV, non-toll path total in-vehicle distance
+322 - dist_HOV_S3 - Shared-Ride 3+ HOV, non-toll path total in-vehicle distance
+323 - dist_Tol_DA - Drive-alone toll path total in-vehicle distance 
+324 - dist_Tol_S2 - Shared-Ride 2 toll path total in-vehicle distance
+325 - dist_Tol_S3 - Shared-Ride 3+ toll path total in-vehicle distance
+
+341 - TO_HOV_S2 - Shared-Ride 2 HOV-only time (HOV Lane Only)
+342 - TO_HOV_S3 - Shared-Ride 3+ HOV-only time (HOV Lane Only)
+343 - TO_HOT_DA - Drive-alone HOT-only time (HOT lane only)
+344 - TO_HOT_S2 - Shared-Ride 2 HOT-only time (HOT lane only)
+345 - TO_HOT_S3 - Shared-Ride 3+ HOT-only time (HOT lane only)
+353 - TO_Tol_DA - Drive-alone toll-only time  (toll facility only)
+354 - TO_Tol_S2 - Shared-Ride 2 toll-only time (toll facility only)
+355 - TO_Tol_S3 - Shared-Ride 3+ toll-only time (toll facility only)
+
+361 - DO_HOV_S2 - Shared-Ride 2 HOV-only distance (HOV Lane Only)
+362 - DO_HOV_S3 - Shared-Ride 3+ HOV-only distance (HOV Lane Only)
+363 - DO_HOT_DA - Drive-alone HOT-only distance (HOT lane only)
+364 - DO_HOT_S2 - Shared-Ride 2 HOT-only distance (HOT lane only)
+365 - DO_HOT_S3 - Shared-Ride 3+ HOT-only distance (HOT lane only)
+373 - DO_Tol_DA - Drive-alone toll-only distance (toll facility only)
+374 - DO_Tol_S2 - Shared-Ride 2 toll-only distance (toll facility only)
+375 - DO_Tol_S3 - Shared-Ride 3+ toll-only distance (toll facility only)
+
+383 - Fee_HOT_DA - total toll cost from i to j (HOT drive alone)
+384 - Fee_HOT_S2 - total toll cost from i to j (HOT Shared-Ride 2)
+385 - Fee_HOT_S3 - total toll cost from i to j (HOT Shared-Ride 3+)
+393 - Fee_Tol_DA - total toll cost from i to j (toll drive alone)
+394 - Fee_Tol_S2 - total toll cost from i to j (toll Shared-Ride 2)
+395 - Fee_Tol_S3 - total toll cost from i to j (toll Shared-Ride 3+)
+
+401 - zone-to-zone XY distance
+402 - walk time for walk mode (based on XY distance)
+403 - first 24 minutes of walk time for walk mode (based on XY distance)
+404 - above 24 minutes of walk time for walk mode (based on XY distance)
+405 - bike time for bike mode (based on XY distance)
+
+
+;*************************************
+; brt SKIM ATTRIBUTES
+;*************************************
+410 - IVT for walk-to-brt
+411 - initial wait time for walk-to-brt
+412 - in-vehicle distance for walk-to-brt
+413 - drive access distance for walk-to-brt
+414 - drive access time for walk-to-brt
+415 - first 24 minutes of walk time for walk-to-brt
+416 - transfer wait time for walk-to-brt 
+417 - number of transfers for walk-to-brt
+418 - walk time over 24 minutes  for walk-to-brt
+419 - transit fare for walk-to-brt
+
+420 - IVT for drive-to-brt
+421 - initial wait time for drive-to-brt
+422 - in-vehicle distance for drive-to-brt
+423 - drive access distance for drive-to-brt
+424 - drive access time for drive-to-brt
+425 - first 24 minutes of walk time for drive-to-brt
+426 - transfer wait time for drive-to-brt 
+427 - number of transfers for drive-to-brt
+428 - walk time over 24 minutes  for drive-to-brt
+429 - transit fare for drive-to-brt
+;*************************************
+;*************************************
+
+471 - transit share for low income 0 veh HHs, can walk
+472 - transit share for low income 0 veh HHs, must drive
+473 - transit share for high income 0 veh HHs, can walk
+474 - transit share for high income 0 veh HHs, must drive
+
+481 - transit share for low income 1 veh HHs, can walk
+482 - transit share for low income 1 veh HHs, must drive
+483 - transit share for high income 1 veh HHs, can walk
+484 - transit share for high income 1 veh HHs, must drive
+
+491 - transit share for low income 2 veh HHs, can walk
+492 - transit share for low income 2 veh HHs, must drive
+493 - transit share for high income 2 veh HHs, can walk
+494 - transit share for high income 2 veh HHs, must drive

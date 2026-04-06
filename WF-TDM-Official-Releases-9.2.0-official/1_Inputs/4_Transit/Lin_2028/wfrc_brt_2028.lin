@@ -1,0 +1,13 @@
+;;<<PT>><<LINE>>;;
+;*****************************************************************************************************************
+;Modes: Local Bus=4, Core Bus=5, Express Bus=6, Light Rail Transit=7, Bus Rapid Transit=9, Commuter Rail Transit=8
+;*****************************************************************************************************************
+;This file represents wasatch front bus rapid transit service - 2028 TIP Network
+;Reviewed by UTA, MAG, & WFRC in September of 2022 to include the August 2022 change day as part of the Regional Transportation Plan 2023-2050 update
+;*****************************************************************************************************************
+LINE NAME="630X", LONGNAME="OGX or Ogden Weber St BRT", MODE=9, ONEWAY=F,
+     HEADWAY[1]=10, HEADWAY[2]=10, COLOR=7, N=10046, -28812, -28830,
+     -28851, -28859, -28868, -28875, -28887, 28891, -28905, -28886,
+     -28865, 28848, -28823, -28835, 28845, TF=1.2, N=-28871, 28899,
+     -28933, 28963, -28951, -28932, -28927, -28918, -28894, 28877,
+     DELAY=1, N=-28841, 28779, 28727, 28678, DELAY=1, N=28651, TF=1

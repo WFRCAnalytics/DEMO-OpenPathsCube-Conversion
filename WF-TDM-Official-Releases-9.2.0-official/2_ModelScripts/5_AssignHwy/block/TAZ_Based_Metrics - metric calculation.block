@@ -1,0 +1,538 @@
+            
+            ;identify demand matrices
+            FILEI MATI[01] = '@ParentDir@@ScenarioDir@Temp\5_AssignHwy\PA_@PeriodLp1@_@Metric@.mtx'
+            FILEI MATI[02] = '@ParentDir@@ScenarioDir@Temp\5_AssignHwy\AP_@PeriodLp1@_@Metric@.mtx'
+            
+            if (@NumMetrics@=3)
+                FILEI MATI[11] = '@ParentDir@@ScenarioDir@Temp\5_AssignHwy\PA_@PeriodLp1@_PHT.mtx'
+                FILEI MATI[12] = '@ParentDir@@ScenarioDir@Temp\5_AssignHwy\AP_@PeriodLp1@_PHT.mtx'
+            endif
+            
+            
+            ZONES   = @Usedzones@
+            ZONEMSG = 10
+            
+            
+            ;assign metric variable
+            Metric = '@Metric@'
+            
+            
+            ;create production-based & attraction-based matrices
+            mw[101] = mi.1.HBW_DA_NON         + mi.2.HBW_DA_NON.T
+            mw[102] = mi.1.HBW_SR_NON         + mi.2.HBW_SR_NON.T
+            mw[103] = mi.1.HBW_SR_HOV         + mi.2.HBW_SR_HOV.T
+            mw[104] = mi.1.HBW_DA_TOL         + mi.2.HBW_DA_TOL.T
+            mw[105] = mi.1.HBW_SR_TOL         + mi.2.HBW_SR_TOL.T
+            mw[106] = mi.1.HBO_DA_NON         + mi.2.HBO_DA_NON.T
+            mw[107] = mi.1.HBO_SR_NON         + mi.2.HBO_SR_NON.T
+            mw[108] = mi.1.HBO_SR_HOV         + mi.2.HBO_SR_HOV.T
+            mw[109] = mi.1.HBO_DA_TOL         + mi.2.HBO_DA_TOL.T
+            mw[110] = mi.1.HBO_SR_TOL         + mi.2.HBO_SR_TOL.T
+            mw[111] = mi.1.NHB_DA_NON         + mi.2.NHB_DA_NON.T
+            mw[112] = mi.1.NHB_SR_NON         + mi.2.NHB_SR_NON.T
+            mw[113] = mi.1.NHB_SR_HOV         + mi.2.NHB_SR_HOV.T
+            mw[114] = mi.1.NHB_DA_TOL         + mi.2.NHB_DA_TOL.T
+            mw[115] = mi.1.NHB_SR_TOL         + mi.2.NHB_SR_TOL.T
+            mw[116] = mi.1.HBC_DA_NON         + mi.2.HBC_DA_NON.T
+            mw[117] = mi.1.HBC_SR_NON         + mi.2.HBC_SR_NON.T
+            mw[118] = mi.1.HBC_SR_HOV         + mi.2.HBC_SR_HOV.T
+            mw[119] = mi.1.HBC_DA_TOL         + mi.2.HBC_DA_TOL.T
+            mw[120] = mi.1.HBC_SR_TOL         + mi.2.HBC_SR_TOL.T
+            mw[121] = mi.1.HBS_DriveSelf_Pr   + mi.2.HBS_DriveSelf_Pr.T
+            mw[122] = mi.1.HBS_DriveSelf_Sc   + mi.2.HBS_DriveSelf_Sc.T
+            mw[123] = mi.1.IX                 + mi.2.IX.T
+            mw[124] = mi.1.XI                 + mi.2.XI.T
+            mw[125] = mi.1.XX                 + mi.2.XX.T
+            mw[126] = mi.1.SH_LT              + mi.2.SH_LT.T
+            mw[127] = mi.1.SH_MD              + mi.2.SH_MD.T
+            mw[128] = mi.1.SH_HV              + mi.2.SH_HV.T
+            mw[129] = mi.1.Ext_MD             + mi.2.Ext_MD.T
+            mw[130] = mi.1.Ext_HV             + mi.2.Ext_HV.T
+            mw[131] = mi.1.HBS_DropOff_Pr     + mi.2.HBS_DropOff_Pr.T
+            mw[132] = mi.1.HBS_DropOff_Sc     + mi.2.HBS_DropOff_Sc.T
+            mw[133] = mi.1.SchoolBus_Pr       + mi.2.SchoolBus_Pr.T
+            mw[134] = mi.1.SchoolBus_Sc       + mi.2.SchoolBus_Sc.T
+            
+            mw[151] = mi.1.HBW_DA_NON.T       + mi.2.HBW_DA_NON
+            mw[152] = mi.1.HBW_SR_NON.T       + mi.2.HBW_SR_NON
+            mw[153] = mi.1.HBW_SR_HOV.T       + mi.2.HBW_SR_HOV
+            mw[154] = mi.1.HBW_DA_TOL.T       + mi.2.HBW_DA_TOL
+            mw[155] = mi.1.HBW_SR_TOL.T       + mi.2.HBW_SR_TOL
+            mw[156] = mi.1.HBO_DA_NON.T       + mi.2.HBO_DA_NON
+            mw[157] = mi.1.HBO_SR_NON.T       + mi.2.HBO_SR_NON
+            mw[158] = mi.1.HBO_SR_HOV.T       + mi.2.HBO_SR_HOV
+            mw[159] = mi.1.HBO_DA_TOL.T       + mi.2.HBO_DA_TOL
+            mw[160] = mi.1.HBO_SR_TOL.T       + mi.2.HBO_SR_TOL
+            mw[161] = mi.1.NHB_DA_NON.T       + mi.2.NHB_DA_NON
+            mw[162] = mi.1.NHB_SR_NON.T       + mi.2.NHB_SR_NON
+            mw[163] = mi.1.NHB_SR_HOV.T       + mi.2.NHB_SR_HOV
+            mw[164] = mi.1.NHB_DA_TOL.T       + mi.2.NHB_DA_TOL
+            mw[165] = mi.1.NHB_SR_TOL.T       + mi.2.NHB_SR_TOL
+            mw[166] = mi.1.HBC_DA_NON.T       + mi.2.HBC_DA_NON
+            mw[167] = mi.1.HBC_SR_NON.T       + mi.2.HBC_SR_NON
+            mw[168] = mi.1.HBC_SR_HOV.T       + mi.2.HBC_SR_HOV
+            mw[169] = mi.1.HBC_DA_TOL.T       + mi.2.HBC_DA_TOL
+            mw[170] = mi.1.HBC_SR_TOL.T       + mi.2.HBC_SR_TOL
+            mw[171] = mi.1.HBS_DriveSelf_Pr.T + mi.2.HBS_DriveSelf_Pr
+            mw[172] = mi.1.HBS_DriveSelf_Sc.T + mi.2.HBS_DriveSelf_Sc
+            mw[173] = mi.1.IX.T               + mi.2.IX
+            mw[174] = mi.1.XI.T               + mi.2.XI
+            mw[175] = mi.1.XX.T               + mi.2.XX
+            mw[176] = mi.1.SH_LT.T            + mi.2.SH_LT
+            mw[177] = mi.1.SH_MD.T            + mi.2.SH_MD
+            mw[178] = mi.1.SH_HV.T            + mi.2.SH_HV
+            mw[179] = mi.1.Ext_MD.T           + mi.2.Ext_MD
+            mw[180] = mi.1.Ext_HV.T           + mi.2.Ext_HV
+            mw[181] = mi.1.HBS_DropOff_Pr.T   + mi.2.HBS_DropOff_Pr
+            mw[182] = mi.1.HBS_DropOff_Sc.T   + mi.2.HBS_DropOff_Sc
+            mw[183] = mi.1.SchoolBus_Pr.T     + mi.2.SchoolBus_Pr
+            mw[184] = mi.1.SchoolBus_Sc.T     + mi.2.SchoolBus_Sc
+            
+            
+            ;calculate production-based & attraction-based metrics
+            P_HBW_DA_NON       = ROWSUM(101)
+            P_HBW_SR_NON       = ROWSUM(102)
+            P_HBW_SR_HOV       = ROWSUM(103)
+            P_HBW_DA_TOL       = ROWSUM(104)
+            P_HBW_SR_TOL       = ROWSUM(105)
+            P_HBO_DA_NON       = ROWSUM(106)
+            P_HBO_SR_NON       = ROWSUM(107)
+            P_HBO_SR_HOV       = ROWSUM(108)
+            P_HBO_DA_TOL       = ROWSUM(109)
+            P_HBO_SR_TOL       = ROWSUM(110)
+            P_NHB_DA_NON       = ROWSUM(111)
+            P_NHB_SR_NON       = ROWSUM(112)
+            P_NHB_SR_HOV       = ROWSUM(113)
+            P_NHB_DA_TOL       = ROWSUM(114)
+            P_NHB_SR_TOL       = ROWSUM(115)
+            P_HBC_DA_NON       = ROWSUM(116)
+            P_HBC_SR_NON       = ROWSUM(117)
+            P_HBC_SR_HOV       = ROWSUM(118)
+            P_HBC_DA_TOL       = ROWSUM(119)
+            P_HBC_SR_TOL       = ROWSUM(120)
+            P_HBS_DriveSelf_Pr = ROWSUM(121)
+            P_HBS_DriveSelf_Sc = ROWSUM(122)
+            P_IX               = ROWSUM(123)
+            P_XI               = ROWSUM(124)
+            P_XX               = ROWSUM(125)
+            P_SH_LT            = ROWSUM(126)
+            P_SH_MD            = ROWSUM(127)
+            P_SH_HV            = ROWSUM(128)
+            P_Ext_MD           = ROWSUM(129)
+            P_Ext_HV           = ROWSUM(130)
+            P_HBS_DropOff_Pr   = ROWSUM(131)
+            P_HBS_DropOff_Sc   = ROWSUM(132)
+            P_SchoolBus_Pr     = ROWSUM(133)
+            P_SchoolBus_Sc     = ROWSUM(134)
+            
+            A_HBW_DA_NON       = ROWSUM(151)
+            A_HBW_SR_NON       = ROWSUM(152)
+            A_HBW_SR_HOV       = ROWSUM(153)
+            A_HBW_DA_TOL       = ROWSUM(154)
+            A_HBW_SR_TOL       = ROWSUM(155)
+            A_HBO_DA_NON       = ROWSUM(156)
+            A_HBO_SR_NON       = ROWSUM(157)
+            A_HBO_SR_HOV       = ROWSUM(158)
+            A_HBO_DA_TOL       = ROWSUM(159)
+            A_HBO_SR_TOL       = ROWSUM(160)
+            A_NHB_DA_NON       = ROWSUM(161)
+            A_NHB_SR_NON       = ROWSUM(162)
+            A_NHB_SR_HOV       = ROWSUM(163)
+            A_NHB_DA_TOL       = ROWSUM(164)
+            A_NHB_SR_TOL       = ROWSUM(165)
+            A_HBC_DA_NON       = ROWSUM(166)
+            A_HBC_SR_NON       = ROWSUM(167)
+            A_HBC_SR_HOV       = ROWSUM(168)
+            A_HBC_DA_TOL       = ROWSUM(169)
+            A_HBC_SR_TOL       = ROWSUM(170)
+            A_HBS_DriveSelf_Pr = ROWSUM(171)
+            A_HBS_DriveSelf_Sc = ROWSUM(172)
+            A_IX               = ROWSUM(173)
+            A_XI               = ROWSUM(174)
+            A_XX               = ROWSUM(175)
+            A_SH_LT            = ROWSUM(176)
+            A_SH_MD            = ROWSUM(177)
+            A_SH_HV            = ROWSUM(178)
+            A_Ext_MD           = ROWSUM(179)
+            A_Ext_HV           = ROWSUM(180)
+            A_HBS_DropOff_Pr   = ROWSUM(181)
+            A_HBS_DropOff_Sc   = ROWSUM(182)
+            A_SchoolBus_Pr     = ROWSUM(183)
+            A_SchoolBus_Sc     = ROWSUM(184)
+            
+            
+            ;total person level metrics and print them to output csv
+            READ FILE = '@ParentDir@2_ModelScripts\5_AssignHwy\block\09_total_persons.block'
+            READ FILE = '@ParentDir@2_ModelScripts\5_AssignHwy\block\09_print_persons.block'
+            
+            
+            ;convert from person level to vehicle level
+            veh_P_HBW_DA_NON       = P_HBW_DA_NON       / @VehOcc_HBW@
+            veh_P_HBW_SR_NON       = P_HBW_SR_NON       / @VehOcc_2p_HBW@
+            veh_P_HBW_SR_HOV       = P_HBW_SR_HOV       / @VehOcc_2p_HBW@
+            veh_P_HBW_DA_TOL       = P_HBW_DA_TOL       / @VehOcc_HBW@
+            veh_P_HBW_SR_TOL       = P_HBW_SR_TOL       / @VehOcc_2p_HBW@
+            veh_P_HBO_DA_NON       = P_HBO_DA_NON       / @VehOcc_HBO@
+            veh_P_HBO_SR_NON       = P_HBO_SR_NON       / @VehOcc_2p_HBO@
+            veh_P_HBO_SR_HOV       = P_HBO_SR_HOV       / @VehOcc_2p_HBO@
+            veh_P_HBO_DA_TOL       = P_HBO_DA_TOL       / @VehOcc_HBO@
+            veh_P_HBO_SR_TOL       = P_HBO_SR_TOL       / @VehOcc_2p_HBO@
+            veh_P_NHB_DA_NON       = P_NHB_DA_NON       / @VehOcc_NHB@
+            veh_P_NHB_SR_NON       = P_NHB_SR_NON       / @VehOcc_2p_NHB@
+            veh_P_NHB_SR_HOV       = P_NHB_SR_HOV       / @VehOcc_2p_NHB@
+            veh_P_NHB_DA_TOL       = P_NHB_DA_TOL       / @VehOcc_NHB@
+            veh_P_NHB_SR_TOL       = P_NHB_SR_TOL       / @VehOcc_2p_NHB@
+            veh_P_HBC_DA_NON       = P_HBC_DA_NON       / @VehOcc_HBC@
+            veh_P_HBC_SR_NON       = P_HBC_SR_NON       / @VehOcc_2p_HBC@
+            veh_P_HBC_SR_HOV       = P_HBC_SR_HOV       / @VehOcc_2p_HBC@
+            veh_P_HBC_DA_TOL       = P_HBC_DA_TOL       / @VehOcc_HBC@
+            veh_P_HBC_SR_TOL       = P_HBC_SR_TOL       / @VehOcc_2p_HBC@
+            veh_P_HBS_DriveSelf_Pr = P_HBS_DriveSelf_Pr / @VehOcc_HBSch@
+            veh_P_HBS_DriveSelf_Sc = P_HBS_DriveSelf_Sc / @VehOcc_HBSch@
+            veh_P_HBS_DropOff_Pr   = P_HBS_DropOff_Pr   / @VehOcc_HBSch@
+            veh_P_HBS_DropOff_Sc   = P_HBS_DropOff_Sc   / @VehOcc_HBSch@
+            veh_P_SchoolBus_Pr     = P_SchoolBus_Pr     / @Schoolbus_VO@
+            veh_P_SchoolBus_Sc     = P_SchoolBus_Sc     / @Schoolbus_VO@
+            
+            veh_A_HBW_DA_NON       = A_HBW_DA_NON       / @VehOcc_HBW@
+            veh_A_HBW_SR_NON       = A_HBW_SR_NON       / @VehOcc_2p_HBW@
+            veh_A_HBW_SR_HOV       = A_HBW_SR_HOV       / @VehOcc_2p_HBW@
+            veh_A_HBW_DA_TOL       = A_HBW_DA_TOL       / @VehOcc_HBW@
+            veh_A_HBW_SR_TOL       = A_HBW_SR_TOL       / @VehOcc_2p_HBW@
+            veh_A_HBO_DA_NON       = A_HBO_DA_NON       / @VehOcc_HBO@
+            veh_A_HBO_SR_NON       = A_HBO_SR_NON       / @VehOcc_2p_HBO@
+            veh_A_HBO_SR_HOV       = A_HBO_SR_HOV       / @VehOcc_2p_HBO@
+            veh_A_HBO_DA_TOL       = A_HBO_DA_TOL       / @VehOcc_HBO@
+            veh_A_HBO_SR_TOL       = A_HBO_SR_TOL       / @VehOcc_2p_HBO@
+            veh_A_NHB_DA_NON       = A_NHB_DA_NON       / @VehOcc_NHB@
+            veh_A_NHB_SR_NON       = A_NHB_SR_NON       / @VehOcc_2p_NHB@
+            veh_A_NHB_SR_HOV       = A_NHB_SR_HOV       / @VehOcc_2p_NHB@
+            veh_A_NHB_DA_TOL       = A_NHB_DA_TOL       / @VehOcc_NHB@
+            veh_A_NHB_SR_TOL       = A_NHB_SR_TOL       / @VehOcc_2p_NHB@
+            veh_A_HBC_DA_NON       = A_HBC_DA_NON       / @VehOcc_HBC@
+            veh_A_HBC_SR_NON       = A_HBC_SR_NON       / @VehOcc_2p_HBC@
+            veh_A_HBC_SR_HOV       = A_HBC_SR_HOV       / @VehOcc_2p_HBC@
+            veh_A_HBC_DA_TOL       = A_HBC_DA_TOL       / @VehOcc_HBC@
+            veh_A_HBC_SR_TOL       = A_HBC_SR_TOL       / @VehOcc_2p_HBC@
+            veh_A_HBS_DriveSelf_Pr = A_HBS_DriveSelf_Pr / @VehOcc_HBSch@
+            veh_A_HBS_DriveSelf_Sc = A_HBS_DriveSelf_Sc / @VehOcc_HBSch@
+            veh_A_HBS_DropOff_Pr   = A_HBS_DropOff_Pr   / @VehOcc_HBSch@
+            veh_A_HBS_DropOff_Sc   = A_HBS_DropOff_Sc   / @VehOcc_HBSch@
+            veh_A_SchoolBus_Pr     = A_SchoolBus_Pr     / @Schoolbus_VO@
+            veh_A_SchoolBus_Sc     = A_SchoolBus_Sc     / @Schoolbus_VO@
+            
+            
+            ;total vehicle level metrics and print them to output csv
+            READ FILE = '@ParentDir@2_ModelScripts\5_AssignHwy\block\09_total_vehicles.block'
+            READ FILE = '@ParentDir@2_ModelScripts\5_AssignHwy\block\09_print_vehicles.block'
+            
+            
+            ;calculate delay
+            if (@NumMetrics@=3)
+                
+                ;store PHT_FF metrics into temp variables
+                phtff_P_HBW_DA_NON       = P_HBW_DA_NON
+                phtff_P_HBW_SR_NON       = P_HBW_SR_NON
+                phtff_P_HBW_SR_HOV       = P_HBW_SR_HOV
+                phtff_P_HBW_DA_TOL       = P_HBW_DA_TOL
+                phtff_P_HBW_SR_TOL       = P_HBW_SR_TOL
+                phtff_P_HBO_DA_NON       = P_HBO_DA_NON
+                phtff_P_HBO_SR_NON       = P_HBO_SR_NON
+                phtff_P_HBO_SR_HOV       = P_HBO_SR_HOV
+                phtff_P_HBO_DA_TOL       = P_HBO_DA_TOL
+                phtff_P_HBO_SR_TOL       = P_HBO_SR_TOL
+                phtff_P_NHB_DA_NON       = P_NHB_DA_NON
+                phtff_P_NHB_SR_NON       = P_NHB_SR_NON
+                phtff_P_NHB_SR_HOV       = P_NHB_SR_HOV
+                phtff_P_NHB_DA_TOL       = P_NHB_DA_TOL
+                phtff_P_NHB_SR_TOL       = P_NHB_SR_TOL
+                phtff_P_HBC_DA_NON       = P_HBC_DA_NON
+                phtff_P_HBC_SR_NON       = P_HBC_SR_NON
+                phtff_P_HBC_SR_HOV       = P_HBC_SR_HOV
+                phtff_P_HBC_DA_TOL       = P_HBC_DA_TOL
+                phtff_P_HBC_SR_TOL       = P_HBC_SR_TOL
+                phtff_P_HBS_DriveSelf_Pr = P_HBS_DriveSelf_Pr
+                phtff_P_HBS_DriveSelf_Sc = P_HBS_DriveSelf_Sc
+                phtff_P_IX               = P_IX
+                phtff_P_XI               = P_XI
+                phtff_P_XX               = P_XX
+                phtff_P_SH_LT            = P_SH_LT
+                phtff_P_SH_MD            = P_SH_MD
+                phtff_P_SH_HV            = P_SH_HV
+                phtff_P_Ext_MD           = P_Ext_MD
+                phtff_P_Ext_HV           = P_Ext_HV
+                phtff_P_HBS_DropOff_Pr   = P_HBS_DropOff_Pr
+                phtff_P_HBS_DropOff_Sc   = P_HBS_DropOff_Sc
+                phtff_P_SchoolBus_Pr     = P_SchoolBus_Pr
+                phtff_P_SchoolBus_Sc     = P_SchoolBus_Sc
+                
+                phtff_A_HBW_DA_NON       = A_HBW_DA_NON
+                phtff_A_HBW_SR_NON       = A_HBW_SR_NON
+                phtff_A_HBW_SR_HOV       = A_HBW_SR_HOV
+                phtff_A_HBW_DA_TOL       = A_HBW_DA_TOL
+                phtff_A_HBW_SR_TOL       = A_HBW_SR_TOL
+                phtff_A_HBO_DA_NON       = A_HBO_DA_NON
+                phtff_A_HBO_SR_NON       = A_HBO_SR_NON
+                phtff_A_HBO_SR_HOV       = A_HBO_SR_HOV
+                phtff_A_HBO_DA_TOL       = A_HBO_DA_TOL
+                phtff_A_HBO_SR_TOL       = A_HBO_SR_TOL
+                phtff_A_NHB_DA_NON       = A_NHB_DA_NON
+                phtff_A_NHB_SR_NON       = A_NHB_SR_NON
+                phtff_A_NHB_SR_HOV       = A_NHB_SR_HOV
+                phtff_A_NHB_DA_TOL       = A_NHB_DA_TOL
+                phtff_A_NHB_SR_TOL       = A_NHB_SR_TOL
+                phtff_A_HBC_DA_NON       = A_HBC_DA_NON
+                phtff_A_HBC_SR_NON       = A_HBC_SR_NON
+                phtff_A_HBC_SR_HOV       = A_HBC_SR_HOV
+                phtff_A_HBC_DA_TOL       = A_HBC_DA_TOL
+                phtff_A_HBC_SR_TOL       = A_HBC_SR_TOL
+                phtff_A_HBS_DriveSelf_Pr = A_HBS_DriveSelf_Pr
+                phtff_A_HBS_DriveSelf_Sc = A_HBS_DriveSelf_Sc
+                phtff_A_IX               = A_IX
+                phtff_A_XI               = A_XI
+                phtff_A_XX               = A_XX
+                phtff_A_SH_LT            = A_SH_LT
+                phtff_A_SH_MD            = A_SH_MD
+                phtff_A_SH_HV            = A_SH_HV
+                phtff_A_Ext_MD           = A_Ext_MD
+                phtff_A_Ext_HV           = A_Ext_HV
+                phtff_A_HBS_DropOff_Pr   = A_HBS_DropOff_Pr
+                phtff_A_HBS_DropOff_Sc   = A_HBS_DropOff_Sc
+                phtff_A_SchoolBus_Pr     = A_SchoolBus_Pr
+                phtff_A_SchoolBus_Sc     = A_SchoolBus_Sc
+                
+                
+                ;recreate production-based & attraction-based PHT matrices
+                mw[501] = (mi.11.HBW_DA_NON          + mi.12.HBW_DA_NON.T       )
+                mw[502] = (mi.11.HBW_SR_NON          + mi.12.HBW_SR_NON.T       )
+                mw[503] = (mi.11.HBW_SR_HOV          + mi.12.HBW_SR_HOV.T       )
+                mw[504] = (mi.11.HBW_DA_TOL          + mi.12.HBW_DA_TOL.T       )
+                mw[505] = (mi.11.HBW_SR_TOL          + mi.12.HBW_SR_TOL.T       )
+                mw[506] = (mi.11.HBO_DA_NON          + mi.12.HBO_DA_NON.T       )
+                mw[507] = (mi.11.HBO_SR_NON          + mi.12.HBO_SR_NON.T       )
+                mw[508] = (mi.11.HBO_SR_HOV          + mi.12.HBO_SR_HOV.T       )
+                mw[509] = (mi.11.HBO_DA_TOL          + mi.12.HBO_DA_TOL.T       )
+                mw[510] = (mi.11.HBO_SR_TOL          + mi.12.HBO_SR_TOL.T       )
+                mw[511] = (mi.11.NHB_DA_NON          + mi.12.NHB_DA_NON.T       )
+                mw[512] = (mi.11.NHB_SR_NON          + mi.12.NHB_SR_NON.T       )
+                mw[513] = (mi.11.NHB_SR_HOV          + mi.12.NHB_SR_HOV.T       )
+                mw[514] = (mi.11.NHB_DA_TOL          + mi.12.NHB_DA_TOL.T       )
+                mw[515] = (mi.11.NHB_SR_TOL          + mi.12.NHB_SR_TOL.T       )
+                mw[516] = (mi.11.HBC_DA_NON          + mi.12.HBC_DA_NON.T       )
+                mw[517] = (mi.11.HBC_SR_NON          + mi.12.HBC_SR_NON.T       )
+                mw[518] = (mi.11.HBC_SR_HOV          + mi.12.HBC_SR_HOV.T       )
+                mw[519] = (mi.11.HBC_DA_TOL          + mi.12.HBC_DA_TOL.T       )
+                mw[520] = (mi.11.HBC_SR_TOL          + mi.12.HBC_SR_TOL.T       )
+                mw[521] = (mi.11.HBS_DriveSelf_Pr    + mi.12.HBS_DriveSelf_Pr.T )
+                mw[522] = (mi.11.HBS_DriveSelf_Sc    + mi.12.HBS_DriveSelf_Sc.T )
+                mw[523] = (mi.11.IX                  + mi.12.IX.T               )
+                mw[524] = (mi.11.XI                  + mi.12.XI.T               )
+                mw[525] = (mi.11.XX                  + mi.12.XX.T               )
+                mw[526] = (mi.11.SH_LT               + mi.12.SH_LT.T            )
+                mw[527] = (mi.11.SH_MD               + mi.12.SH_MD.T            )
+                mw[528] = (mi.11.SH_HV               + mi.12.SH_HV.T            )
+                mw[529] = (mi.11.Ext_MD              + mi.12.Ext_MD.T           )
+                mw[530] = (mi.11.Ext_HV              + mi.12.Ext_HV.T           )
+                mw[531] = (mi.11.HBS_DropOff_Pr      + mi.12.HBS_DropOff_Pr.T   )
+                mw[532] = (mi.11.HBS_DropOff_Sc      + mi.12.HBS_DropOff_Sc.T   )
+                mw[533] = (mi.11.SchoolBus_Pr        + mi.12.SchoolBus_Pr.T     )
+                mw[534] = (mi.11.SchoolBus_Sc        + mi.12.SchoolBus_Sc.T     )
+                
+                mw[551] = (mi.11.HBW_DA_NON.T        + mi.12.HBW_DA_NON         )
+                mw[552] = (mi.11.HBW_SR_NON.T        + mi.12.HBW_SR_NON         )
+                mw[553] = (mi.11.HBW_SR_HOV.T        + mi.12.HBW_SR_HOV         )
+                mw[554] = (mi.11.HBW_DA_TOL.T        + mi.12.HBW_DA_TOL         )
+                mw[555] = (mi.11.HBW_SR_TOL.T        + mi.12.HBW_SR_TOL         )
+                mw[556] = (mi.11.HBO_DA_NON.T        + mi.12.HBO_DA_NON         )
+                mw[557] = (mi.11.HBO_SR_NON.T        + mi.12.HBO_SR_NON         )
+                mw[558] = (mi.11.HBO_SR_HOV.T        + mi.12.HBO_SR_HOV         )
+                mw[559] = (mi.11.HBO_DA_TOL.T        + mi.12.HBO_DA_TOL         )
+                mw[560] = (mi.11.HBO_SR_TOL.T        + mi.12.HBO_SR_TOL         )
+                mw[561] = (mi.11.NHB_DA_NON.T        + mi.12.NHB_DA_NON         )
+                mw[562] = (mi.11.NHB_SR_NON.T        + mi.12.NHB_SR_NON         )
+                mw[563] = (mi.11.NHB_SR_HOV.T        + mi.12.NHB_SR_HOV         )
+                mw[564] = (mi.11.NHB_DA_TOL.T        + mi.12.NHB_DA_TOL         )
+                mw[565] = (mi.11.NHB_SR_TOL.T        + mi.12.NHB_SR_TOL         )
+                mw[566] = (mi.11.HBC_DA_NON.T        + mi.12.HBC_DA_NON         )
+                mw[567] = (mi.11.HBC_SR_NON.T        + mi.12.HBC_SR_NON         )
+                mw[568] = (mi.11.HBC_SR_HOV.T        + mi.12.HBC_SR_HOV         )
+                mw[569] = (mi.11.HBC_DA_TOL.T        + mi.12.HBC_DA_TOL         )
+                mw[570] = (mi.11.HBC_SR_TOL.T        + mi.12.HBC_SR_TOL         )
+                mw[571] = (mi.11.HBS_DriveSelf_Pr.T  + mi.12.HBS_DriveSelf_Pr   )
+                mw[572] = (mi.11.HBS_DriveSelf_Sc.T  + mi.12.HBS_DriveSelf_Sc   )
+                mw[573] = (mi.11.IX.T                + mi.12.IX                 )
+                mw[574] = (mi.11.XI.T                + mi.12.XI                 )
+                mw[575] = (mi.11.XX.T                + mi.12.XX                 )
+                mw[576] = (mi.11.SH_LT.T             + mi.12.SH_LT              )
+                mw[577] = (mi.11.SH_MD.T             + mi.12.SH_MD              )
+                mw[578] = (mi.11.SH_HV.T             + mi.12.SH_HV              )
+                mw[579] = (mi.11.Ext_MD.T            + mi.12.Ext_MD             )
+                mw[580] = (mi.11.Ext_HV.T            + mi.12.Ext_HV             )
+                mw[581] = (mi.11.HBS_DropOff_Pr.T    + mi.12.HBS_DropOff_Pr     )
+                mw[582] = (mi.11.HBS_DropOff_Sc.T    + mi.12.HBS_DropOff_Sc     )
+                mw[583] = (mi.11.SchoolBus_Pr.T      + mi.12.SchoolBus_Pr       )
+                mw[584] = (mi.11.SchoolBus_Sc.T      + mi.12.SchoolBus_Sc       )
+                
+                
+                ;calculate production-based & attraction-based delay metrics
+                P_HBW_DA_NON       = ROWSUM(501) - phtff_P_HBW_DA_NON
+                P_HBW_SR_NON       = ROWSUM(502) - phtff_P_HBW_SR_NON
+                P_HBW_SR_HOV       = ROWSUM(503) - phtff_P_HBW_SR_HOV
+                P_HBW_DA_TOL       = ROWSUM(504) - phtff_P_HBW_DA_TOL
+                P_HBW_SR_TOL       = ROWSUM(505) - phtff_P_HBW_SR_TOL
+                P_HBO_DA_NON       = ROWSUM(506) - phtff_P_HBO_DA_NON
+                P_HBO_SR_NON       = ROWSUM(507) - phtff_P_HBO_SR_NON
+                P_HBO_SR_HOV       = ROWSUM(508) - phtff_P_HBO_SR_HOV
+                P_HBO_DA_TOL       = ROWSUM(509) - phtff_P_HBO_DA_TOL
+                P_HBO_SR_TOL       = ROWSUM(510) - phtff_P_HBO_SR_TOL
+                P_NHB_DA_NON       = ROWSUM(511) - phtff_P_NHB_DA_NON
+                P_NHB_SR_NON       = ROWSUM(512) - phtff_P_NHB_SR_NON
+                P_NHB_SR_HOV       = ROWSUM(513) - phtff_P_NHB_SR_HOV
+                P_NHB_DA_TOL       = ROWSUM(514) - phtff_P_NHB_DA_TOL
+                P_NHB_SR_TOL       = ROWSUM(515) - phtff_P_NHB_SR_TOL
+                P_HBC_DA_NON       = ROWSUM(516) - phtff_P_HBC_DA_NON
+                P_HBC_SR_NON       = ROWSUM(517) - phtff_P_HBC_SR_NON
+                P_HBC_SR_HOV       = ROWSUM(518) - phtff_P_HBC_SR_HOV
+                P_HBC_DA_TOL       = ROWSUM(519) - phtff_P_HBC_DA_TOL
+                P_HBC_SR_TOL       = ROWSUM(520) - phtff_P_HBC_SR_TOL
+                P_HBS_DriveSelf_Pr = ROWSUM(521) - phtff_P_HBS_DriveSelf_Pr
+                P_HBS_DriveSelf_Sc = ROWSUM(522) - phtff_P_HBS_DriveSelf_Sc
+                P_IX               = ROWSUM(523) - phtff_P_IX
+                P_XI               = ROWSUM(524) - phtff_P_XI
+                P_XX               = ROWSUM(525) - phtff_P_XX
+                P_SH_LT            = ROWSUM(526) - phtff_P_SH_LT
+                P_SH_MD            = ROWSUM(527) - phtff_P_SH_MD
+                P_SH_HV            = ROWSUM(528) - phtff_P_SH_HV
+                P_Ext_MD           = ROWSUM(529) - phtff_P_Ext_MD
+                P_Ext_HV           = ROWSUM(530) - phtff_P_Ext_HV
+                P_HBS_DropOff_Pr   = ROWSUM(531) - phtff_P_HBS_DropOff_Pr
+                P_HBS_DropOff_Sc   = ROWSUM(532) - phtff_P_HBS_DropOff_Sc
+                P_SchoolBus_Pr     = ROWSUM(533) - phtff_P_SchoolBus_Pr
+                P_SchoolBus_Sc     = ROWSUM(534) - phtff_P_SchoolBus_Sc
+                
+                A_HBW_DA_NON       = ROWSUM(551) - phtff_A_HBW_DA_NON
+                A_HBW_SR_NON       = ROWSUM(552) - phtff_A_HBW_SR_NON
+                A_HBW_SR_HOV       = ROWSUM(553) - phtff_A_HBW_SR_HOV
+                A_HBW_DA_TOL       = ROWSUM(554) - phtff_A_HBW_DA_TOL
+                A_HBW_SR_TOL       = ROWSUM(555) - phtff_A_HBW_SR_TOL
+                A_HBO_DA_NON       = ROWSUM(556) - phtff_A_HBO_DA_NON
+                A_HBO_SR_NON       = ROWSUM(557) - phtff_A_HBO_SR_NON
+                A_HBO_SR_HOV       = ROWSUM(558) - phtff_A_HBO_SR_HOV
+                A_HBO_DA_TOL       = ROWSUM(559) - phtff_A_HBO_DA_TOL
+                A_HBO_SR_TOL       = ROWSUM(560) - phtff_A_HBO_SR_TOL
+                A_NHB_DA_NON       = ROWSUM(561) - phtff_A_NHB_DA_NON
+                A_NHB_SR_NON       = ROWSUM(562) - phtff_A_NHB_SR_NON
+                A_NHB_SR_HOV       = ROWSUM(563) - phtff_A_NHB_SR_HOV
+                A_NHB_DA_TOL       = ROWSUM(564) - phtff_A_NHB_DA_TOL
+                A_NHB_SR_TOL       = ROWSUM(565) - phtff_A_NHB_SR_TOL
+                A_HBC_DA_NON       = ROWSUM(566) - phtff_A_HBC_DA_NON
+                A_HBC_SR_NON       = ROWSUM(567) - phtff_A_HBC_SR_NON
+                A_HBC_SR_HOV       = ROWSUM(568) - phtff_A_HBC_SR_HOV
+                A_HBC_DA_TOL       = ROWSUM(569) - phtff_A_HBC_DA_TOL
+                A_HBC_SR_TOL       = ROWSUM(570) - phtff_A_HBC_SR_TOL
+                A_HBS_DriveSelf_Pr = ROWSUM(571) - phtff_A_HBS_DriveSelf_Pr
+                A_HBS_DriveSelf_Sc = ROWSUM(572) - phtff_A_HBS_DriveSelf_Sc
+                A_IX               = ROWSUM(573) - phtff_A_IX
+                A_XI               = ROWSUM(574) - phtff_A_XI
+                A_XX               = ROWSUM(575) - phtff_A_XX
+                A_SH_LT            = ROWSUM(576) - phtff_A_SH_LT
+                A_SH_MD            = ROWSUM(577) - phtff_A_SH_MD
+                A_SH_HV            = ROWSUM(578) - phtff_A_SH_HV
+                A_Ext_MD           = ROWSUM(579) - phtff_A_Ext_MD
+                A_Ext_HV           = ROWSUM(580) - phtff_A_Ext_HV
+                A_HBS_DropOff_Pr   = ROWSUM(581) - phtff_A_HBS_DropOff_Pr
+                A_HBS_DropOff_Sc   = ROWSUM(582) - phtff_A_HBS_DropOff_Sc
+                A_SchoolBus_Pr     = ROWSUM(583) - phtff_A_SchoolBus_Pr
+                A_SchoolBus_Sc     = ROWSUM(584) - phtff_A_SchoolBus_Sc
+                
+                
+                ;total person level metrics and print them to output csv
+                Metric = 'PHD'
+                READ FILE = '@ParentDir@2_ModelScripts\5_AssignHwy\block\09_total_persons.block'
+                READ FILE = '@ParentDir@2_ModelScripts\5_AssignHwy\block\09_print_persons.block'
+                
+                
+                ;convert from person level to vehicle level
+                veh_P_HBW_DA_NON       = P_HBW_DA_NON       / @VehOcc_HBW@
+                veh_P_HBW_SR_NON       = P_HBW_SR_NON       / @VehOcc_2p_HBW@
+                veh_P_HBW_SR_HOV       = P_HBW_SR_HOV       / @VehOcc_2p_HBW@
+                veh_P_HBW_DA_TOL       = P_HBW_DA_TOL       / @VehOcc_HBW@
+                veh_P_HBW_SR_TOL       = P_HBW_SR_TOL       / @VehOcc_2p_HBW@
+                veh_P_HBO_DA_NON       = P_HBO_DA_NON       / @VehOcc_HBO@
+                veh_P_HBO_SR_NON       = P_HBO_SR_NON       / @VehOcc_2p_HBO@
+                veh_P_HBO_SR_HOV       = P_HBO_SR_HOV       / @VehOcc_2p_HBO@
+                veh_P_HBO_DA_TOL       = P_HBO_DA_TOL       / @VehOcc_HBO@
+                veh_P_HBO_SR_TOL       = P_HBO_SR_TOL       / @VehOcc_2p_HBO@
+                veh_P_NHB_DA_NON       = P_NHB_DA_NON       / @VehOcc_NHB@
+                veh_P_NHB_SR_NON       = P_NHB_SR_NON       / @VehOcc_2p_NHB@
+                veh_P_NHB_SR_HOV       = P_NHB_SR_HOV       / @VehOcc_2p_NHB@
+                veh_P_NHB_DA_TOL       = P_NHB_DA_TOL       / @VehOcc_NHB@
+                veh_P_NHB_SR_TOL       = P_NHB_SR_TOL       / @VehOcc_2p_NHB@
+                veh_P_HBC_DA_NON       = P_HBC_DA_NON       / @VehOcc_HBC@
+                veh_P_HBC_SR_NON       = P_HBC_SR_NON       / @VehOcc_2p_HBC@
+                veh_P_HBC_SR_HOV       = P_HBC_SR_HOV       / @VehOcc_2p_HBC@
+                veh_P_HBC_DA_TOL       = P_HBC_DA_TOL       / @VehOcc_HBC@
+                veh_P_HBC_SR_TOL       = P_HBC_SR_TOL       / @VehOcc_2p_HBC@
+                veh_P_HBS_DriveSelf_Pr = P_HBS_DriveSelf_Pr / @VehOcc_HBSch@
+                veh_P_HBS_DriveSelf_Sc = P_HBS_DriveSelf_Sc / @VehOcc_HBSch@
+                veh_P_HBS_DropOff_Pr   = P_HBS_DropOff_Pr   / @VehOcc_HBSch@
+                veh_P_HBS_DropOff_Sc   = P_HBS_DropOff_Sc   / @VehOcc_HBSch@
+                veh_P_SchoolBus_Pr     = P_SchoolBus_Pr     / @Schoolbus_VO@
+                veh_P_SchoolBus_Sc     = P_SchoolBus_Sc     / @Schoolbus_VO@
+                
+                veh_A_HBW_DA_NON       = A_HBW_DA_NON       / @VehOcc_HBW@
+                veh_A_HBW_SR_NON       = A_HBW_SR_NON       / @VehOcc_2p_HBW@
+                veh_A_HBW_SR_HOV       = A_HBW_SR_HOV       / @VehOcc_2p_HBW@
+                veh_A_HBW_DA_TOL       = A_HBW_DA_TOL       / @VehOcc_HBW@
+                veh_A_HBW_SR_TOL       = A_HBW_SR_TOL       / @VehOcc_2p_HBW@
+                veh_A_HBO_DA_NON       = A_HBO_DA_NON       / @VehOcc_HBO@
+                veh_A_HBO_SR_NON       = A_HBO_SR_NON       / @VehOcc_2p_HBO@
+                veh_A_HBO_SR_HOV       = A_HBO_SR_HOV       / @VehOcc_2p_HBO@
+                veh_A_HBO_DA_TOL       = A_HBO_DA_TOL       / @VehOcc_HBO@
+                veh_A_HBO_SR_TOL       = A_HBO_SR_TOL       / @VehOcc_2p_HBO@
+                veh_A_NHB_DA_NON       = A_NHB_DA_NON       / @VehOcc_NHB@
+                veh_A_NHB_SR_NON       = A_NHB_SR_NON       / @VehOcc_2p_NHB@
+                veh_A_NHB_SR_HOV       = A_NHB_SR_HOV       / @VehOcc_2p_NHB@
+                veh_A_NHB_DA_TOL       = A_NHB_DA_TOL       / @VehOcc_NHB@
+                veh_A_NHB_SR_TOL       = A_NHB_SR_TOL       / @VehOcc_2p_NHB@
+                veh_A_HBC_DA_NON       = A_HBC_DA_NON       / @VehOcc_HBC@
+                veh_A_HBC_SR_NON       = A_HBC_SR_NON       / @VehOcc_2p_HBC@
+                veh_A_HBC_SR_HOV       = A_HBC_SR_HOV       / @VehOcc_2p_HBC@
+                veh_A_HBC_DA_TOL       = A_HBC_DA_TOL       / @VehOcc_HBC@
+                veh_A_HBC_SR_TOL       = A_HBC_SR_TOL       / @VehOcc_2p_HBC@
+                veh_A_HBS_DriveSelf_Pr = A_HBS_DriveSelf_Pr / @VehOcc_HBSch@
+                veh_A_HBS_DriveSelf_Sc = A_HBS_DriveSelf_Sc / @VehOcc_HBSch@
+                veh_A_HBS_DropOff_Pr   = A_HBS_DropOff_Pr   / @VehOcc_HBSch@
+                veh_A_HBS_DropOff_Sc   = A_HBS_DropOff_Sc   / @VehOcc_HBSch@
+                veh_A_SchoolBus_Pr     = A_SchoolBus_Pr     / @Schoolbus_VO@
+                veh_A_SchoolBus_Sc     = A_SchoolBus_Sc     / @Schoolbus_VO@
+                
+                
+                ;total vehicle level metrics and print them to output csv
+                Metric = 'VHD'
+                READ FILE = '@ParentDir@2_ModelScripts\5_AssignHwy\block\09_total_vehicles.block'
+                READ FILE = '@ParentDir@2_ModelScripts\5_AssignHwy\block\09_print_vehicles.block'
+                
+            endif  ;(@NumMetrics@=3)
+            
+            
+            ;;print timestamp -------------------------------------------------------------------------------------------
+            ;if (i=ZONES)
+            ;    
+            ;    ;calculate time
+            ;    paEndTime_@Metric@_@PeriodLp1@ = currenttime()
+            ;    paRunTime_@Metric@_@PeriodLp1@ = paEndTime_@Metric@_@PeriodLp1@ - @paStartTime@
+            ;    
+            ;    PRINT FILE='@ParentDir@@ScenarioDir@\_Log\_RunTime - @RID@ - TAZ-Based Metrics.csv',
+            ;        APPEND=T,
+            ;        CSV=T,
+            ;        LIST='metrics'        ,
+            ;             'pa'             ,
+            ;             '@Metric@'       ,
+            ;             '@PeriodLp1@'    ,
+            ;             @paStartTime@,
+            ;             paEndTime_@Metric@_@PeriodLp1@  ,
+            ;             paRunTime_@Metric@_@PeriodLp1@  
+            ;    
+            ;endif  ;(i=ZONES)
+            

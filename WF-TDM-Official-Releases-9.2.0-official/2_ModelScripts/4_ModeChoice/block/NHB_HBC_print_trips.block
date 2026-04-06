@@ -1,0 +1,52 @@
+;FILE: print_trips_NHB.block (by mode/segment)
+
+
+   print file='@ParentDir@@ScenarioDir@4_ModeChoice\@purp@_trips_@prd@.txt', form=14.0, list = 
+   'mode          ', ' Total trips ','\n','\n',
+   'motorized     ', trips_motor_region/100, '\n',
+   ' auto         ', trips_auto_region/100, '\n',
+   '  drive alone ', trips_alone_region/100, '\n',
+   '    alonen    ', trips_alonen_region/100, '\n',
+   '    alonet    ', trips_alonet_region/100, '\n',
+   '  shared ride ', trips_shared_region/100, '\n',
+   '   sr2        ', trips_sr2_region/100, '\n',
+   '     sr2nn    ', trips_sr2nn_region/100, '\n',
+   '     sr2nh    ', trips_sr2nh_region/100, '\n',
+   '     sr2th    ', trips_sr2th_region/100, '\n',
+   '   sr3        ', trips_sr3_region/100, '\n',
+   '     sr3nn    ', trips_sr3nn_region/100, '\n',
+   '     sr3nh    ', trips_sr3nh_region/100, '\n',
+   '     sr3th    ', trips_sr3th_region/100, '\n',
+   '\n',
+   ' transit      ', trips_transit_region/100, '\n',
+   '  local bus   ', trips_LCL_region/100, '\n',
+   '  core bus    ', trips_COR_region/100, '\n',
+   '  brt         ', trips_BRT_region/100, '\n',
+   '  express bus ', trips_EXP_region/100, '\n',
+   '  light rail  ', trips_LRT_region/100, '\n',
+   '  comm rail   ', trips_CRT_region/100, '\n',
+   '\n'
+          
+   
+   print file='@ParentDir@@ScenarioDir@4_ModeChoice\@purp@_trips_@prd@.txt', form=14.0, list = 
+   '  walk-acc    ', trips_walkacc_region/100, '\n',
+   '   walk-LOC   ', trips_wLCL_region/100, '\n',
+   '   walk-cor   ', trips_wCOR_region/100, '\n',
+   '   walk-brt   ', trips_wBRT_region/100, '\n',
+   '   walk-exp   ', trips_wEXP_region/100, '\n',
+   '   walk-LRT   ', trips_wLRT_region/100, '\n',
+   '   walk-CRT   ', trips_wCRT_region/100, '\n',
+   '\n',
+   '  drive-acc   ', trips_driveacc_region/100, '\n',
+   '   drive-LOC  ', trips_dLCL_region/100, '\n', 
+   '   drive-cor  ', trips_dCOR_region/100, '\n',   
+   '   drive-brt  ', trips_dBRT_region/100, '\n',   
+   '   drive-exp  ', trips_dEXP_region/100, '\n',
+   '   drive-LRT  ', trips_dLRT_region/100, '\n',   
+   '   drive-CRT  ', trips_dCRT_region/100, '\n',    
+   '\n',
+   'non-motor     ', trips_nonmotor_region/100, '\n',
+   '   walk       ', trips_walk_region/100, '\n',
+   '   bike       ', trips_bike_region/100   
+   
+ 

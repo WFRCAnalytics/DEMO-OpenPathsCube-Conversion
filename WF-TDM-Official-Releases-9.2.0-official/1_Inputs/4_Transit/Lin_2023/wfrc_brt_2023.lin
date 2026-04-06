@@ -1,0 +1,14 @@
+;;<<PT>><<LINE>>;;
+;*****************************************************************************************************************
+;Modes: Local Bus=4, Core Bus=5, Express Bus=6, Light Rail Transit=7, Bus Rapid Transit=9, Commuter Rail Transit=8
+;*****************************************************************************************************************
+;This file represents wasatch front bus rapid transit service - 2022 from UTA compiled on 2023 road network
+;Reviewed by UTA, MAG, & WFRC in September of 2022 to include the August 2022 change day as part of the Regional Transportation Plan 2023-2050 update
+;*****************************************************************************************************************
+LINE NAME="O603", MODE=9, ONEWAY=F, HEADWAY[1]=15, HEADWAY[2]=15,
+     COLOR=7, N=10046, -28812, -28808, -28806, -28796, 28790, 28772,
+     -28777, -28788, 28795, -28805, -28813, 28823, -28835, -28845,
+     TF=1.2, N=-28871, 28899, -28920, 28935, 28966, 28988, -28976,
+     28963, 28951, -28932, -28927, 28918, 28894, TF=1, N=28877,
+     DELAY=1, N=28841, -28779, -28797, 28820, -28797, -28779, 28727,
+     28678, DELAY=1, N=28651, TF=1, N=28631, -28619, 28595

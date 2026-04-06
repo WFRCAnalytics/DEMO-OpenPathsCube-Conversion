@@ -3,9 +3,11 @@
 **Model:** Wasatch Front TDM (WF-TDM) v9.2.0-official  
 **Migration:** CUBE 6.5 → OpenPaths CUBE  
 **Date:** 2025  
-**Scope:** Two compatibility issues identified and resolved:  
+**Scope:** Four compatibility issues identified and resolved:  
 1. CUBE Cluster syntax (deprecated in OpenPaths CUBE)  
-2. ESRI Shapefile I/O (removed from OpenPaths CUBE Voyager)
+2. ESRI Shapefile I/O (removed from OpenPaths CUBE Voyager)  
+3. `Cluster.EXE` invocations in scenario control files (executable no longer exists)  
+4. UTF-8 BOM encoding on Voyager script files (causes fatal PILOT parse error)
 
 Reference documentation:  
 - Cluster syntax: https://docs.bentley.com/LiveContent/web/OpenPaths-v2025.1/Help/en/topics/2867622/GUID-F670065E-ACE6-477D-985A-7B3DAC77BA3B.html  
@@ -246,6 +248,95 @@ The original code read shapefile geometry that included shape points (intermedia
 Downstream impacts:
 - **`DISTANCE` field** (`gdf_Master_link.geometry.length / 1609.34`): Will use straight-line distance, which is slightly shorter than the true road distance. Error is typically 1–5% depending on road curvature. Links are short enough that this is an acceptable approximation for TAZ spatial assignment purposes. Skim-based distances are unaffected (those come from the assignment network, not this field).
 - **Link midpoint calculation** (`gdf_Master_link.geometry.centroid`): Centroid of a straight-line segment is the midpoint between A and B nodes. This is used for TAZID spatial join and is functionally equivalent to the shape-point centroid for most links.
+
+---
+
+## TOPIC 3 — Cluster.EXE Invocations in Scenario Control Files
+
+### Background
+
+CUBE 6.5 required launching a separate `Cluster.EXE` process to manage distributed worker nodes. OpenPaths CUBE handles parallelism natively and `Cluster.EXE` no longer exists. Calling it causes an immediate fatal crash before `ONRUNERRORGOTO` is set, so no error handler can catch it.
+
+### Files Modified
+
+#### `Scenarios\by_test\1ControlCenter - BY_2019.block`
+
+The `START` call (line ~173) fires during the PILOT pre-processing phase, before any error handler is active:
+
+**Old:**
+```
+*(Cluster.EXE  ClusterNodeID 2-16 START EXIT)
+```
+**New:** Commented out:
+```
+;*(Cluster.EXE  ClusterNodeID 2-16 START EXIT)   ;NOT USED in OpenPaths CUBE
+```
+
+The `DISTRIBUTE MULTISTEP=T INTRASTEP=T` line directly above it is preserved — OpenPaths CUBE still uses this global flag to enable distributed processing.
+
+> **Note:** All other scenario block files (`1ControlCenter - *.block`) contain the same `Cluster.EXE START` line and must be updated before those scenarios are run.
+
+#### `Scenarios\by_test\_HailMary.s`
+
+Two `CLOSE EXIT` calls at `:ENDMODEL` and `:ONERROR` were commented out:
+
+**Old:**
+```
+if (UseCubeCluster=1)
+    *(Cluster.EXE  ClusterNodeID 2-100 CLOSE EXIT)
+endif
+```
+**New:** Entire block commented out at both locations.
+
+---
+
+## TOPIC 4 — UTF-8 BOM Encoding on Voyager Script Files
+
+### Background
+
+PowerShell 5.1 writes files as UTF-8 **with BOM** (byte order mark: `0xEF 0xBB 0xBF`) by default when using `Set-Content` or `-replace` pipeline operations. Voyager's PILOT preprocessor does not recognize the BOM and raises a fatal `F(017): is invalid control type` error, preventing the model from running entirely.
+
+This was introduced during the global `DistributeINTRASTEP` find-and-replace step of the migration (Topic 1), which used PowerShell to rewrite the affected files.
+
+### Fix
+
+The BOM (first 3 bytes) was stripped from all affected files using PowerShell's `[System.IO.File]::ReadAllBytes` / `WriteAllBytes` to perform a byte-level rewrite without re-encoding.
+
+### Files Fixed (19 total)
+
+| File | Path |
+|------|------|
+| `2_FFSkim.s` | `0_InputProcessing/c_NetworkProcessing/` |
+| `1_Distribution.s` | `3_Distribute/` |
+| `4_TLF_Distrib_PA.s` | `3_Distribute/` |
+| `02_Segmnt_TransitAccessMarkets.s` | `4_ModeChoice/` |
+| `03_Skim_auto.s` | `4_ModeChoice/` |
+| `05_Skim_Tran.s` | `4_ModeChoice/` |
+| `06_HBW_logsums.s` | `4_ModeChoice/` |
+| `07_HBW_dest_choice.s` | `4_ModeChoice/` |
+| `08_TripTablesByPeriod.s` | `4_ModeChoice/` |
+| `09_Segmnt_PA_HBbyMC.s` | `4_ModeChoice/` |
+| `10_ConvertSomeXI2HBW.s` | `4_ModeChoice/` |
+| `11_MC_HBW_HBO_NHB_HBC.s` | `4_ModeChoice/` |
+| `12_EstimateHBSchModeShare.s` | `4_ModeChoice/` |
+| `16_SharesReport.s` | `4_ModeChoice/` |
+| `TAZ_Based_Metrics - create temp matrices.block` | `5_AssignHwy/block/` |
+| `01_Convert_PA_to_OD.s` | `5_AssignHwy/` |
+| `02_Assign_AM_MD_PM_EV.s` | `5_AssignHwy/` |
+| `07_PerformFinalNetSkim.s` | `5_AssignHwy/` |
+| `1_VMTproducedByTAZ.s` | `7_PostProcessing/` |
+
+### Prevention
+
+When making future edits to Voyager `.s` or `.block` files via PowerShell, use UTF-8 **without BOM**:
+```powershell
+# Safe: byte-level replacement (no re-encoding)
+[System.IO.File]::WriteAllBytes($path, $newBytes)
+
+# Safe: explicit UTF-8 no-BOM encoding
+$content | Set-Content $path -Encoding UTF8  # PowerShell 7+
+[System.IO.File]::WriteAllText($path, $content, [System.Text.UTF8Encoding]::new($false))
+```
 
 ---
 

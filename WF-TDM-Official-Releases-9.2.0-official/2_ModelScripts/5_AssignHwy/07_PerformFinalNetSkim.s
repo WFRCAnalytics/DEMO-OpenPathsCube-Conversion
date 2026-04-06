@@ -185,7 +185,7 @@ RUN PGM=HIGHWAY  MSG='Final Assign: Perform Skim of Final Loaded Network'
     
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     

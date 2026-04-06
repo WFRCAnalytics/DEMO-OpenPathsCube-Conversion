@@ -46,7 +46,7 @@ FILEO MATO[1] = '@ParentDir@@ScenarioDir@Temp\3_Distribute\tmp_TLF Idx - Time.mt
     
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     
@@ -152,7 +152,7 @@ FILEO MATO[1] = '@ParentDir@@ScenarioDir@Temp\3_Distribute\tmp_TLF Idx - Dist.mt
     
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     
@@ -258,7 +258,7 @@ FILEO MATO[1] = '@ParentDir@@ScenarioDir@Temp\3_Distribute\tmp_TLF Idx - Cost.mt
     
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     
@@ -339,7 +339,7 @@ ENDRUN
 ;PRINT TLF FILES =============================================================================================
 
 ;Cluster: distrubute NETWORK call onto processor 2
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=2
+DistributeMultiStep Alias='TLF_Proc2'
     
     ;time ----------------------------------------------------------------------------------------------------
     RUN PGM=MATRIX  MSG='Distribution 3: TLF Summary - Time'
@@ -583,7 +583,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: distrubute NETWORK call onto processor 3
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=3
+DistributeMultiStep Alias='TLF_Proc3'
     
     ;dist ----------------------------------------------------------------------------------------------------
     RUN PGM=MATRIX  MSG='Distribution 3: TLF Summary - Dist'
@@ -1062,7 +1062,7 @@ EndDistributeMULTISTEP
     ENDRUN
     
 ;Cluster: bring together all distributed steps before continuing
-WAIT4FILES, FILES="ClusterNodeID2.Script.End", FILES="ClusterNodeID3.Script.End"
+BARRIER IDLIST='TLF_Proc2', 'TLF_Proc3' CheckReturnCode=T
 
 
 

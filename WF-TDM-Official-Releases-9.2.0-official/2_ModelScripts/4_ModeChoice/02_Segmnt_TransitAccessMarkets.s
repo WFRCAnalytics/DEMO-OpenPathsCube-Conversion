@@ -24,7 +24,7 @@ RUN PGM=MATRIX  MSG='Mode Choice 2: Calculate Transit Walk & Drive Accessibility
   
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ZONEMSG = @ZoneMsgRate@  ;reduces print messages in TPP DOS. (i.e. runs faster).

@@ -63,7 +63,7 @@ RUN PGM=MATRIX   MSG='Collapse the tables by vechile occupancy'
     ZONEMSG = 100
         
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
        mw[1] = mi.1.IX
 
@@ -180,7 +180,7 @@ RUN PGM=MATRIX   MSG='Convert PA tables to OD by period*purpose*PA_ODdirection'
              IXT
 
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ;define matrix parameters

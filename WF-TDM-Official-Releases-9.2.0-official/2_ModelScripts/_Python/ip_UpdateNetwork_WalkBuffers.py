@@ -157,8 +157,8 @@ try:
     in_TAZ_shp  = GlobalVars.TAZ_shp
     in_Toll_shp = GlobalVars.TollZoneID_shp
     TollZnField = GlobalVars.TollZoneField
-    in_Link_shp = GlobalVars.Master_Link_shp
-    in_Node_shp = GlobalVars.Master_Node_shp
+    in_Link_dbf = GlobalVars.Master_Link_dbf
+    in_Node_dbf = GlobalVars.Master_Node_dbf
     in_Tran_dbf = GlobalVars.Transit_dbf
     in_Segs_shp = GlobalVars.Segment_dbf.replace(".dbf", ".shp")
     
@@ -229,8 +229,8 @@ try:
     print("             TollZoneID_shp   = ParentDir   + '1_Inputs\\3_Highway\\"  +  in_Toll_shp  +  "'")
     print("                 (TollZoneField = '"  +  TollZnField  +  "')")
     print("")
-    print("             Master_Link_shp  = ScenarioDir + 'Temp\\0_InputProcessing\\"  +  in_Link_shp  +  "'")
-    print("             Master_Node_shp  = ScenarioDir + 'Temp\\0_InputProcessing\\"  +  in_Node_shp  +  "'")
+    print("             Master_Link_dbf  = ScenarioDir + 'Temp\\0_InputProcessing\\"  +  in_Link_dbf  +  "'")
+    print("             Master_Node_dbf  = ScenarioDir + 'Temp\\0_InputProcessing\\"  +  in_Node_dbf  +  "'")
     print("             Transit_dbf      = ScenarioDir + 'Temp\\0_InputProcessing\\"  +  in_Tran_dbf  +  "'")
     print("")
     print("    output files")
@@ -269,8 +269,8 @@ try:
     logFile.write("             TollZoneID_shp   = ParentDir   + '1_Inputs\\3_Highway\\"  +  in_Toll_shp  +  "'\n")
     logFile.write("                 (TollZoneField = '"  +  TollZnField  +  "')\n")
     logFile.write("\n")
-    logFile.write("             Master_Link_shp  = ScenarioDir + 'Temp\\0_InputProcessing\\"  +  in_Link_shp  +  "'\n")
-    logFile.write("             Master_Node_shp  = ScenarioDir + 'Temp\\0_InputProcessing\\"  +  in_Node_shp  +  "'\n")
+    logFile.write("             Master_Link_dbf  = ScenarioDir + 'Temp\\0_InputProcessing\\"  +  in_Link_dbf  +  "'\n")
+    logFile.write("             Master_Node_dbf  = ScenarioDir + 'Temp\\0_InputProcessing\\"  +  in_Node_dbf  +  "'\n")
     logFile.write("             Transit_dbf      = ScenarioDir + 'Temp\\0_InputProcessing\\"  +  in_Tran_dbf  +  "'\n")
     logFile.write("\n")
     logFile.write("    output files\n")
@@ -305,8 +305,8 @@ try:
     # create path to input file global variables 
     path_in_TAZ_shp  = os.path.join(ParentDir, "1_Inputs\\1_TAZ", in_TAZ_shp)
     path_in_Toll_shp = os.path.join(ParentDir, "1_Inputs\\3_Highway", in_Toll_shp)
-    path_in_Link_shp = os.path.join(ParentDir, ScenarioDir, "Temp\\0_InputProcessing", in_Link_shp)
-    path_in_Node_shp = os.path.join(ParentDir, ScenarioDir, "Temp\\0_InputProcessing", in_Node_shp)
+    path_in_Link_dbf = os.path.join(ParentDir, ScenarioDir, "Temp\\0_InputProcessing", in_Link_dbf)
+    path_in_Node_dbf = os.path.join(ParentDir, ScenarioDir, "Temp\\0_InputProcessing", in_Node_dbf)
     path_in_Tran_dbf = os.path.join(ParentDir, ScenarioDir, "Temp\\0_InputProcessing", in_Tran_dbf)
     path_in_Segs_shp = os.path.join(ParentDir, "1_Inputs\\6_Segment", in_Segs_shp)
     
@@ -323,14 +323,28 @@ try:
     gdf_Toll = gpd.read_file(path_in_Toll_shp)
     
     
-    print("        reading '"  +  in_Link_shp  +  "' into GeoDataFrame")
-    logFile.write("        reading '"  +  in_Link_shp  +  "' into GeoDataFrame\n")
-    gdf_Master_link = gpd.read_file(path_in_Link_shp)
-    
-    
-    print("        reading '"  +  in_Node_shp  +  "' into GeoDataFrame")
-    logFile.write("        reading '"  +  in_Node_shp  +  "' into GeoDataFrame\n")
-    gdf_Master_node = gpd.read_file(path_in_Node_shp)
+    print("        reading '"  +  in_Node_dbf  +  "' into GeoDataFrame")
+    logFile.write("        reading '"  +  in_Node_dbf  +  "' into GeoDataFrame\n")
+    InputDBF_MasterNode = DBF(path_in_Node_dbf)
+    df_Master_node = pd.DataFrame(iter(InputDBF_MasterNode))
+    gdf_Master_node = gpd.GeoDataFrame(
+        df_Master_node,
+        geometry=gpd.points_from_xy(df_Master_node['X'], df_Master_node['Y']),
+        crs=gdf_TAZ.crs
+    )
+
+
+    print("        reading '"  +  in_Link_dbf  +  "' into GeoDataFrame")
+    logFile.write("        reading '"  +  in_Link_dbf  +  "' into GeoDataFrame\n")
+    InputDBF_MasterLink = DBF(path_in_Link_dbf)
+    df_Master_link = pd.DataFrame(iter(InputDBF_MasterLink))
+    df_A = df_Master_node[['N', 'X', 'Y']].rename(columns={'N': 'A', 'X': 'AX', 'Y': 'AY'})
+    df_B = df_Master_node[['N', 'X', 'Y']].rename(columns={'N': 'B', 'X': 'BX', 'Y': 'BY'})
+    df_Master_link = df_Master_link.merge(df_A, on='A', how='left')
+    df_Master_link = df_Master_link.merge(df_B, on='B', how='left')
+    from shapely.geometry import LineString
+    geoms = [LineString([(row.AX, row.AY), (row.BX, row.BY)]) for _, row in df_Master_link.iterrows()]
+    gdf_Master_link = gpd.GeoDataFrame(df_Master_link, geometry=geoms, crs=gdf_TAZ.crs)
     
     
     print("        reading '"  +  in_Tran_dbf  +  "' into DataFrame")

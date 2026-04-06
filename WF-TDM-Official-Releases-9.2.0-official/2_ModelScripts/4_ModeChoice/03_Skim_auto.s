@@ -156,7 +156,7 @@ FILEO  MATO[1] = '@ParentDir@@ScenarioDir@4_ModeChoice\1a_Skims\skm_auto_ff.mtx'
         
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ZONES   = @UsedZones@
@@ -1041,7 +1041,7 @@ FILEO  MATO[1] = '@ParentDir@@ScenarioDir@4_ModeChoice\1a_Skims\skm_auto_Pk.mtx'
 
 
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ZONEMSG = 10

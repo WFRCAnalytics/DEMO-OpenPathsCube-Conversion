@@ -95,7 +95,7 @@ ENDRUN
 
 
 ;Cluster: distrubute MATRIX call onto processor 2
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=2
+DistributeMultiStep Alias='SumDistr_Proc2'
 
     ;summarize final PURPOSE Trip Table to LARGE Districts
     RUN PGM=MATRIX   MSG='Mode Choice 18: summarize post destinaion choice trip table to DISTLRG districts'
@@ -237,7 +237,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: distrubute MATRIX call onto processor 3
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=3
+DistributeMultiStep Alias='SumDistr_Proc3'
 
     ;summarize final MODE SHARES Trip Tables to LARGE Districts
     RUN PGM=MATRIX   MSG='Mode Choice 18: summarize mode choice trip table to DISTLRG districts'
@@ -478,7 +478,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: distrubute MATRIX call onto processor 4
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=4
+DistributeMultiStep Alias='SumDistr_Proc4'
 
     ;summarize final MODE SHARES Trip Tables to MEDIUM Districts
     RUN PGM=MATRIX   MSG='Mode Choice 18: summarize mode choice trip table to DISTMED districts'
@@ -719,7 +719,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: distrubute MATRIX call onto processor 5
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=5
+DistributeMultiStep Alias='SumDistr_Proc5'
 
     ;summarize final MODE SHARES Trip Tables to SMALL Districts
     RUN PGM=MATRIX   MSG='Mode Choice 18: summarize mode choice trip table to DISTSML districts'
@@ -1821,11 +1821,7 @@ EndDistributeMULTISTEP
     ENDRUN
 
 ;Cluster: bring together all distributed steps before continuing
-WAIT4FILES, 
-    FILES="ClusterNodeID2.Script.End", 
-    FILES="ClusterNodeID3.Script.End", 
-    FILES="ClusterNodeID4.Script.End",
-    CheckReturnCode=T
+BARRIER IDLIST='SumDistr_Proc2', 'SumDistr_Proc3', 'SumDistr_Proc4', 'SumDistr_Proc5' CheckReturnCode=T
 
 
 

@@ -12,7 +12,7 @@ ScriptStartTime = currenttime()
 
 
 ;Cluster: distrubute MATRIX call onto processor 2
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=2
+DistributeMultiStep Alias='Shares_Proc2'
 
     RUN PGM=MATRIX   MSG='Mode Choice 16: compute mode shares - peak'
       FILEI MATI[01] = '@ParentDir@@ScenarioDir@4_ModeChoice\2_DetailedTripMatrices\HBW_trips_allsegs_Pk.mtx'
@@ -1425,7 +1425,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: distrubute MATRIX call onto processor 3
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=3
+DistributeMultiStep Alias='Shares_Proc3'
 
     RUN PGM=MATRIX   MSG='Mode Choice 16: compute mode shares - off peak'
       FILEI MATI[01] = '@ParentDir@@ScenarioDir@4_ModeChoice\2_DetailedTripMatrices\HBW_trips_allsegs_Ok.mtx'
@@ -2840,7 +2840,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: distrubute MATRIX call onto processor 4
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=4
+DistributeMultiStep Alias='Shares_Proc4'
 
     RUN PGM=MATRIX   MSG='Mode Choice 16: compute mode shares - daily'
       FILEI MATI[01] = '@ParentDir@@ScenarioDir@4_ModeChoice\2_DetailedTripMatrices\HBW_trips_allsegs_pkok.mtx'
@@ -4255,7 +4255,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: distrubute MATRIX call onto processor 5
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=5
+DistributeMultiStep Alias='Shares_Proc5'
     
     ;calculate trips <=cutoff
     RUN PGM=MATRIX   MSG='Mode Choice 16: compute mode shares - summary'
@@ -4337,7 +4337,7 @@ DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=5
         
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     
@@ -6119,12 +6119,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: bring together all distributed steps before continuing
-WAIT4FILES, 
-    FILES="ClusterNodeID2.Script.End", 
-    FILES="ClusterNodeID3.Script.End", 
-    FILES="ClusterNodeID4.Script.End", 
-    FILES="ClusterNodeID5.Script.End", 
-    CheckReturnCode=T
+BARRIER IDLIST='Shares_Proc2', 'Shares_Proc3', 'Shares_Proc4', 'Shares_Proc5' CheckReturnCode=T
 
 
 

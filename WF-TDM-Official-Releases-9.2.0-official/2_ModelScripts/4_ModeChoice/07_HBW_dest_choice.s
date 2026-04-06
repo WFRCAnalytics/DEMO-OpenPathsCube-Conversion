@@ -28,7 +28,7 @@ RUN PGM=MATRIX   MSG='Mode Choice 7: calculate productions by market segment - H
 
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
 
@@ -131,7 +131,7 @@ RUN PGM=MATRIX   MSG='Mode Choice 7: process dest choice walk skims'
   
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
   ZONEMSG = @ZoneMsgRate@
@@ -245,7 +245,7 @@ RUN PGM=MATRIX   MSG='Mode Choice 7: calculate utilities - @veh@ - @inc@ - itera
 
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
 
@@ -409,7 +409,7 @@ RUN PGM=MATRIX   MSG='Mode Choice 7: calculate trips - @veh@ - @inc@ - iteration
 
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     MW[1] = mi.1.exp_util
@@ -625,7 +625,7 @@ RUN PGM=MATRIX   MSG='Mode Choice 7: copy and rename HBW-Veh-Inc matrices from f
     
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ;Total HBW_0veh_lo
@@ -798,7 +798,7 @@ FILEO MATO[1] = '@ParentDir@@ScenarioDir@Temp\4_ModeChoice\pa_AllPurp.2.DestChoi
     
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ZONES   = @Usedzones@

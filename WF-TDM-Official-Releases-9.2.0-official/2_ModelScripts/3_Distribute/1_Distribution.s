@@ -40,7 +40,7 @@ FILEO MATO[1]='@ParentDir@@ScenarioDir@Temp\3_Distribute\K_FACTORS.mtx',
     
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     
@@ -520,7 +520,7 @@ LOOP n=1, 10
         
         
         ;Cluster: distribute intrastep processing
-        DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+        DistributeIntrastep MaxProcesses=@CoresAvailable@
         
         
         
@@ -1247,7 +1247,7 @@ LOOP n=1, 10
         
         
         ;Cluster: distribute intrastep processing
-        DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+        DistributeIntrastep MaxProcesses=@CoresAvailable@
         
         
         
@@ -1655,7 +1655,7 @@ LOOP n=1, 10
             
             
             ;Cluster: distribute intrastep processing
-            DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+            DistributeIntrastep MaxProcesses=@CoresAvailable@
             
             
             
@@ -1711,7 +1711,7 @@ LOOP n=1, 10
     
     
     ;Cluster: distribute MATRIX call onto processor 2
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=2
+    DistributeMultiStep Alias='Distrib_Proc2'
     
         ;Short Haul LT, MD & HV truck distribution (loosely constrained)
         RUN PGM=DISTRIBUTION  MSG='Distribution: Feedback Loop @n@ - Step 2: Distribute II LT, MD & HV Truck'
@@ -1797,7 +1797,7 @@ LOOP n=1, 10
     
     
     ;Cluster: distribute MATRIX call onto processor 3
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=3
+    DistributeMultiStep Alias='Distrib_Proc3'
         
         ;HBO, NHB distribution (loosely constrained)
         RUN PGM=DISTRIBUTION  MSG='Distribution: Feedback Loop @n@ - Step 3: Distribute HBO, HBS and NHB'
@@ -1907,7 +1907,7 @@ LOOP n=1, 10
     
     
     ;Cluster: distribute MATRIX call onto processor 4
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=4
+    DistributeMultiStep Alias='Distrib_Proc4'
     
         ;IX and XI distribution (singly constrained)
         RUN PGM=DISTRIBUTION  MSG='Distribution: Feedback Loop @n@ - Step 4: Distribute IX and XI Person-LT, MD, and HV'
@@ -2086,11 +2086,7 @@ LOOP n=1, 10
         ENDRUN
     
     ;Cluster: bring together all distributed steps before continuing
-    WAIT4FILES, 
-        FILES="ClusterNodeID2.Script.End", 
-              "ClusterNodeID3.Script.End", 
-              "ClusterNodeID4.Script.End", 
-        CheckReturnCode=T
+    BARRIER IDLIST='Distrib_Proc2', 'Distrib_Proc3', 'Distrib_Proc4' CheckReturnCode=T
     
     
     
@@ -2174,7 +2170,7 @@ LOOP n=1, 10
                      XX_HV    
             
             ;Cluster: distribute intrastep processing
-            DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+            DistributeIntrastep MaxProcesses=@CoresAvailable@
             
             
             
@@ -2364,7 +2360,7 @@ LOOP n=1, 10
             
             
             ;can't use Cluster because of LOG statement
-            DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+            DistributeIntrastep MaxProcesses=@CoresAvailable@
             
             
             
@@ -3427,7 +3423,7 @@ LOOP n=1, 10
         
         
         ;Cluster: distribute intrastep processing
-        DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+        DistributeIntrastep MaxProcesses=@CoresAvailable@
         
         
         
@@ -4042,7 +4038,7 @@ LOOP n=1, 10
         
         
         ;Cluster: distribute intrastep processing
-        DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+        DistributeIntrastep MaxProcesses=@CoresAvailable@
         
         
         
@@ -4475,7 +4471,7 @@ LOOP n=1, 10
                     lw.TPen
              
         ;Cluster: distribute intrastep processing
-        DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+        DistributeIntrastep MaxProcesses=@CoresAvailable@
         
         
         ;parameters
@@ -4537,7 +4533,7 @@ LOOP n=1, 10
         
         
         ;Cluster: distribute intrastep processing
-        DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+        DistributeIntrastep MaxProcesses=@CoresAvailable@
         
     
         ;parameters
@@ -4599,7 +4595,7 @@ LOOP n=1, 10
         
         
         ;Cluster: distribute intrastep processing
-        DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+        DistributeIntrastep MaxProcesses=@CoresAvailable@
         
         
         ;parameters
@@ -4661,7 +4657,7 @@ LOOP n=1, 10
         
         
         ;Cluster: distribute intrastep processing
-        DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+        DistributeIntrastep MaxProcesses=@CoresAvailable@
         
     
         ;parameters
@@ -6836,7 +6832,7 @@ SubScriptStartTime_FN = currenttime()
 
 
 ;Cluster: distribute NETWORK call onto processor 2
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=2
+DistributeMultiStep Alias='FinNet_Proc2'
     
     ;copy distribution network from temp folder
     RUN PGM=NETWORK  MSG='Distribution: Copy Distribution Network from Temp Folder'
@@ -7806,7 +7802,7 @@ EndDistributeMULTISTEP
     ENDRUN
 
 ;Cluster: bring together all distributed steps before continuing
-WAIT4FILES, FILES="ClusterNodeID2.Script.End"
+BARRIER IDLIST='FinNet_Proc2' CheckReturnCode=T
 
 
 
@@ -7875,7 +7871,7 @@ LOOP _LOS=1, 2
         
         
         ;Cluster: distribute intrastep processing
-        DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+        DistributeIntrastep MaxProcesses=@CoresAvailable@
         
         
         

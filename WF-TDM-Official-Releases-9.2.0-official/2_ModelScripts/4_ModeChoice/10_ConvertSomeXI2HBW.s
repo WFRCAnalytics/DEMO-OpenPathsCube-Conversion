@@ -92,7 +92,7 @@ RUN PGM=MATRIX   MSG='Mode Choice 10: convert some XI trips to HBW trips'
     
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     

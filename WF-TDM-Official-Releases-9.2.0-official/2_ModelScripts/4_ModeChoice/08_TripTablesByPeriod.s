@@ -45,7 +45,7 @@ FILEO MATO[4]='@ParentDir@@ScenarioDir@Temp\4_ModeChoice\pa_NHB_ByPeriod.mtx',
 
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     

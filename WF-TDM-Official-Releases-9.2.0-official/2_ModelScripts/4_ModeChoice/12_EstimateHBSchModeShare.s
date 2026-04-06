@@ -63,7 +63,7 @@ RUN PGM=MATRIX  MSG='Mode Choice 15: calculate HBSch mode share'
     
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
         
     
     

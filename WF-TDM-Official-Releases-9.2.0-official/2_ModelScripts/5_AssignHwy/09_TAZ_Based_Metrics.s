@@ -140,7 +140,7 @@ SkimMatIdx = 11
 NumMetrics = 1
     ;AM --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=2
+    DistributeMultiStep Alias='TAZMet_PMT_AM'
         
         PeriodLp1     = 'AM'
         PeriodHr      = 'am3hr'
@@ -157,7 +157,7 @@ NumMetrics = 1
     
     ;MD --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=3
+    DistributeMultiStep Alias='TAZMet_PMT_MD'
         
         PeriodLp1     = 'MD'
         PeriodHr      = 'md6hr'
@@ -174,7 +174,7 @@ NumMetrics = 1
     
     ;PM --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=4
+    DistributeMultiStep Alias='TAZMet_PMT_PM'
         
         PeriodLp1     = 'PM'
         PeriodHr      = 'pm3hr'
@@ -191,7 +191,7 @@ NumMetrics = 1
     
     ;EV --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=5
+    DistributeMultiStep Alias='TAZMet_PMT_EV'
         
         PeriodLp1     = 'EV'
         PeriodHr      = 'ev12hr'
@@ -214,7 +214,7 @@ NumMetrics = 2
 
     ;AM --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=6
+    DistributeMultiStep Alias='TAZMet_PHT_AM'
         
         PeriodLp1     = 'AM'
         PeriodHr      = 'am3hr'
@@ -231,7 +231,7 @@ NumMetrics = 2
     
     ;MD --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=7
+    DistributeMultiStep Alias='TAZMet_PHT_MD'
         
         PeriodLp1     = 'MD'
         PeriodHr      = 'md6hr'
@@ -248,7 +248,7 @@ NumMetrics = 2
     
     ;PM --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=8
+    DistributeMultiStep Alias='TAZMet_PHT_PM'
         
         PeriodLp1     = 'PM'
         PeriodHr      = 'pm3hr'
@@ -265,7 +265,7 @@ NumMetrics = 2
     
     ;EV --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=9
+    DistributeMultiStep Alias='TAZMet_PHT_EV'
         
         PeriodLp1     = 'EV'
         PeriodHr      = 'ev12hr'
@@ -288,7 +288,7 @@ NumMetrics = 3
 
     ;AM --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=10
+    DistributeMultiStep Alias='TAZMet_PHTFF_AM'
         
         PeriodLp1     = 'AM'
         PeriodHr      = 'am3hr'
@@ -305,7 +305,7 @@ NumMetrics = 3
     
     ;MD --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=11
+    DistributeMultiStep Alias='TAZMet_PHTFF_MD'
         
         PeriodLp1     = 'MD'
         PeriodHr      = 'md6hr'
@@ -322,7 +322,7 @@ NumMetrics = 3
     
     ;PM --------------------------------------------------------------
     ;assign Cluster multi-step processing group
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=12
+    DistributeMultiStep Alias='TAZMet_PHTFF_PM'
         
         PeriodLp1     = 'PM'
         PeriodHr      = 'pm3hr'
@@ -352,19 +352,9 @@ NumMetrics = 3
         
 
 ;Cluster: wait for all multi-step processing to finish before continuing
-WAIT4FILES, 
-    FILES="ClusterNodeID2.Script.End" ,
-    FILES="ClusterNodeID3.Script.End" ,
-    FILES="ClusterNodeID4.Script.End" ,
-    FILES="ClusterNodeID5.Script.End" ,
-    FILES="ClusterNodeID6.Script.End" ,
-    FILES="ClusterNodeID7.Script.End" ,
-    FILES="ClusterNodeID8.Script.End" ,
-    FILES="ClusterNodeID9.Script.End" ,
-    FILES="ClusterNodeID10.Script.End",
-    FILES="ClusterNodeID11.Script.End",
-    FILES="ClusterNodeID12.Script.End",
-    CheckReturnCode=T
+BARRIER IDLIST='TAZMet_PMT_AM', 'TAZMet_PMT_MD', 'TAZMet_PMT_PM', 'TAZMet_PMT_EV',
+         'TAZMet_PHT_AM', 'TAZMet_PHT_MD', 'TAZMet_PHT_PM', 'TAZMet_PHT_EV',
+         'TAZMet_PHTFF_AM', 'TAZMet_PHTFF_MD', 'TAZMet_PHTFF_PM' CheckReturnCode=T
  
 
 ;create final metric file ----------------------------------------------------------------------------------------------

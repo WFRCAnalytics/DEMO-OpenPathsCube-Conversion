@@ -19,7 +19,7 @@ RUN PGM=HIGHWAY  MSG='Network Processing 2: free flow skims'
     FILEO  MATO     = '@ParentDir@@ScenarioDir@0_InputProcessing\skm_FF.mtx', mo=1-2, name=time, distance
         
   ;Cluster: distribute intrastep processing
-  DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+  DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ;set HIGHWAY parameters

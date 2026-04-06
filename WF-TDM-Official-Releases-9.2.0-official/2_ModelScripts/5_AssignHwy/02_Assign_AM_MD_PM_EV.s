@@ -296,7 +296,7 @@ RUN PGM=HIGHWAY   MSG='Final Assign: AM period trip assignment'
                 Ext_HV    
           
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ;parameters
@@ -447,7 +447,7 @@ RUN PGM=HIGHWAY   MSG='Final Assign: MD period trip assignment'
                 Ext_HV    
 
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ;parameters
@@ -597,7 +597,7 @@ RUN PGM=HIGHWAY   MSG='Final Assign: PM period trip assignment'
                 Ext_HV    
 
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ;parameters
@@ -748,7 +748,7 @@ RUN PGM=HIGHWAY   MSG='Final Assign: EV period trip assignment'
           
 
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
     ;parameters
@@ -830,7 +830,7 @@ if (RunPM1hr=1)
         
         
         ;Cluster: distribute intrastep processing
-        DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+        DistributeIntrastep MaxProcesses=@CoresAvailable@
         
         
         ;parameters

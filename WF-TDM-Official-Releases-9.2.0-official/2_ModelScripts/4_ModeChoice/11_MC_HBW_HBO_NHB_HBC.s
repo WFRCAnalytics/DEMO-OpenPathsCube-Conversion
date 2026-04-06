@@ -22,7 +22,7 @@ ScriptStartTime = currenttime()
 
 
 ;Cluster: distrubute MATRIX call onto processor 2
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=2
+DistributeMultiStep Alias='MC11_Proc2'
 
     purpose = 1
     period  = 1
@@ -187,7 +187,7 @@ EndDistributeMULTISTEP
    
 
 ;Cluster: distrubute MATRIX call onto processor 3
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=3
+DistributeMultiStep Alias='MC11_Proc3'
 
     purpose = 1
     period  = 2
@@ -352,7 +352,7 @@ EndDistributeMULTISTEP
    
 
 ;Cluster: distrubute MATRIX call onto processor 4
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=4
+DistributeMultiStep Alias='MC11_Proc4'
     purpose  = 2
     period   = 1
     purp     = 'HBO'
@@ -516,7 +516,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: distrubute MATRIX call onto processor 5
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=5
+DistributeMultiStep Alias='MC11_Proc5'
 
     purpose  = 2
     period   = 2
@@ -687,7 +687,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: distrubute MATRIX call onto processor 6
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=6
+DistributeMultiStep Alias='MC11_Proc6'
 
     ;HBC does not have Ok trips, but fill in zeros anyway so as not to foul up the structure in OD construction
     purpose = 2
@@ -750,7 +750,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: distrubute MATRIX call onto processor 7
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=7
+DistributeMultiStep Alias='MC11_Proc7'
 
     purpose = 2
     period  = 1
@@ -892,7 +892,7 @@ EndDistributeMULTISTEP
    
 
 ;Cluster: distrubute MATRIX call onto processor 8
-DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=8
+DistributeMultiStep Alias='MC11_Proc8'
 
     purpose = 1
     period  = 1
@@ -1169,15 +1169,7 @@ EndDistributeMULTISTEP
     endloop ;n
 
 ;Cluster: bring together all distributed steps before continuing
-WAIT4FILES, 
-    FILES="ClusterNodeID2.Script.End", 
-    FILES="ClusterNodeID3.Script.End", 
-    FILES="ClusterNodeID4.Script.End", 
-    FILES="ClusterNodeID5.Script.End", 
-    FILES="ClusterNodeID6.Script.End", 
-    FILES="ClusterNodeID7.Script.End", 
-    FILES="ClusterNodeID8.Script.End", 
-    CheckReturnCode=T
+BARRIER IDLIST='MC11_Proc2', 'MC11_Proc3', 'MC11_Proc4', 'MC11_Proc5', 'MC11_Proc6', 'MC11_Proc7', 'MC11_Proc8' CheckReturnCode=T
 
 
 
@@ -1238,7 +1230,7 @@ RUN PGM=MATRIX   MSG='Mode Choice 13: summarize mode choice by purpose - @prd@'
   
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
   ZONEMSG = 10  ;reduces print messages in TPP DOS. (i.e. runs faster).
@@ -1709,7 +1701,7 @@ RUN PGM=MATRIX   MSG='Mode Choice 13: summarize auto mode choice by purpose - da
     		   
     
     ;Cluster: distribute intrastep processing
-    DistributeINTRASTEP PROCESSID=ClusterNodeID, PROCESSLIST=2-@CoresAvailable@
+    DistributeIntrastep MaxProcesses=@CoresAvailable@
     
     
   ZONEMSG = @ZoneMsgRate@  ;reduces print messages in TPP DOS. (i.e. runs faster).

@@ -23,7 +23,7 @@ LOOP period = 1,2
     
     
     ;Cluster: distrubute MATRIX call onto processor 2
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=2
+    DistributeMultiStep Alias='AsnTran_Proc2'
      
         ;========================================================================================
         ;                             WALK & DRIVE to LCL (MODE 4)
@@ -132,7 +132,7 @@ LOOP period = 1,2
     
      
     ;Cluster: distrubute MATRIX call onto processor 3
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=3
+    DistributeMultiStep Alias='AsnTran_Proc3'
          
          
         ;========================================================================================
@@ -242,7 +242,7 @@ LOOP period = 1,2
     
      
     ;Cluster: distrubute MATRIX call onto processor 4
-    DistributeMULTISTEP PROCESSID=ClusterNodeID PROCESSNUM=4
+    DistributeMultiStep Alias='AsnTran_Proc4'
      
          
         ;========================================================================================
@@ -509,7 +509,7 @@ LOOP period = 1,2
          
      
     ;Cluster: bring together all distributed steps before continuing
-    WAIT4FILES, FILES="ClusterNodeID2.Script.End", FILES="ClusterNodeID3.Script.End", FILES="ClusterNodeID4.Script.End", CheckReturnCode=T
+    BARRIER IDLIST='AsnTran_Proc2', 'AsnTran_Proc3', 'AsnTran_Proc4' CheckReturnCode=T
         
         
 ENDLOOP ;period

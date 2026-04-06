@@ -22,18 +22,15 @@ ScriptStartTime = currenttime()
 
 RUN PGM=NETWORK MSG='Network Processing 1: export temp Master Network link and node shapefiles'
 FILEI NETI[1]  = '@ParentDir@1_Inputs\3_Highway\@MasterPrefix@.net'
-FILEI GEOMI[1] = '@ParentDir@1_Inputs\3_Highway\@MasterLinkShp@'
 
-FILEO NODEO = '@ParentDir@@ScenarioDir@Temp\0_InputProcessing\Master_Node_tmp0.shp',
-    FORMAT=SHP,
+FILEO NODEO = '@ParentDir@@ScenarioDir@Temp\0_InputProcessing\Master_Node_tmp0.dbf',
     INCLUDE=N         ,
             X         ,
             Y         ,
             TAZID     ,
             HOT_ZONEID
 
-FILEO LINKO = '@ParentDir@@ScenarioDir@Temp\0_InputProcessing\Master_Link_tmp0.shp',
-    FORMAT=SHP,
+FILEO LINKO = '@ParentDir@@ScenarioDir@Temp\0_InputProcessing\Master_Link_tmp0.dbf',
     INCLUDE=A         ,
             B         ,
             DISTANCE  ,
@@ -151,8 +148,8 @@ FILEO PRINTO = '@ParentDir@@ScenarioDir@_Log\py_Variables - ip_GlobalVars.txt'
              '\nTollZoneID_shp  = r"@tollz_shp@"',
              '\nTollZoneField   = r"@TollZoneID@"',
              '\n',
-             '\nMaster_Link_shp = r"Master_Link_tmp0.shp"',
-             '\nMaster_Node_shp = r"Master_Node_tmp0.shp"',
+             '\nMaster_Link_dbf = r"Master_Link_tmp0.dbf"',
+             '\nMaster_Node_dbf = r"Master_Node_tmp0.dbf"',
              '\n',
              '\nTransit_dbf     = r"TransitLinks_tmp0.dbf"',
              '\n',
@@ -196,7 +193,6 @@ endif  ;ReturnCode<>0
 ;create Master Network from updated Link & Node shapefiles
 RUN PGM=NETWORK MSG='Network Processing 1: write out updated Master Network to scenario folder'
 FILEI NETI[1]  = '@ParentDir@1_Inputs\3_Highway\@MasterPrefix@.net'
-FILEI GEOMI[1] = '@ParentDir@1_Inputs\3_Highway\@MasterLinkShp@'
 
 ;note: read in master network twice for ONEWAY calculation
 FILEI NETI[2]  = '@ParentDir@1_Inputs\3_Highway\@MasterPrefix@.net'
@@ -217,11 +213,9 @@ FILEI LINKI[3] = '@ParentDir@@ScenarioDir@Temp\0_InputProcessing\Updated_Master_
 
 FILEO NETO  = '@ParentDir@@ScenarioDir@0_InputProcessing\UpdatedMasterNet\@MasterPrefix@.net'
 
-FILEO NODEO = '@ParentDir@@ScenarioDir@0_InputProcessing\UpdatedMasterNet\GIS\@MasterPrefix@ - Node.shp',
-    FORMAT=SHP
+FILEO NODEO = '@ParentDir@@ScenarioDir@0_InputProcessing\UpdatedMasterNet\GIS\@MasterPrefix@ - Node.dbf'
 
-FILEO LINKO = '@ParentDir@@ScenarioDir@0_InputProcessing\UpdatedMasterNet\GIS\@MasterPrefix@ - Link.shp',
-    FORMAT=SHP
+FILEO LINKO = '@ParentDir@@ScenarioDir@0_InputProcessing\UpdatedMasterNet\GIS\@MasterPrefix@ - Link.dbf'
     
     
     ;set parameters
@@ -1317,7 +1311,6 @@ RUN PGM=NETWORK  MSG='Network Processing 1: write out Scenario Network'
 ;initialized scenario net
 FILEI NODEI[1] = '@ParentDir@@ScenarioDir@Temp\0_InputProcessing\Scenario_node_tmp1.dbf'
 FILEI LINKI[1] = '@ParentDir@@ScenarioDir@Temp\0_InputProcessing\Scenario_link_tmp1.dbf'
-FILEI GEOMI[1] = '@ParentDir@@ScenarioDir@0_InputProcessing\UpdatedMasterNet\GIS\@MasterPrefix@ - Link.shp'
 
 ;TAZ shapefile data
 FILEI NODEI[2] = '@ParentDir@@ScenarioDir@Temp\0_InputProcessing\Scenario_node_tmp2.dbf'
@@ -1335,11 +1328,9 @@ FILEI NODEI[3] = '@ParentDir@@ScenarioDir@0_InputProcessing\SE_File_@RID@.dbf',
 
 FILEO NETO  = '@ParentDir@@ScenarioDir@0_InputProcessing\ScenarioNet\@RID@.net'
 
-FILEO LINKO = '@ParentDir@@ScenarioDir@0_InputProcessing\ScenarioNet\@RID@ - Link.shp',
-    FORMAT=SHP
+FILEO LINKO = '@ParentDir@@ScenarioDir@0_InputProcessing\ScenarioNet\@RID@ - Link.dbf'
 
-FILEO NODEO = '@ParentDir@@ScenarioDir@0_InputProcessing\ScenarioNet\@RID@ - Node.shp',
-    FORMAT=SHP
+FILEO NODEO = '@ParentDir@@ScenarioDir@0_InputProcessing\ScenarioNet\@RID@ - Node.dbf'
 
     
     ;set parameters

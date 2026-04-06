@@ -29,7 +29,6 @@ endif
 
 RUN PGM=NETWORK   MSG='Final Assign: summarize loaded networks (detailed)'
     FILEI NETI[1]  = '@ParentDir@@ScenarioDir@Temp\5_AssignHwy\@RID@_tmp_AM.net'
-    FILEI GEOMI[1] = '@ParentDir@@ScenarioDir@0_InputProcessing\UpdatedMasterNet\GIS\@MasterPrefix@ - Link.shp'
     
     FILEI NETI[2] = '@ParentDir@@ScenarioDir@Temp\5_AssignHwy\@RID@_tmp_MD.net'
     FILEI NETI[3] = '@ParentDir@@ScenarioDir@Temp\5_AssignHwy\@RID@_tmp_PM.net'
@@ -86,8 +85,7 @@ RUN PGM=NETWORK   MSG='Final Assign: summarize loaded networks (detailed)'
                 V29_1, V29T_1,    @SGRPY@ V59_1, V59T_1,    V89_1, V89T_1,
                 V30_1, V30T_1     @SGRPY@,V60_1, V60T_1,    V90_1, V90T_1
     
-    FILEO LINKO = '@ParentDir@@ScenarioDir@5_AssignHwy\2b_Shapefiles\@RID@_Assigned.shp',
-        FORMAT=SHP,
+    FILEO LINKO = '@ParentDir@@ScenarioDir@5_AssignHwy\2b_Shapefiles\@RID@_Assigned.dbf',
         EXCLUDE=TIME_1         ,
                 VC_1           ,
                 VHT_1          ,
@@ -2358,7 +2356,6 @@ ENDRUN
 ;create final assigned summary network
 RUN PGM=NETWORK   MSG='Final Assign: extract summary fields from detailed network'
     FILEI NETI[1]  = '@ParentDir@@ScenarioDir@5_AssignHwy\2a_Networks\@RID@__Assigned.net'
-    FILEI GEOMI[1] = '@ParentDir@@ScenarioDir@0_InputProcessing\UpdatedMasterNet\GIS\@MasterPrefix@ - Link.shp'
     
     
     FILEO NETO = '@ParentDir@@ScenarioDir@5_AssignHwy\2a_Networks\@RID@__Summary.net', 

@@ -2387,8 +2387,7 @@ RUN PGM=NETWORK   MSG='Final Assign: extract summary fields from detailed networ
                 AM_TOT_VEH,   MD_TOT_VEH,   PM_TOT_VEH,   EV_TOT_VEH,   DY_TOT_VEH    @PM1Y@,P1_TOT_VEH
         
     
-    FILEO LINKO = '@ParentDir@@ScenarioDir@5_AssignHwy\2b_Shapefiles\@RID@_Summary.shp',
-        FORMAT=SHP,
+    FILEO LINKO = '@ParentDir@@ScenarioDir@5_AssignHwy\2b_Shapefiles\@RID@_Summary.dbf',
         EXCLUDE=byPurp____,
                 AM_HBW    ,   MD_HBW    ,   PM_HBW    ,   EV_HBW    ,   DY_HBW    ,   @PM1Y@ PM1_HBW   ,
                 AM_HBO    ,   MD_HBO    ,   PM_HBO    ,   EV_HBO    ,   DY_HBO    ,   @PM1Y@ PM1_HBO   ,

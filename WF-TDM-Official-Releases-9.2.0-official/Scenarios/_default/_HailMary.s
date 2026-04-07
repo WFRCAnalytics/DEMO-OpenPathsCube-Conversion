@@ -95,13 +95,13 @@
     BegTime_DS = currenttime()
     
     ;model scripts
-    ;READ FILE = '..\..\2_ModelScripts\3_Distribute\1_Distribution.s'  
-    ;READ FILE = '..\..\2_ModelScripts\3_Distribute\2_estimateHOTspeedtoll.s'
+    READ FILE = '..\..\2_ModelScripts\3_Distribute\1_Distribution.s'  
+    READ FILE = '..\..\2_ModelScripts\3_Distribute\2_estimateHOTspeedtoll.s'
     
     ;if (Get_data_for_REMM<>1)
-    ;    READ FILE = '..\..\2_ModelScripts\3_Distribute\3_SumToDistricts_GRAVITY.s'
+        READ FILE = '..\..\2_ModelScripts\3_Distribute\3_SumToDistricts_GRAVITY.s'
         READ FILE = '..\..\2_ModelScripts\3_Distribute\4_TLF_Distrib_PA.s'
-    ;    READ FILE = '..\..\2_ModelScripts\3_Distribute\5_SegmentSummary_Dist.s'
+        READ FILE = '..\..\2_ModelScripts\3_Distribute\5_SegmentSummary_Dist.s'
     ;endif
     
     ;report model step run time

@@ -509,7 +509,7 @@ LOOP period = 1,2
          
      
     ;Cluster: bring together all distributed steps before continuing
-    BARRIER IDLIST='AsnTran_Proc2', 'AsnTran_Proc3', 'AsnTran_Proc4' CheckReturnCode=T
+    BARRIER IDLIST='AsnTran_Proc2', 'AsnTran_Proc3', 'AsnTran_Proc4', CheckReturnCode=T, PrintFiles=Merge
         
         
 ENDLOOP ;period

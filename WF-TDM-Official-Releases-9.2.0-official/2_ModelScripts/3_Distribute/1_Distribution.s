@@ -2086,7 +2086,7 @@ LOOP n=1, 10
         ENDRUN
     
     ;Cluster: bring together all distributed steps before continuing
-    BARRIER IDLIST='Distrib_Proc2', 'Distrib_Proc3', 'Distrib_Proc4' CheckReturnCode=T
+    BARRIER IDLIST='Distrib_Proc2', 'Distrib_Proc3', 'Distrib_Proc4', CheckReturnCode=T, PrintFiles=Merge
     
     
     

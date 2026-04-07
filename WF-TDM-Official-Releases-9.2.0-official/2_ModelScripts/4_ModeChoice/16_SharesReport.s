@@ -6119,7 +6119,7 @@ EndDistributeMULTISTEP
 
 
 ;Cluster: bring together all distributed steps before continuing
-BARRIER IDLIST='Shares_Proc2', 'Shares_Proc3', 'Shares_Proc4', 'Shares_Proc5' CheckReturnCode=T
+BARRIER IDLIST='Shares_Proc2', 'Shares_Proc3', 'Shares_Proc4', 'Shares_Proc5', CheckReturnCode=T, PrintFiles=Merge
 
 
 

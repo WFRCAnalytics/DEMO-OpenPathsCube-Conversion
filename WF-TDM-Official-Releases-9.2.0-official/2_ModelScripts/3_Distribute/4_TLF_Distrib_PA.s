@@ -1062,7 +1062,7 @@ EndDistributeMULTISTEP
     ENDRUN
     
 ;Cluster: bring together all distributed steps before continuing
-BARRIER IDLIST='TLF_Proc2', 'TLF_Proc3' CheckReturnCode=T
+BARRIER IDLIST='TLF_Proc2', 'TLF_Proc3', CheckReturnCode=T, PrintFiles=Merge
 
 
 

@@ -1821,7 +1821,7 @@ EndDistributeMULTISTEP
     ENDRUN
 
 ;Cluster: bring together all distributed steps before continuing
-BARRIER IDLIST='SumDistr_Proc2', 'SumDistr_Proc3', 'SumDistr_Proc4', 'SumDistr_Proc5' CheckReturnCode=T
+BARRIER IDLIST='SumDistr_Proc2', 'SumDistr_Proc3', 'SumDistr_Proc4', 'SumDistr_Proc5', CheckReturnCode=T, PrintFiles=Merge
 
 
 

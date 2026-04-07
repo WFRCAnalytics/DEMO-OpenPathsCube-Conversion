@@ -354,7 +354,7 @@ NumMetrics = 3
 ;Cluster: wait for all multi-step processing to finish before continuing
 BARRIER IDLIST='TAZMet_PMT_AM', 'TAZMet_PMT_MD', 'TAZMet_PMT_PM', 'TAZMet_PMT_EV',
          'TAZMet_PHT_AM', 'TAZMet_PHT_MD', 'TAZMet_PHT_PM', 'TAZMet_PHT_EV',
-         'TAZMet_PHTFF_AM', 'TAZMet_PHTFF_MD', 'TAZMet_PHTFF_PM' CheckReturnCode=T
+         'TAZMet_PHTFF_AM', 'TAZMet_PHTFF_MD', 'TAZMet_PHTFF_PM', CheckReturnCode=T, PrintFiles=Merge
  
 
 ;create final metric file ----------------------------------------------------------------------------------------------

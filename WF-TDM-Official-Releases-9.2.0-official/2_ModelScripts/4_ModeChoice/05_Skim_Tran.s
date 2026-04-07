@@ -1697,7 +1697,7 @@ LOOP period = 1,2
          
      
     ;Cluster: bring together all distributed steps before continuing
-    BARRIER IDLIST='SkimTran_Proc2', 'SkimTran_Proc3', 'SkimTran_Proc4' CheckReturnCode=T
+    BARRIER IDLIST='SkimTran_Proc2', 'SkimTran_Proc3', 'SkimTran_Proc4', CheckReturnCode=T, PrintFiles=Merge
  
     
     

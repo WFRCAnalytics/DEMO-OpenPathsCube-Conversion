@@ -1169,7 +1169,7 @@ EndDistributeMULTISTEP
     endloop ;n
 
 ;Cluster: bring together all distributed steps before continuing
-BARRIER IDLIST='MC11_Proc2', 'MC11_Proc3', 'MC11_Proc4', 'MC11_Proc5', 'MC11_Proc6', 'MC11_Proc7', 'MC11_Proc8' CheckReturnCode=T
+BARRIER IDLIST='MC11_Proc2', 'MC11_Proc3', 'MC11_Proc4', 'MC11_Proc5', 'MC11_Proc6', 'MC11_Proc7', 'MC11_Proc8', CheckReturnCode=T, PrintFiles=Merge
 
 
 

@@ -13,10 +13,8 @@ ScriptStartTime = currenttime()
 
 RUN PGM=NETWORK   MSG='REMM: Write out Ramps shapefile from Distribution loaded network'
     FILEI NETI[1]  = '@ParentDir@@ScenarioDir@3_Distribute\Distrib_Network__Assigned.net'
-    FILEI GEOMI[1] = '@ParentDir@1_Inputs\3_Highway\@MasterLinkShp@'
     
-    FILEO LINKO = '@ParentDir@@ScenarioDir@6_REMM\FreewayExits.shp',
-        FORMAT=SHP, 
+    FILEO LINKO = '@ParentDir@@ScenarioDir@6_REMM\FreewayExits.dbf', 
         FORM=20.0,
         Include=A, 
                 B, 
@@ -34,10 +32,8 @@ ENDRUN
 
 RUN PGM=NETWORK   MSG='REMM: Write out Arterials and Ramps shapefile from Distribution loaded network'
     FILEI NETI[1]  = '@ParentDir@@ScenarioDir@3_Distribute\Distrib_Network__Assigned.net'
-    FILEI GEOMI[1] = '@ParentDir@1_Inputs\3_Highway\@MasterLinkShp@'
     
-    FILEO LINKO = '@ParentDir@@ScenarioDir@6_REMM\volumeshapefile.shp',
-        FORMAT=SHP, 
+    FILEO LINKO = '@ParentDir@@ScenarioDir@6_REMM\volumeshapefile.dbf', 
         FORM=20.0,
         Include=A, 
                 B, 

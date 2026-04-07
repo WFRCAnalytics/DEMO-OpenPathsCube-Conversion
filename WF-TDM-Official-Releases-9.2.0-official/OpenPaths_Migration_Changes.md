@@ -189,14 +189,36 @@ FILEI GEOMI[1] = '@ParentDir@@ScenarioDir@0_InputProcessing\UpdatedMasterNet\GIS
 ```
 Both were removed.
 
-#### FILEO FORMAT=SHP → DBF change
+#### FILEO FORMAT=SHP → DBF changes
 
 - `FILEO LINKO = '...Scenarios\@RID@\2b_Shapefiles\@RID@_Assigned.shp', FORMAT=SHP,` →  
   `FILEO LINKO = '...@RID@_Assigned.dbf',`
+- `FILEO LINKO = '...5_AssignHwy\2b_Shapefiles\@RID@_Summary.shp', FORMAT=SHP,` →  
+  `FILEO LINKO = '...@RID@_Summary.dbf',`  
+  *(This reference was missed in the initial migration pass and was identified by a `F(718): GDB Network function unavailable` fatal error during the first full model run.)*
 
 ---
 
-### 2c. `_Python/ip_UpdateNetwork_WalkBuffers.py`
+### 2c. `6_REMM/3_output_LinkVolumeTAZlevel.s`
+
+This script writes REMM output network files. Both NETWORK runs had `FILEI GEOMI` and `FILEO FORMAT=SHP` references that were missed in the initial migration pass. Identified via `F(718)` error during the first full model run.
+
+#### FILEI GEOMI removals (2 occurrences)
+
+Both NETWORK runs had:
+```
+FILEI GEOMI[1] = '@ParentDir@1_Inputs\3_Highway\@MasterLinkShp@'
+```
+Both were removed.
+
+#### FILEO FORMAT=SHP → DBF changes
+
+- `FILEO LINKO = '...6_REMM\FreewayExits.shp', FORMAT=SHP,` → `FILEO LINKO = '...FreewayExits.dbf',`
+- `FILEO LINKO = '...6_REMM\volumeshapefile.shp', FORMAT=SHP,` → `FILEO LINKO = '...volumeshapefile.dbf',`
+
+---
+
+### 2d. `_Python/ip_UpdateNetwork_WalkBuffers.py`
 
 This Python script reads the temp master node/link files exported by Voyager (from `1_NetProcessor.s`) to compute DISTANCE, TAZID, and HOT_ZONEID fields and to generate the walk buffer file.
 
@@ -388,7 +410,8 @@ After this step, Voyager network runs will use geometry embedded in the `.net` f
 | `4_ModeChoice/18_SumToDistricts_FinalTripTables.s` | DistributeINTRASTEP + DistributeMULTISTEP + WAIT4FILES | `2_ModelScripts/` |
 | `5_AssignHwy/01_Convert_PA_to_OD.s` | DistributeINTRASTEP | `2_ModelScripts/` |
 | `5_AssignHwy/02_Assign_AM_MD_PM_EV.s` | DistributeINTRASTEP | `2_ModelScripts/` |
-| `5_AssignHwy/04_SummarizeLoadedNetworks.s` | GEOMI + FORMAT=SHP | `2_ModelScripts/` |
+| `5_AssignHwy/04_SummarizeLoadedNetworks.s` | GEOMI + FORMAT=SHP (2 passes) | `2_ModelScripts/` |
+| `6_REMM/3_output_LinkVolumeTAZlevel.s` | GEOMI + FORMAT=SHP | `2_ModelScripts/` |
 | `5_AssignHwy/07_PerformFinalNetSkim.s` | DistributeINTRASTEP | `2_ModelScripts/` |
 | `5_AssignHwy/09_TAZ_Based_Metrics.s` | DistributeINTRASTEP + DistributeMULTISTEP + WAIT4FILES | `2_ModelScripts/` |
 | `5_AssignHwy/block/TAZ_Based_Metrics - create temp matrices.block` | DistributeINTRASTEP | `2_ModelScripts/` |

@@ -211,12 +211,6 @@
 
 
 :ENDMODEL
-    ;close Cube Cluster widows (if using more than 100 cores, update index below)
-    if (UseCubeCluster=1)
-        *(Cluster.EXE  ClusterNodeID 2-100 CLOSE EXIT)
-    endif
-    
-    
     if (SendEmailModelFinish=1)
         SENDMAIL,
             SMTPSERVER = 'smtp-relay.gmail.com',  
@@ -247,12 +241,6 @@
 
 ;if an error occurs the process jumps to this location
 :ONERROR
-    ;close Cube Cluster widows (if using more than 100 cores, update index below)
-    if (UseCubeCluster=1)
-        *(Cluster.EXE  ClusterNodeID 2-100 CLOSE EXIT)
-    endif
-    
-    
     ;model crahsed email;email sent if model crashed
     if (SendEmailModelCrash=1)
         SENDMAIL,

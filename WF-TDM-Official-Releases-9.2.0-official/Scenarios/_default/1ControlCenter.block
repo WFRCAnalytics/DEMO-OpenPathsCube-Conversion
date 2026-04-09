@@ -163,16 +163,18 @@
 
 
 ;CUBE CLUSTER parameters (use if Cube Cluster is available to reduce model run times)
-    ;set to 1 to enable Cube Cluster multi-threading
     UseCubeCluster = 1
-        
-        CoresAvailable = 16                                                     ;if uncertain number of processors in machine, can set to %NUMBER_OF_PROCESSORS%
-        
-        if (UseCubeCluster=1)
-            CLUSTER,
-            SERVER="LOCALHOST" NUMPROCESSES=16,
-            WAIT=60, NOHIDE=T
-        endif
+    CoresAvailable = 16 
+    
+    ;start cluster (hide cluster windows)
+    CLUSTER,
+    SERVER="LOCALHOST" NUMPROCESSES=16,
+    WAIT=60, NOHIDE=F
+    
+    ;turn cluster on or off
+    if (UseCubeCluster=1)  DISTRIBUTE INTRASTEP=T MULTISTEP=T
+    if (UseCubeCluster!=1) DISTRIBUTE INTRASTEP=F MULTISTEP=F
+
 
 
 
